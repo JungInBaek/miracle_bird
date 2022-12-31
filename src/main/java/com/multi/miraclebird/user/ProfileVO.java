@@ -1,4 +1,4 @@
-package com.multi.miraclebird.member;
+package com.multi.miraclebird.user;
 
 import java.sql.Time;
 

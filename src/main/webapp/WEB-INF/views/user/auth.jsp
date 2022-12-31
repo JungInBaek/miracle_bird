@@ -8,6 +8,6 @@
 </head>
 <body>
 code: ${code} <br/>
-jsonInString: ${jsonInString} <br/>
+accessToken: ${accessToken} <br/>
 </body>
 </html>
