@@ -28,7 +28,7 @@ public class InstagramApiService {
 	@Value("${instagram.client.id}")
 	private String clientId;
 	
-	@Value("${isntagram.client.secret}")
+	@Value("${instagram.client.secret}")
 	private String clientSecret;
 	
 	@Value("${instagram.redirect.uri}")
@@ -69,7 +69,7 @@ public class InstagramApiService {
 		String long_url = "https://graph.instagram.com/access_token";
 		UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(long_url)
 				.queryParam("grant_type", "ig_exchange_token")
-				.queryParam("client_secret", "f06a232c2096fb60125a948990434393")
+				.queryParam("client_secret", clientSecret)
 				.queryParam("access_token", shortToken)
 				.build();
 		
