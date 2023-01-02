@@ -12,6 +12,6 @@
 <a href="party/my-party.jsp">내 파티</a> <br/>
 <a href="profile/my-profile.jsp">내 프로필</a> <br/>
 <a href="store/store.jsp">스토어</a> <br/>
-<a href="starter/login.jsp">로그인</a>
+<a href="login.jsp">로그인</a>
 </body>
 </html>
