@@ -3,6 +3,7 @@
 
 ### etc ###
 target
+src/main/resources/properties/
 src/main/resources/properties/datasource.properties
 
 ### IntelliJ IDEA ###

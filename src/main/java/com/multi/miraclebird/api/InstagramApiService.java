@@ -1,10 +1,11 @@
 package com.multi.miraclebird.api;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,10 +22,24 @@ import com.multi.miraclebird.user.UserVO;
 
 
 @Service
+@PropertySource("classpath:/properties/instagram.properties")
 public class InstagramApiService {
+	
+	@Value("${instagram.client.id}")
+	private String clientId;
+	
+	@Value("${isntagram.client.secret}")
+	private String clientSecret;
+	
+	@Value("${instagram.redirect.uri}")
+	private String redirectUri;
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	public String getCode() {
+		return "redirect:https://api.instagram.com/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&scope=user_profile,user_media&response_type=code";
+	}
 	
 	public ResponseEntity<Map> getShortTokenAndUserId(String code) {
 		// 단기 엑세스 토큰, user_id
@@ -33,10 +48,10 @@ public class InstagramApiService {
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		
 		MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<String, String>();
-		requestBody.add("client_id", "888699415496342");
-		requestBody.add("client_secret", "f06a232c2096fb60125a948990434393");
+		requestBody.add("client_id", clientId);
+		requestBody.add("client_secret", clientSecret);
 		requestBody.add("grant_type", "authorization_code");
-		requestBody.add("redirect_uri", "https://localhost:8443/miraclebird/auth");
+		requestBody.add("redirect_uri", redirectUri);
 		requestBody.add("code", code);
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(requestBody, headers);
