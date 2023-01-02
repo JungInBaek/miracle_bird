@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 공통 */
+body {
+    background: url(../img/MainBG.png) no-repeat center fixed rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-blend-mode: multiply;
+    font-family: 'Roboto', sans-serif;
+}
+a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+}
+
+/* 헤더 */
+header .head {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 40px;
+}
+header .head .logo {
+    width: 130px;
+}
+header .head .nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 100%;
+    list-style-type: none;
+}
+header .head .nav-container .nav-item {
+    margin-left: 40px;
+    font-weight: 500;
+    font-size: 18px;
+}
+header .head .nav-container .nav-item a:hover {
+    color: #FFB100;
+}
+header .head .nav-container .nav-item button {
+    background: #FFB100;
+    border: 2px solid #FFB100;
+    border-radius: 50px;
+    padding: 8px 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 130px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+    transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+    background: none;
+    font-weight: 500;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+/* 바디 */
+.content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    margin: auto;
+    text-align: center;
+}
+.content .title {
+    font-weight: 900;
+    font-size: 150px;
+    color: #FFB100;
+    /* background: linear-gradient(180deg, rgba(255, 177, 0, 1), rgba(255, 95, 5, 1));
+    -webkit-background-clip: text; */
+}
+.content .sub-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 48px;
+    color: #fff;
+}
+.content .sub-title strong {
+    color:#FFB100;
+}
