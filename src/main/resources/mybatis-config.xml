@@ -13,11 +13,17 @@
 		<typeAlias type="com.multi.miraclebird.user.UserVO" alias="userVO"/>
 		<typeAlias type="com.multi.miraclebird.user.FeedVO" alias="feedVO"/>
 		<typeAlias type="com.multi.miraclebird.profile.ProfileVO" alias="profileVO"/>
+		<typeAlias type="com.multi.miraclebird.recruit.RecruitVO" alias="recruitVO"/>
+		<typeAlias type="com.multi.miraclebird.recruit.RecruitPartyVO" alias="recruitPartyVO"/>
+		<typeAlias type="com.multi.miraclebird.party.PartyVO" alias="partyVO"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/userMapper.xml" />
 		<mapper resource="mapper/profileMapper.xml" />
-   	</mappers>
+		<mapper resource="mapper/recruitMapper.xml" />
+		<mapper resource="mapper/partyMapper.xml" />
+		<mapper resource="mapper/partyMemberMapper.xml" />
+  </mappers>
 
 </configuration>

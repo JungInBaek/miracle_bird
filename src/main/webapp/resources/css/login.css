@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+body {
+    display: flex;
+}
+/* 타이틀 */
+.bg_yellow {
+    width: 40vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFB100;
+}
+.bg_yellow .welcome {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 4em;
+    color: #222;
+}
+
+/* 본문 */
+.bg_white {
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+.bg_white .login_content {
+    display: inline-block;
+    width: 450px;
+    position: relative;
+}
+.bg_white .login_content .login_title {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    color: #222;
+}
+
+/* 폼 */
+.bg_white .login_content form label {
+    display: inline-block;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #bbb;
+}
+.bg_white .login_content form span {
+    display: block;
+    height: 60px;
+    border: solid 2px #FFB100;
+    border-radius: 11px;
+    padding: 10px 110px 10px 14px;
+    background: #fff;
+    box-sizing: border-box;
+}
+.bg_white .login_content form input {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    color: #222;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+input::-webkit-input-placeholder {
+    color: #bbb;
+}
+.bg_white .login_content form input:focus {
+    outline: none;
+}
+
+/* 암호 찾기 */
+.bg_white .login_content .pw_lost > a {
+    position: absolute;
+    right: 0;
+    padding-top: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    color: #bbb;
+}
+
+/* 로그인 버튼 */
+.bg_white .login_content .btn {
+    background: #FFB100;
+    border: 2px solid #FFB100;
+    width: 100%;
+    border-radius: 10px;
+    padding: 15px 5px;
+    margin-top: 70px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.bg_white .login_content .btn:hover {
+    background-color: transparent;
+    color: #FFB100;
+}
+
+/* 회원가입 */
+.bg_white .login_content div:nth-child(3) {
+    margin-top: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    color: #bbb;
+}
+.bg_white .login_content div:nth-child(3) > span {
+    margin-left: 5px;
+}
+.bg_white .login_content div:nth-child(3) > span > a {
+    color: #FFB100;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* 구분선 */
+.bg_white .login_content .line {
+    margin-top: 30px;
+    border-top: 1px solid #bbb;
+}
+
+/* 인스타그램 로그인 */
+.bg_white .login_content .btn-gray {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F4F4F4;
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid #F4F4F4;
+    border-radius: 10px;
+    padding: 15px 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #222;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.bg_white .login_content .btn-gray:hover {
+    border: 2px solid #DADADA;
+    background-color: transparent;
+    color: #bbb;
+}
+.bg_white .login_content .btn-gray img {
+    width: 25px;
+}
+.bg_white .login_content .btn-gray span {
+    padding: 0 10px;
+}
