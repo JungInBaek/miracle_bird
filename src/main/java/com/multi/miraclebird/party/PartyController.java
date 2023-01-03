@@ -21,7 +21,7 @@ public class PartyController {
 	public String createPartyPage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userId") == null) {
-			return "redirect:/login";
+			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") != null) {
 			System.out.println("파티에 이미 가입되어있습니다.");
 			return "redirect:/recruit/list";
@@ -33,19 +33,16 @@ public class PartyController {
 	public String createParty(CreatePartyDTO createPartyDTO, HttpServletRequest request) throws UnsupportedEncodingException {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userId") == null) {
-			return "redirect:/login";
+			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") != null) {
 			System.out.println("파티에 이미 가입되어있습니다.");
 			return "redirect:/recruit/list";
 		}
+		
+		// 파티 생성
 		Long userId = (Long) session.getAttribute("userId");
 		PartyVO partyVO = PartyVO.createPartyVO(createPartyDTO, userId);
 		partyService.createParty(partyVO);
-		Integer partyId = partyVO.getPartyId();
-		session.setAttribute("partyId", partyId);
-		
-		boolean isLeader = partyService.isLeader(partyId, userId);
-		session.setAttribute("isLeader", isLeader);
 		
 		return "redirect:/recruit/list";
 	}

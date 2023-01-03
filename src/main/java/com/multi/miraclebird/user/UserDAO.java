@@ -19,11 +19,15 @@ public class UserDAO {
 		mybatis.update("user.updateToken", userVO);
 	}
 	
-	public UserVO selectByUserId(UserVO userVO) {
-		return mybatis.selectOne("user.selectByUserId", userVO);
+	public UserVO selectUserByUserId(UserVO userVO) {
+		return mybatis.selectOne("user.selectUserByUserId", userVO);
 	}
 
 	public void deleteAccessToken(Long userId) {
 		mybatis.update("user.deleteToken", userId);
+	}
+	
+	public String selectAccessTokenByUserId(Long userId) {
+		return mybatis.selectOne("user.selectAccessTokenByUserId", userId);
 	}
 }

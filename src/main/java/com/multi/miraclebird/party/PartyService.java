@@ -30,5 +30,9 @@ public class PartyService {
 		
 		return isLeader;
 	}
+	
+	public Integer findPartyIdByUserId(Long userId) {
+		return partyMemberDao.findPartyIdByUserId(userId);
+	}
 
 }
