@@ -60,6 +60,6 @@ public class UserController {
 			session.setAttribute("partyId", partyId);
 		}
 		
-        return "redirect:http://localhost:8080/miraclebird/";
+        return "redirect:/";
 	}
 }
