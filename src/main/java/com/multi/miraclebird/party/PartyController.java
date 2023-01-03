@@ -39,7 +39,7 @@ public class PartyController {
 		
 		session.setAttribute("partyId", partyVO.getPartyId());
 		
-		return "redirect:http://localhost:8080/miraclebird/recruit/list";
+		return "redirect:/recruit/list";
 	}
 
 }
