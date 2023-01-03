@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recruit">
+
+	<select id="recruitPartyList" resultType="recruitPartyVO">
+		select p.party_id, p.name, p.miracle_start_time, p.miracle_end_time, p.activity
+		from recruit as r
+		join party as p
+		on r.party_id = p.party_id;
+	</select>
+	
+</mapper>

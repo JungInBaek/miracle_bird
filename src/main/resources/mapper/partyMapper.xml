@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="party">
+
+	<insert id="create" parameterType="partyVO" useGeneratedKeys="true" keyProperty="partyId">
+		insert into party
+		values (null, #{name}, #{info}, #{miracleStartTime}, #{miracleEndTime}, #{activity}, #{createDate}, #{maxMemberCount}, #{leaderId})
+	</insert>
+	
+	<select id="findPartyByLeaderId" parameterType="long" resultType="int">
+		select party_id
+		from party
+		where leaderId = #{userId};
+	</select>
+	
+</mapper>
