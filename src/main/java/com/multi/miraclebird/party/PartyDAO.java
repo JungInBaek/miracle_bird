@@ -14,7 +14,7 @@ public class PartyDAO {
 		mybatis.insert("party.create", partyVO);
 	}
 
-	public Integer findPartyByLeaderId(Long userId) {
-		return mybatis.selectOne("party.findPartyByLeaderId", userId);
+	public Long findLeaderIdByUserId(Long userId) {
+		return mybatis.selectOne("party.findLeaderIdByUserId", userId);
 	}
 }
