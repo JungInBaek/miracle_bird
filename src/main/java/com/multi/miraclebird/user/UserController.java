@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.multi.miraclebird.api.InstagramApiService;
 import com.multi.miraclebird.party.PartyMemberDAO;
@@ -26,13 +27,24 @@ public class UserController {
 	
 	
 	@GetMapping("/login")
-	public String login(HttpServletRequest request) {
+	public String loginPage() {
+		return "user/login";
+	}
+	
+	@GetMapping("/instaLogin")
+	public String login(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
-
 		if (session.getAttribute("userId") == null) {
 			return instagramApiService.getCode();
+		} else {
+			Long userId = (Long) session.getAttribute("userId");
+			model.addAttribute("userId", userId);
+			Integer partyId = (Integer) session.getAttribute("partyId");
+			if (partyId != null) {
+				model.addAttribute(partyId);
+			}
 		}
-		return "user/login";
+		return "home";
 	}
 
 	@GetMapping("/auth")
@@ -48,6 +60,6 @@ public class UserController {
 			session.setAttribute("partyId", partyId);
 		}
 		
-        return "redirect:http://localhost:8080/miraclebird/home.jsp";
+        return "redirect:http://localhost:8080/miraclebird/";
 	}
 }

@@ -21,7 +21,7 @@ public class PartyController {
 	public String createPartyPage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userId") == null) {
-			return "redirect:http://localhost:8080/miraclebird/login.jsp";
+			return "redirect:http://localhost:8080/miraclebird/login";
 		} else if(session.getAttribute("partyId") != null) {
 			System.out.println("파티에 이미 가입되어있습니다.");
 			return "recruit/list";

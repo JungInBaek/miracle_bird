@@ -21,7 +21,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="./img/logo_white.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
+                <img src="${pageContext.request.contextPath}/resources/img/logo_white.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -31,7 +31,7 @@
                     <li class="nav-item"><a href="#">MY PARTY</a></li>
                     <li class="nav-item"><a href="#">PROFILE</a></li>
                     <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><button>LOGIN</button></a></li>
+                    <li class="nav-item"><a href="login.jsp"><button>LOGIN</button></a></li>
                 </ul>
             </nav>
         </div>
