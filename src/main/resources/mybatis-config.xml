@@ -12,11 +12,12 @@
 	<typeAliases>
 		<typeAlias type="com.multi.miraclebird.user.UserVO" alias="userVO"/>
 		<typeAlias type="com.multi.miraclebird.user.FeedVO" alias="feedVO"/>
-		<typeAlias type="com.multi.miraclebird.user.ProfileVO" alias="profileVO"/>
+		<typeAlias type="com.multi.miraclebird.profile.ProfileVO" alias="profileVO"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/userMapper.xml" />
+		<mapper resource="mapper/profileMapper.xml" />
    	</mappers>
 
 </configuration>

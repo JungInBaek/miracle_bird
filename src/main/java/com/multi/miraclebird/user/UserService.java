@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.multi.miraclebird.api.InstagramApiService;
+import com.multi.miraclebird.profile.ProfileDAO;
+import com.multi.miraclebird.profile.ProfileVO;
 
 
 @Service
@@ -19,8 +21,12 @@ public class UserService {
 	@Autowired
 	private UserDAO userDao;
 	
+	@Autowired
+	private ProfileDAO profileDao;
+	
 	public UserVO createInstagramUser(String code) {
 		UserVO userVO = new UserVO();
+		ProfileVO profileVO = new ProfileVO();
 		
 		ResponseEntity<Map> shortToken = instagramApiService.getShortTokenAndUserId(code);
 		userVO.setUserId((Long) shortToken.getBody().get("user_id"));
@@ -36,10 +42,13 @@ public class UserService {
 		
 		userVO.setRole(Role.USER);
 		
+		profileVO.setUserId(userVO.getUserId());
+		
 		if(selectByUserId(userVO) != null) {
 			userDao.updateAccessToken(userVO);
 		} else {
 			userDao.createInstagramUser(userVO);
+			profileDao.createProfile(profileVO);
 		}
 		
 		return userVO;
