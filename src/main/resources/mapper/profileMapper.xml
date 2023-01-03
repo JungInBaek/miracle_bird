@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="profile">
+
+	<!-- 회원 가입시 자동으로 프로필 생성 -->
+	<insert id="create" parameterType="profileVO">
+		insert into profile values (null, #{userId}, null, null, null, null, 0);
+	</insert>
+
+	<!-- 프로필 조회 -->
+	<select id="one" parameterType="profileVO" resultType="profileVO">
+		select * from profile where user_id = #{userId};
+	</select>
+
+	<!-- 프로필 정보 수정 -->
+	<update id="update" parameterType="profileVO">
+		update profile set miracle_start_time = #{miracleStartTime}, miracle_end_time = #{miracleEndTime}, bio = #{bio}, profile_img = #{profileImg} where user_id = #{userId};
+	</update>
+</mapper>
