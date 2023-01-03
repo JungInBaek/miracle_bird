@@ -35,7 +35,7 @@
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
-                    			<a href="login"><button>LOGIN</button></a>
+                    			<a href="loginPage"><button>LOGIN</button></a>
                     		</c:when>
                     		<c:otherwise>
                     			<a href="logout"><button>LOGOUT</button></a>

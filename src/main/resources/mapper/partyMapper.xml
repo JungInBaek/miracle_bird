@@ -7,10 +7,10 @@
 		values (null, #{name}, #{info}, #{miracleStartTime}, #{miracleEndTime}, #{activity}, #{createDate}, #{maxMemberCount}, #{leaderId})
 	</insert>
 	
-	<select id="findPartyByLeaderId" parameterType="long" resultType="int">
-		select party_id
+	<select id="findLeaderIdByUserId" parameterType="Long" resultType="Long">
+		select leader_id
 		from party
-		where leaderId = #{userId};
+		where leader_id = #{userId};
 	</select>
 	
 </mapper>

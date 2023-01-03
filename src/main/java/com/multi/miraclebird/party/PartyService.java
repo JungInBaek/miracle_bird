@@ -20,5 +20,15 @@ public class PartyService {
 		partyMemberDao.createPartyLeader(partyVO);
 	}
 	
+	public boolean isLeader(Integer PartyId, Long userId) {
+		boolean isLeader = false;
+		
+		Long leaderId = (Long) partyDao.findLeaderIdByUserId(userId);
+		if (leaderId != null) {
+			isLeader = true;
+		}
+		
+		return isLeader;
+	}
 
 }

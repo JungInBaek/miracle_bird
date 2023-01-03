@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.miraclebird.party.PartyDAO;
-
 @Controller
 @RequestMapping("/recruit")
 public class RecruitController {
@@ -20,15 +18,19 @@ public class RecruitController {
 	@Autowired
 	private RecruitDAO recruitDao;
 	
-	@Autowired
-	private PartyDAO partyDao;
-	
 	
 	@GetMapping("/list")
 	public String partyList(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		Integer partyId = (Integer) session.getAttribute("partyId");
 		
+		boolean isLeader = false;
+		if (partyId != null) {
+			model.addAttribute("partyId", partyId);
+			isLeader = (boolean) session.getAttribute("isLeader");
+			model.addAttribute("isLeader", isLeader);
+		}
+		model.addAttribute("isLeader", isLeader);
 		
 		List<RecruitPartyVO> list = recruitDao.getRecruitPartyList();
 		model.addAttribute("list", list);
@@ -40,13 +42,13 @@ public class RecruitController {
 	public String createRecruit(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userId") == null) {
-			return "redirect:http://localhost:8080/miraclebird/login.jsp";
+			return "redirect:/login";
 		} else if(session.getAttribute("partyId") == null) {
 			System.out.println("파티에 가입되어 있지 않습니다.");
 			return "recruit/list";
 		} else {
-			Integer partyId = partyDao.findPartyByLeaderId((Long) session.getAttribute("userId"));
-			if (partyId == null) {
+			boolean isLeader = (boolean) session.getAttribute("isLeader");
+			if (!isLeader) {
 				System.out.println("파티장이 아닙니다.");
 				return "recruit/list";
 			}

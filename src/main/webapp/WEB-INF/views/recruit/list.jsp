@@ -8,8 +8,12 @@
 <title>모집 파티 목록 화면</title>
 </head>
 <body>
+<c:if test="${partyId == null}">
 <a href="/miraclebird/party/create">파티 생성</a>
+</c:if>
+<c:if test="${isLeader}">
 <a href="/miraclebird/recruit/create">파티 모집글 등록</a>
+</c:if>
 <hr/>
 <h1>모집 파티 목록</h1>
 <table>
