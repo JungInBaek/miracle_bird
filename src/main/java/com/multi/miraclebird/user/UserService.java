@@ -44,7 +44,7 @@ public class UserService {
 		
 		profileVO.setUserId(userVO.getUserId());
 		
-		if(selectByUserId(userVO) != null) {
+		if(selectUserByUserId(userVO) != null) {
 			userDao.updateAccessToken(userVO);
 		} else {
 			userDao.createInstagramUser(userVO);
@@ -58,7 +58,11 @@ public class UserService {
 		userDao.updateAccessToken(userVO);
 	}
 	
-	public UserVO selectByUserId(UserVO userVO) {
-		return userDao.selectByUserId(userVO);
+	public UserVO selectUserByUserId(UserVO userVO) {
+		return userDao.selectUserByUserId(userVO);
+	}
+	
+	public String selectAccessTokenByUserId(Long userId) {
+		return userDao.selectAccessTokenByUserId(userId);
 	}
 }
