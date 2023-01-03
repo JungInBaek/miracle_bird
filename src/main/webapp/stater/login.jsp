@@ -56,11 +56,13 @@
 
             <!-- 구분선 -->
             <div class="line"></div>
-
+            
+            <a href="login">
             <button class="btn-gray">
                 <img src="../resources/img/instagram.svg" alt="인스타그램 로고">
                 <span>인스타그램으로 시작하기</span>
             </button>
+            </a>
         </div>
     </div>
 </body>

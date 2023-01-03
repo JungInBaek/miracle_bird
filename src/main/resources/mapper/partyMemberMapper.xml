@@ -7,7 +7,7 @@
 		values (null, #{createDate}, #{partyId}, #{leaderId});
 	</insert>
 	
-	<select id="findPartyIdByUserId" parameterType="long" resultType="int">
+	<select id="findPartyIdByUserId" parameterType="Long" resultType="Integer">
 		select party_id
 		from party_member
 		where user_id = #{userId};
