@@ -25,7 +25,10 @@ public class RecruitController {
 	
 	
 	@GetMapping("/list")
-	public String partyList(Model model) {
+	public String partyList(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		
 		
 		List<RecruitPartyVO> list = recruitDao.getRecruitPartyList();
 		model.addAttribute("list", list);
