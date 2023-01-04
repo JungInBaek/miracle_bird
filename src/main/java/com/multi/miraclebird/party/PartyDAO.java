@@ -17,4 +17,8 @@ public class PartyDAO {
 	public Long findLeaderIdByUserId(Long userId) {
 		return mybatis.selectOne("party.findLeaderIdByUserId", userId);
 	}
+
+	public PartyVO findPartyByPartyId(int partyId) {
+		return mybatis.selectOne("party.findPartyByPartyId", partyId);
+	}
 }
