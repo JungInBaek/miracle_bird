@@ -11,13 +11,15 @@
 <c:if test="${partyId == null}">
 <a href="/miraclebird/party/create">파티 생성</a>
 </c:if>
-<c:if test="${isLeader}">
+<c:if test="${isLeader && !isCreated}">
 <a href="/miraclebird/recruit/create">파티 모집글 등록</a>
 </c:if>
 <hr/>
 <h1>모집 파티 목록</h1>
-<table>
-<thead>
+<hr/>
+
+<table border="1">
+<thead align="center">
 	<tr>
 		<th>파티 아이디</th>
 		<th>파티 이름</th>
@@ -26,11 +28,11 @@
 		<th>파티 활동</th>
 	</tr>
 </thead>
-<tbody>
+<tbody align="center">
 <c:forEach var="vo" items="${list}">
 	<tr>
 		<td>${vo.partyId}</td>
-		<td>${vo.name}</td>
+		<td><a href="/miraclebird/recruit/detail/${vo.recruitId}">${vo.name}</a></td>
 		<td>${vo.miracleStartTime}</td>
 		<td>${vo.miracleEndTime}</td>
 		<td>${vo.activity}</td>

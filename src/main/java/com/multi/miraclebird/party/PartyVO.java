@@ -4,12 +4,16 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PartyVO {
 
 	private int partyId;
 	private String name;
 	private String info;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalTime miracleStartTime;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalTime miracleEndTime;
 	private String activity;
 	private LocalDateTime createDate;
@@ -70,21 +74,6 @@ public class PartyVO {
 	}
 	public void setLeaderId(Long leaderId) {
 		this.leaderId = leaderId;
-	}
-	public static PartyVO createPartyVO(CreatePartyDTO createPartyDTO, Long leaderId) {
-		PartyVO partyVO = new PartyVO();
-		partyVO.setName(createPartyDTO.getName());
-		partyVO.setInfo(createPartyDTO.getInfo());
-		String startTime = createPartyDTO.getMiracleStartTime();
-		String endTime = createPartyDTO.getMiracleEndTime();
-		partyVO.setMiracleStartTime(LocalTime.parse(startTime, DateTimeFormatter.ISO_LOCAL_TIME));
-		partyVO.setMiracleEndTime(LocalTime.parse(endTime, DateTimeFormatter.ISO_LOCAL_TIME));
-		partyVO.setActivity(createPartyDTO.getActivity());
-		partyVO.setCreateDate(LocalDateTime.now());
-		partyVO.setMaxMemberCount(5);
-		partyVO.setLeaderId(leaderId);
-		
-		return partyVO;
 	}
 	
 }

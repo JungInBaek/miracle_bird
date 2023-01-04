@@ -4,13 +4,20 @@ import java.time.LocalTime;
 
 public class RecruitPartyVO {
 
+	private int recruitId;
 	private int partyId;
 	private String name;
 	private LocalTime miracleStartTime;
 	private LocalTime miracleEndTime;
 	private String activity;
+	private String content;
 	
-	
+	public int getRecruitId() {
+		return recruitId;
+	}
+	public void setRecruitId(int recruitId) {
+		this.recruitId = recruitId;
+	}
 	public int getPartyId() {
 		return partyId;
 	}
@@ -40,6 +47,12 @@ public class RecruitPartyVO {
 	}
 	public void setActivity(String activity) {
 		this.activity = activity;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 }
