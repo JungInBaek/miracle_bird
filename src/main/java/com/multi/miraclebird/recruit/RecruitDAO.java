@@ -1,6 +1,5 @@
 package com.multi.miraclebird.recruit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,11 +13,27 @@ public class RecruitDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public List<RecruitPartyVO> getRecruitPartyList() {
-		List<RecruitPartyVO> list = new ArrayList<>();
-		
-		mybatis.selectList("recruit.recruitPartyList");
+		List<RecruitPartyVO> list = mybatis.selectList("recruit.recruitPartyList");
 		
 		return list;
+	}
+	
+	public void createRecruit(RecruitVO recruitVO) {
+		mybatis.insert("recruit.createRecruit", recruitVO);
+	}
+	
+	public Boolean isCreated(int partyId) {
+		Boolean isCreated = false;
+		
+		if (mybatis.selectOne("recruit.isCreated", partyId) != null) {
+			isCreated = true;
+		}
+		
+		return isCreated;
+	}
+
+	public RecruitPartyVO findRecruitPartyByRecruitId(int recruitId) {
+		return mybatis.selectOne("recruit.findRecruitPartyByRecruitId", recruitId);
 	}
 	
 }

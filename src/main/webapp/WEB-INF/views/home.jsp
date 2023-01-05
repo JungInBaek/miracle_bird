@@ -30,8 +30,8 @@
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
                     <li class="nav-item"><a href="recruit/list">JOIN</a></li>
                     <li class="nav-item"><a href="#">MY PARTY</a></li>
-                    <li class="nav-item"><a href="#">PROFILE</a></li>
                     <li class="nav-item"><a href="store/storeMain">STORE</a></li>
+                    <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">

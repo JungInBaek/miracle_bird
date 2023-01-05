@@ -35,4 +35,8 @@ public class PartyService {
 		return partyMemberDao.findPartyIdByUserId(userId);
 	}
 
+	public PartyVO findPartyByPartyId(int partyId) {
+		return partyDao.findPartyByPartyId(partyId);
+	}
+
 }
