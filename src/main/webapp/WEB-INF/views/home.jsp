@@ -30,7 +30,7 @@
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/${partyId}/main">MY PARTY</a></li>
                     </c:if>
-                    <li class="nav-item"><a href="store/storeMain">STORE</a></li>
+                    <li class="nav-item"><a href="store/productList?page=1&categoryId=1">STORE</a></li>
                     <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>

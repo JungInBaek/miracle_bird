@@ -14,8 +14,14 @@ public class StoreDAO {
 	public List<ProductVO> list(CategoryPageVO vo) {
 		return mybatis.selectList("product.list", vo);
 	}
-	public int count() {
-		return mybatis.selectOne("product.count");
+	public int count(CategoryPageVO vo) {
+		return mybatis.selectOne("product.count", vo);
+	}
+	public int myPoint(Long userId) {
+		return mybatis.selectOne("profile.myPoint", userId);
+	}
+	public int productPoint(int productId) {
+		return mybatis.selectOne("product.productPoint", productId);
 	}
 	
 }
