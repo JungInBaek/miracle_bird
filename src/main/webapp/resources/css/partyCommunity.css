@@ -1,0 +1,204 @@
+@charset "UTF-8";
+h5 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h6 {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.mainInfo a {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.btn {
+  box-sizing: border-box;
+  width: 200px;
+  height: 80px;
+  margin: 25px;
+  background: #fff;
+  border: 2px solid #000000;
+  box-shadow: 0px 4px 2px 3px #000000;
+  border-radius: 11px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cate .btn button:hover {
+  background-color: #ffb100;
+}
+
+.cate {
+  margin: auto;
+  text-align: center;
+}
+
+.mainInfo {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.mainContent {
+  height: 400px;
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  border: 2px solid #000000;
+}
+
+.content {
+  box-sizing: border-box;
+  width: 230px;
+  height: 250px;
+  margin: 20px;
+  background: #d9d9d9;
+  border: 2px solid #000000;
+  border-radius: 5px;
+}
+
+.contentMain {
+  display: flex;
+  margin: auto;
+}
+
+.create {
+  width: 120px;
+  height: 50px;
+  background: #d9d9d9;
+  border: none;
+  right: 130px;
+  border-radius: 30px;
+  position: absolute;
+  font-size: 17px;
+  font-weight: bold;
+  bottom: 50px;
+}
+
+.mainText {
+  box-sizing: border-box;
+  width: 1200px;
+  height: 100px;
+  background: #ffb100;
+  border: 2px solid #000000;
+  border-radius: 0px 0px 16px 16px;
+  padding: 0px 0px 0px 20px;
+  line-height: 100px;
+}
+
+p {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+header .head {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+header .head .logo {
+  width: 130px;
+}
+header .head .nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
+  list-style-type: none;
+}
+header .head .nav-container .nav-item {
+  margin-left: 40px;
+  font-weight: 500;
+  font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+header .head .nav-container .nav-item a:hover {
+  color: #ffb100;
+}
+header .head .nav-container .nav-item button {
+  background: #ffb100;
+  border: 2px solid #ffb100;
+  border-radius: 50px;
+  padding: 8px 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 130px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+  color: #222;
+  transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+  background: none;
+  font-weight: 600;
+  border: 2px solid #ffb100;
+  color: #ffb100;
+}
+
+/*   팝업 임시 버튼 스타일  */
+
+/* 팝업 스타일 */
+.modal-bg {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+.modal-wrap {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 500px;
+  background: #fff;
+  margin: auto;
+  z-index: 1000;
+  border-radius: 15px;
+}
+
+.modal-close {
+  background-color: #fff;
+  border: none;
+  font-size: 30px;
+}
+
+textarea {
+  padding: 15px;
+  width: 100%;
+  height: 23em;
+  margin-top: 20px;
+  border: none;
+  resize: none;
+}
+
+.complete {
+  right: 15px;
+  bottom: 8px;
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  background: #bfbfbf;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}
