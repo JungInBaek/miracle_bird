@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+.box {
+  box-sizing: border-box;
+  width: 1000px;
+  height: 700px;
+  margin: auto;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0px 4px 6px 5px rgba(0, 0, 0, 0.21);
+  border-radius: 35px;
+}
+
+.left {
+  float: left;
+  width: 400px;
+  padding: 40px 10px 10px 60px;
+}
+
+.right {
+  float: right;
+  width: 400px;
+  text-align: center;
+  padding: 70px 10px 10px 10px;
+}
+
+.partyName {
+  text-align: center;
+  padding: 30px 10px 10px 10px;
+}
+
+.time {
+  padding: 10px 10px 10px 10px;
+}
+
+.time-img {
+  float: left;
+  width: 40px;
+  padding: 10px 10px 10px 40px;
+}
+.time-text {
+  float: left;
+  padding: 0px 100px 10px 10px;
+}
+
+.activity {
+  padding: 10px 10px 10px 10px;
+}
+
+.activity-img {
+  float: left;
+  width: 40px;
+  padding: 10px 10px 10px 40px;
+}
+
+.activity-text {
+  float: left;
+  padding: 0px 75px 10px 10px;
+}
+
+.people {
+  padding: 10px 10px 10px 10px;
+}
+
+.people-img {
+  float: left;
+  width: 40px;
+  padding: 10px 10px 10px 40px;
+}
+
+.people-text {
+  float: left;
+  padding: 0px 85px 10px 10px;
+}
+
+.welcome {
+  padding: 10px 10px 10px 10px;
+}
+
+.welcome-img {
+  float: left;
+  width: 40px;
+  padding: 10px 10px 10px 40px;
+}
+
+.welcome-text {
+  float: left;
+  padding: 0px 00px 10px 10px;
+}
+
+.percent {
+  padding: 10px 250px 10px 10px;
+}
+
+.percent-img {
+  float: left;
+  width: 40px;
+}
+
+.welcomeText {
+  padding: 10px 10px 10px 10px;
+  float: right;
+  box-sizing: border-box;
+  position: relative;
+  width: 350px;
+  height: 100px;
+  background: #ffffff;
+  border: 2px solid #ffb100;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.join {
+  margin: 20px;
+  padding: 16px 32px;
+  width: 150px;
+  font-size: 17px;
+  background: #ffb100;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: 2px solid #ffb100;
+}
+
+.back {
+  padding: 16px 32px;
+  margin: 20px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: 2px solid #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.partyBtn {
+  width: 1000px;
+  text-align: center;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  padding: 20px;
+}
+
+/* 네비게이션바 */
+
+header .head {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+header .head .logo {
+  width: 130px;
+}
+header .head .nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
+  list-style-type: none;
+}
+header .head .nav-container .nav-item {
+  margin-left: 40px;
+  font-weight: 500;
+  font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+header .head .nav-container .nav-item a:hover {
+  color: #ffb100;
+}
+header .head .nav-container .nav-item button {
+  background: #ffb100;
+  border: 2px solid #ffb100;
+  border-radius: 50px;
+  padding: 8px 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 130px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+  color: #222;
+  transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+  background: none;
+  font-weight: 600;
+  border: 2px solid #ffb100;
+  color: #ffb100;
+}
