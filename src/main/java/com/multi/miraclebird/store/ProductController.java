@@ -12,6 +12,7 @@ public class ProductController {
 	
 //	@RequestMapping("productList")
 //	public void list(ProductVO productVO, Model model) {
+//		System.out.println("test");
 //		List<ProductVO> list = productVO
 //	}
 }
