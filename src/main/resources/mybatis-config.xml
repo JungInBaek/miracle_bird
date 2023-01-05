@@ -31,7 +31,6 @@
 		<mapper resource="mapper/partyImgMapper.xml" />
 		<mapper resource="mapper/partyMemberMapper.xml" />
 		<mapper resource="mapper/partyApplicantMapper.xml" /> 
-		<mapper resource="mapper/productMapper.xml" />
   </mappers>
 
 </configuration>
