@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="feed">
+
+	<!-- 피드 삽입 -->
+	<insert id="create" parameterType="feedVO">
+		insert into feedtest values (#{feedId}, #{userId}, #{mediaType}, #{mediaUrl}, #{username}, #{caption}, #{feedTime});
+	</insert>
+	
+	<!-- feed_id로 피드 조회(중복된 피드 조회) -->
+	<select id="selectFeedByFeedId" parameterType="feedVO" resultType="feedVO">
+		select feed_id from feedtest where feed_id = #{feedId};
+	</select>
+</mapper>
