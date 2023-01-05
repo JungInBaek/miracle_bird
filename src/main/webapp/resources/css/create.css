@@ -1,0 +1,238 @@
+@charset "UTF-8";
+.box {
+  box-sizing: border-box;
+  width: 1000px;
+  height: 650px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 4px 6px 5px rgba(0, 0, 0, 0.21);
+  border-radius: 35px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+a {
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #222;
+  
+}
+table {
+  padding: 20px;
+}
+
+tr {
+  padding: 20px;
+  height: 90px;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+}
+
+td{
+	padding: 10px;
+}
+
+textarea {
+  resize: none;
+  width: 150px;
+  height: 6em;
+}
+
+.party {
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.partyInfo {
+  text-align: center;
+  padding: 10px;
+  margin: auto;
+}
+
+.inputBox {
+  text-align: center;
+  box-sizing: border-box;
+  width: 400px;
+  background: #ffffff;
+  border: 2px solid #ffb100;
+  border-radius: 18px;
+}
+
+.partyT {
+  text-align: center;
+  box-sizing: border-box;
+  width: 400px;
+  background: #ffffff;
+  border: 2px solid #ffb100;
+  border-radius: 18px;
+  vertical-align: middle;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+}
+.create {
+  display: inline-block;
+  align-items: center;
+  padding: 15px;
+  width: 120px;
+  margin: 20px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffb100;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: none;
+}
+
+.cancle {
+  display: inline-block;
+  padding: 15px;
+  width: 120px;
+  margin: 20px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: none;
+}
+
+.partyBtn {
+  padding: 10px;
+  text-align: center;
+  margin: auto;
+}
+
+.dropdown {
+  display: inline;
+  width: 160px;
+  margin: 50px;
+  height: 90px;
+}
+
+.dropdownP {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header .head {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+header .head .logo {
+  width: 130px;
+}
+header .head .nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
+  list-style-type: none;
+}
+header .head .nav-container .nav-item {
+  margin-left: 40px;
+  font-weight: 500;
+  font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+header .head .nav-container .nav-item a:hover {
+  color: #ffb100;
+}
+header .head .nav-container .nav-item button {
+  background: #ffb100;
+  border: 2px solid #ffb100;
+  border-radius: 50px;
+  padding: 8px 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 130px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+  color: #222;
+  transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+  background: none;
+  font-weight: 600;
+  border: 2px solid #ffb100;
+  color: #ffb100;
+}
+
+
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropbtn_icon{
+  font-family : 'Material Icons';
+}
+.dropbtn{
+  display : block;
+  border : 2px solid rgb(94, 94, 94);
+  border-radius : 4px;
+  background-color: #fcfcfc;
+  font-weight: 400;
+  color : rgb(124, 124, 124);
+  padding : 12px;
+  width :240px;
+  text-align: left;
+  cursor : pointer;
+  font-size : 12px;
+  z-index :1;
+  position : relative;
+}
+.dropdown-content{
+  display : none;
+  font-weight: 400;
+  background-color: #fcfcfc;
+  min-width : 240px;
+  border-radius: 8px;
+  height : 160px;
+  overflow : scroll;
+  box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
+}
+.dropdown-content::-webkit-scrollbar{
+  width : 5px;
+  height : 10px;
+}
+.dropdown-content::-webkit-scrollbar-thumb{
+  border-radius : 2px;
+  background-color :rgb(194, 194, 194)
+}
+
+.dropdown-content div{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  padding : 12px 20px;
+}
+.dropdown-content div:hover{
+  background-color: rgb(226, 226, 226);
+}
+
+.dropdown-content.show{
+  display : block;
+}
+
+.inputTime{
+	 border: 2px solid #ffb100;
+	 border-radius: 5px;
+	 margin: 20px;
+}

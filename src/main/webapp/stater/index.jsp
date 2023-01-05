@@ -31,7 +31,7 @@
                     <li class="nav-item"><a href="#">MY PARTY</a></li>
                     <li class="nav-item"><a href="#">PROFILE</a></li>
                     <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><a href="login.jsp"><button>LOGIN</button></a></li>
+                    <li class="nav-item"><button>LOGIN</button></li>
                 </ul>
             </nav>
         </div>
