@@ -31,7 +31,7 @@
                     <li class="nav-item"><a href="recruit/list">JOIN</a></li>
                     <li class="nav-item"><a href="#">MY PARTY</a></li>
                     <li class="nav-item"><a href="#">PROFILE</a></li>
-                    <li class="nav-item"><a href="#">STORE</a></li>
+                    <li class="nav-item"><a href="store/storeMain">STORE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
