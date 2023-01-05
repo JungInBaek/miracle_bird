@@ -14,7 +14,7 @@
 미라클 활동 : <input type="text" value="${recruitPartyVO.activity}" disabled /> <br/>
 <br/>
 <textarea rows="25" cols="50" disabled>${recruitPartyVO.content}</textarea> <br/>
-<button type="submit">등록하기</button>
+<button type="submit">가입하기</button>
 <a href="/miraclebird/recruit/list">
 	<button type="button">취소</button>
 </a>

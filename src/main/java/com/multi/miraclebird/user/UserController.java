@@ -23,6 +23,25 @@ public class UserController {
 
 	@Autowired
 	private PartyService partyService;
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		session.invalidate();
+		// 쿠키 조회
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("userId")) {
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+				}
+			}
+		}
+		
+		return "redirect:/";
+	}
 
 	@GetMapping("/loginPage")
 	public String loginPage() {
