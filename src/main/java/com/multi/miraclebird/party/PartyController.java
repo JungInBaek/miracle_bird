@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -65,5 +67,22 @@ public class PartyController {
 		return "redirect:/recruit/list";
 	}
 	
+	@GetMapping("/{partyId}/main")
+	public String roomMainPage(@PathVariable Integer partyId, HttpSession session, Model model) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null || (int) session.getAttribute("partyId") != partyId) {
+			System.out.println("해당 파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
+		
+		model.addAttribute("partyVO", partyVO);
+		model.addAttribute("partyImgVO", partyImgVO);
+		
+		return "party/main";
+	}
 
 }

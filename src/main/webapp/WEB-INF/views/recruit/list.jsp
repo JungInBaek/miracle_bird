@@ -6,8 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>모집 파티 목록 화면</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
 </head>
 <body>
+	<!-- 헤더 -->
+    <header>
+        <div class="head">
+            <!-- 로고 -->
+            <a href="/miraclebird">
+                <img src="${pageContext.request.contextPath}/resources/img/logo_white.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
+            </a>
+            <!-- 네비게이션바 -->
+            <nav>
+                <ul class="nav-container animate__animated animate__fadeIn">
+                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <c:if test="${partyId != null}">
+                    	<li class="nav-item"><a href="/miraclebird/party/${partyId}/main">MY PARTY</a></li>
+                    </c:if>
+                    <li class="nav-item"><a href="store/storeMain">STORE</a></li>
+                    <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
+                    <li class="nav-item">
+                    	<c:choose>
+                    		<c:when test="${userId == null}">
+                    			<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <hr/>
 <c:if test="${partyId == null}">
 <a href="/miraclebird/party/create">파티 생성</a>
 </c:if>
@@ -17,7 +56,6 @@
 <hr/>
 <h1>모집 파티 목록</h1>
 <hr/>
-
 <table border="1">
 <thead align="center">
 	<tr>
