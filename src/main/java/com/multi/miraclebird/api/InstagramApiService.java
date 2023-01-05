@@ -99,6 +99,23 @@ public class InstagramApiService {
 		ResponseEntity<Map> result = restTemplate.exchange(profileUrlComp.toString(), HttpMethod.GET, request, Map.class);
 		
 		return result;
-	}
+	}	
 
+	public ResponseEntity<Map> getUserMedia(UserVO userVO) {
+		// 사용자가 보유한 미디어
+		String mediaUrl = "https://graph.instagram.com/" + userVO.getUserId() + "/media?fields=id,media_type,media_url,username,caption,timestamp";
+		UriComponents mediaUrlComp = UriComponentsBuilder.fromHttpUrl(mediaUrl)
+//				.queryParam("fields", new String[]{"id", "media_type", "media_url", "username", "caption", "timestamp"})
+				.queryParam("access_token", userVO.getAccessToken())
+				.build();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<String, String>();
+		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(requestBody, headers);
+					
+		ResponseEntity<Map> result = restTemplate.exchange(mediaUrlComp.toString(), HttpMethod.GET, request, Map.class);
+		
+		return result;
+	}
 }

@@ -1,13 +1,17 @@
 package com.multi.miraclebird.profile;
 
-import java.sql.Time;
+import java.time.LocalTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class ProfileVO {
 
 	private int profileId;
-	private long userId;
-	private Time miracleStartTime;
-	private Time miracleEndTime;
+	private Long userId;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	private LocalTime miracleStartTime;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	private LocalTime miracleEndTime;
 	private String bio;
 	private String profileImg;
 	private int miraclePoint;
@@ -18,22 +22,22 @@ public class ProfileVO {
 	public void setProfileId(int profileId) {
 		this.profileId = profileId;
 	}
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public Time getMiracleStartTime() {
+	public LocalTime getMiracleStartTime() {
 		return miracleStartTime;
 	}
-	public void setMiracleStartTime(Time miracleStartTime) {
+	public void setMiracleStartTime(LocalTime miracleStartTime) {
 		this.miracleStartTime = miracleStartTime;
 	}
-	public Time getMiracleEndTime() {
+	public LocalTime getMiracleEndTime() {
 		return miracleEndTime;
 	}
-	public void setMiracleEndTime(Time miracleEndTime) {
+	public void setMiracleEndTime(LocalTime miracleEndTime) {
 		this.miracleEndTime = miracleEndTime;
 	}
 	public String getBio() {

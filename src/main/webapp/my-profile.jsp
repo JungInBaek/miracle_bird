@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 	$.ajax({
 		url : "profile/one",
@@ -23,9 +23,10 @@
 </head>
 <body>
 	프로필 결과
-	<hr>
 	<div id="profileResult"></div>
-	<a href="my-profileUpdate.jsp"><button>수정</button></a> 피드 결과
+	<a href="my-profileUpdate.jsp"><button>수정</button></a>
+	<hr>
+	피드 결과
 	<div id="feedResult"></div>
 	<!-- https://graph.instagram.com/{api-version}/{user-id}/media
   ?access_token={access-token} -->
