@@ -13,11 +13,9 @@ import com.multi.miraclebird.user.UserVO;
 public class FeedService {
 
 	@Autowired
-	private InstagramApiService instagramApiService;
+	private FeedDAO feedDao;
 	
-	public FeedVO allFeed(UserVO userVO, FeedVO feedVO) {
-		ResponseEntity<Map> feed = instagramApiService.getUserMedia(userVO);
-		
-		return null;
+	public FeedVO selectFeedByFeedId(FeedVO feedVO) {
+		return feedDao.selectFeedByFeedId(feedVO);
 	}
 }

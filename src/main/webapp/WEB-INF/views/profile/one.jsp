@@ -5,4 +5,4 @@
 미라클 타임 : ${vo.miracleStartTime } ~ ${vo.miracleEndTime }<br>
 자기소개 : ${vo.bio }<br>
 프로필 이미지 <br>
-<img src="resources/profile/${vo.profileImg}">
+<img src="resources/profile/${vo.profileImg}" height=150 width=150>

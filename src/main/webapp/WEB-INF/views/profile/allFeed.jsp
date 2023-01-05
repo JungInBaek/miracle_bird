@@ -4,7 +4,7 @@
 <c:forEach var="vo" items="${list }">
 유저네임(인스타아이디) : ${vo.username }<br>
 미디어 타입 : ${vo.mediaType }<br>
-미디어 : <br> <img src="${vo.mediaUrl}" height=100 width=100>
+미디어 : <br> <img src="${vo.mediaUrl}" height=100 width=100><br>
 <%-- <c:if test="${vo.meidaType.equals("IMAGE") }">
 	<p>미디어 : <br> <img src="${vo.mediaUrl}" height=100 width=100><br></p>
 </c:if>

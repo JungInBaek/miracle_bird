@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.multi.miraclebird.api.InstagramApiService;
+import com.multi.miraclebird.feed.FeedDAO;
+import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.user.UserVO;
 
@@ -28,7 +30,13 @@ public class ProfileService {
 	private InstagramApiService instagramApiService;
 	
 	@Autowired
+	private FeedService feedService;
+	
+	@Autowired
 	ProfileDAO profileDao;
+	
+	@Autowired
+	FeedDAO feedDao;
 
 	public ProfileVO oneProfile(ProfileVO profileVO) {
 		return profileDao.one(profileVO);
@@ -44,19 +52,6 @@ public class ProfileService {
 		ResponseEntity<Map> feed = instagramApiService.getUserMedia(userVO);
 		List<Map> list = (ArrayList) feed.getBody().get("data");
 		System.out.println(list);
-//		for (int i=0; i<list.size(); i++) {
-//			FeedVO feedVO = new FeedVO();
-//			feedVO.setUserId(userVO.getUserId());
-//			feedVO.setFeedId((String) list.get(i).get("id"));
-//			feedVO.setMediaType((String) list.get(i).get("media_type"));
-//			feedVO.setMediaUrl((String) list.get(i).get("media_url"));
-//			feedVO.setCaption((String) list.get(i).get("caption"));
-//			feedVO.setUsername((String) list.get(i).get("username"));
-//			feedVO.setFeedTime((String)list.get(i).get("timestamp"));
-//			if (feedVO.getCaption().contains("#미라클버드")) {
-//				feedList.add(feedVO);
-//			}
-//		}
 		for (int i=0; i<list.size(); i++) {
 			FeedVO feedVO = new FeedVO();
 			feedVO.setUserId(userVO.getUserId());
@@ -75,6 +70,11 @@ public class ProfileService {
 			LocalTime feedTime = LocalTime.of(feedVO.getFeedTime().getHour(), feedVO.getFeedTime().getMinute(), feedVO.getFeedTime().getSecond());
 			
 			if (feedVO.getMediaType().equals("IMAGE") && feedVO.getCaption().contains("#미라클버드") && feedTime.isAfter(profileVO.getMiracleStartTime()) && feedTime.isBefore(profileVO.getMiracleEndTime())) {
+				if (feedService.selectFeedByFeedId(feedVO) != null) {
+					
+				} else {
+					feedDao.createFeed(feedVO);
+				}
 				feedList.add(feedVO);
 			}
 		}
