@@ -21,7 +21,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="./img/logo_white.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
+                <img src="${pageContext.request.contextPath}/resources/img/logo_white.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
             </a>
             <!-- 네비게이션바 -->
             <nav>
