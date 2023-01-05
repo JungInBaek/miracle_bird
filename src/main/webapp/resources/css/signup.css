@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* 공통 */
+body {
+    display: flex;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    color: #222;
+}
+.btn {
+    width: 100%;
+    padding: 15px 5px;
+    background: #FFB100;
+    border: 2px solid #FFB100;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: transparent;
+    color: #FFB100;
+}
+.signup_content {
+    width: 450px;
+}
+input::-webkit-input-placeholder {
+    color: #bbb;
+}
+
+/* 타이틀 */
+.bg_yellow {
+    width: 40vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFB100;
+}
+.bg_yellow .welcome {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 4em;
+    color: #222;
+}
+
+/* 폼(양식) */
+.bg_white {
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+.bg_white .signup_content form div {
+    margin: 15px 0;
+}
+.bg_white .signup_content form div:nth-child(2),
+.bg_white .signup_content form div:nth-child(4) {
+    margin-bottom: 40px;
+}
+.bg_white .signup_content form div span {
+    display: block;
+    height: 60px;
+    border: solid 2px #FFB100;
+    border-radius: 11px;
+    padding: 10px 110px 10px 14px;
+    background: #fff;
+    box-sizing: border-box;
+}
+.bg_white .signup_content form div span input {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    color: #222;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+.bg_white .signup_content form div span input:focus {
+    outline: none;
+}
