@@ -12,6 +12,9 @@ public class PartyService {
 	private PartyDAO partyDao;
 	
 	@Autowired
+	private PartyImgDAO partyImgDao;
+	
+	@Autowired
 	private PartyMemberDAO partyMemberDao;
 	
 	@Autowired
@@ -44,6 +47,10 @@ public class PartyService {
 	
 	public void applyJoin(PartyApplicantVO partyApplicantVO) {
 		partyApplicantDao.applyJoin(partyApplicantVO);
+	}
+
+	public PartyImgVO findPartyImgByPartyId(Integer partyId) {
+		return partyImgDao.findPartyImgByPartyId(partyId);
 	}
 
 }
