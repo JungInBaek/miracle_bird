@@ -14,6 +14,9 @@ public class PartyService {
 	@Autowired
 	private PartyMemberDAO partyMemberDao;
 	
+	@Autowired
+	private PartyApplicantDAO partyApplicantDao;
+	
 	
 	public void createParty(PartyVO partyVO) {
 		partyDao.createParty(partyVO);
@@ -37,6 +40,10 @@ public class PartyService {
 
 	public PartyVO findPartyByPartyId(int partyId) {
 		return partyDao.findPartyByPartyId(partyId);
+	}
+	
+	public void applyJoin(PartyApplicantVO partyApplicantVO) {
+		partyApplicantDao.applyJoin(partyApplicantVO);
 	}
 
 }

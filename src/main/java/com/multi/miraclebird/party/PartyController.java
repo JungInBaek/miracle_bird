@@ -50,7 +50,7 @@ public class PartyController {
 	}
 	
 	@PostMapping("/join")
-	public String joinParty(HttpSession session) {
+	public String joinParty(PartyApplicantVO partyApplicantVO, HttpSession session) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") != null) {
@@ -58,7 +58,9 @@ public class PartyController {
 			return "redirect:/recruit/list";
 		}
 		
-		
+		partyApplicantVO.setApplicantDate(LocalDateTime.now());
+		partyApplicantVO.setUserId((Long) session.getAttribute("userId"));
+		partyService.applyJoin(partyApplicantVO);
 		
 		return "redirect:/recruit/list";
 	}

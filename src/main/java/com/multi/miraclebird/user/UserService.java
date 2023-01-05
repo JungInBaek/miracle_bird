@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.miraclebird.api.InstagramApiService;
 import com.multi.miraclebird.profile.ProfileDAO;
@@ -13,6 +14,7 @@ import com.multi.miraclebird.profile.ProfileVO;
 
 
 @Service
+@Transactional
 public class UserService {
 
 	@Autowired
