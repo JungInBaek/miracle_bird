@@ -16,6 +16,7 @@
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitVO" alias="recruitVO"/>
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitPartyVO" alias="recruitPartyVO"/>
 		<typeAlias type="com.multi.miraclebird.party.PartyVO" alias="partyVO"/>
+		<typeAlias type="com.multi.miraclebird.party.PartyImgVO" alias="partyImgVO"/>
 		<typeAlias type="com.multi.miraclebird.party.PartyApplicantVO" alias="partyApplicantVO"/>
 		<typeAlias type="com.multi.miraclebird.store.ProductVO" alias="productVO"/>
 	</typeAliases>
@@ -25,9 +26,10 @@
 		<mapper resource="mapper/profileMapper.xml" />
 		<mapper resource="mapper/recruitMapper.xml" />
 		<mapper resource="mapper/partyMapper.xml" />
+		<mapper resource="mapper/partyImgMapper.xml" />
 		<mapper resource="mapper/partyMemberMapper.xml" />
 		<mapper resource="mapper/partyApplicantMapper.xml" /> 
 		<mapper resource="mapper/productMapper.xml" /> 
-  </mappers>
+  	</mappers>
 
 </configuration>
