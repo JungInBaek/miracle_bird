@@ -16,4 +16,9 @@
 	<update id="update" parameterType="profileVO">
 		update profile set miracle_start_time = #{miracleStartTime}, miracle_end_time = #{miracleEndTime}, bio = #{bio}, profile_img = #{profileImg} where user_id = #{userId};
 	</update>
+	
+	<!-- 내 포인트 조회 -->
+	<select id="myPoint" parameterType="Long" resultType="Integer">
+		select miracle_point from profile where user_id = #{userId}
+	</select>
 </mapper>

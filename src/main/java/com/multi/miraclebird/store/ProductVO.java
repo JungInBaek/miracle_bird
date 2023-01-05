@@ -1,11 +1,18 @@
 package com.multi.miraclebird.store;
 
 public class ProductVO {
+	private int productNo;
 	private int productId;
 	private String productName;
 	private int productPrice;
 	private String productClass;
 	private String categoryId;
+	public int getProductNo() {
+		return productNo;
+	}
+	public void setProductNo(int productNo) {
+		this.productNo = productNo;
+	}
 	public int getProductId() {
 		return productId;
 	}
@@ -38,8 +45,10 @@ public class ProductVO {
 	}
 	@Override
 	public String toString() {
-		return "ProductVO [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productClass=" + productClass + ", categoryId=" + categoryId + "]";
+		return "ProductVO [product_no=" + productNo + ", productId=" + productId + ", productName=" + productName
+				+ ", productPrice=" + productPrice + ", productClass=" + productClass + ", categoryId=" + categoryId
+				+ "]";
 	}
+
 	
 }
