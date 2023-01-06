@@ -46,7 +46,7 @@ public class ProfileService {
 		profileDao.update(profileVO);
 	}
 
-	public List<FeedVO> allFeed(UserVO userVO, ProfileVO profileVO) {	
+	public List<FeedVO> allFeedInsta(UserVO userVO, ProfileVO profileVO) {	
 		List<FeedVO> feedList = new ArrayList<>();
 		
 		ResponseEntity<Map> feed = instagramApiService.getUserMedia(userVO);

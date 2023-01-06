@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.user.UserService;
 import com.multi.miraclebird.user.UserVO;
@@ -27,6 +28,9 @@ public class ProfileController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private FeedService feedService;
 
 	// 로그인 된 유저 아이디 필요
 	// 프로필 조회
@@ -70,7 +74,16 @@ public class ProfileController {
 		userVO.setAccessToken(accessToken);
 		profileVO.setUserId(userId);
 		profileVO = profileService.oneProfile(profileVO);
-		List<FeedVO> list = profileService.allFeed(userVO, profileVO);
+		List<FeedVO> list = profileService.allFeedInsta(userVO, profileVO);
+		model.addAttribute("list", list);
+	}
+	
+	// 피드 잔디 구현
+	@RequestMapping("profile/feedChart")
+	public void feedChart(HttpServletRequest requset, Model model) {
+		HttpSession session = requset.getSession();
+		Long userId = (Long) session.getAttribute("userId");
+		List<FeedVO> list = feedService.allFeedByUserId(userId);
 		model.addAttribute("list", list);
 	}
 }
