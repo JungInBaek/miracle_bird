@@ -20,12 +20,12 @@
         <div class="head">
             <!-- 로고 -->
             <a href="/miraclebird">
-                <img src="resources/img/logo_white.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
+                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
             </a>
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
