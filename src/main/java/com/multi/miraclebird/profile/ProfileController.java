@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
+import com.multi.miraclebird.party.PartyImgVO;
+import com.multi.miraclebird.party.PartyVO;
 import com.multi.miraclebird.user.UserService;
 import com.multi.miraclebird.user.UserVO;
 
@@ -32,32 +35,49 @@ public class ProfileController {
 	@Autowired
 	private FeedService feedService;
 
-	// 로그인 된 유저 아이디 필요
+	@RequestMapping("myFeed")
+	public String myFeed(HttpSession session) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		}
+		return "redirect:myFeed.jsp";
+	}
+	
 	// 프로필 조회
 	@RequestMapping("profile/one")
 	public void oneProfile(HttpServletRequest request, ProfileVO profileVO, Model model) {
-//		profileVO.setUserId(17841457620521535L);  // 임시
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("userId").equals(null)) {
-//			return "redirect:/login.jsp";
-//		}
 		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
 		UserVO userResult = userService.selectUser(userId);
 		ProfileVO profileResult = profileService.oneProfile(profileVO);
 		model.addAttribute("userVo", userResult);
 		model.addAttribute("profileVo", profileResult);
-//		return "profile/one";
+	}
+	
+	@RequestMapping("profile/one2")
+	public void one2Profile(HttpServletRequest request, ProfileVO profileVO, Model model) {
+		HttpSession session = request.getSession();
+		Long userId = (Long) session.getAttribute("userId");
+		profileVO.setUserId(userId);
+		UserVO userResult = userService.selectUser(userId);
+		ProfileVO profileResult = profileService.oneProfile(profileVO);
+		model.addAttribute("userVo", userResult);
+		model.addAttribute("profileVo", profileResult);
 	}
 
 	@PostMapping("updateProfile")
 	public String updateProfile(HttpServletRequest request, MultipartFile file, ProfileVO profileVO) throws Exception {
-//		profileVO.setUserId(17841457620521535L);  // 임시
-		String savedName = file.getOriginalFilename();
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/profile");
+		String savedName = "";
+		if (file != null) {
+			savedName = file.getOriginalFilename();
+			String uploadPath = request.getSession().getServletContext().getRealPath("resources/profile");
+			File target = new File(uploadPath + "/" + savedName);
+			file.transferTo(target);
+		} else {
+			savedName = "profile.png";
+		}
 		Long userId = (Long) request.getSession().getAttribute("userId");
-		File target = new File(uploadPath + "/" + savedName);
-		file.transferTo(target);
 		profileVO.setProfileImg(savedName);
 		profileVO.setUserId(userId);
 		profileService.updateProfile(profileVO);

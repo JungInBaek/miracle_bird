@@ -31,7 +31,7 @@
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
                     <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item"><a href="myFeed.jsp">PROFILE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
