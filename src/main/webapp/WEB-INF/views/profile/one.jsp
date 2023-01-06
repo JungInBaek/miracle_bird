@@ -18,7 +18,7 @@
 	<!-- <div class="name">홍길동</div> -->
 	<div class="account">@${userVo.username }</div>
 	<div class="edit-profile">
-		<a href="#">
+		<a href="profile.jsp">
 			<div>프로필 수정</div>
 		</a>
 	</div>

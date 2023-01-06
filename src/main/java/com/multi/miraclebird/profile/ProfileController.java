@@ -61,7 +61,7 @@ public class ProfileController {
 		profileVO.setProfileImg(savedName);
 		profileVO.setUserId(userId);
 		profileService.updateProfile(profileVO);
-		return "redirect:my-profile.jsp";
+		return "redirect:myFeed.jsp";
 	}
 
 	// 피드 가져오기
