@@ -30,4 +30,8 @@ public class UserDAO {
 	public String selectAccessTokenByUserId(Long userId) {
 		return mybatis.selectOne("user.selectAccessTokenByUserId", userId);
 	}
+	
+	public UserVO selectUser(Long userId) {
+		return mybatis.selectOne("user.selectUser", userId);
+	}
 }

@@ -18,13 +18,7 @@
 	$.ajax({
 		url : "profile/one",
 		success : function(profileResult) {
-			$("#profile").html(profileResult);
-		}
-	})
-	/* $.ajax({
-		url : "profile/feedChart",
-		success : function(chartResult) {
-			$('#chartResult').html(chartResult);
+			$("#profileResult").html(profileResult);
 		}
 	})
 	$.ajax({
@@ -32,13 +26,20 @@
 		success : function(feedResult) {
 			$('#feedResult').html(feedResult);
 		}
+	})
+	/*
+	$.ajax({
+		url : "profile/feedChart",
+		success : function(chartResult) {
+			$('#chartResult').html(chartResult);
+		}
 	}) */
 	</script>
 </head>
 
 <body>
     <!-- 프로필 -->
-    <div id="profile" class="profile">
+    <div class="profile" id="profileResult">
         <!-- <div class="profile-inner">
             <div class="circle-container">
                 <img src="../resources/img/profile.png" alt="프로필이미지">
@@ -129,11 +130,11 @@
         </header>
         <!-- 피드 -->
         <div class="feed-title">My Feed</div>
-        <div class="feeds">
+        <div class="feeds" id="feedResult">
+            <!-- <a href="#"><div class="feed"></div></a>
             <a href="#"><div class="feed"></div></a>
             <a href="#"><div class="feed"></div></a>
-            <a href="#"><div class="feed"></div></a>
-            <a href="#"><div class="feed"></div></a>
+            <a href="#"><div class="feed"></div></a> -->
         </div>
     </div>
 </body>

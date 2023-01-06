@@ -43,8 +43,10 @@ public class ProfileController {
 //		}
 		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
-		ProfileVO result = profileService.oneProfile(profileVO);
-		model.addAttribute("vo", result);
+		UserVO userResult = userService.selectUser(userId);
+		ProfileVO profileResult = profileService.oneProfile(profileVO);
+		model.addAttribute("userVo", userResult);
+		model.addAttribute("profileVo", profileResult);
 //		return "profile/one";
 	}
 

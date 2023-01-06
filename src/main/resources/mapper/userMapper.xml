@@ -24,5 +24,9 @@
 	<select id="selectAccessTokenByUserId" parameterType="Long" resultType="String">
 		select access_token from user where user_id = #{userId};
 	</select>
+	
+	<select id="selectUser" parameterType="Long" resultType="userVO">
+		select * from user where user_id=#{userId};
+	</select>
 
 </mapper>
