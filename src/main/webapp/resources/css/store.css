@@ -221,24 +221,7 @@ header .head .nav-container .nav-item button:hover {
     display: none;
     cursor: pointer;
 }
-.main .item-container .item:nth-child(1) .item-image {
-    background-color: #FF7878;
-}
-.main .item-container .item:nth-child(2) .item-image {
-    background-color: #FFE978;
-}
-.main .item-container .item:nth-child(3) .item-image {
-    background-color: #8BFF78;
-}
-.main .item-container .item:nth-child(4) .item-image {
-    background-color: #78FFCE;
-}
-.main .item-container .item:nth-child(5) .item-image {
-    background-color: #78CEFF;
-}
-.main .item-container .item:nth-child(6) .item-image {
-    background-color: #7886FF;
-}
+
 .main .item-container .item .item-text {
     height: 30%;
     border-radius: 0 0 45px 45px;

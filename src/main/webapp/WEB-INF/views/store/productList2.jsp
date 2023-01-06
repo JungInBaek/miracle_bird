@@ -58,12 +58,14 @@
 				<td class="left">상품 가격</td>
 				<td class="left">상품 그림</td>
 			</tr>
-			<c:forEach items="${list}" var="one">
+			<c:forEach items="${list}" var="one" varStatus="status">
 				<tr>
 					<td class="right">${one.productNo}</td>
 					<td class="right">${one.productName}</td>
 					<td class="right">${one.productPrice}</td>
 					<td class="right">
+<%-- 					<input type = "hidden" name = currentPN${status.index} value="${one.productId}">
+					<input type = "button" onclick="productBuy(currentPN${status.index})"/> --%>
 					<input type = "hidden" name = "productId" value="${one.productId}">
 					<button onclick="productBuy()">${one.productClass}</button>
 					</td>
