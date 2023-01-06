@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -14,6 +14,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap"
         rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+	/* $.ajax({
+		url : "profile/one2",
+		success : function(profileArray) {
+			$('#profileResult')
+		}
+	}) */
+	</script>
 </head>
 
 <body>
@@ -28,11 +37,22 @@
             <nav>
                 <ul class="nav-container">
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="#">JOIN</a></li>
-                    <li class="nav-item"><a href="#">MY PARTY</a></li>
-                    <li class="nav-item"><a href="#">PROFILE</a></li>
-                    <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><button>LOGIN</button></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <c:if test="${partyId != null}">
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+                    </c:if>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
+                    <li class="nav-item">
+                    <c:choose>
+                    	<c:when test="${userId == null}">
+                    		<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+                    	</c:otherwise>
+                    </c:choose>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -51,7 +71,7 @@
                     <div class="btn-upload">사진 업로드</div>
                 </label>
                 <div class="intro-text">
-                    <textarea name="" id="" rows="10" name="bio"></textarea>
+                    <textarea id="" rows="10" name="bio"></textarea>
                 </div>
                 <div class="time-title">활동 시간대</div>
                 <div class="time">

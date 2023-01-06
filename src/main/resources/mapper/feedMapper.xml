@@ -4,16 +4,16 @@
 
 	<!-- 피드 삽입 -->
 	<insert id="create" parameterType="feedVO">
-		insert into feedtest values (#{feedId}, #{userId}, #{mediaType}, #{mediaUrl}, #{username}, #{caption}, #{feedTime});
+		insert into feed values (#{feedId}, #{userId}, #{mediaType}, #{mediaUrl}, #{username}, #{caption}, #{feedTime});
 	</insert>
 	
 	<!-- feed_id로 피드 조회(중복된 피드 조회) -->
 	<select id="selectFeedByFeedId" parameterType="feedVO" resultType="feedVO">
-		select feed_id from feedtest where feed_id = #{feedId};
+		select feed_id from feed where feed_id = #{feedId};
 	</select>
 	
 	<!-- user_id로 모든 피드 조회 -->
 	<select id="allFeedByUserId" parameterType="Long" resultType="FeedVO">
-		select * from feedtest where user_id = #{userId};
+		select * from feed where user_id = #{userId};
 	</select>
 </mapper>
