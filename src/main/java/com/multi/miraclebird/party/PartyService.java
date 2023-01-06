@@ -1,5 +1,7 @@
 package com.multi.miraclebird.party;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +53,27 @@ public class PartyService {
 
 	public PartyImgVO findPartyImgByPartyId(Integer partyId) {
 		return partyImgDao.findPartyImgByPartyId(partyId);
+	}
+
+	public Boolean isApplicant(Long userId) {
+		Boolean isApplicant = false;
+		Integer partyApplicantId = partyApplicantDao.findPartyApplicantIdByUserId(userId);
+		if (partyApplicantId != null) {
+			isApplicant = true;
+		}
+		return isApplicant;
+	}
+
+	public PartyApplicantVO findPartyApplicantByUserId(Long userId) {
+		return partyApplicantDao.findPartyApplicantByUserId(userId);
+	}
+
+	public void partyJoinCancel(int partyApplicantId) {
+		partyApplicantDao.deletePartyApplicantById(partyApplicantId);
+	}
+
+	public List<PartyApplicantVO> findPartyApplicantsByPartyId(Integer partyId) {
+		return partyApplicantDao.findPartyApplicantsByPartyId(partyId);
 	}
 
 }

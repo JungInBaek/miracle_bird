@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>미라클버드</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
@@ -28,9 +28,9 @@
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
-                    	<li class="nav-item"><a href="/miraclebird/party/${partyId}/main">MY PARTY</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
-                    <li class="nav-item"><a href="store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
                     <li class="nav-item"><a href="myFeed.jsp">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>

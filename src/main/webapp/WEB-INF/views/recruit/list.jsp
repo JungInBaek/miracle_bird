@@ -28,9 +28,9 @@
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
-                    	<li class="nav-item"><a href="/miraclebird/party/${partyId}/main">MY PARTY</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
-                    <li class="nav-item"><a href="store/storeMain">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
                     <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
@@ -47,7 +47,7 @@
         </div>
     </header>
     <hr/>
-<c:if test="${partyId == null}">
+<c:if test="${partyId == null && partyApplicantVO == null}">
 <a href="/miraclebird/party/create">파티 생성</a>
 </c:if>
 <c:if test="${isLeader && !isCreated}">
@@ -70,7 +70,7 @@
 <c:forEach var="vo" items="${list}">
 	<tr>
 		<td>${vo.partyId}</td>
-		<td><a href="/miraclebird/recruit/detail/${vo.recruitId}">${vo.name}</a></td>
+		<td><a href="/miraclebird/recruit/${vo.recruitId}">${vo.name}</a></td>
 		<td>${vo.miracleStartTime}</td>
 		<td>${vo.miracleEndTime}</td>
 		<td>${vo.activity}</td>

@@ -6,5 +6,28 @@
 		insert into party_applicant
 		values (null, #{applicantDate}, #{partyId}, #{userId});
 	</insert>
-
+	
+	<select id="findPartyApplicantIdByUserId" parameterType="Long" resultType="Integer">
+		select party_applicant_id
+		from party_applicant
+		where user_id = #{userId};
+	</select>
+	
+	<select id="findPartyApplicantByUserId" parameterType="Long" resultType="partyApplicantVO">
+		select *
+		from party_applicant
+		where user_id = #{userId};
+	</select>
+	
+	<delete id="deletePartyApplicantById" parameterType="int">
+		delete from party_applicant
+		where party_applicant_id = #{partyApplicantId};
+	</delete>
+	
+	<select id="findPartyApplicantsByPartyId" parameterType="int" resultType="partyApplicantVO">
+		select *
+		from party_applicant
+		where party_id = #{partyId};
+	</select>
+	
 </mapper>

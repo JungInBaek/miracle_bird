@@ -21,4 +21,8 @@
 	<select id="myPoint" parameterType="Long" resultType="Integer">
 		select miracle_point from profile where user_id = #{userId}
 	</select>
+	
+	<update id="pointUpdate" parameterType="profileVO">
+		update profile set miracle_point = #{miraclePoint} where user_id = #{userId};
+	</update>
 </mapper>

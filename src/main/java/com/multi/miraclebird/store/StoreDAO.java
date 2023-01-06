@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.multi.miraclebird.profile.ProfileVO;
+
 @Repository
 public class StoreDAO {
 	@Autowired
@@ -22,6 +24,15 @@ public class StoreDAO {
 	}
 	public int productPoint(int productId) {
 		return mybatis.selectOne("product.productPoint", productId);
+	}
+	public void pointUpdate(ProfileVO profileVO) {
+		mybatis.update("profile.pointUpdate", profileVO);
+	}
+	public void orderInsert(OrderVO orderVO) {
+		mybatis.insert("order.orderInsert", orderVO);
+	}
+	public void userProductInsert(UserProductVO userProductVO) {
+		mybatis.insert("userProduct.userProductInsert", userProductVO);
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.multi.miraclebird.party;
 
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -52,7 +53,7 @@ public class PartyController {
 	}
 	
 	@PostMapping("/join")
-	public String joinParty(PartyApplicantVO partyApplicantVO, HttpSession session) {
+	public String partyJoin(PartyApplicantVO partyApplicantVO, HttpSession session) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") != null) {
@@ -67,15 +68,16 @@ public class PartyController {
 		return "redirect:/recruit/list";
 	}
 	
-	@GetMapping("/{partyId}/main")
-	public String roomMainPage(@PathVariable Integer partyId, HttpSession session, Model model) {
+	@GetMapping("/main")
+	public String roomMainPage(HttpSession session, Model model) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
-		} else if(session.getAttribute("partyId") == null || (int) session.getAttribute("partyId") != partyId) {
-			System.out.println("해당 파티에 가입되어 있지 않습니다.");
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
 			return "redirect:/recruit/list";
 		}
 		
+		Integer partyId = (Integer) session.getAttribute("partyId");
 		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
 		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
 		
@@ -84,5 +86,36 @@ public class PartyController {
 		
 		return "party/main";
 	}
-
+	
+	@GetMapping("/join/cancel")
+	public String partyJoinCancel(HttpSession session) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		PartyApplicantVO partyApplicantVO = (PartyApplicantVO) session.getAttribute("partyApplicantVO");
+		int partyApplicantId = partyApplicantVO.getPartyApplicantId();
+		partyService.partyJoinCancel(partyApplicantId);
+		
+		return "redirect:/recruit/list";
+	}
+	
+	@GetMapping("/applicants")
+	public String partyApplicants(HttpSession session, Model model) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		List<PartyApplicantVO> list = partyService.findPartyApplicantsByPartyId(partyId);
+		model.addAttribute("list", list);
+		
+		return "party/partyApplicants";
+	}
 }

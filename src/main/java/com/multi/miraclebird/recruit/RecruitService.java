@@ -20,10 +20,24 @@ public class RecruitService {
 	}
 	
 	public Boolean isCreated(int partyId) {
-		return recruitDao.isCreated(partyId);
+		Boolean isCreated = false;
+		Integer recruitId = recruitDao.findRecruitIdByPartyId(partyId);
+		if (recruitId != null) {
+			isCreated = true;
+		}
+		
+		return isCreated;
 	}
 
 	public RecruitPartyVO findRecruitPartyByRecruitId(int recruitId) {
 		return recruitDao.findRecruitPartyByRecruitId(recruitId);
+	}
+
+	public void updateRecruit(RecruitVO recruitVO) {
+		recruitDao.updateRecruit(recruitVO);
+	}
+
+	public void deleteRecruitById(int recruitId) {
+		recruitDao.deleteRecruitById(recruitId);
 	}
 }
