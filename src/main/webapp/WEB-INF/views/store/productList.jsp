@@ -16,9 +16,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	function productBuy() {
+		let f = document.createElement('form');
 		var productId = $('input[name=productId]').val();
+		console.log(productId);
+		let obj;
+		obj = document.createElement('input');
+		obj.setAttribute('type', 'hidden');
+		obj.setAttribute('name', 'productId');
+		obj.setAttribute('value', productId);
+		
+		f.appendChild(obj);
+		f.setAttribute('method', 'post');
+		f.setAttribute('action', "productBuy?productId="+ productId);
+		document.body.appendChild(f);
 		if (confirm("상품을 구입하시겠습니까?")) {
-			location.href = "productBuy?productId="+ productId;
+			f.submit();
+			// location.href = "productBuy?productId="+ productId;
 		} else {
 			return;
 		}
@@ -51,9 +64,10 @@
 					<td class="right">${one.productName}</td>
 					<td class="right">${one.productPrice}</td>
 					<td class="right">
-					<input type = "hidden" name = "productId" value=${one.productId}>
+					<input type = "hidden" name = "productId" value="${one.productId}">
 					<button onclick="productBuy()">${one.productClass}</button>
 					</td>
+					<%-- <td class="right">${one.productId}</td> --%>
 				</tr>
 			</c:forEach>
 		</table>

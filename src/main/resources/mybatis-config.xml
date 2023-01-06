@@ -20,6 +20,8 @@
 		<typeAlias type="com.multi.miraclebird.party.PartyApplicantVO" alias="partyApplicantVO"/>
 		<typeAlias type="com.multi.miraclebird.store.ProductVO" alias="productVO"/>
 		<typeAlias type="com.multi.miraclebird.store.CategoryPageVO" alias="categoryPageVO"/>
+		<typeAlias type="com.multi.miraclebird.store.OrderVO" alias="orderVO"/>
+		<typeAlias type="com.multi.miraclebird.store.UserProductVO" alias="userProductVO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -31,6 +33,9 @@
 		<mapper resource="mapper/partyImgMapper.xml" />
 		<mapper resource="mapper/partyMemberMapper.xml" />
 		<mapper resource="mapper/partyApplicantMapper.xml" /> 
+		<mapper resource="mapper/storeMapper.xml" /> 
+		<mapper resource="mapper/orderMapper.xml" /> 
+		<mapper resource="mapper/userProductMapper.xml" /> 
   </mappers>
 
 </configuration>
