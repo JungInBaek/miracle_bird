@@ -1,5 +1,7 @@
 package com.multi.miraclebird.feed;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,5 +18,9 @@ public class FeedDAO {
 	
 	public FeedVO selectFeedByFeedId(FeedVO feedVO) {
 		return mybatis.selectOne("feed.selectFeedByFeedId", feedVO);
+	}
+
+	public List<FeedVO> allFeedByUserId(Long userId) {
+		return mybatis.selectList("feed.allFeedByUserId", userId);
 	}
 }

@@ -11,4 +11,9 @@
 	<select id="selectFeedByFeedId" parameterType="feedVO" resultType="feedVO">
 		select feed_id from feedtest where feed_id = #{feedId};
 	</select>
+	
+	<!-- user_id로 모든 피드 조회 -->
+	<select id="allFeedByUserId" parameterType="Long" resultType="FeedVO">
+		select * from feedtest where user_id = #{userId};
+	</select>
 </mapper>

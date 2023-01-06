@@ -1,5 +1,6 @@
 package com.multi.miraclebird.feed;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,9 @@ public class FeedService {
 	
 	public FeedVO selectFeedByFeedId(FeedVO feedVO) {
 		return feedDao.selectFeedByFeedId(feedVO);
+	}
+	
+	public List<FeedVO> allFeedByUserId(Long userId) {
+		return feedDao.allFeedByUserId(userId);
 	}
 }
