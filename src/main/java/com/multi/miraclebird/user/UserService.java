@@ -67,4 +67,8 @@ public class UserService {
 	public String selectAccessTokenByUserId(Long userId) {
 		return userDao.selectAccessTokenByUserId(userId);
 	}
+	
+	public UserVO selectUser(Long userId) {
+		return userDao.selectUser(userId);
+	}
 }

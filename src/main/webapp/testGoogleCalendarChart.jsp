@@ -13,11 +13,12 @@
        dataTable.addColumn({ type: 'date', id: 'Date' });
        dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
        dataTable.addRows([
-         /*  [ new Date(2012, 3, 13), 1 ],
+    	  /* for */
+          [ new Date(2012, 3, 13), 1 ],
           [ new Date(2012, 3, 14), 2 ],
           [ new Date(2012, 3, 15), 3 ],
           [ new Date(2012, 3, 16), 0 ],
-          [ new Date(2012, 3, 17), 0 ], */
+          [ new Date(2012, 3, 17), 0 ],
           // Many rows omitted for brevity.
           [ new Date(2013, 9, 4), 5 ],
           [ new Date(2013, 9, 5), 0 ],
@@ -27,6 +28,7 @@
           [ new Date(2013, 9, 23), 0 ],
           [ new Date(2013, 9, 24), 0 ],
           [ new Date(2013, 9, 30), 1 ]
+          
         ]);
 
        var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));

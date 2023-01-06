@@ -56,12 +56,12 @@
 			$('#chartResult').html(chartResult);
 		}
 	})
-	/* $.ajax({
+	$.ajax({
 		url : "profile/allFeed",
 		success : function(feedResult) {
 			$('#feedResult').html(feedResult);
 		}
-	}) */
+	})
 </script>
 </head>
 <body>
