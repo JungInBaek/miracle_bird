@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class PartyApplicantVO {
 
 	private int partyApplicantId;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime applicantDate;
 	private int partyId;
 	private Long userId;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="resources/css/create.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/create.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -21,17 +22,28 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="resources/img/logo.svg" alt="로고" class="logo">
+                <img src="../resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
-                <ul class="nav-container">
+                <ul class="nav-container animate__animated animate__fadeIn">
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="#">JOIN</a></li>
-                    <li class="nav-item"><a href="#">MY PARTY</a></li>
-                    <li class="nav-item"><a href="#">PROFILE</a></li>
-                    <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><button>LOGIN</button></a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <c:if test="${partyId != null}">
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+                    </c:if>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
+                    <li class="nav-item">
+                    	<c:choose>
+                    		<c:when test="${userId == null}">
+                    			<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -43,13 +55,13 @@
                 <table class="party">
                     <tbody>
                         <tr>
-                            <td><img src="resources/img/activity.png" class="img" /></td>
+                            <td><img src="../resources/img/activity.png" class="img" /></td>
                             <td><a>Party</a></td>
                             <td><input class="inputBox" name="name" placeholder="파티 명을 입력해주세요."></td>
                         </tr>
                         <div class="dropdownP">
                             <tr>
-                                <td><img src="resources/img/time.png" class = "img" /></td>
+                                <td><img src="../resources/img/time.png" class = "img" /></td>
                                 <td><a>TIME</a></td>
                                 <td>
                                     <input type="time" name="miracleStartTime" min="04:00:00" max="12:00:00" class="inputTime" />
@@ -59,30 +71,30 @@
                             </tr>
                         </div>
                             <tr>
-                            <td><img src="resources/img/activity.png" class="img" /></td>
+                            <td><img src="../resources/img/activity.png" class="img" /></td>
                             <td><a>ACTIVITY</a></td>
                             <td><input class="inputBox" placeholder="파티 활동을 입력해주세요." name="activity"></td>
                         </tr>
                         <tr>
-                            <td><img src="resources/img/profile-2user.png" class="img" /></td>
+                            <td><img src="../resources/img/profile-2user.png" class="img" /></td>
                             <td><a>PEOPLE</a></td>
                             <td><input class="inputBox" placeholder="파티 인원을 입력해주세요."></td>
                         </tr>
                         <tr>
-                            <td><img src="resources/img/medal.png" class="img" name="info" /></td>
+                            <td><img src="../resources/img/medal.png" class="img" /></td>
                             <td><a>WELCOME</a></td>
-                            <td><textarea class="partyT" placeholder="파티를 간단하게 소개해주세요."></textarea></td>
+                            <td><textarea class="partyT" placeholder="파티를 간단하게 소개해주세요." name="info"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="partyBtn">
+            		<button type="submit" class="create">CREATE</button>
+            		<button class="cancel"><a href="/miraclebird/recruit/list">CANCEL</a></button>
+        		</div>
+             </form>
         </div>
-        <div class="partyBtn">
-            <button class="create">CREATE</button>
-            <button class="cancle"><a href="/miraclebird/recruit/list">CANCLE</a></button>
-        </div>
-    </form>
 </div>
-<hr>
+<!-- <hr>
 <form action="/miraclebird/party/create" method="post">
 파티명 : <input type="text" name="name" /> <br/>
 한줄소개 : <input type="text" name="info" /> <br/>
@@ -90,7 +102,7 @@
 미라클 활동 : <input type="text" name="activity" /> <br />
 <button>생성</button>
 </form>
-<a href="/miraclebird/recruit/list">취소</a>
+<a href="/miraclebird/recruit/list">취소</a> -->
 
 </body>
 </html>

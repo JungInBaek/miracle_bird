@@ -14,8 +14,8 @@
 		values (null, #{content}, #{userId}, #{partyId});
 	</insert>
 	
-	<select id="isCreated" parameterType="int" resultType="recruitVO">
-		select *
+	<select id="findRecruitIdByPartyId" parameterType="int" resultType="Integer">
+		select recruit_id
 		from recruit
 		where party_id = #{partyId};
 	</select>
@@ -27,5 +27,16 @@
 		on r.party_id = p.party_id
 		where r.recruit_id = #{recruitId};
 	</select>
+	
+	<update id="updateRecruit" parameterType="recruitVO">
+		update recruit set
+		content = #{content}
+		where recruit_id = #{recruitId};
+	</update>
+	
+	<delete id="deleteRecruitById" parameterType="int">
+		delete from recruit
+		where recruit_id = #{recruitId};
+	</delete>
 	
 </mapper>

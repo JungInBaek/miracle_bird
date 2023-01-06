@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
+<style type="text/css">
+li {
+	float: left;
+	margin-left: 10px;
+}
+</style>
 </head>
 <body>
 <!-- 헤더 -->
@@ -28,9 +34,9 @@
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
-                    	<li class="nav-item"><a href="/miraclebird/party/${partyId}/main">MY PARTY</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
-                    <li class="nav-item"><a href="store/storeMain">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
                     <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
@@ -49,11 +55,16 @@
     <hr>
     <ul>
     	<li>
-    		<a href="/miraclebird/party/${partyId}/main">
+    		<a href="/miraclebird/party/main">
     			Main
     		</a>
     	</li>
-    </ul>
+    	<li>
+    		<a href="/miraclebird/party/applicants">
+    			applicants
+    		</a>
+    	</li>
+    </ul> <br/>
     <hr>
     미라클 타임 : <input type="time" value="${partyVO.miracleStartTime}" disabled /> ~ <input type="time" value="${partyVO.miracleEndTime}" disabled /> <br/>
 	미라클 활동 : <input type="text" value="${partyVO.activity}" disabled /> <br/>

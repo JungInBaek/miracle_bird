@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.miraclebird.party.PartyApplicantVO;
 import com.multi.miraclebird.party.PartyService;
 import com.multi.miraclebird.party.PartyVO;
 
@@ -38,10 +39,17 @@ public class RecruitController {
 			partyId = partyService.findPartyIdByUserId(userId);
 		}
 		session.setAttribute("partyId", partyId);
+		
+		// 파티 가입 신청 정보
+		PartyApplicantVO partyApplicantVO = null;
+		if (userId != null && partyId == null) {
+			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
+		}
+		session.setAttribute("partyApplicantVO", partyApplicantVO);
 
 		// 파티 리더 여부
 		Boolean isLeader = false;
-		if (partyId != null) {
+		if (userId != null && partyId != null) {
 			isLeader = partyService.isLeader(partyId, userId);
 		}
 		session.setAttribute("isLeader", isLeader);
@@ -52,7 +60,7 @@ public class RecruitController {
 			isCreated = recruitService.isCreated(partyId);
 		}
 		session.setAttribute("isCreated", isCreated);
-
+		
 		return "recruit/list";
 	}
 
@@ -66,7 +74,7 @@ public class RecruitController {
 		} else if (!(boolean) session.getAttribute("isLeader")) {
 			System.out.println("파티장이 아닙니다.");
 			return "redirect:/recruit/list";
-		} else if (!(boolean) session.getAttribute("isCreated")) {
+		} else if ((boolean) session.getAttribute("isCreated")) {
 			System.out.println("모집글을 이미 작성하셨습니다.");
 			return "redirect:/recruit/list";
 		}
@@ -97,12 +105,75 @@ public class RecruitController {
 		return "redirect:/recruit/list";
 	}
 	
-	@GetMapping("/detail/{recruitId}")
+	@GetMapping("/{recruitId}")
 	public String recruitDetail(Model model, @PathVariable int recruitId) {
 		RecruitPartyVO recruitPartyVO = recruitService.findRecruitPartyByRecruitId(recruitId);
 		model.addAttribute(recruitPartyVO);
 		
 		return "recruit/detail";
+	}
+	
+	@GetMapping("/{recruitId}/update")
+	public String recruitUpdatePage(HttpSession session, Model model, @PathVariable int recruitId) {
+		RecruitPartyVO recruitPartyVO = recruitService.findRecruitPartyByRecruitId(recruitId);
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if (session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if (!(boolean) session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/recruit/list";
+		} else if (!partyService.isLeader(recruitPartyVO.getPartyId(), (Long) session.getAttribute("userId"))) {
+			System.out.println("해당 파티의 파티장이 아닙니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		model.addAttribute(recruitPartyVO);
+		
+		return "recruit/update";
+	}
+	
+	@PostMapping("/{recruitId}/update")
+	public String recruitUpdate(HttpSession session, Model model, @PathVariable int recruitId, RecruitVO recruitVO) {
+		RecruitPartyVO recruitPartyVO = recruitService.findRecruitPartyByRecruitId(recruitId);
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if (session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if (!(boolean) session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/recruit/list";
+		} else if (!partyService.isLeader(recruitPartyVO.getPartyId(), (Long) session.getAttribute("userId"))) {
+			System.out.println("해당 파티의 파티장이 아닙니다.");
+			return "redirect:/recruit/list";
+		}
+
+		recruitService.updateRecruit(recruitVO);
+		
+		return "redirect:/recruit/list";
+	}
+	
+	@GetMapping("/{recruitId}/delete")
+	public String recruitDelete(HttpSession session, @PathVariable int recruitId) {
+		RecruitPartyVO recruitPartyVO = recruitService.findRecruitPartyByRecruitId(recruitId);
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if (session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if (!(boolean) session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/recruit/list";
+		} else if (!partyService.isLeader(recruitPartyVO.getPartyId(), (Long) session.getAttribute("userId"))) {
+			System.out.println("해당 파티의 파티장이 아닙니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		recruitService.deleteRecruitById(recruitId);
+		
+		return "redirect:/recruit/list";
 	}
 
 }
