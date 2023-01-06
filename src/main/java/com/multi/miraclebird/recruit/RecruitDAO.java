@@ -22,18 +22,20 @@ public class RecruitDAO {
 		mybatis.insert("recruit.createRecruit", recruitVO);
 	}
 	
-	public Boolean isCreated(int partyId) {
-		Boolean isCreated = false;
-		
-		if (mybatis.selectOne("recruit.isCreated", partyId) != null) {
-			isCreated = true;
-		}
-		
-		return isCreated;
+	public Integer findRecruitIdByPartyId(int partyId) {
+		return mybatis.selectOne("recruit.findRecruitIdByPartyId", partyId);
 	}
 
 	public RecruitPartyVO findRecruitPartyByRecruitId(int recruitId) {
 		return mybatis.selectOne("recruit.findRecruitPartyByRecruitId", recruitId);
+	}
+
+	public void updateRecruit(RecruitVO recruitVO) {
+		mybatis.update("recruit.updateRecruit", recruitVO);
+	}
+
+	public void deleteRecruitById(int recruitId) {
+		mybatis.delete("recruit.deleteRecruitById", recruitId);
 	}
 	
 }

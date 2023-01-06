@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.multi.miraclebird.api.InstagramApiService;
+import com.multi.miraclebird.party.PartyApplicantVO;
 import com.multi.miraclebird.party.PartyService;
 
 @Controller
@@ -78,10 +79,17 @@ public class UserController {
 			partyId = partyService.findPartyIdByUserId(userId);
 		}
 		session.setAttribute("partyId", partyId);
+		
+		// 파티 신청 여부
+		PartyApplicantVO partyApplicantVO = null;
+		if (userId != null && partyId == null) {
+			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
+		}
+		session.setAttribute("partyApplicantVO", partyApplicantVO);
 
 		// 파티 리더 여부
 		Boolean isLeader = false;
-		if (partyId != null) {
+		if (userId != null && partyId != null) {
 			isLeader = partyService.isLeader(partyId, userId);
 		}
 		session.setAttribute("isLeader", isLeader);
@@ -91,7 +99,7 @@ public class UserController {
 
 	@GetMapping("/auth")
 	public String auth(HttpServletRequest request, HttpServletResponse response, String code) {
-		// 최초 로그인 유저 생성
+		// 로그인 유저 생성
 		UserVO userVO = userService.createInstagramUser(code);
 		HttpSession session = request.getSession();
 
@@ -109,10 +117,17 @@ public class UserController {
 			partyId = partyService.findPartyIdByUserId(userId);
 		}
 		session.setAttribute("partyId", partyId);
+		
+		// 파티 가입 신청 정보
+		PartyApplicantVO partyApplicantVO = null;
+		if (userId != null && partyId == null) {
+			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
+		}
+		session.setAttribute("partyApplicantVO", partyApplicantVO);
 
 		// 파티 리더 여부
 		Boolean isLeader = false;
-		if (partyId != null) {
+		if (userId != null && partyId != null) {
 			isLeader = partyService.isLeader(partyId, userId);
 		}
 		session.setAttribute("isLeader", isLeader);
