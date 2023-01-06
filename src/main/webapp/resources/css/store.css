@@ -1,0 +1,260 @@
+@charset "UTF-8";
+
+/* 공통 */
+body {
+    background-color: #f4f4f4;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    color: #222;
+    display: flex;
+}
+
+/* 헤더 */
+header .head {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 40px;
+}
+header .head .nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 100%;
+    list-style-type: none;
+}
+header .head .nav-container .nav-item {
+    margin-left: 40px;
+    font-weight: 500;
+    font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+}
+header .head .nav-container .nav-item a:hover {
+    color: #FFB100;
+}
+header .head .nav-container .nav-item button {
+    background: #FFB100;
+    border: 2px solid #FFB100;
+    border-radius: 50px;
+    padding: 8px 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 130px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    color: #222;
+    transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+    background: none;
+    font-weight: 600;
+    border: 2px solid #FFB100;
+    color: #FFB100;
+}
+
+/* 프로필 */
+.profile {
+    width: 30%;
+    height: 100vh;
+}
+.profile .circle-container {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    margin-top: 100px;
+    border: 2px solid #FFB100;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile .circle-container img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+.profile .name {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.profile .account {
+    font-weight: 400;
+    font-size: 18px;
+    color: #bbb;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.profile .point-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.profile .point-container .point-icon {
+    width: 40px;
+    margin: 0 10px;
+}
+.profile .point-container .point {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: #222;
+    margin-right: 30px;
+}
+.profile .category {
+    margin-top: 30px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.profile .category a {
+    color: #222;
+    text-decoration: none;
+}
+.profile .category a .category-item {
+    width: 300px;
+    height: 60px;
+    margin: 5px 20px;
+    display: flex;
+    align-items: center;
+}
+.profile .category a .category-item:hover > .mouseover {
+    filter: invert(76%)
+            sepia(76%)
+            saturate(2701%)
+            hue-rotate(358deg)
+            brightness(99%)
+            contrast(107%);
+}
+.profile .category a .category-item > span {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #222;
+}
+.profile .category a .category-item > img {
+    margin: 0 20px;
+    width: 35px;
+}
+.profile .category a .color {
+    background: #FFB100;
+    border-radius: 16px;
+}
+.profile .category a .add-point {
+    background: #FFB100;
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+    border: 2px solid #ffb100;
+    transition: .5s;
+}
+.profile .category a .add-point:hover {
+    background: #fff;
+    border: 2px solid #ffb100;
+}
+
+
+/* 컨텐츠 */
+.main {
+    background-color: white;
+    box-shadow: 0px 4px 11px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 43px 0px 0px 43px;
+    width: 100%;
+    padding: 0 20px 20px 30px;
+}
+.main .contents-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 45px;
+    color: #222;
+    margin: 80px 0 0 30px;
+}
+.main .item-container {
+    padding: 40px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 55vw;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.main .item-container .item {
+    width: 300px;
+    height: 350px;
+    margin: 30px 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 26px rgba(0, 0, 0, 0.15);
+    border-radius: 45px;
+    position: relative;
+}
+.main .item-container .item .item-image {
+    height: 70%;
+    border-radius: 45px 45px 0 0;
+}
+.main .item-container .item:hover .item-buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .5;
+}
+.main .item-container .item .item-buy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 45px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    display: none;
+    cursor: pointer;
+}
+.main .item-container .item:nth-child(1) .item-image {
+    background-color: #FF7878;
+}
+.main .item-container .item:nth-child(2) .item-image {
+    background-color: #FFE978;
+}
+.main .item-container .item:nth-child(3) .item-image {
+    background-color: #8BFF78;
+}
+.main .item-container .item:nth-child(4) .item-image {
+    background-color: #78FFCE;
+}
+.main .item-container .item:nth-child(5) .item-image {
+    background-color: #78CEFF;
+}
+.main .item-container .item:nth-child(6) .item-image {
+    background-color: #7886FF;
+}
+.main .item-container .item .item-text {
+    height: 30%;
+    border-radius: 0 0 45px 45px;
+}
+.main .item-container .item .item-text-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #222;
+    margin: 10px 20px;
+}
+.main .item-container .item .item-price {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 27px;
+    color: #FFB100;
+    text-align: right;
+    margin: 25px 20px 10px 20px;
+}
