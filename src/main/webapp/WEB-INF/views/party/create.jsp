@@ -21,7 +21,7 @@
 <header>
         <div class="head">
             <!-- 로고 -->
-            <a href="#">
+            <a href="/miraclebird">
                 <img src="../resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
@@ -89,7 +89,7 @@
                 </table>
                 <div class="partyBtn">
             		<button type="submit" class="create">CREATE</button>
-            		<button class="cancel"><a href="/miraclebird/recruit/list">CANCEL</a></button>
+            		<button type="button" class="cancle"><a href="/miraclebird/recruit/list">CANCEL</a></button>
         		</div>
              </form>
         </div>

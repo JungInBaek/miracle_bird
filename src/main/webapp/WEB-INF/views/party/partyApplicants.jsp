@@ -21,19 +21,19 @@
 <header>
         <div class="head">
             <!-- 로고 -->
-            <a href="#">
+            <a href="/miraclebird">
                 <img src="../resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
                     <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
