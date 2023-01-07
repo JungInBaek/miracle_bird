@@ -4,28 +4,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>모집 파티 목록 화면</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../resources/css/partyList.css" rel="stylesheet" type="text/css">
+    <link
+        href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
+        rel=“stylesheet”>
+    <link rel=“stylesheet” href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <!-- TODO: 페이지네이션 구현 -->
+    <title>파티 목록 화면</title>
+  </head>
 </head>
 <body>
-	<!-- 헤더 -->
-    <header>
-        <div class="head">
-            <!-- 로고 -->
-            <a href="/miraclebird">
-                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
-            </a>
-            <!-- 네비게이션바 -->
-            <nav>
-                <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
+<header>
+      <div class="head">
+          <!-- 로고 -->
+          <a href="/miraclebird">
+              <img src="../resources/img/logo.svg" alt="로고" class="logo">
+          </a>
+          <!-- 네비게이션바 -->
+          <nav>
+              <ul class="nav-container">
+                  <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
@@ -42,41 +45,59 @@
                     		</c:otherwise>
                     	</c:choose>
                     </li>
-                </ul>
-            </nav>
+              </ul>
+          </nav>
+      </div>
+  </header>
+  <div class="search">
+      <input type="text" placeholder="검색어를 입력해주세요." />
+      <a href="#">
+        <img src="../resources/img/search-normal.png"class="searchBtn">
+      </a>
+    </div>
+    <div class="box">
+      <div class="wrap">
+      	<c:forEach var="vo" items="${list}">
+			<div class="party" onclick="location.href='/miraclebird/recruit/${vo.recruitId}'" style="cursor:pointer">
+          		<div><img src="../resources/img/profile-circle.png" class="profile" /></div>
+          		<table>
+          			<tbody>
+              			<tr>
+                			<td>파티 이름</td>
+                			<td>${vo.name}</td>
+              			</tr>
+              			<tr>
+                			<td>파티 시간</td>
+                			<td>${vo.miracleStartTime} ~ ${vo.miracleEndTime}</td>
+              			</tr>
+              			<tr>
+                			<td>파티 활동</td>
+                			<td>${vo.activity}</td>
+              			</tr>
+              			<tr>
+                			<td><img src="../resources/img/profile-2user.png" class="people"></td>
+                			<td>데이터 넣기</td>
+              			</tr>
+            		</tbody>
+          	  	</table>
+          	  </div>
+          </c:forEach>
         </div>
-    </header>
-    <hr/>
-<c:if test="${partyId == null && partyApplicantVO == null}">
-<a href="/miraclebird/party/create">파티 생성</a>
-</c:if>
-<c:if test="${isLeader && !isCreated}">
-<a href="/miraclebird/recruit/create">파티 모집글 등록</a>
-</c:if>
-<hr/>
-<h1>모집 파티 목록</h1>
-<hr/>
-<table border="1">
-<thead align="center">
-	<tr>
-		<th>파티 아이디</th>
-		<th>파티 이름</th>
-		<th>미라클 활동 시작 시간</th>
-		<th>미라클 활동 종료 시간</th>
-		<th>파티 활동</th>
-	</tr>
-</thead>
-<tbody align="center">
-<c:forEach var="vo" items="${list}">
-	<tr>
-		<td>${vo.partyId}</td>
-		<td><a href="/miraclebird/recruit/${vo.recruitId}">${vo.name}</a></td>
-		<td>${vo.miracleStartTime}</td>
-		<td>${vo.miracleEndTime}</td>
-		<td>${vo.activity}</td>
-	</tr>
-</c:forEach>
-</tbody>
-</table>
+    </div>
+    <div class="partyBtn">
+    	<c:if test="${partyId == null && partyApplicantVO == null}">
+    		<a href="/miraclebird/party/create">
+    			<button class="btn">파티 생성</button>
+			</a>
+		</c:if>
+		<c:if test="${isLeader && !isCreated}">
+			<a href="/miraclebird/recruit/create">
+				<button class="btn">
+					모집글 등록
+				</button>
+			</a>
+		</c:if>
+    </div>
+
 </body>
 </html>

@@ -89,7 +89,9 @@
                 </table>
                 <div class="partyBtn">
             		<button type="submit" class="create">CREATE</button>
-            		<button type="button" class="cancle"><a href="/miraclebird/recruit/list">CANCEL</a></button>
+            		<a href="/miraclebird/recruit/list">
+            			<button type="button" class="cancle">CANCEL</button>
+            		</a>
         		</div>
              </form>
         </div>
