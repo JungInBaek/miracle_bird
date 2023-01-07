@@ -21,7 +21,7 @@
       <div class="head">
         <!-- 로고 -->
         <a href="/miraclebird">
-          <img src="../resources/img/logo_blue.svg" alt="로고" class="logo" />
+          <img src="../resources/img/logo.svg" alt="로고" class="logo" />
         </a>
         <!-- 네비게이션바 -->
         <nav>
@@ -90,7 +90,7 @@
 		<c:if test="${partyId == null && partyApplicantVO.partyId == recruitPartyVO.partyId}">
 			<a href="/miraclebird/party/join/cancel">
 				<button class="join" type="button">신청 취소</button>
-			</a> 
+			</a>
 		</c:if>
 		<c:if test="${partyId == recruitPartyVO.partyId && isLeader}">
 			<a href="/miraclebird/recruit/${recruitPartyVO.recruitId}/update">
