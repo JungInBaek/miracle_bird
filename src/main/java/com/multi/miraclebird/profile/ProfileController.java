@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedService;
@@ -55,15 +56,22 @@ public class ProfileController {
 		model.addAttribute("profileVo", profileResult);
 	}
 	
-	@RequestMapping("profile/one2")
-	public void one2Profile(HttpServletRequest request, ProfileVO profileVO, Model model) {
+	@RequestMapping("one2Profile")
+	@ResponseBody
+	public ProfileJsonVO one2Profile(HttpServletRequest request, ProfileVO profileVO, Model model) {
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
 		UserVO userResult = userService.selectUser(userId);
 		ProfileVO profileResult = profileService.oneProfile(profileVO);
-		model.addAttribute("userVo", userResult);
-		model.addAttribute("profileVo", profileResult);
+//		model.addAttribute("userVo", userResult);
+//		model.addAttribute("profileVo", profileResult);
+		ProfileJsonVO profileJson = new ProfileJsonVO();
+		profileJson.setUsername(userResult.getUsername());
+		profileJson.setBio(profileResult.getBio());
+		profileJson.setMiracleStartTime(profileResult.getMiracleStartTime());
+		profileJson.setMiracleEndTime(profileResult.getMiracleEndTime());
+		return profileJson;
 	}
 
 	@PostMapping("updateProfile")
@@ -101,7 +109,7 @@ public class ProfileController {
 	}
 	
 	// 피드 잔디 구현
-	@RequestMapping("profile/feedChart")
+	@RequestMapping("profile/testFeedChart")
 	public void feedChart(HttpServletRequest requset, Model model) {
 		HttpSession session = requset.getSession();
 		Long userId = (Long) session.getAttribute("userId");

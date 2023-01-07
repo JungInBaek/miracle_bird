@@ -16,12 +16,16 @@
         rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
-	/* $.ajax({
-		url : "profile/one2",
-		success : function(profileArray) {
-			$('#profileResult')
+	$.ajax({
+		url : "one2Profile",
+		dataType : "json",
+		success : function(profileJson) {
+			document.getElementById("bio").value = profileJson.bio;
+			document.getElementById("from").value = profileJson.miracleStartTime;
+			document.getElementById("to").value = profileJson.miracleEndTime;
+			document.getElementById("username").innerHTML = profileJson.username;
 		}
-	}) */
+	})
 	</script>
 </head>
 
@@ -71,7 +75,7 @@
                     <div class="btn-upload">사진 업로드</div>
                 </label>
                 <div class="intro-text">
-                    <textarea id="" rows="10" name="bio"></textarea>
+                    <textarea id="bio" rows="10" name="bio"></textarea>
                 </div>
                 <div class="time-title">활동 시간대</div>
                 <div class="time">
@@ -88,7 +92,7 @@
                     <table>
                         <tr>
                             <th>Name</th>
-                            <td>홍길동</td>
+                            <td><div id="username"></div></td>
                         </tr>
                         <tr>
                             <th>Email</th>
