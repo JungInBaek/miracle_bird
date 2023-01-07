@@ -132,9 +132,10 @@
 		int cateNum = (int) request.getAttribute("cateNum");
 		for (int p = 1; p <= pages; p++) {
 		%>
-		<div align="center">
+		<div style="display: inline; align: center;">
+		
 			<a href="productList?page=<%=p%>&categoryId=<%=cateNum%>">
-				<button style="background: lime; color: red; width: 50px;"><%=p%></button>
+				<button style="background: lime; color: red; width: 50px; border-radius: 10px;"><%=p%></button>
 			</a>
 		</div>
 		<%
