@@ -50,11 +50,16 @@
     </header>
     <div >
         <div class="cate">
-            <button class="btn">Main</button>
+            <a href="/miraclebird/party/main">
+            	<button class="btn">Main</button>
+            </a>
             <button class="btn">Feed</button>
             <button class="btn">Community</button>
             <button class="btn">Style</button>
             <button class="btn">People</button>
+            <a href="/miraclebird/party/applicants">
+            	<button class="btn">Applicants</button>
+            </a>
         </div>
     <div class="mainInfo">
         <div class="main">

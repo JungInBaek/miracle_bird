@@ -3,7 +3,7 @@
 <mapper namespace="recruit">
 
 	<select id="recruitPartyList" resultType="recruitPartyVO">
-		select r.recruit_id, p.party_id, p.name, p.miracle_start_time, p.miracle_end_time, p.activity
+		select r.recruit_id, r.content, p.party_id, p.name, p.miracle_start_time, p.miracle_end_time, p.activity
 		from recruit as r
 		join party as p
 		on r.party_id = p.party_id;

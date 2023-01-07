@@ -4,21 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>파티룸 메인</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
-<style type="text/css">
-li {
-	float: left;
-	margin-left: 10px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="../resources/css/partyMain.css" rel="stylesheet" type="text/css">
+    <link
+        href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
+        rel=“stylesheet”>
+    <link rel=“stylesheet”
+    href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <title>Party Main</title>
 </head>
 <body>
 <!-- 헤더 -->
@@ -52,21 +48,49 @@ li {
             </nav>
         </div>
     </header>
-    <hr>
-    <ul>
-    	<li>
-    		<a href="/miraclebird/party/main">
-    			Main
-    		</a>
-    	</li>
-    	<li>
-    		<a href="/miraclebird/party/applicants">
-    			applicants
-    		</a>
-    	</li>
-    </ul> <br/>
-    <hr>
-    미라클 타임 : <input type="time" value="${partyVO.miracleStartTime}" disabled /> ~ <input type="time" value="${partyVO.miracleEndTime}" disabled /> <br/>
-	미라클 활동 : <input type="text" value="${partyVO.activity}" disabled /> <br/>
+    <div >
+        <div class="cate">
+            <a href="/miraclebird/party/main">
+            	<button class="btn">Main</button>
+            </a>
+            <button class="btn">Feed</button>
+            <button class="btn">Community</button>
+            <button class="btn">Style</button>
+            <button class="btn">People</button>
+            <a href="/miraclebird/party/applicants">
+            	<button class="btn">Applicants</button>
+            </a>
+        </div>
+    <div class="mainInfo">
+
+        <div class="main">
+            <div class="mainImg">
+                <img src="../resources/img/chart.png">
+            </div>
+            <div class="mainText">
+                <a>${partyVO.info}</a>
+            </div>
+        </div>
+        <div class="partyInfo">
+            <div class="stati">
+                <a>statistics</a><br>
+                <h4>그래프 넣어야함</h4>
+            </div>
+            <div class="time">
+                <a>Time</a><br>
+                <h4>${partyVO.miracleStartTime} ~ ${partyVO.miracleEndTime}</h4>
+            </div>
+            <div class="activity">
+                <a>Activity</a><br>
+                <h4>${partyVO.activity}</h4>
+            </div>
+            <div class="member">
+                <a>Members</a><br>
+                <h4>데이터</h4>
+            </div>
+        </div>
+        
+    </div>
+    </div>
 </body>
 </html>

@@ -91,9 +91,6 @@ public class PartyController {
 	public String partyJoinCancel(HttpSession session) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
-		} else if(session.getAttribute("partyId") == null) {
-			System.out.println("파티에 가입되어 있지 않습니다.");
-			return "redirect:/recruit/list";
 		}
 		
 		PartyApplicantVO partyApplicantVO = (PartyApplicantVO) session.getAttribute("partyApplicantVO");
