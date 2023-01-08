@@ -86,7 +86,7 @@
             </div>
             <div class="member">
                 <a>Members</a><br>
-                <h4>데이터</h4>
+                <h4>${partyMemberCount}/${partyVO.maxMemberCount}</h4>
             </div>
         </div>
         

@@ -18,5 +18,9 @@ public class PartyMemberDAO {
 	public Integer findPartyIdByUserId(Long userId) {
 		return mybatis.selectOne("partyMember.findPartyIdByUserId", userId);
 	}
+	
+	public Integer getPartyMemberCountByPartyId(Integer partyId) {
+		return mybatis.selectOne("partyMember.getPartyMemberCountByPartyId", partyId);
+	}
 
 }

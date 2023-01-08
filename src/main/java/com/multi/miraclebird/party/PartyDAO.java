@@ -21,4 +21,5 @@ public class PartyDAO {
 	public PartyVO findPartyByPartyId(int partyId) {
 		return mybatis.selectOne("party.findPartyByPartyId", partyId);
 	}
+	
 }

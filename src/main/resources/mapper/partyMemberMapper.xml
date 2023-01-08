@@ -13,4 +13,10 @@
 		where user_id = #{userId};
 	</select>
 	
+	<select id="getPartyMemberCountByPartyId" parameterType="Integer" resultType="Integer">
+		select count(*)
+		from party_member
+		where party_id = #{partyId};
+	</select>
+	
 </mapper>

@@ -76,7 +76,7 @@
               			</tr>
               			<tr>
                 			<td><img src="../resources/img/profile-2user.png" class="people"></td>
-                			<td>데이터 넣기</td>
+                			<td>${vo.memberCount}/${vo.maxMemberCount}</td>
               			</tr>
             		</tbody>
           	  	</table>

@@ -13,7 +13,7 @@
 		where leader_id = #{userId};
 	</select>
 	
-	<select id="findPartyByPartyId" parameterType="int" resultType="partyVO">
+	<select id="findPartyByPartyId" parameterType="Integer" resultType="partyVO">
 		select *
 		from party
 		where party_id = #{partyId};

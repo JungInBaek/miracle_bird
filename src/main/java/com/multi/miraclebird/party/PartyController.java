@@ -79,9 +79,11 @@ public class PartyController {
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
 		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		Integer partyMemberCount = partyService.getPartyMemberCountByPartyId(partyId);
 		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
 		
 		model.addAttribute("partyVO", partyVO);
+		model.addAttribute("partyMemberCount", partyMemberCount);
 		model.addAttribute("partyImgVO", partyImgVO);
 		
 		return "party/main";
