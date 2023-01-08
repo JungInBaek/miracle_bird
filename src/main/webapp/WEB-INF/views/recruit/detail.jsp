@@ -64,7 +64,7 @@
           <div class="people">
             <img src="../resources/img/profile-2user.png" class="people-img" />
             <h5 class="people-text">PEOPLE</h5>
-            <h4>인원수</h4>
+            <h4>${recruitPartyVO.memberCount}/${recruitPartyVO.maxMemberCount}</h4>
           </div>
           <div class="welcome">
             <img src="../resources/img/medal.png" class="welcome-img" />

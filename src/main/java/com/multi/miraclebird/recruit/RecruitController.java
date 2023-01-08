@@ -28,9 +28,6 @@ public class RecruitController {
 
 	@GetMapping("/list")
 	public String partyList(HttpSession session, Model model) {
-		List<RecruitPartyVO> list = recruitService.getRecruitPartyList();
-		model.addAttribute("list", list);
-		
 		Long userId = (Long) session.getAttribute("userId");
 		
 		// 소속 파티 조회
@@ -60,6 +57,9 @@ public class RecruitController {
 			isCreated = recruitService.isCreated(partyId);
 		}
 		session.setAttribute("isCreated", isCreated);
+		
+		List<RecruitPartyVO> list = recruitService.getRecruitPartyList();
+		model.addAttribute("list", list);
 		
 		return "recruit/list";
 	}
@@ -108,7 +108,7 @@ public class RecruitController {
 	@GetMapping("/{recruitId}")
 	public String recruitDetail(Model model, @PathVariable int recruitId) {
 		RecruitPartyVO recruitPartyVO = recruitService.findRecruitPartyByRecruitId(recruitId);
-		model.addAttribute(recruitPartyVO);
+		model.addAttribute("recruitPartyVO", recruitPartyVO);
 		
 		return "recruit/detail";
 	}

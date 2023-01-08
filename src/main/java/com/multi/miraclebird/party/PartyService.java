@@ -75,5 +75,9 @@ public class PartyService {
 	public List<PartyApplicantVO> findPartyApplicantsByPartyId(Integer partyId) {
 		return partyApplicantDao.findPartyApplicantsByPartyId(partyId);
 	}
-
+	
+	public Integer getPartyMemberCountByPartyId(Integer partyid) {
+		return partyMemberDao.getPartyMemberCountByPartyId(partyid);
+	}
+	
 }
