@@ -15,7 +15,19 @@
         rel=“stylesheet”>
     <link rel=“stylesheet”
     href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Party 신청 목록</title>
+    <style type="text/css">
+    	.partyApBtn {
+    		display: flex;
+    	}
+    	.btnA {
+    		margin: 5px;
+    	}
+    	.btnB {
+    		margin: 5px;
+    	}
+    </style>
 </head>
 <body>
 <header>
@@ -53,13 +65,23 @@
             <a href="/miraclebird/party/main">
             	<button class="btn">Main</button>
             </a>
-            <button class="btn">Feed</button>
-            <button class="btn">Community</button>
-            <button class="btn">Style</button>
-            <button class="btn">People</button>
-            <a href="/miraclebird/party/applicants">
-            	<button class="btn">Applicants</button>
+            <a href="/miraclebird/party/feed">
+            	<button class="btn">Feed</button>
             </a>
+            <button class="btn">Community</button>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
+            <a href="/miraclebird/party/members">
+            	<button class="btn">People</button>
+            </a>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
         </div>
     <div class="mainInfo">
         <div class="main">
@@ -70,28 +92,32 @@
                         	<img src="../resources/img/profile-circle.png" class="icon">
                             <ul>
                                 <li>
-                                    회원 이름
+                                    ${vo.username}
                                 </li>
                                 <li>
-                                    가입 신청 모임
+                                    ${vo.partyName}
                                 </li>
                                 <li>
-                                    ${vo.applicantDate}
+                                	<fmt:parseDate value="${vo.applicantDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                                	<fmt:formatDate value="${parsedDateTime}" type="both" />
                                 </li>
                             </ul>
                             <div class="partyApBtn">
-                                <button class="btnA">수락</button>
-                                <button class="btnB">거절</button>
+                            	<form action="/miraclebird/party/accept" method="post">
+                            		<input type="hidden" name="partyApplicantId" value="${vo.partyApplicantId}" />
+                            		<input type="hidden" name="partyId" value="${vo.partyId}" />
+                            		<input type="hidden" name="userId" value="${vo.userId}" />
+                                	<button class="btnA">수락</button>
+                            	</form>
+                            	<form action="/miraclebird/party/reject" method="post">
+                            		<input type="hidden" name="partyApplicantId" value="${vo.partyApplicantId}" />
+                            		<input type="hidden" name="partyId" value="${vo.partyId}" />
+                            		<input type="hidden" name="userId" value="${vo.userId}" />
+                                	<button class="btnB">거절</button>
+                            	</form>
                             </div>
                     	</div>
                 	</c:forEach>
-                    <div class="people">
-                        <img src="../resources/img/profile-circle.png" class="icon">
-                        
-                    </div>          
-                    <div class="people">
-                        <img src="../resources/img/profile-circle.png" class="icon">
-                    </div> 
                 </div>
             </div>
             <div class="mainText">

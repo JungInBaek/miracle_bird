@@ -109,12 +109,82 @@ public class PartyController {
 		} else if(session.getAttribute("partyId") == null) {
 			System.out.println("파티에 가입되어 있지 않습니다.");
 			return "redirect:/recruit/list";
+		} else if(!(boolean)session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/party/main";
 		}
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
-		List<PartyApplicantVO> list = partyService.findPartyApplicantsByPartyId(partyId);
+		List<PartyApplicantUserVO> list = partyService.findPartyApplicantUserByPartyId(partyId);
 		model.addAttribute("list", list);
 		
 		return "party/partyApplicants";
+	}
+	
+	@PostMapping("/accept")
+	public String acceptJoin(HttpSession session, PartyApplicantVO partyApplicantVO, PartyMemberVO partyMemberVO) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if(!(boolean)session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/party/main";
+		}
+		
+		System.out.println(partyApplicantVO.getPartyApplicantId());
+		System.out.println(partyMemberVO.getPartyMemberId());
+		partyMemberVO.setJoinDate(LocalDateTime.now());
+		partyService.acceptJoin(partyApplicantVO, partyMemberVO);
+		
+		return "redirect:/party/applicants";
+	}
+	
+	@PostMapping("/reject")
+	public String rejectJoin(HttpSession session, PartyApplicantVO partyApplicantVO) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if(!(boolean)session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/party/main";
+		}
+		
+		partyService.rejectJoin(partyApplicantVO);
+		
+		return "redirect:/party/applicants";
+	}
+	
+	@GetMapping("/members")
+	public String partyMembers(HttpSession session, Model model) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		List<PartyMemberUserProfileVO> list = partyService.findPartyMemberUserProfileListByPartyId(partyId);
+		model.addAttribute("list", list);
+		
+		return "/party/members";
+	}
+	
+	@GetMapping("/feed")
+	public String partyFeed(HttpSession session, Model model) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		
+		
+		return "/party/partyFeed";
 	}
 }

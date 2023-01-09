@@ -80,4 +80,25 @@ public class PartyService {
 		return partyMemberDao.getPartyMemberCountByPartyId(partyid);
 	}
 	
+	public List<PartyApplicantUserVO> findPartyApplicantUserByPartyId(Integer partyId) {
+		return partyApplicantDao.findPartyApplicantUserByPartyId(partyId);
+	}
+	
+	public void acceptJoin(PartyApplicantVO partyApplicantVO, PartyMemberVO partyMemberVO) {
+		partyApplicantDao.deletePartyApplicantById(partyApplicantVO.getPartyApplicantId());
+		partyMemberDao.insertPartyMember(partyMemberVO);
+	}
+
+	public void rejectJoin(PartyApplicantVO partyApplicantVO) {
+		partyApplicantDao.deletePartyApplicantById(partyApplicantVO.getPartyApplicantId());
+	}
+	
+	public List<PartyMemberVO> findPartyMemberListByPartyId(Integer partyId) {
+		return partyMemberDao.findPartyMemberListByPartyId(partyId);
+	}
+	
+	public List<PartyMemberUserProfileVO> findPartyMemberUserProfileListByPartyId(Integer partyId) {
+		return partyMemberDao.findPartyMemberUserProfileListByPartyId(partyId);
+	}
+	
 }
