@@ -19,4 +19,26 @@
 		where party_id = #{partyId};
 	</select>
 	
+	<insert id="insertPartyMember" parameterType="partyMemberVO">
+		insert into party_member values (null, #{joinDate}, #{partyId}, #{userId});
+	</insert>
+	
+	<select id="findPartyMemberListByPartyId" parameterType="Integer" resultType="partyMemberVO">
+		select *
+		from party_member
+		where party_id = #{partyId};
+	</select>
+	
+	<select id="findPartyMemberUserProfileListByPartyId" parameterType="Integer" resultType="partyMemberUserProfileVO">
+		select u.username, p.name as party_name, pf.profile_img, pm.join_date
+		from party_member as pm
+		join party as p
+		on pm.party_id = p.party_id
+		join user as u
+		on pm.user_id = u.user_id
+		join profile as pf
+		on pm.user_id = pf.user_id
+		where pm.party_id = #{partyId};
+	</select>
+	
 </mapper>

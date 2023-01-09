@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,29 +22,55 @@
 <header>
         <div class="head">
             <!-- 로고 -->
-            <a href="#">
+            <a href="/miraclebird">
                 <img src="resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
-                <ul class="nav-container">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="#">JOIN</a></li>
-                    <li class="nav-item"><a href="#">MY PARTY</a></li>
-                    <li class="nav-item"><a href="#">PROFILE</a></li>
-                    <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><button>LOGIN</button></li>
+                <ul class="nav-container animate__animated animate__fadeIn">
+                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <c:if test="${partyId != null}">
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+                    </c:if>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
+                    <li class="nav-item">
+                    	<c:choose>
+                    		<c:when test="${userId == null}">
+                    			<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
     <div >
         <div class="cate">
-            <button class="btn">Main</button>
-            <button class="btn">Feed</button>
+            <a href="/miraclebird/party/main">
+            	<button class="btn">Main</button>
+            </a>
+            <a href="/miraclebird/party/feed">
+            	<button class="btn">Feed</button>
+            </a>
             <button class="btn">Community</button>
-            <button class="btn">Style</button>
-            <button class="btn">People</button>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
+            <a href="/miraclebird/party/members">
+            	<button class="btn">People</button>
+            </a>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
         </div>
     <div class="mainInfo">
         <div class="main">

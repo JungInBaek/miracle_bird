@@ -30,4 +30,14 @@
 		where party_id = #{partyId};
 	</select>
 	
+	<select id="findPartyApplicantUserByPartyId" parameterType="int" resultType="partyApplicantUserVO">
+		select pa.*, u.username, p.name as party_name
+		from party_applicant as pa
+		join user as u
+		on pa.user_id = u.user_id
+		join party as p
+		on pa.party_id = p.party_id
+		where pa.party_id = #{partyId};
+	</select>
+	
 </mapper>

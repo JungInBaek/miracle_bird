@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,16 +24,26 @@
           <img src="resources/img/logo_blue.svg" alt="로고" class="logo" />
         </a>
         <!-- 네비게이션바 -->
-        <nav>
-          <ul class="nav-container">
-            <li class="nav-item"><a href="#">COMMUNITY</a></li>
-            <li class="nav-item"><a href="#">JOIN</a></li>
-            <li class="nav-item"><a href="#">MY PARTY</a></li>
-            <li class="nav-item"><a href="#">PROFILE</a></li>
-            <li class="nav-item"><a href="#">STORE</a></li>
-            <li class="nav-item"><button>LOGIN</button></li>
-          </ul>
-        </nav>
+        <div class="cate">
+            <a href="/miraclebird/party/main">
+            	<button class="btn">Main</button>
+            </a>
+            <button class="btn">Feed</button>
+            <button class="btn">Community</button>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
+            <a href="/miraclebird/party/members">
+            	<button class="btn">People</button>
+            </a>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
+        </div>
       </div>
     </header>
     <div class="box">

@@ -32,4 +32,8 @@ public class PartyApplicantDAO {
 		return mybatis.selectList("partyApplicant.findPartyApplicantsByPartyId", partyId);
 	}
 	
+	public List<PartyApplicantUserVO> findPartyApplicantUserByPartyId(Integer partyId) {
+		return mybatis.selectList("partyApplicant.findPartyApplicantUserByPartyId", partyId);
+	}
+	
 }

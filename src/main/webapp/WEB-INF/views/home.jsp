@@ -13,7 +13,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
 	<script type="text/javascript">
-		if(windows.location == 'https://localhost:8443/miraclebird') {
+		let href = window.location.href;
+		if(href.includes('https://localhost:8443/miraclebird')) {
 			window.location.href = 'http://localhost:8080/miraclebird';
 		}
 	</script>

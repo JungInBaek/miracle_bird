@@ -17,7 +17,10 @@
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitPartyVO" alias="recruitPartyVO"/>
 		<typeAlias type="com.multi.miraclebird.party.PartyVO" alias="partyVO"/>
 		<typeAlias type="com.multi.miraclebird.party.PartyImgVO" alias="partyImgVO"/>
+		<typeAlias type="com.multi.miraclebird.party.PartyMemberVO" alias="partyMemberVO"/>
 		<typeAlias type="com.multi.miraclebird.party.PartyApplicantVO" alias="partyApplicantVO"/>
+		<typeAlias type="com.multi.miraclebird.party.PartyApplicantUserVO" alias="partyApplicantUserVO"/>
+		<typeAlias type="com.multi.miraclebird.party.PartyMemberUserProfileVO" alias="partyMemberUserProfileVO"/>
 		<typeAlias type="com.multi.miraclebird.store.ProductVO" alias="productVO"/>
 		<typeAlias type="com.multi.miraclebird.store.CategoryPageVO" alias="categoryPageVO"/>
 		<typeAlias type="com.multi.miraclebird.store.OrderVO" alias="orderVO"/>

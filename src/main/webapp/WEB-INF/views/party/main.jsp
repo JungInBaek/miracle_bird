@@ -48,21 +48,30 @@
             </nav>
         </div>
     </header>
-    <div >
+    <div>
         <div class="cate">
             <a href="/miraclebird/party/main">
             	<button class="btn">Main</button>
             </a>
-            <button class="btn">Feed</button>
-            <button class="btn">Community</button>
-            <button class="btn">Style</button>
-            <button class="btn">People</button>
-            <a href="/miraclebird/party/applicants">
-            	<button class="btn">Applicants</button>
+            <a href="/miraclebird/party/feed">
+            	<button class="btn">Feed</button>
             </a>
+            <button class="btn">Community</button>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
+            <a href="/miraclebird/party/members">
+            	<button class="btn">People</button>
+            </a>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
         </div>
     <div class="mainInfo">
-
         <div class="main">
             <div class="mainImg">
                 <img src="../resources/img/chart.png">
@@ -89,7 +98,6 @@
                 <h4>${partyMemberCount}/${partyVO.maxMemberCount}</h4>
             </div>
         </div>
-        
     </div>
     </div>
 </body>
