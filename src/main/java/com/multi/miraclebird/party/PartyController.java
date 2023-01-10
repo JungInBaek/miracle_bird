@@ -203,12 +203,6 @@ public class PartyController {
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
 		LocalDate today = LocalDate.now();
-		LocalDate tomorrow = today.plusDays(1);
-		
-		partyFeedPagingVO.setPartyId(partyId);
-		partyFeedPagingVO.setToday(today);
-		partyFeedPagingVO.setTomorrow(tomorrow);
-		
 		Integer total = feedService.getPartyMemberFeedCount(partyFeedPagingVO);
 		System.out.println(total);
 		
@@ -219,9 +213,7 @@ public class PartyController {
 			cntPerPage = 3;
 		}
 		
-		partyFeedPagingVO.setTotal(total);
-		partyFeedPagingVO.setNowPage(nowPage);
-		partyFeedPagingVO.setCntPerPage(cntPerPage);
+		partyFeedPagingVO = new PartyFeedPagingVO(partyId, today, total, nowPage, cntPerPage);
 		
 		List<PartyFeedVO> list = feedService.findPartyMemberFeed(partyFeedPagingVO);
 		
