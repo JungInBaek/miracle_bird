@@ -34,5 +34,8 @@ public class StoreDAO {
 	public void userProductInsert(UserProductVO userProductVO) {
 		mybatis.insert("userProduct.userProductInsert", userProductVO);
 	}
+	public int findProduct(UserProductVO findProduct) {
+		return mybatis.selectOne("userProduct.findProduct", findProduct);
+	}
 	
 }

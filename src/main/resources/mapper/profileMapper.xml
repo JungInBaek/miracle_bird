@@ -22,7 +22,13 @@
 		select miracle_point from profile where user_id = #{userId}
 	</select>
 	
+	<!-- 상품 구매 시 포인트 업데이트 -->
 	<update id="pointUpdate" parameterType="profileVO">
 		update profile set miracle_point = #{miraclePoint} where user_id = #{userId};
+	</update>
+	
+	<!-- 포인트 충전 -->
+	<update id="pointCharge" parameterType="userPointVO">
+		update profile set miracle_point = miracle_point + #{chargePoint} where user_id = #{userId};
 	</update>
 </mapper>
