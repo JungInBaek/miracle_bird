@@ -6,7 +6,6 @@ public class PartyFeedPagingVO {
 
 	private Integer partyId;
 	private LocalDate today;
-	private LocalDate tomorrow;
 
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
 	private Integer nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
@@ -15,7 +14,9 @@ public class PartyFeedPagingVO {
 	public PartyFeedPagingVO() {
 	}
 
-	public PartyFeedPagingVO(Integer total, Integer nowPage, Integer cntPerPage) {
+	public PartyFeedPagingVO(Integer partyId, LocalDate today, Integer total, Integer nowPage, Integer cntPerPage) {
+		setPartyId(partyId);
+		setToday(today);
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);
@@ -61,14 +62,6 @@ public class PartyFeedPagingVO {
 
 	public void setToday(LocalDate today) {
 		this.today = today;
-	}
-
-	public LocalDate getTomorrow() {
-		return tomorrow;
-	}
-
-	public void setTomorrow(LocalDate tomorrow) {
-		this.tomorrow = tomorrow;
 	}
 
 	public Integer getNowPage() {
@@ -145,10 +138,9 @@ public class PartyFeedPagingVO {
 
 	@Override
 	public String toString() {
-		return "PartyFeedPagingVO [partyId=" + partyId + ", today=" + today + ", tomorrow=" + tomorrow + ", nowPage="
-				+ nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total + ", cntPerPage="
-				+ cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end + ", cntPage=" + cntPage
-				+ "]";
+		return "PartyFeedPagingVO [partyId=" + partyId + ", today=" + today + ", nowPage=" + nowPage +
+				", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total + ", cntPerPage=" + cntPerPage + 
+				", lastPage=" + lastPage + ", start=" + start + ", end=" + end + ", cntPage=" + cntPage + "]";
 	}
 
 }
