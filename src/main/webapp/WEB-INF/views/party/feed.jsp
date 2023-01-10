@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="${pageContext.request.contextPath}/resources/css/partyFeed.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyFeed5.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -53,12 +53,12 @@
             <a href="/miraclebird/party/main">
             	<button class="btn">Main</button>
             </a>
-            <a href="/miraclebird/party/feed">
+            <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
             <button class="btn">Community</button>
             <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/applicants">
+            	<a href="/miraclebird/party/style">
             		<button class="btn">Style</button>
             	</a>
             </c:if>
@@ -74,13 +74,10 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainContent">
-            	<c:if test="${partyFeedPagingVO.startPage < 1}">
-            		<a href="/miraclebird/party/feed?nowPage=${partyFeedPagingVO.startPage - 1}&cntPerPage=${partyFeedPagingVO.cntPerPage}">
+            	<c:if test="${pageVO.prev}">
+            		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page - 1}" >
                 		<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
             		</a>
-                </c:if>
-                <c:if test="${!(partyFeedPagingVO.startPage < 1)}">
-                	<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
                 </c:if>
                 <c:forEach var="vo" items="${list}">
                 	<div class="content">
@@ -93,13 +90,10 @@
                     	</div>
                 	</div>
                 </c:forEach>
-                <c:if test="${partyFeedPagingVO.endPage != partyFeedPagingVO.lastPage}">
-                	<a href="/miraclebird/party/feed?nowPage=${partyFeedPagingVO.endPage + 1}&cntPerPage=${partyFeedPagingVO.cntPerPage}">
+                <c:if test="${pageVO.next}">
+                	<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page + 1}">
                 		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
                 	</a>
-                </c:if>
-                <c:if test="${!(partyFeedPagingVO.endPage != partyFeedPagingVO.lastPage)}">
-                	<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
                 </c:if>
             </div>
             <div class="mainText">

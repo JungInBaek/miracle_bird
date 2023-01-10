@@ -3,8 +3,6 @@ package com.multi.miraclebird.party.vo;
 import java.time.ZonedDateTime;
 
 public class PartyFeedVO {
-
-	private Integer rowNumber;
 	private String feedId;
 	private Long userId;
 	private String mediaType;
@@ -13,12 +11,6 @@ public class PartyFeedVO {
 	private String caption;
 	private ZonedDateTime feedTime;
 	
-	public Integer getRowNumber() {
-		return rowNumber;
-	}
-	public void setRowNumber(Integer rowNumber) {
-		this.rowNumber = rowNumber;
-	}
 	public String getFeedId() {
 		return feedId;
 	}
@@ -63,7 +55,7 @@ public class PartyFeedVO {
 	}
 	@Override
 	public String toString() {
-		return "PartyFeedVO [rowNumber=" + rowNumber + ", feedId=" + feedId + ", userId=" + userId + ", mediaType="
+		return "PartyFeedVO [feedId=" + feedId + ", userId=" + userId + ", mediaType="
 				+ mediaType + ", mediaUrl=" + mediaUrl + ", username=" + username + ", caption=" + caption
 				+ ", feedTime=" + feedTime + "]";
 	}

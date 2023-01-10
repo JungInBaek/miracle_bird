@@ -9,7 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+import com.multi.miraclebird.party.vo.PageParam;
 import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
 import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.profile.ProfileVO;
@@ -40,11 +40,11 @@ public class FeedDAO {
 		return mybatis.selectList("feed.allFeedTimeByUserId", profileVO);
 	}
 	
-	public List<PartyFeedVO> findPartyMemberFeed(PartyFeedPagingVO partyFeedPagingVO) {
-		return mybatis.selectList("feed.findPartyMemberFeed", partyFeedPagingVO);
+	public List<FeedVO> findPartyMemberFeed(PageParam pageParam) {
+		return mybatis.selectList("feed.findPartyMemberFeed", pageParam);
 	}
 	
-	public Integer getPartyMemberFeedCount(PartyFeedPagingVO partyFeedPagingVO) {
-		return mybatis.selectOne("feed.getPartyMemberFeedCount", partyFeedPagingVO);
+	public Integer getPartyMemberFeedCount(PageParam pageParam) {
+		return mybatis.selectOne("feed.getPartyMemberFeedCount", pageParam);
 	}
 }

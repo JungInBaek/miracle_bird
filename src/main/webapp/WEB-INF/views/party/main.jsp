@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="../resources/css/partyMain.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/partyMain5.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -53,12 +53,12 @@
             <a href="/miraclebird/party/main">
             	<button class="btn">Main</button>
             </a>
-            <a href="/miraclebird/party/feed">
+            <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
             <button class="btn">Community</button>
             <c:if test="${isLeader}">
-            	<a href="#">
+            	<a href="/miraclebird/party/style">
             		<button class="btn">Style</button>
             	</a>
             </c:if>

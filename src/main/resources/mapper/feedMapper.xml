@@ -26,8 +26,7 @@
 	</select>
 	
 	<!-- party_id로 파티원들의 피드 조회 -->
-	<select id="findPartyMemberFeed" parameterType="partyFeedPagingVO" resultType="partyFeedVO">
-		select *
+	<!-- select *
 		from (
 			select row_number() over(order by f.feed_time desc) as row_num, pmf.*
 			from (
@@ -38,11 +37,20 @@
 				where f.feed_time >= #{today}
 				and pm.party_id = #{partyId}
 			) as pmf
-		) as pmf2 where pmf2.row_num between #{start} and #{end};
+		) as pmf2 where pmf2.row_num between #{start} and #{end}; -->
+	<select id="findPartyMemberFeed" parameterType="pageParam" resultType="feedVO">
+		select f.*
+		from feed as f
+		join party_member as pm
+		on f.user_id = pm.user_id
+		where f.feed_time >= #{today}
+		and pm.party_id = #{partyId}
+		order by f.feed_time desc
+		limit #{start}, #{amount};
 	</select>
 	
 	<!-- 파티원들의 피드 전체 수 조회 -->
-	<select id="getPartyMemberFeedCount" parameterType="partyFeedPagingVO" resultType="Integer">
+	<select id="getPartyMemberFeedCount" parameterType="pageParam" resultType="Integer">
 		select count(*)
 		from (select f.*
 			from feed as f

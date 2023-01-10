@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
+import com.multi.miraclebird.party.vo.PageParam;
+import com.multi.miraclebird.party.vo.PageVO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
 import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
@@ -134,7 +136,7 @@ public class PartyController {
 		List<PartyApplicantUserVO> list = partyService.findPartyApplicantUserByPartyId(partyId);
 		model.addAttribute("list", list);
 		
-		return "party/partyApplicants";
+		return "party/applicants";
 	}
 	
 	@PostMapping("/accept")
@@ -191,9 +193,7 @@ public class PartyController {
 	}
 	
 	@GetMapping("/feed")
-	public String partyFeed(HttpSession session, Model model, PartyFeedPagingVO partyFeedPagingVO,
-			@RequestParam(value="nowPage", required=false)Integer nowPage,
-			@RequestParam(value="cntPerPage", required=false)Integer cntPerPage) {
+	public String partyFeed(HttpSession session, Model model, PageParam pageParam) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") == null) {
@@ -203,30 +203,37 @@ public class PartyController {
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
 		LocalDate today = LocalDate.now();
-		Integer total = feedService.getPartyMemberFeedCount(partyFeedPagingVO);
-		System.out.println(total);
+		pageParam.setPartyId(partyId);
+		pageParam.setToday(today);
+		Integer total = feedService.getPartyMemberFeedCount(pageParam);
+		PageVO pageVO = new PageVO(pageParam, total);
 		
-		if (nowPage == null) {
-			nowPage = 1;
-		}
-		if (cntPerPage == null) { 
-			cntPerPage = 3;
-		}
+		List<FeedVO> list = feedService.findPartyMemberFeed(pageParam);
 		
-		partyFeedPagingVO = new PartyFeedPagingVO(partyId, today, total, nowPage, cntPerPage);
-		
-		List<PartyFeedVO> list = feedService.findPartyMemberFeed(partyFeedPagingVO);
-		
-		model.addAttribute("partyFeedPagingVO", partyFeedPagingVO);
 		model.addAttribute("list", list);
+		model.addAttribute("pageVO", pageVO);
 		
+		System.out.println(pageParam);
+		System.out.println(total);
+		System.out.println(pageVO.getPrev());
+		System.out.println(pageVO.getNext());
 		System.out.println(list);
 		
-		System.out.println(list.size());
-		for (PartyFeedVO feedVO : list) {
-			System.out.println(feedVO);
+		return "/party/feed";
+	}
+	
+	@GetMapping("/style")
+	public String partyStyle(HttpSession session) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if(!(boolean)session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/party/main";
 		}
 		
-		return "/party/partyFeed";
+		return "/party/style";
 	}
 }

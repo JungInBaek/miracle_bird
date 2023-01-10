@@ -65,12 +65,12 @@
             <a href="/miraclebird/party/main">
             	<button class="btn">Main</button>
             </a>
-            <a href="/miraclebird/party/feed">
+            <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
             <button class="btn">Community</button>
             <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/applicants">
+            	<a href="/miraclebird/party/style">
             		<button class="btn">Style</button>
             	</a>
             </c:if>

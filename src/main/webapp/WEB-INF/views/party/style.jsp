@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <link href="resources/css/partyStyle5.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyStyle5.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -21,30 +22,54 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="resources/img/logo.svg" alt="로고" class="logo">
+                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
-                <ul class="nav-container">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="#">FIND</a></li>
-                    <li class="nav-item"><a href="#">MY PARTY</a></li>
-                    <li class="nav-item"><a href="#">MY FEED</a></li>
-                    <li class="nav-item"><a href="#">PROFILE</a></li>
-                    <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><a href="#"><button>LOGIN</button></a></li>
+                <ul class="nav-container animate__animated animate__fadeIn">
+                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <c:if test="${partyId != null}">
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+                    </c:if>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
+                    <li class="nav-item">
+                    	<c:choose>
+                    		<c:when test="${userId == null}">
+                    			<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
     <div >
         <div class="cate">
-            <button class="btn" id="area1">Main</button>
-            <button class="btn">Feed</button>
+            <a href="/miraclebird/party/main">
+            	<button class="btn">Main</button>
+            </a>
+            <a href="/miraclebird/party/feed?page=1">
+            	<button class="btn">Feed</button>
+            </a>
             <button class="btn">Community</button>
-            <button class="btn" id="here" onload="backChange()" style="background-color:#ffb100">Style</button>
-            <button class="btn">People</button>
-            <button class="btn">Applicants</button>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/style">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
+            <a href="/miraclebird/party/members">
+            	<button class="btn">People</button>
+            </a>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
         </div>
     <div class="mainInfo">
         <div class="main">
