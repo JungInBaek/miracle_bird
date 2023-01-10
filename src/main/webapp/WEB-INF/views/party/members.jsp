@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="../resources/css/partyPeople.css" rel="stylesheet" type="text/css">
-    <link
-        href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
-        rel=“stylesheet”>
-    <link rel=“stylesheet”
-    href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <link href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap” rel=“stylesheet”>
+    <link rel=“stylesheet” href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
     <title>Party People</title>
 </head>
 <body>
@@ -57,7 +55,7 @@
             </a>
             <button class="btn">Community</button>
             <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/applicants">
+            	<a href="#">
             		<button class="btn">Style</button>
             	</a>
             </c:if>
@@ -85,7 +83,8 @@
                                     ${vo.partyName}
                                 </li>
                                 <li>
-                                    ${vo.joinDate}
+                                    <fmt:parseDate value="${vo.joinDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                                	<fmt:formatDate value="${parsedDateTime}" type="both" />
                                 </li>
                             </ul>
                     	</div>

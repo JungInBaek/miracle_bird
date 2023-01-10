@@ -1,10 +1,21 @@
-package com.multi.miraclebird.party;
+package com.multi.miraclebird.party.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.multi.miraclebird.party.dao.PartyApplicantDAO;
+import com.multi.miraclebird.party.dao.PartyDAO;
+import com.multi.miraclebird.party.dao.PartyImgDAO;
+import com.multi.miraclebird.party.dao.PartyMemberDAO;
+import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
+import com.multi.miraclebird.party.vo.PartyApplicantVO;
+import com.multi.miraclebird.party.vo.PartyImgVO;
+import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
+import com.multi.miraclebird.party.vo.PartyMemberVO;
+import com.multi.miraclebird.party.vo.PartyVO;
 
 @Service
 @Transactional

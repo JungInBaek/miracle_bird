@@ -1,10 +1,14 @@
-package com.multi.miraclebird.party;
+package com.multi.miraclebird.party.dao;
 
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
+import com.multi.miraclebird.party.vo.PartyMemberVO;
+import com.multi.miraclebird.party.vo.PartyVO;
 
 @Repository
 public class PartyMemberDAO {

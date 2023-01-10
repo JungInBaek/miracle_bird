@@ -58,7 +58,7 @@
             </a>
             <button class="btn">Community</button>
             <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/applicants">
+            	<a href="#">
             		<button class="btn">Style</button>
             	</a>
             </c:if>
@@ -74,7 +74,12 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainImg">
-                <img src="../resources/img/chart.png">
+            	<c:if test='${partyImg == null}'>
+                	<img src="${pageContext.request.contextPath}/resources/img/chart.png" />
+            	</c:if>
+            	<c:if test='${!partyImg == null}'>
+                	<img src="${pageContext.request.contextPath}/resources/party/${partyImg.oriImgName}" />
+            	</c:if>
             </div>
             <div class="mainText">
                 <a>${partyVO.info}</a>

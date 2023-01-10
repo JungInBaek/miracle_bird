@@ -1,18 +1,16 @@
-package com.multi.miraclebird.party;
+package com.multi.miraclebird.party.vo;
 
 import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class PartyApplicantUserVO {
-	
-	private int partyApplicantId;
+public class PartyApplicantVO {
+
+	private Integer partyApplicantId;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime applicantDate;
-	private int partyId;
+	private Integer partyId;
 	private Long userId;
-	private String username;
-	private String partyName;
 	
 	public int getPartyApplicantId() {
 		return partyApplicantId;
@@ -37,18 +35,6 @@ public class PartyApplicantUserVO {
 	}
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPartyName() {
-		return partyName;
-	}
-	public void setPartyName(String partyName) {
-		this.partyName = partyName;
 	}
 	
 }

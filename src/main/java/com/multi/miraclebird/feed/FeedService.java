@@ -23,4 +23,8 @@ public class FeedService {
 	public List<FeedVO> allFeedByUserId(Long userId) {
 		return feedDao.allFeedByUserId(userId);
 	}
+	
+	public List<FeedVO> findPartyMemberFeedByPartyId(Integer partyId) {
+		return feedDao.findPartyMemberFeedByPartyId(partyId);
+	}
 }
