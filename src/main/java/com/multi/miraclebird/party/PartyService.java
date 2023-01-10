@@ -1,4 +1,4 @@
-package com.multi.miraclebird.party.service;
+package com.multi.miraclebird.party;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.multi.miraclebird.party.controller;
+package com.multi.miraclebird.party;
 
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
-import com.multi.miraclebird.party.service.PartyService;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
