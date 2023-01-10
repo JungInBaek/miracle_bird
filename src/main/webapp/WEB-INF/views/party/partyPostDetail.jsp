@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="resources/css/partyPostDetail.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyPostDetail.css" rel="stylesheet" type="text/css">
     <link
     href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
     rel=“stylesheet”> <link rel=“stylesheet”
@@ -21,7 +21,7 @@
       <div class="head">
         <!-- 로고 -->
         <a href="#">
-          <img src="resources/img/logo_blue.svg" alt="로고" class="logo" />
+          <img src="../resources/img/logo_blue.svg" alt="로고" class="logo" />
         </a>
         <!-- 네비게이션바 -->
         <div class="cate">
@@ -51,29 +51,29 @@
       <div class="partyInfo">
         <div class="left">
           <div class="time">
-            <img src="resources/img/time.png" class="time-img" />
+            <img src="../resources/img/time.png" class="time-img" />
             <h5 class="time-text">TIME</h5>
             <h4>시간</h4>
           </div>
           <div class="activity">
-            <img src="resources/img/activity.png" class="activity-img" />
+            <img src="../resources/img/activity.png" class="activity-img" />
             <h5 class="activity-text">ACTIVITY</h5>
             <h4>활동</h4>
           </div>
           <div class="people">
-            <img src="resources/img/profile-2user.png" class="people-img" />
+            <img src="../resources/img/profile-2user.png" class="people-img" />
             <h5 class="people-text">PEOPLE</h5>
             <h4>인원수</h4>
           </div>
           <div class="welcome">
-            <img src="resources/img/medal.png" class="welcome-img" />
+            <img src="../resources/img/medal.png" class="welcome-img" />
             <h5 class="welcome-text">WELCOME</h5>
             <div class="welcomeText">안녕하세요</div>
           </div>
         </div>
         <div class="right">
           <div class="percent">
-            <img src="resources/img/chart.png" class="percent-img" />
+            <img src="../resources/img/chart.png" class="percent-img" />
             <h5 class="percent-text">참여율</h5>
             <div class="chartResult">구글차트</div>
           </div>

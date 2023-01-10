@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="resources/css/partyFeed.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyFeed.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -21,7 +22,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="/miraclebird">
-                <img src="resources/img/logo.svg" alt="로고" class="logo">
+                <img src="../resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -73,32 +74,18 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainContent">
-                <button class="previous"><img src="resources/img/arrow-circle-left1.png" alt="이전"></button>
-                <div class="content">
-                    <img src="resources/img/activity.png" class="contentImg">
-                    <div class="contentText">
-                        <h5 class="name">이름</h5>
-                        <h6 class="hash">태그</h6>
-                        <h6 class="time">시간</h6>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="resources/img/activity.png" class="contentImg">
-                    <div class="contentText">
-                        <h5 class="name">이름</h5>
-                        <h6 class="hash">태그</h6>
-                        <h6 class="time">시간</h6>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="resources/img/activity.png" class="contentImg">
-                    <div class="contentText">
-                        <h5 class="name">이름</h5>
-                        <h6 class="hash">태그</h6>
-                        <h6 class="time">시간</h6>
-                    </div>
-                </div>
-                <button class="next" type="submit"><img class="btn-img" src="resources/img/arrow-circle-right1.png"></button>
+                <button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
+                <c:forEach var="vo" items="${list}">
+                	<div class="content">
+                    	<img src="${vo.mediaUrl}" class="contentImg">
+                    	<div class="contentText">
+                        	<h5 class="name">${vo.username}</h5>
+                        	<h6 class="hash">${vo.caption}</h6>
+                        	<h6 class="time">${vo.feedTime}</h6>
+                    	</div>
+                	</div>
+                </c:forEach>
+                <button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
             </div>
             <div class="mainText">
                 <a>환영합니다. 지옥에서 돌아온 닭 파티룸입니다.</a>

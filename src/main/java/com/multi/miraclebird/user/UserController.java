@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.multi.miraclebird.api.InstagramApiService;
-import com.multi.miraclebird.party.PartyApplicantVO;
-import com.multi.miraclebird.party.PartyService;
+import com.multi.miraclebird.party.service.PartyService;
+import com.multi.miraclebird.party.vo.PartyApplicantVO;
 
 @Controller
 public class UserController {

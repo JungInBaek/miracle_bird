@@ -1,4 +1,4 @@
-package com.multi.miraclebird.party;
+package com.multi.miraclebird.party.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
@@ -14,12 +14,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.miraclebird.feed.FeedService;
+import com.multi.miraclebird.feed.FeedVO;
+import com.multi.miraclebird.party.service.PartyService;
+import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
+import com.multi.miraclebird.party.vo.PartyApplicantVO;
+import com.multi.miraclebird.party.vo.PartyImgVO;
+import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
+import com.multi.miraclebird.party.vo.PartyMemberVO;
+import com.multi.miraclebird.party.vo.PartyVO;
+
 @Controller
 @RequestMapping("/party")
 public class PartyController {
 	
 	@Autowired
 	private PartyService partyService;
+	
+	@Autowired
+	private FeedService feedService;
 	
 	
 	@GetMapping("/create")
@@ -183,7 +196,9 @@ public class PartyController {
 			return "redirect:/recruit/list";
 		}
 		
-		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		List<FeedVO> list = feedService.findPartyMemberFeedByPartyId(partyId);
+		model.addAttribute("list", list);
 		
 		return "/party/partyFeed";
 	}

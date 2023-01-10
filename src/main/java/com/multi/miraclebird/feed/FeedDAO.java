@@ -23,4 +23,8 @@ public class FeedDAO {
 	public List<FeedVO> allFeedByUserId(Long userId) {
 		return mybatis.selectList("feed.allFeedByUserId", userId);
 	}
+	
+	public List<FeedVO> findPartyMemberFeedByPartyId(Integer partyId) {
+		return mybatis.selectList("feed.findPartyMemberFeedByPartyId", partyId);
+	}
 }

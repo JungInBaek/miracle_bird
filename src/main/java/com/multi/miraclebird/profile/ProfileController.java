@@ -19,8 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
-import com.multi.miraclebird.party.PartyImgVO;
-import com.multi.miraclebird.party.PartyVO;
+import com.multi.miraclebird.party.vo.PartyImgVO;
+import com.multi.miraclebird.party.vo.PartyVO;
 import com.multi.miraclebird.user.UserService;
 import com.multi.miraclebird.user.UserVO;
 

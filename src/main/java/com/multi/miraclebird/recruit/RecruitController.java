@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.miraclebird.party.PartyApplicantVO;
-import com.multi.miraclebird.party.PartyService;
-import com.multi.miraclebird.party.PartyVO;
+import com.multi.miraclebird.party.service.PartyService;
+import com.multi.miraclebird.party.vo.PartyApplicantVO;
+import com.multi.miraclebird.party.vo.PartyVO;
 
 @Controller
 @RequestMapping("/recruit")

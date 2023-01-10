@@ -16,4 +16,14 @@
 	<select id="allFeedByUserId" parameterType="Long" resultType="FeedVO">
 		select * from feed where user_id = #{userId};
 	</select>
+	
+	<!-- party_id로 파티원들의 피드 조회 -->
+	<select id="findPartyMemberFeedByPartyId" parameterType="Integer" resultType="feedVO">
+		select f.*
+		from feed as f
+		join party_member as pm
+		on f.user_id = pm.user_id
+		where pm.party_id = 2;
+	</select>
+	
 </mapper>

@@ -1,4 +1,4 @@
-package com.multi.miraclebird.party;
+package com.multi.miraclebird.party.vo;
 
 public class PartyImgVO {
 
