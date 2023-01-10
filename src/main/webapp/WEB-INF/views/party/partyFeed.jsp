@@ -74,24 +74,38 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainContent">
-                <button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
+            	<c:if test="${partyFeedPagingVO.startPage < 1}">
+            		<a href="/miraclebird/party/feed?nowPage=${partyFeedPagingVO.startPage - 1}&cntPerPage=${partyFeedPagingVO.cntPerPage}">
+                		<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
+            		</a>
+                </c:if>
+                <c:if test="${!(partyFeedPagingVO.startPage < 1)}">
+                	<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
+                </c:if>
                 <c:forEach var="vo" items="${list}">
                 	<div class="content">
                     	<img src="${vo.mediaUrl}" class="contentImg">
                     	<div class="contentText">
                         	<h5 class="name">${vo.username}</h5>
                         	<h6 class="hash">${vo.caption}</h6>
-                        	<h6 class="time">${vo.feedTime}</h6>
+                        	<fmt:parseDate value="${vo.feedTime}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                            <h6 class="time"><fmt:formatDate value="${parsedDateTime}" type="both" /></h6>
                     	</div>
                 	</div>
                 </c:forEach>
-                <button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
+                <c:if test="${partyFeedPagingVO.endPage != partyFeedPagingVO.lastPage}">
+                	<a href="/miraclebird/party/feed?nowPage=${partyFeedPagingVO.endPage + 1}&cntPerPage=${partyFeedPagingVO.cntPerPage}">
+                		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
+                	</a>
+                </c:if>
+                <c:if test="${!(partyFeedPagingVO.endPage != partyFeedPagingVO.lastPage)}">
+                	<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
+                </c:if>
             </div>
             <div class="mainText">
                 <a>환영합니다. 지옥에서 돌아온 닭 파티룸입니다.</a>
             </div>
         </div>
-        
     </div>
     </div>
 </body>

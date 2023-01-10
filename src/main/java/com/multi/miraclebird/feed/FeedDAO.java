@@ -1,5 +1,6 @@
 package com.multi.miraclebird.feed;
 
+import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
+import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.profile.ProfileVO;
 
 @Repository
@@ -36,7 +40,11 @@ public class FeedDAO {
 		return mybatis.selectList("feed.allFeedTimeByUserId", profileVO);
 	}
 	
-	public List<FeedVO> findPartyMemberFeedByPartyId(Integer partyId) {
-		return mybatis.selectList("feed.findPartyMemberFeedByPartyId", partyId);
+	public List<PartyFeedVO> findPartyMemberFeed(PartyFeedPagingVO partyFeedPagingVO) {
+		return mybatis.selectList("feed.findPartyMemberFeed", partyFeedPagingVO);
+	}
+	
+	public Integer getPartyMemberFeedCount(PartyFeedPagingVO partyFeedPagingVO) {
+		return mybatis.selectOne("feed.getPartyMemberFeedCount", partyFeedPagingVO);
 	}
 }

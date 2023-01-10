@@ -16,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.multi.miraclebird.api.InstagramApiService;
+import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
+import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.profile.ProfileVO;
 import com.multi.miraclebird.user.UserVO;
 
@@ -55,7 +57,11 @@ public class FeedService {
 		return feedDate;
 	}
 	
-	public List<FeedVO> findPartyMemberFeedByPartyId(Integer partyId) {
-		return feedDao.findPartyMemberFeedByPartyId(partyId);
+	public List<PartyFeedVO> findPartyMemberFeed(PartyFeedPagingVO partyFeedPagingVO) {
+		return feedDao.findPartyMemberFeed(partyFeedPagingVO);
+	}
+	
+	public Integer getPartyMemberFeedCount(PartyFeedPagingVO partyFeedPagingVO) {
+		return feedDao.getPartyMemberFeedCount(partyFeedPagingVO);
 	}
 }
