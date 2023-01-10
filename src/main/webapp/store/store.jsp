@@ -72,7 +72,7 @@
         <div class="contents-title">Colors</div>
         <div class="item-container">
             <div class="item">
-                    <div class="item-image" style="background-color: ${}"></div>
+                    <%-- <div class="item-image" style="background-color: ${}"></div> --%>
                     <div class="item-text">
                         <div class="item-text-title">빨강</div>
                         <div class="item-price">₩800</div>

@@ -1,0 +1,395 @@
+@charset "UTF-8";
+.search {
+    display: flex;
+    box-sizing: border-box;
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    margin-right: 1%;
+    background: #ffffff;
+    mix-blend-mode: normal;
+    box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+  }
+  
+  .searchInput {
+    width: 370px;
+    height: 30px;
+    border-radius: 35px;
+    border: none;
+    margin: 9px;
+    padding: 10px 12px;
+    vertical-align: middle;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .searchBtn {
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    margin: 10px;
+  }
+
+  .import{
+    box-sizing: border-box;
+    margin: auto;
+    margin-bottom: 2%;
+    width: 500px;
+    height: 50px;
+    padding: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 3px 3px #FFB100;
+    border-radius: 35px;
+  }
+
+  .container{
+    margin: auto;
+  }
+
+  .back{
+    width: 100%;
+    margin: 50px 10px 50px 0px;
+    height: 70px;
+    background-color: #ffb100;
+  }
+
+  .notice{
+      margin-top: 2%;
+  }
+
+  .btnUpdate{
+    float: right;
+  }
+
+  .totalContent{
+    margin-left: 300px;
+    width: 200px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .content-text{
+    box-sizing: border-box;
+    width: 700px;
+    bottom: 5%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px 5px rgba(0, 0, 0, 0.21);
+    border-radius: 34px;
+  }
+
+  .bestTitle{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bestContent{
+    box-sizing: border-box;
+    width: 250px;
+    height: 330px;
+    margin-top: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.21);
+    border-radius: 10px;
+    float: left;
+    padding: 20px;
+  }
+
+  .bestContent li{
+      font-size: 17px;
+      font-weight: bold;
+      padding: 10px;
+      list-style:decimal;
+  }
+
+  hr{
+      border: solid 1px #222;
+  }
+
+  .img{
+      width: 70px;
+      height: 70px;
+  }
+
+.contentInfo{
+    display: flex;
+}
+
+.boardInfo{
+    padding: 20px 50px 30px 50px;
+}
+
+.imgInfo{
+    padding: 20px 50px 0px 50px;
+}
+
+.createBtn{
+    background-color: #ffffff;
+    border: none;
+    float: right;
+    margin: 100px;
+}
+
+
+li{
+    list-style: none;
+    padding: 5px 5px 5px 30px;
+}
+
+header .head {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+header .head .logo {
+  width: 130px;
+}
+header .head .nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
+  list-style-type: none;
+}
+header .head .nav-container .nav-item {
+  margin-left: 40px;
+  font-weight: 500;
+  font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+header .head .nav-container .nav-item a:hover {
+  color: #ffb100;
+}
+header .head .nav-container .nav-item button {
+  background: #ffb100;
+  border: 2px solid #ffb100;
+  border-radius: 50px;
+  padding: 8px 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 130px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+  color: #222;
+  transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+  background: none;
+  font-weight: 600;
+  border: 2px solid #ffb100;
+  color: #ffb100;
+}
+
+
+/*   팝업 임시 버튼 스타일  */
+
+/* 팝업 스타일 */
+.modal-bg {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.content-text{
+  cursor: pointer;
+}
+.modal-wrap {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 650px;
+  background: #fff;
+  z-index: 1000;
+  border-radius: 15px;
+}
+
+.wrap{
+  overflow: hidden;
+}
+
+.modal-wrap hr{
+  border: #222 solid 2px;
+}
+
+
+.modal-close{
+  background-color: #fff;
+  border: none;
+  font-size: 30px;
+}
+
+textarea{
+  padding: 15px;
+  width: 100%;
+  height: 250px;
+    border: none;
+    resize: none;
+    font-size: 17px;
+}
+
+.complete{
+  font-size: 20px;
+  font-weight: bold;
+  right: 15px;
+  bottom: 12px;
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  background: #FFB100;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}
+
+
+span{
+  margin: 10px;
+  text-align: left;
+vertical-align: middle;
+align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul {
+  padding: 16px 0;
+}
+
+ul li {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 14px;
+  letter-spacing: -.5px;
+}
+
+form {
+  padding-top: 16px;
+}
+
+ul li.tag-item {
+  padding: 4px 8px;
+  background-color: #FFFFFF;
+  color: #FFB100;
+  font-size: 20px;
+}
+
+.tag-item:hover {
+  background-color:#FFB100;
+  color: #FFFFFF;
+}
+
+.del-btn {
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.contentTag{
+  margin: 20px;
+  font-size: 15px;
+}
+
+#tag{
+  border-radius: 20px;
+  border: 2px solid #FFB100;
+  padding: 0px 0px 0px 10px;
+  margin: 0px 0px 0px 15px;
+  width: 150px;
+}
+
+
+
+.image-upload {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttonImg {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+#chooseFile {
+  visibility: hidden;
+}
+
+.fileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileInput {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2px black;
+  width: 60%;
+  height: 30px;
+}
+
+#fileName {
+  margin-left: 5px;
+}
+
+.buttonContainer {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 0.8em;
+
+  cursor: pointer;
+}
+
+.image-show {
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.span{
+  justify-content: center;
+    align-items: center;
+}

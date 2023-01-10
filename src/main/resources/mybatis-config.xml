@@ -12,6 +12,7 @@
 	<typeAliases>
 		<typeAlias type="com.multi.miraclebird.user.UserVO" alias="userVO"/>
 		<typeAlias type="com.multi.miraclebird.feed.FeedVO" alias="feedVO"/>
+		<typeAlias type="com.multi.miraclebird.feed.FeedJsonVO" alias="feedJsonVO"/>
 		<typeAlias type="com.multi.miraclebird.profile.ProfileVO" alias="profileVO"/>
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitVO" alias="recruitVO"/>
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitPartyVO" alias="recruitPartyVO"/>
@@ -27,6 +28,9 @@
 		<typeAlias type="com.multi.miraclebird.store.CategoryPageVO" alias="categoryPageVO"/>
 		<typeAlias type="com.multi.miraclebird.store.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.multi.miraclebird.store.UserProductVO" alias="userProductVO"/>
+		<typeAlias type="com.multi.miraclebird.point.PointVO" alias="pointVO"/>
+		<typeAlias type="com.multi.miraclebird.point.ChargeVO" alias="chargeVO"/>
+		<typeAlias type="com.multi.miraclebird.point.UserPointVO" alias="userPointVO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -41,6 +45,8 @@
 		<mapper resource="mapper/storeMapper.xml" /> 
 		<mapper resource="mapper/orderMapper.xml" /> 
 		<mapper resource="mapper/userProductMapper.xml" /> 
+		<mapper resource="mapper/pointMapper.xml" /> 
+		<mapper resource="mapper/chargeMapper.xml" /> 
   </mappers>
 
 </configuration>

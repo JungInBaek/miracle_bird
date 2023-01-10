@@ -13,8 +13,16 @@
 	</select>
 	
 	<!-- user_id로 모든 피드 조회 -->
-	<select id="allFeedByUserId" parameterType="Long" resultType="feedVO">
-		select * from feed where user_id = #{userId};
+	<select id="allFeedByUserId" parameterType="profileVO" resultType="feedVO">
+		select * from feed where user_id = #{userId} order by feed_time desc;
+	</select>
+	
+	<select id="countFeedByUserId" parameterType="Long" resultType="int">
+		select count(*) as feed_cnt from feed where user_id = #{userId};
+	</select>
+	
+	<select id="allFeedTimeByUserId" parameterType="profileVO" resultType="feedJsonVO">
+		select feed_time, count(*) as count from feed where user_id = #{userId} group by feed_time;
 	</select>
 	
 	<!-- party_id로 파티원들의 피드 조회 -->

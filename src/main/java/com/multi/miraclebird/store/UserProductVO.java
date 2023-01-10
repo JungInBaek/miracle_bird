@@ -1,14 +1,14 @@
 package com.multi.miraclebird.store;
 
 public class UserProductVO {
-	private int usserProductId;
+	private int userProductId;
 	private Long userId;
 	private int productId;
-	public int getUsserProductId() {
-		return usserProductId;
+	public int getUserProductId() {
+		return userProductId;
 	}
-	public void setUsserProductId(int usserProductId) {
-		this.usserProductId = usserProductId;
+	public void setUserProductId(int userProductId) {
+		this.userProductId = userProductId;
 	}
 	public Long getUserId() {
 		return userId;
@@ -24,7 +24,7 @@ public class UserProductVO {
 	}
 	@Override
 	public String toString() {
-		return "UserProductVO [usserProductId=" + usserProductId + ", userId=" + userId + ", productId=" + productId
+		return "UserProductVO [userProductId=" + userProductId + ", userId=" + userId + ", productId=" + productId
 				+ "]";
 	}
 	

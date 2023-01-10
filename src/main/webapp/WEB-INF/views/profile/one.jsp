@@ -8,13 +8,14 @@
 	<div class="account">@${userVo.username }</div>
 	<div class="edit-profile">
 		<a href="profile.jsp">
+			<!-- 로그인 한 유저가 아닐 경우(본인의 프로필이 아닌 경우) 버튼 숨김 -->
 			<div>프로필 수정</div>
 		</a>
 	</div>
 
 	<div class="number">
 		<div class="post">
-			<span class="content">32</span> <span class="sub-title">Posts</span>
+			<span class="content">${posts }</span> <span class="sub-title">Posts</span>
 		</div>
 		<div class="time">
 			<span class="content">${profileVo.miracleStartTime } ~ ${profileVo.miracleEndTime }</span> <span class="sub-title">Time</span>

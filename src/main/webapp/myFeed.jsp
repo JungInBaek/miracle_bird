@@ -28,13 +28,6 @@
 			$('#feedResult').html(feedResult);
 		}
 	})
-	/*
-	$.ajax({
-		url : "profile/feedChart",
-		success : function(chartResult) {
-			$('#chartResult').html(chartResult);
-		}
-	}) */
 	</script>
 </head>
 
@@ -42,7 +35,6 @@
     <!-- 프로필 -->
     <div class="profile" id="profileResult">
     </div>
-
     <!-- 메인 -->
     <div class="main">
         <!-- 헤더 -->
@@ -52,12 +44,13 @@
                 <nav>
                     <ul class="nav-container">
                         <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    	<li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     	<c:if test="${partyId != null}">
                     		<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     	</c:if>
+                    	<li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
                     	<li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    	<li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
                     	<li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">

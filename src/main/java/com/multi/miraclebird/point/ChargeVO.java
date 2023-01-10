@@ -1,4 +1,4 @@
-package com.multi.miraclebird.store;
+package com.multi.miraclebird.point;
 
 import java.time.LocalDateTime;
 

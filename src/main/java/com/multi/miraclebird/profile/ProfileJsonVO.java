@@ -6,24 +6,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class ProfileJsonVO {
 
-	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-	private LocalTime miracleStartTime;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-	private LocalTime miracleEndTime;
+	private String miracleStartTime;
+	private String miracleEndTime;
 	private String bio;
 	private String profileImg;
 	private String username;
 	
-	public LocalTime getMiracleStartTime() {
+	public String getMiracleStartTime() {
 		return miracleStartTime;
 	}
-	public void setMiracleStartTime(LocalTime miracleStartTime) {
+	public void setMiracleStartTime(String miracleStartTime) {
 		this.miracleStartTime = miracleStartTime;
 	}
-	public LocalTime getMiracleEndTime() {
+	public String getMiracleEndTime() {
 		return miracleEndTime;
 	}
-	public void setMiracleEndTime(LocalTime miracleEndTime) {
+	public void setMiracleEndTime(String miracleEndTime) {
 		this.miracleEndTime = miracleEndTime;
 	}
 	public String getBio() {
