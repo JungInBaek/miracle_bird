@@ -218,10 +218,10 @@ header .head .nav-container .nav-item button:hover {
     border: 2px solid #FFB100;
     cursor: pointer;
 }
-.main .contents-inner .contents .content .content-text:hover span {
+.main .contents-inner .contents .content .content-text:hover button {
     color: #222;
 }
-.main .contents-inner .contents .content .content-text span {
+.main .contents-inner .contents .content .content-text button {
     display: block;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;

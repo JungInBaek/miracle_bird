@@ -40,8 +40,7 @@
 		<div class="circle-container">
 			<img src="../resources/img/profile.png" alt="">
 		</div>
-		<div class="name">${userVO.userId}</div>
-		<div class="account">@${username}</div>
+		<div class="name">@${userVO.username}</div>
 		<div class="point-container">
 			<img src="../resources/img/money.svg" alt="저금통" class="point-icon">
 			<span class="point">${point}</span>
@@ -66,7 +65,7 @@
 					</div>
 				</a>
 			</div>
-			<a href="#">
+			<a href="pointList">
 				<div class="add-point category-item">
 					<img src="../resources/img/add-coin.svg" alt="포인트"	class="add-icon mouseover"> 
 					<span class="add-text mouseover">포인트 충전</span>
@@ -122,6 +121,7 @@
 						<div class="item-price">${one.productPrice}</div>
 					</div>
 					<div onclick='productBuy(${one.productId})' class="item-buy">
+					구매하기
 					</div>
 				</div>
 
@@ -133,7 +133,6 @@
 		for (int p = 1; p <= pages; p++) {
 		%>
 		<div style="display: inline; align: center;">
-		
 			<a href="productList?page=<%=p%>&categoryId=<%=cateNum%>">
 				<button style="background: lime; color: red; width: 50px; border-radius: 10px;"><%=p%></button>
 			</a>

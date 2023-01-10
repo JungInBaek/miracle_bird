@@ -25,9 +25,9 @@ public class StoreController {
 	
 	@Autowired
 	UserDAO userDAO;
-	
+
 	@Autowired
-	PageService pageService;
+	StoreService storeService;
 	
 	// 상점 메인 화면 및 페이징 처리
 	@GetMapping("/productList")
@@ -51,15 +51,14 @@ public class StoreController {
 		int count = storeDAO.count(vo);
 		
 		// 페이지 처리
-		int pages = pageService.pages(count);
+		int pages = storeService.pages(count);
 		
 		// 내 포인트 조회
-		int point = storeDAO.myPoint(userId);
+		int point = storeService.myPoint(userId);
 		
 		UserVO userVO = userDAO.selectUser(userId);
 		
 		model.addAttribute("userVO", userVO);
-		model.addAttribute("username", userVO.getUsername());
 		model.addAttribute("cateNum", vo.getCategoryId());
 		model.addAttribute("list", list);
 		model.addAttribute("pages", pages);
@@ -76,6 +75,18 @@ public class StoreController {
 		Long userId = (Long) session.getAttribute("userId");
 		int myPoint = storeDAO.myPoint(userId);
 		int productPoint = storeDAO.productPoint(productId);
+
+		UserProductVO findProduct = new UserProductVO();
+		findProduct.setUserId(userId);
+		findProduct.setProductId(productId);
+		
+		int isProduct = storeService.findProduct(findProduct);
+		
+		if(isProduct != 0) {
+			request.setAttribute("msg", "이미 구매한 상품입니다.");
+			request.setAttribute("url", "/miraclebird/store/productList?page=1&categoryId=1");
+			return "/store/alert";
+		}
 		
 		// 2.  포인트 >= 상품 가격인 경우
 		int resultPoint = 0;

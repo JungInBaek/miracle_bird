@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="point">
+	<select id="list" resultType="pointVO">
+		select * from point;
+	</select>
+	
+	<select id="one" parameterType="Integer" resultType="pointVO">
+		select * from point where point_id = #{pointId};
+	</select>
+	
+	<select id="findPoint" parameterType="Integer" resultType="Integer">
+		select point_amount from point where point_id = #{pointId};
+	</select>
+</mapper>

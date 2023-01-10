@@ -5,4 +5,8 @@
 		insert into user_product
 		values (null, #{userId}, #{productId});
 	</insert>
+	
+	<select id="findProduct" parameterType="userProductVO" resultType="Integer">
+		select count(*) as cnt from user_product where user_id = #{userId} and product_id = #{productId};
+	</select>
 </mapper>
