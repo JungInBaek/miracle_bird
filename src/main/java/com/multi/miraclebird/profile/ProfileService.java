@@ -46,7 +46,8 @@ public class ProfileService {
 		profileDao.update(profileVO);
 	}
 
-	public List<FeedVO> allFeedInsta(UserVO userVO, ProfileVO profileVO) {	
+	// 인스타 api에서 피드 가져옴
+	public void allFeedInsta(UserVO userVO, ProfileVO profileVO) {	
 		List<FeedVO> feedList = new ArrayList<>();
 		
 		ResponseEntity<Map> feed = instagramApiService.getUserMedia(userVO);
@@ -65,22 +66,19 @@ public class ProfileService {
 			LocalDateTime tempfeedTime = LocalDateTime.parse(temp, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ"));
 			ZonedDateTime zonedFeedTime = ZonedDateTime.of(tempfeedTime, ZoneId.of("UTC"));
 			ZonedDateTime seoulFeedTime = zonedFeedTime.withZoneSameInstant(ZoneId.of("Asia/Seoul"));
-			feedVO.setFeedTime(seoulFeedTime);
+			LocalDateTime feedDateTime = seoulFeedTime.toLocalDateTime();
+			feedVO.setFeedTime(feedDateTime);
 //			System.out.println(seoulFeedTime);
 			LocalTime feedTime = LocalTime.of(feedVO.getFeedTime().getHour(), feedVO.getFeedTime().getMinute(), feedVO.getFeedTime().getSecond());
 			
-			if (feedVO.getMediaType().equals("IMAGE") && feedVO.getCaption().contains("#미라클버드") && feedTime.isAfter(profileVO.getMiracleStartTime()) && feedTime.isBefore(profileVO.getMiracleEndTime())) {
-				if (feedService.selectFeedByFeedId(feedVO) != null) {
-					
-				} else {
+			if ((feedVO.getMediaType().equals("IMAGE") || feedVO.getMediaType().equals("CAROUSEL_ALBUM")) && feedVO.getCaption().contains("#미라클버드") && feedTime.isAfter(profileVO.getMiracleStartTime()) && feedTime.isBefore(profileVO.getMiracleEndTime())) {
+				if (feedService.selectFeedByFeedId(feedVO) == null) {
 					feedDao.createFeed(feedVO);
 				}
 				feedList.add(feedVO);
 			}
 		}
 //		System.out.println(feedList);
-		
-		return feedList;
 	}
 	
 }

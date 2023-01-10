@@ -24,6 +24,9 @@
 			document.getElementById("from").value = profileJson.miracleStartTime;
 			document.getElementById("to").value = profileJson.miracleEndTime;
 			document.getElementById("username").innerHTML = profileJson.username;
+			document.getElementById("profileImg").value = profileJson.profileImg;
+			var profileSrc = "${pageContext.request.contextPath}/resources/profile/" + profileJson.profileImg;
+			document.getElementById("profileSrc").src = profileSrc;
 		}
 	})
 	</script>
@@ -34,20 +37,21 @@
     <header>
         <div class="head">
             <!-- 로고 -->
-            <a href="#">
+            <a href="/miraclebird">
                 <img src="resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container">
                     <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
-                    <c:if test="${partyId != null}">
-                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
-                    </c:if>
-                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
-                    <li class="nav-item">
+                    	<li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
+                    	<c:if test="${partyId != null}">
+                    		<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+                    	</c:if>
+                    	<li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
+                    	<li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    	<li class="nav-item">
                     <c:choose>
                     	<c:when test="${userId == null}">
                     		<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
@@ -68,7 +72,8 @@
             <!-- 좌측 정보 -->
             <div class="info-left">
                 <div class="image-resizing">
-                    <img src="resources/img/profile.png" alt="프로필 사진" class="image-box">
+                    <img src="" alt="프로필 사진" class="image-box" id="profileSrc">
+                    <input type="hidden" id="profileImg" name="profileImg">	
                 </div>
                 <input type="file" name="file" id="file" accept="image/*">
                 <label for="file">

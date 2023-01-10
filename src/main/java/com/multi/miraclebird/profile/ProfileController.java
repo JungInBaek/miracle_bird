@@ -2,6 +2,10 @@ package com.multi.miraclebird.profile;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.multi.miraclebird.feed.FeedJsonVO;
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
@@ -36,26 +41,31 @@ public class ProfileController {
 	@Autowired
 	private FeedService feedService;
 
-	@RequestMapping("myFeed")
+	@RequestMapping("profile")
 	public String myFeed(HttpSession session) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		}
-		return "redirect:myFeed.jsp";
+		return "redirect:profile.jsp";
 	}
 	
-	// 프로필 조회
+	// 프로필 조회 -> 피드 컨트롤러 이동
 	@RequestMapping("profile/one")
 	public void oneProfile(HttpServletRequest request, ProfileVO profileVO, Model model) {
-		HttpSession session = request.getSession();
-		Long userId = (Long) session.getAttribute("userId");
-		profileVO.setUserId(userId);
-		UserVO userResult = userService.selectUser(userId);
+		if (profileVO.getUserId() == null) {
+			HttpSession session = request.getSession();
+			Long userId = (Long) session.getAttribute("userId");
+			profileVO.setUserId(userId);
+		}
+		UserVO userResult = userService.selectUser(profileVO.getUserId());
 		ProfileVO profileResult = profileService.oneProfile(profileVO);
+		int posts = feedService.countFeedByUserId(profileVO.getUserId());
+		model.addAttribute("posts", posts);
 		model.addAttribute("userVo", userResult);
 		model.addAttribute("profileVo", profileResult);
 	}
 	
+	// 프로필 수정 화면 데이터 조회
 	@RequestMapping("one2Profile")
 	@ResponseBody
 	public ProfileJsonVO one2Profile(HttpServletRequest request, ProfileVO profileVO, Model model) {
@@ -64,26 +74,30 @@ public class ProfileController {
 		profileVO.setUserId(userId);
 		UserVO userResult = userService.selectUser(userId);
 		ProfileVO profileResult = profileService.oneProfile(profileVO);
-//		model.addAttribute("userVo", userResult);
-//		model.addAttribute("profileVo", profileResult);
 		ProfileJsonVO profileJson = new ProfileJsonVO();
 		profileJson.setUsername(userResult.getUsername());
 		profileJson.setBio(profileResult.getBio());
-		profileJson.setMiracleStartTime(profileResult.getMiracleStartTime());
-		profileJson.setMiracleEndTime(profileResult.getMiracleEndTime());
+		String startTime = profileResult.getMiracleStartTime().format(DateTimeFormatter.ofPattern("hh:mm"));
+		String endTime = profileResult.getMiracleEndTime().format(DateTimeFormatter.ofPattern("hh:mm"));
+		profileJson.setMiracleStartTime(startTime);
+		profileJson.setMiracleEndTime(endTime);
+		profileJson.setProfileImg(profileResult.getProfileImg());
 		return profileJson;
 	}
 
+	// 프로필 수정
 	@PostMapping("updateProfile")
 	public String updateProfile(HttpServletRequest request, MultipartFile file, ProfileVO profileVO) throws Exception {
 		String savedName = "";
-		if (file != null) {
-			savedName = file.getOriginalFilename();
+		savedName = file.getOriginalFilename();
+		if (!savedName.equals("")) {
 			String uploadPath = request.getSession().getServletContext().getRealPath("resources/profile");
+			System.out.println("파일있음" + savedName);
 			File target = new File(uploadPath + "/" + savedName);
 			file.transferTo(target);
 		} else {
-			savedName = "profile.png";
+			savedName = profileVO.getProfileImg();
+			System.out.println("파일없음" + savedName);
 		}
 		Long userId = (Long) request.getSession().getAttribute("userId");
 		profileVO.setProfileImg(savedName);
@@ -92,28 +106,44 @@ public class ProfileController {
 		return "redirect:myFeed.jsp";
 	}
 
-	// 피드 가져오기
+	// 피드 가져오기 -> 피드 컨트롤러 이동
 	@RequestMapping("profile/allFeed")
-	public void allFeed(HttpServletRequest requset, Model model) {
-		HttpSession session = requset.getSession();
-		Long userId = (Long) session.getAttribute("userId");
-		String accessToken = userService.selectAccessTokenByUserId(userId);
-		UserVO userVO = new UserVO();
-		ProfileVO profileVO = new ProfileVO();
-		userVO.setUserId(userId);
+	public void allFeed(HttpServletRequest requset, ProfileVO profileVO, UserVO userVO, Model model) {
+		if (profileVO.getUserId() == null) {
+			HttpSession session = requset.getSession();
+			Long userId = (Long) session.getAttribute("userId");
+			profileVO.setUserId(userId);
+			userVO.setUserId(userId);
+		}
+		String accessToken = userService.selectAccessTokenByUserId(profileVO.getUserId());
 		userVO.setAccessToken(accessToken);
-		profileVO.setUserId(userId);
 		profileVO = profileService.oneProfile(profileVO);
-		List<FeedVO> list = profileService.allFeedInsta(userVO, profileVO);
+		// 인스타 api호출과 db select 분리
+		profileService.allFeedInsta(userVO, profileVO);
+		List<FeedVO> list = feedService.allMiracleFeedByUserId(profileVO);
 		model.addAttribute("list", list);
 	}
 	
 	// 피드 잔디 구현
+//	@RequestMapping("profile/feedChart")
+//	public void feedChart(HttpServletRequest requset, ProfileVO profileVO, Model model) {
+//		if (profileVO.getUserId() == null) {
+//			HttpSession session = requset.getSession();
+//			Long userId = (Long) session.getAttribute("userId");
+//			profileVO.setUserId(userId);
+//		}
+////		profileVO = profileService.oneProfile(profileVO);
+//		List<FeedVO> list = feedService.allFeedByUserId(profileVO);
+//		model.addAttribute("list", list);
+//	}
+	
 	@RequestMapping("profile/testFeedChart")
-	public void feedChart(HttpServletRequest requset, Model model) {
-		HttpSession session = requset.getSession();
-		Long userId = (Long) session.getAttribute("userId");
-		List<FeedVO> list = feedService.allFeedByUserId(userId);
-		model.addAttribute("list", list);
+	@ResponseBody
+	public List<FeedJsonVO> testFeedChart(HttpServletRequest requset, ProfileVO profileVO, Model model) {
+		Long userId = 17841457620521535L;
+		profileVO.setUserId(userId);
+		List<FeedJsonVO> feedDate = feedService.allFeedTimeByUserId(profileVO);
+		System.out.println(feedDate);
+		return feedDate;
 	}
 }

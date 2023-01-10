@@ -6,14 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script>
-$.ajax({
-	url : "profile/testFeedChart",
-	success : function(chartResult) {
-		$('#chartResult').html(chartResult);
-	}
-})
-</script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
       google.charts.load("current", {packages:["calendar"]});
@@ -30,11 +22,12 @@ $.ajax({
 		       var arr = new Array(list.length);
 		       for (i=0; i<list.length; i++) {
 		    	   one = new Array(2);
-		    	   one[0] = list[i].feedTime;
-		    	   one[1] = 1;
-		    	   arr2[i] = one;
+		    	   one[0] = new Date(list[i].feedTime);
+		    	   one[1] = list[i].count;
+		    	   arr[i] = one;
 		       }
-		       dataTable.addRows(arr2);
+		       /* alert(arr); */
+		       dataTable.addRows(arr);
 		       /* dataTable.addRows([
 		          [ new Date(2012, 3, 13), 37032 ],
 		          [ new Date(2012, 3, 14), 38024 ],
@@ -57,10 +50,11 @@ $.ajax({
 		       var options = {
 		         title: "활동기록",
 		         height: 350,
+		         colorAxis: {minValue: 0, colors:['#ffffff','yellow']}
 		       };
 
 		       chart.draw(dataTable, options);
-		}
+			}
 	   })
    }
 </script>
