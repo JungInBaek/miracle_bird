@@ -13,17 +13,35 @@
 	</select>
 	
 	<!-- user_id로 모든 피드 조회 -->
-	<select id="allFeedByUserId" parameterType="Long" resultType="FeedVO">
+	<select id="allFeedByUserId" parameterType="Long" resultType="feedVO">
 		select * from feed where user_id = #{userId};
 	</select>
 	
 	<!-- party_id로 파티원들의 피드 조회 -->
-	<select id="findPartyMemberFeedByPartyId" parameterType="Integer" resultType="feedVO">
-		select f.*
-		from feed as f
-		join party_member as pm
-		on f.user_id = pm.user_id
-		where pm.party_id = 2;
+	<select id="findPartyMemberFeed" parameterType="partyFeedPagingVO" resultType="partyFeedVO">
+		select *
+		from (
+			select row_number() over(order by f.feed_time desc) as row_num, pmf.*
+			from (
+				select f.*
+				from feed as f
+				join party_member as pm
+				on f.user_id = pm.user_id
+				where f.feed_time >= '2023-01-10'
+				and pm.party_id = 1
+			) as pmf
+		) as pmf2 where pmf2.row_num between 1 and 3;
+	</select>
+	
+	<!-- 파티원들의 피드 전체 수 조회 -->
+	<select id="getPartyMemberFeedCount" parameterType="partyFeedPagingVO" resultType="Integer">
+		select count(*)
+		from (select f.*
+			from feed as f
+			join party_member as pm
+			on f.user_id = pm.user_id
+			where pm.party_id = #{partyId}
+			and f.feed_time >= #{today}) as pmf;
 	</select>
 	
 </mapper>

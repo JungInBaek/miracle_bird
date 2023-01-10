@@ -21,6 +21,8 @@
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyApplicantVO" alias="partyApplicantVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyApplicantUserVO" alias="partyApplicantUserVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyMemberUserProfileVO" alias="partyMemberUserProfileVO"/>
+		<typeAlias type="com.multi.miraclebird.party.vo.PartyFeedVO" alias="partyFeedVO"/>
+		<typeAlias type="com.multi.miraclebird.party.vo.PartyFeedPagingVO" alias="partyFeedPagingVO"/>
 		<typeAlias type="com.multi.miraclebird.store.ProductVO" alias="productVO"/>
 		<typeAlias type="com.multi.miraclebird.store.CategoryPageVO" alias="categoryPageVO"/>
 		<typeAlias type="com.multi.miraclebird.store.OrderVO" alias="orderVO"/>

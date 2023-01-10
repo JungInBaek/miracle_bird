@@ -1,6 +1,7 @@
 package com.multi.miraclebird.party;
 
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,11 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
+import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
+import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
 import com.multi.miraclebird.party.vo.PartyMemberVO;
@@ -187,7 +191,9 @@ public class PartyController {
 	}
 	
 	@GetMapping("/feed")
-	public String partyFeed(HttpSession session, Model model) {
+	public String partyFeed(HttpSession session, Model model, PartyFeedPagingVO partyFeedPagingVO,
+			@RequestParam(value="nowPage", required=false)Integer nowPage,
+			@RequestParam(value="cntPerPage", required=false)Integer cntPerPage) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") == null) {
@@ -196,8 +202,38 @@ public class PartyController {
 		}
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
-		List<FeedVO> list = feedService.findPartyMemberFeedByPartyId(partyId);
+		LocalDate today = LocalDate.now();
+		LocalDate tomorrow = today.plusDays(1);
+		
+		partyFeedPagingVO.setPartyId(partyId);
+		partyFeedPagingVO.setToday(today);
+		partyFeedPagingVO.setTomorrow(tomorrow);
+		
+		Integer total = feedService.getPartyMemberFeedCount(partyFeedPagingVO);
+		System.out.println(total);
+		
+		if (nowPage == null) {
+			nowPage = 1;
+		}
+		if (cntPerPage == null) { 
+			cntPerPage = 3;
+		}
+		
+		partyFeedPagingVO.setTotal(total);
+		partyFeedPagingVO.setNowPage(nowPage);
+		partyFeedPagingVO.setCntPerPage(cntPerPage);
+		
+		List<PartyFeedVO> list = feedService.findPartyMemberFeed(partyFeedPagingVO);
+		
+		model.addAttribute("partyFeedPagingVO", partyFeedPagingVO);
 		model.addAttribute("list", list);
+		
+		System.out.println(list);
+		
+		System.out.println(list.size());
+		for (PartyFeedVO feedVO : list) {
+			System.out.println(feedVO);
+		}
 		
 		return "/party/partyFeed";
 	}
