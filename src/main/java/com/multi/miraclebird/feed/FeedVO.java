@@ -1,9 +1,6 @@
 package com.multi.miraclebird.feed;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 public class FeedVO {
 	
@@ -13,7 +10,7 @@ public class FeedVO {
 	private String mediaUrl;
 	private String username;
 	private String caption;
-	private ZonedDateTime feedTime;
+	private LocalDateTime feedTime;
 	
 	public String getFeedId() {
 		return feedId;
@@ -51,10 +48,10 @@ public class FeedVO {
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
-	public ZonedDateTime getFeedTime() {
+	public LocalDateTime getFeedTime() {
 		return feedTime;
 	}
-	public void setFeedTime(ZonedDateTime feedTime) {
+	public void setFeedTime(LocalDateTime feedTime) {
 		this.feedTime = feedTime;
 	}
 	@Override

@@ -12,6 +12,7 @@
 	<typeAliases>
 		<typeAlias type="com.multi.miraclebird.user.UserVO" alias="userVO"/>
 		<typeAlias type="com.multi.miraclebird.feed.FeedVO" alias="feedVO"/>
+		<typeAlias type="com.multi.miraclebird.feed.FeedJsonVO" alias="feedJsonVO"/>
 		<typeAlias type="com.multi.miraclebird.profile.ProfileVO" alias="profileVO"/>
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitVO" alias="recruitVO"/>
 		<typeAlias type="com.multi.miraclebird.recruit.RecruitPartyVO" alias="recruitPartyVO"/>

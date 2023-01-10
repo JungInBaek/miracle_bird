@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load("current", {packages:["calendar"]});
       google.charts.setOnLoadCallback(drawChart);
@@ -12,11 +11,10 @@
        var dataTable = new google.visualization.DataTable();
        dataTable.addColumn({ type: 'date', id: 'Date' });
        dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
+       <c:forEach var="vo" items="${list }">
        dataTable.addRows([
     	  /* for */
-    	  <c:forEach var="vo" items="${list }">
-          [ vo.feedTime, 1 ],
-          </c:forEach>
+          [ ${vo.feedTime}, 1 ]
         ]);
 
        var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
