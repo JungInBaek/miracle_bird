@@ -120,7 +120,6 @@
 								<input type="hidden" name="pointAmount" value="${one.pointAmount}">
 								<input type="hidden" name="pointPrice" value="${one.pointPrice}">
 								<input type="hidden" name="username" value="${userVO.username}">
-								<span></span>
 								<button>구매하기</button>
 							</form>
 						</div>
