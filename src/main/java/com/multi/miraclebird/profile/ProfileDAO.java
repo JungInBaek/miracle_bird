@@ -21,4 +21,8 @@ public class ProfileDAO {
 	public void update(ProfileVO profileVO) {
 		mybatis.update("profile.update", profileVO);
 	}
+
+	public void updateMiraclePoint(ProfileVO profileVO) {
+		mybatis.update("profile.updateMiraclePoint", profileVO);
+	}
 }

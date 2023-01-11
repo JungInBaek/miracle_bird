@@ -24,6 +24,14 @@ public class FeedDAO {
 		mybatis.insert("feed.create", feedVO);
 	}
 	
+	public void updateFeed(FeedVO feedVO) {
+		mybatis.update("feed.update", feedVO);
+	}
+	
+	public void deleteFeed(FeedVO feedVO) {
+		mybatis.delete("feed.delete", feedVO);
+	}
+	
 	public FeedVO selectFeedByFeedId(FeedVO feedVO) {
 		return mybatis.selectOne("feed.selectFeedByFeedId", feedVO);
 	}
@@ -47,4 +55,5 @@ public class FeedDAO {
 	public Integer getPartyMemberFeedCount(PageParam pageParam) {
 		return mybatis.selectOne("feed.getPartyMemberFeedCount", pageParam);
 	}
+
 }

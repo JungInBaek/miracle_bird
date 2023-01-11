@@ -7,6 +7,16 @@
 		insert into feed values (#{feedId}, #{userId}, #{mediaType}, #{mediaUrl}, #{username}, #{caption}, #{feedTime});
 	</insert>
 	
+	<!-- 피드 갱신 -->
+	<update id="update" parameterType="feedVO">
+		update feed set media_url = #{mediaUrl}, username = #{username}, caption = #{caption}, feed_time = #{feedTime} where feed_id = #{feedId};
+	</update>
+	
+	<!-- 피드 삭제 -->
+	<delete id="delete" parameterType="feedVO">
+		delete from feed where feed_id = #{feedId};
+	</delete>
+	
 	<!-- feed_id로 피드 조회(중복된 피드 조회) -->
 	<select id="selectFeedByFeedId" parameterType="feedVO" resultType="feedVO">
 		select feed_id from feed where feed_id = #{feedId};

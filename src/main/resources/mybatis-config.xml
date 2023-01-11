@@ -30,6 +30,7 @@
 		<typeAlias type="com.multi.miraclebird.store.CategoryPageVO" alias="categoryPageVO"/>
 		<typeAlias type="com.multi.miraclebird.store.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.multi.miraclebird.store.UserProductVO" alias="userProductVO"/>
+		<typeAlias type="com.multi.miraclebird.store.CategoryVO" alias="categoryVO"/>
 		<typeAlias type="com.multi.miraclebird.point.PointVO" alias="pointVO"/>
 		<typeAlias type="com.multi.miraclebird.point.ChargeVO" alias="chargeVO"/>
 		<typeAlias type="com.multi.miraclebird.point.UserPointVO" alias="userPointVO"/>

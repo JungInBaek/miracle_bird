@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body {
     display: flex;
     background-color: #f4f4f4;
@@ -83,19 +82,12 @@ header .head .nav-container .nav-item button:hover {
     overflow: hidden;
     object-fit: cover;
 }
-.profile .name {
+.profile .account {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 25px;
     margin-bottom: 10px;
     text-align: center;
-}
-.profile .account {
-    font-weight: 400;
-    font-size: 18px;
-    color: #bbb;
-    text-align: center;
-    margin-bottom: 15px;
 }
 .profile .point-container {
     display: flex;
@@ -160,7 +152,7 @@ header .head .nav-container .nav-item button:hover {
     transition: .5s;
 }
 .profile .category a .add-point:hover {
-    background: #fff;
+    background: transparent;
     border: 2px solid #ffb100;
 }
 
@@ -222,12 +214,16 @@ header .head .nav-container .nav-item button:hover {
     color: #222;
 }
 .main .contents-inner .contents .content .content-text button {
-    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 0 0 30px 30px;
+    border: none;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
     font-size: 24px;
     color: #fff;
-    margin: 10px 0;
     transition: .3s;
+    cursor: pointer;
 }
