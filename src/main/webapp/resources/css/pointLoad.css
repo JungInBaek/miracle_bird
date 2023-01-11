@@ -222,12 +222,16 @@ header .head .nav-container .nav-item button:hover {
     color: #222;
 }
 .main .contents-inner .contents .content .content-text button {
-    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 0 0 30px 30px;
+    border: none;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
     font-size: 24px;
     color: #fff;
-    margin: 10px 0;
     transition: .3s;
+    cursor: pointer;
 }
