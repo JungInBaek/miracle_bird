@@ -49,24 +49,8 @@ public class ProfileController {
 		return "redirect:profile.jsp";
 	}
 	
-	// 프로필 조회 -> 피드 컨트롤러 이동
-	@RequestMapping("profile/one")
-	public void oneProfile(HttpServletRequest request, ProfileVO profileVO, Model model) {
-		if (profileVO.getUserId() == null) {
-			HttpSession session = request.getSession();
-			Long userId = (Long) session.getAttribute("userId");
-			profileVO.setUserId(userId);
-		}
-		UserVO userResult = userService.selectUser(profileVO.getUserId());
-		ProfileVO profileResult = profileService.oneProfile(profileVO);
-		int posts = feedService.countFeedByUserId(profileVO.getUserId());
-		model.addAttribute("posts", posts);
-		model.addAttribute("userVo", userResult);
-		model.addAttribute("profileVo", profileResult);
-	}
-	
 	// 프로필 수정 화면 데이터 조회
-	@RequestMapping("one2Profile")
+	@RequestMapping("oneProfile")
 	@ResponseBody
 	public ProfileJsonVO one2Profile(HttpServletRequest request, ProfileVO profileVO, Model model) {
 		HttpSession session = request.getSession();
@@ -106,24 +90,6 @@ public class ProfileController {
 		return "redirect:myFeed.jsp";
 	}
 
-	// 피드 가져오기 -> 피드 컨트롤러 이동
-	@RequestMapping("profile/allFeed")
-	public void allFeed(HttpServletRequest requset, ProfileVO profileVO, UserVO userVO, Model model) {
-		if (profileVO.getUserId() == null) {
-			HttpSession session = requset.getSession();
-			Long userId = (Long) session.getAttribute("userId");
-			profileVO.setUserId(userId);
-			userVO.setUserId(userId);
-		}
-		String accessToken = userService.selectAccessTokenByUserId(profileVO.getUserId());
-		userVO.setAccessToken(accessToken);
-		profileVO = profileService.oneProfile(profileVO);
-		// 인스타 api호출과 db select 분리
-		profileService.allFeedInsta(userVO, profileVO);
-		List<FeedVO> list = feedService.allMiracleFeedByUserId(profileVO);
-		model.addAttribute("list", list);
-	}
-	
 	// 피드 잔디 구현
 //	@RequestMapping("profile/feedChart")
 //	public void feedChart(HttpServletRequest requset, ProfileVO profileVO, Model model) {
