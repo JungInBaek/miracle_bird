@@ -37,5 +37,8 @@ public class StoreDAO {
 	public int findProduct(UserProductVO findProduct) {
 		return mybatis.selectOne("userProduct.findProduct", findProduct);
 	}
+	public List<CategoryVO> cateList() {
+		return mybatis.selectList("product.cateList");
+	}
 	
 }

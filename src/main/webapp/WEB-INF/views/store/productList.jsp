@@ -1,3 +1,4 @@
+<%@page import="com.multi.miraclebird.store.CategoryVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
@@ -47,23 +48,31 @@
 		</div>
 		<div class="category">
 			<div>
-				<a href="productList?page=1&categoryId=1">
-					<div class="color category-item">
-						<img src="../resources/img/palette.svg" alt="색상" class="color-icon"> 
-						<span class="color-text">컬러</span>
-					</div>
-				</a> 
-				<a href="productList?page=1&categoryId=2">
-					<div class="speech-bubble category-item">
-						<img src="../resources/img/bubble.svg" alt="말풍선" class="bubble-icon mouseover"> 
-						<span class="bubble-text mouseover">말풍선</span>
-					</div>
-				</a> <a href="productList?page=1&categoryId=3">
-					<div class="speech-bubble category-item">
-						<img src="../resources/img/bubble.svg" alt="캐릭터" class="bubble-icon mouseover"> 
-						<span class="bubble-text mouseover">캐릭터</span>
-					</div>
-				</a>
+				<%
+				int cateNum2 = (int) request.getAttribute("cateNum");
+				List<CategoryVO> cateList = (List<CategoryVO>) request.getAttribute("cateList");
+				for (int p = 0; p < cateList.size(); p++) {
+					if (cateList.get(p).getCategoryId() == cateNum2) {
+				%>
+						<a href="productList?page=1&categoryId=<%=cateList.get(p).getCategoryId()%>">
+							<div class="color category-item">
+								<img src="../resources/img/palette.svg" alt="<%=cateList.get(p).getCategoryName()%>" class="color-icon"> 
+								<span class="color-text"><%=cateList.get(p).getCategoryName()%></span>
+							</div>
+						</a>
+				<%
+					} else {
+				%>
+						<a href="productList?page=1&categoryId=<%=cateList.get(p).getCategoryId()%>">
+							<div class="speech-bubble category-item">
+								<img src="../resources/img/palette.svg" alt="<%=cateList.get(p).getCategoryName()%>" class="bubble-icon mouseover"> 
+								<span class="color-text"><%=cateList.get(p).getCategoryName()%></span>
+							</div>
+						</a>
+				<%	
+					}
+				}
+				%>
 			</div>
 			<a href="pointList">
 				<div class="add-point category-item">
