@@ -17,7 +17,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
 	$.ajax({
-		url : "one2Profile",
+		url : "oneProfile",
 		dataType : "json",
 		success : function(profileJson) {
 			document.getElementById("bio").value = profileJson.bio;
