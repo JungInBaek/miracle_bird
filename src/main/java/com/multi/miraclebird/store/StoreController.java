@@ -56,8 +56,12 @@ public class StoreController {
 		// 내 포인트 조회
 		int point = storeService.myPoint(userId);
 		
+		// 카테고리 조회
+		List<CategoryVO> categoryList = storeService.cateList();
+		
 		UserVO userVO = userDAO.selectUser(userId);
 		
+		model.addAttribute("cateList", categoryList);
 		model.addAttribute("userVO", userVO);
 		model.addAttribute("cateNum", vo.getCategoryId());
 		model.addAttribute("list", list);

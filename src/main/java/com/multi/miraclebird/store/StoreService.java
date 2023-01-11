@@ -1,5 +1,7 @@
 package com.multi.miraclebird.store;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,9 @@ public class StoreService {
 
 	public int findProduct(UserProductVO findProduct) {
 		return storeDAO.findProduct(findProduct);
+	}
+
+	public List<CategoryVO> cateList() {
+		return storeDAO.cateList();
 	}
 }
