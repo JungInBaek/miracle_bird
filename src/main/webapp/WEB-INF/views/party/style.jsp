@@ -32,8 +32,9 @@
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+                    <li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
                     <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
@@ -172,15 +173,29 @@ function showImage() {
     </script>
     
     <script lang="javascript">
-        function backChange(){
+    	let list;
+    	$.ajax({
+    		type: "get",
+    		url: "/miraclebird/party/products",
+    		async: false,
+    		dataType: "json",
+    		success: function(data) {
+    			list = data;
+    			console.log(data);
+    		}
+    	});
+    	
+    	function backChange(){
             // 데이터에 있는 색상 코드 입력
-            var Acolor = new Array('red', 'orange', 'green'); 
+            // var Acolor = new Array('red', 'orange', 'green');
+            var Acolor = list;
             var Bcolor = Math.floor(Math.random() * Acolor.length);
             var Ccolor = Acolor[Bcolor]; 
             document.getElementById('bg').style.background=Ccolor;
             document.getElementById('here').style.background=Ccolor;
-            }
-            setInterval(backChange,8000);
+        }
+    	
+        setInterval(backChange,8000);
     </script>
 </body>
 </html>

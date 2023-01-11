@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedService;
@@ -34,6 +37,8 @@ import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
 import com.multi.miraclebird.party.vo.PartyMemberVO;
 import com.multi.miraclebird.party.vo.PartyVO;
+import com.multi.miraclebird.store.ProductVO;
+import com.multi.miraclebird.store.StoreDAO;
 
 @Controller
 @RequestMapping("/party")
@@ -46,7 +51,7 @@ public class PartyController {
 	private FeedService feedService;
 	
 	@Autowired
-	private FileService fileService;
+	private StoreDAO storeDao;
 	
 	
 	@GetMapping("/create")
@@ -72,7 +77,6 @@ public class PartyController {
 		// 파티 생성
 		Long userId = (Long) session.getAttribute("userId");
 		partyVO.setCreateDate(LocalDateTime.now());
-		partyVO.setMaxMemberCount(5);
 		partyVO.setLeaderId(userId);
 		partyService.createParty(partyVO);
 		
@@ -296,6 +300,31 @@ public class PartyController {
 		partyService.updateIntroByPartyId(partyVO);
 		
 		return "redirect:/party/style";
+	}
+	
+	@ResponseBody
+	@GetMapping("/products")
+	public List<String> partyProducts(HttpSession session) {
+		List<String> list = null;
+		if (session.getAttribute("userId") == null) {
+			return list;
+		} else if(session.getAttribute("partyId") == null) {
+			return list;
+		}
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		List<ProductVO> productVOList = storeDao.findPartyMemberProductByPartyId(partyId);
+		
+		for (ProductVO productVO : productVOList) {
+			String key = productVO.getProductName();
+			String value = productVO.getProductClass();
+			map.put(key, value);
+		}
+		
+		list = new ArrayList<>(map.values());
+		
+		return list;
 	}
 	
 }

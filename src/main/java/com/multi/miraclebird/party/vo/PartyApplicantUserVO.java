@@ -1,6 +1,7 @@
 package com.multi.miraclebird.party.vo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,8 +21,8 @@ public class PartyApplicantUserVO {
 	public void setPartyApplicantId(int partyApplicantId) {
 		this.partyApplicantId = partyApplicantId;
 	}
-	public LocalDateTime getApplicantDate() {
-		return applicantDate;
+	public String getApplicantDate() {
+		return applicantDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
 	}
 	public void setApplicantDate(LocalDateTime applicantDate) {
 		this.applicantDate = applicantDate;

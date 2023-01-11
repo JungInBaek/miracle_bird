@@ -27,13 +27,14 @@
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+                    <li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
                     <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item"><a href="my-profile.jsp">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
@@ -78,7 +79,7 @@
                         <tr>
                             <td><img src="../resources/img/profile-2user.png" class="img" /></td>
                             <td><a>PEOPLE</a></td>
-                            <td><input class="inputBox" placeholder="파티 인원을 입력해주세요."></td>
+                            <td><input name="maxMemberCount" class="inputBox" placeholder="파티 인원을 입력해주세요."></td>
                         </tr>
                         <tr>
                             <td><img src="../resources/img/medal.png" class="img" /></td>

@@ -41,4 +41,10 @@ public class StoreDAO {
 		return mybatis.selectList("product.cateList");
 	}
 	
+//	파티원들의 아이템 조회
+	public List<ProductVO> findPartyMemberProductByPartyId(Integer partyId) {
+		return mybatis.selectList("product.findPartyMemberProductByPartyId", partyId);
+	}
+	
+	
 }

@@ -20,4 +20,15 @@
 	<select id="cateList" resultType="categoryVO">
 		select * from category;
 	</select>
+	
+	<!-- 파티원들의 아이템 조회 -->
+	<select id="findPartyMemberProductByPartyId" parameterType="Integer" resultType="productVO">
+		select p.*
+		from product p 
+		join user_product up
+		on p.product_id = up.product_id
+		join party_member pm 
+		on up.user_id = pm.user_id
+		where pm.party_id = #{partyId};
+	</select>
 </mapper>

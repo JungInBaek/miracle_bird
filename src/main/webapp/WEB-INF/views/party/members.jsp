@@ -29,8 +29,9 @@
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+                    <li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
                     <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item"><a href="/miraclebird/myFeed">PROFILE</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
@@ -84,7 +85,7 @@
                                 </li>
                                 <li>
                                     <fmt:parseDate value="${vo.joinDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
-                                	<fmt:formatDate value="${parsedDateTime}" type="both" />
+                                	<fmt:formatDate value="${parsedDateTime}" />
                                 </li>
                             </ul>
                     	</div>
