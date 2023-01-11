@@ -10,7 +10,7 @@ public class PartyVO {
 
 	private int partyId;
 	private String name;
-	private String info;
+	private String intro;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalTime miracleStartTime;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
@@ -33,11 +33,11 @@ public class PartyVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getInfo() {
-		return info;
+	public String getIntro() {
+		return intro;
 	}
-	public void setInfo(String info) {
-		this.info = info;
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 	public LocalTime getMiracleStartTime() {
 		return miracleStartTime;

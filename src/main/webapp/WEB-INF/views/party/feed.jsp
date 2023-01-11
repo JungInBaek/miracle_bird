@@ -97,7 +97,7 @@
                 </c:if>
             </div>
             <div class="mainText">
-                <a>환영합니다. 지옥에서 돌아온 닭 파티룸입니다.</a>
+                <a>${partyVO.intro}</a>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
 
 	<insert id="create" parameterType="partyVO" useGeneratedKeys="true" keyProperty="partyId">
 		insert into party
-		values (null, #{name}, #{info}, #{miracleStartTime}, #{miracleEndTime}, #{activity}, #{createDate}, #{maxMemberCount}, #{leaderId})
+		values (null, #{name}, #{intro}, #{miracleStartTime}, #{miracleEndTime}, #{activity}, #{createDate}, #{maxMemberCount}, #{leaderId})
 	</insert>
 	
 	<select id="findLeaderIdByUserId" parameterType="Long" resultType="Long">
@@ -18,5 +18,11 @@
 		from party
 		where party_id = #{partyId};
 	</select>
+	
+	<update id="updateIntroByPartyId" parameterType="partyVO">
+		update party set
+		intro = #{intro}
+		where party_id = #{partyId};
+	</update>
 	
 </mapper>

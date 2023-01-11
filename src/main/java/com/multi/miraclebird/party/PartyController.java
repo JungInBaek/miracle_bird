@@ -1,10 +1,13 @@
 package com.multi.miraclebird.party;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +18,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
+import com.multi.miraclebird.party.service.FileService;
+import com.multi.miraclebird.party.service.PartyService;
 import com.multi.miraclebird.party.vo.PageParam;
 import com.multi.miraclebird.party.vo.PageVO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
@@ -38,6 +44,9 @@ public class PartyController {
 	
 	@Autowired
 	private FeedService feedService;
+	
+	@Autowired
+	private FileService fileService;
 	
 	
 	@GetMapping("/create")
@@ -131,8 +140,9 @@ public class PartyController {
 			System.out.println("파티장이 아닙니다.");
 			return "redirect:/party/main";
 		}
-		
 		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		model.addAttribute("partyVO", partyVO);
 		List<PartyApplicantUserVO> list = partyService.findPartyApplicantUserByPartyId(partyId);
 		model.addAttribute("list", list);
 		
@@ -186,8 +196,10 @@ public class PartyController {
 		}
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
 		List<PartyMemberUserProfileVO> list = partyService.findPartyMemberUserProfileListByPartyId(partyId);
 		model.addAttribute("list", list);
+		model.addAttribute("partyVO", partyVO);
 		
 		return "/party/members";
 	}
@@ -210,20 +222,17 @@ public class PartyController {
 		
 		List<FeedVO> list = feedService.findPartyMemberFeed(pageParam);
 		
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		
+		model.addAttribute("partyVO", partyVO);
 		model.addAttribute("list", list);
 		model.addAttribute("pageVO", pageVO);
-		
-		System.out.println(pageParam);
-		System.out.println(total);
-		System.out.println(pageVO.getPrev());
-		System.out.println(pageVO.getNext());
-		System.out.println(list);
 		
 		return "/party/feed";
 	}
 	
 	@GetMapping("/style")
-	public String partyStyle(HttpSession session) {
+	public String partyStyle(HttpSession session, Model model) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") == null) {
@@ -234,6 +243,59 @@ public class PartyController {
 			return "redirect:/party/main";
 		}
 		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId); 
+		model.addAttribute("partyImgVO", partyImgVO);
+		model.addAttribute("partyVO", partyVO);
+		
 		return "/party/style";
 	}
+	
+	@PostMapping("/img/update")
+	public String imgUpdate(HttpSession session, MultipartFile file) throws IOException {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if(!(boolean)session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/party/main";
+		}
+		
+		String uploadPath = session.getServletContext().getRealPath("resources/partyImg");
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
+		if (partyImgVO == null) {
+			partyService.savePartyImg(partyId, file, uploadPath);
+		} else {
+			partyService.updatePartyImg(partyImgVO, file, uploadPath);
+		}
+		
+		return "redirect:/party/style";
+	}
+	
+	@PostMapping("/intro/update")
+	public String introUpdate(HttpSession session, @RequestParam String intro) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		} else if(!(boolean)session.getAttribute("isLeader")) {
+			System.out.println("파티장이 아닙니다.");
+			return "redirect:/party/main";
+		}
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		partyVO.setIntro(intro);
+		
+		partyService.updateIntroByPartyId(partyVO);
+		
+		return "redirect:/party/style";
+	}
+	
 }

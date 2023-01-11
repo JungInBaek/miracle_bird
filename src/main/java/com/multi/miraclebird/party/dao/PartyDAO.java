@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyVO;
 
 @Repository
@@ -22,6 +23,10 @@ public class PartyDAO {
 
 	public PartyVO findPartyByPartyId(int partyId) {
 		return mybatis.selectOne("party.findPartyByPartyId", partyId);
+	}
+
+	public void updateIntroByPartyId(PartyVO partyVO) {
+		mybatis.update("party.updateIntroByPartyId", partyVO);
 	}
 	
 }

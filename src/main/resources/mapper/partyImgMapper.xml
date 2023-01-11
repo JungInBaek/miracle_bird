@@ -5,7 +5,18 @@
 	<select id="findPartyImgByPartyId" parameterType="int" resultType="partyImgVO">
 		select *
 		from party_img
-		where party_id = #{partyId}
+		where party_id = #{partyId};
 	</select>
+	
+	<update id="updatePartyImg" parameterType="partyImgVO">
+		update party_img set
+		img_name = #{imgName}, ori_img_name = #{oriImgName}
+		where party_id = #{partyId};
+	</update>
+	
+	<insert id="insertPartyImg" parameterType="partyImgVO">
+		insert into party_img
+		values (null, #{imgName}, #{oriImgName}, #{partyId});
+	</insert>
 
 </mapper>

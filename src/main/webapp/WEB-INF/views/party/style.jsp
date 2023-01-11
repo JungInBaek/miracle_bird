@@ -21,7 +21,7 @@
    <header>
         <div class="head">
             <!-- 로고 -->
-            <a href="#">
+            <a href="/miraclebird">
                 <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
@@ -78,40 +78,39 @@
                     <div class="container">
                         <div class="image-upload" id="image-upload">
                 
-                            <form method="post" enctype="multipart/form-data">
+                            <form action="/miraclebird/party/img/update" method="post" enctype="multipart/form-data">
                                 <div class="button">
                                     <label for="chooseFile" style="font-weight: bold; font-size: 20px;">
                                         Party Image Change
                                     </label>
                                 </div>
-                                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                                <input type="file" id="chooseFile" name="file" accept="image/*" onchange="loadFile(this)">
+                                <div class="fileContainer">
+	                                <div class="fileInput">
+	                                    <p>FILE NAME: </p>
+	                                    <p id="fileName">${partyImgVO.oriImgName}</p>
+	                                </div>
+	                                <div class="buttonContainer">
+	                                    <div class="submitButton" id="submitButton"><button type="submit">SUBMIT</button></div>
+	                                </div>
+                            	</div>
                             </form>
-                
-                            <div class="fileContainer">
-                                <div class="fileInput">
-                                    <p>FILE NAME: </p>
-                                    <p id="fileName"></p>
-                                </div>
-                                <div class="buttonContainer">
-                                    <div class="submitButton" id="submitButton">SUBMIT</div>
-                                </div>
-                            </div>
                         </div>
                         <div class="image-show" id="image-show"></div>
                         <br>
                         <br>
-                        <form>
+                        <form action="/miraclebird/party/intro/update" method="post">
                             <div class="IntroParty">
                                 <label style="font-size: 20px; font-weight: bold;">Party Intro Change </label><br>
-                                <input type="text" style="border-radius: 30px; border: 2px solid #FFb100; width: 500px; height: 40px; margin-top: 30px; padding: 10px; margin-right: 10px;">
-                                <button style="border-radius: 30px; border: none; background-color: #FFb100; height: 42px; width: 100px; color: white; font-weight: bold; font-size: 15px;">SUBMIT</button>
+                                <input type="text" name="intro" value="${partyVO.intro}" style="border-radius: 30px; border: 2px solid #FFb100; width: 500px; height: 40px; margin-top: 30px; padding: 10px; margin-right: 10px;">
+                                <button type="submit" style="border-radius: 30px; border: none; background-color: #FFb100; height: 42px; width: 100px; color: white; font-weight: bold; font-size: 15px;">SUBMIT</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="mainText" onload="backChange()" id="bg">
-                <a><marquee>환영합니다. 지옥에서 돌아온 닭 파티룸입니다.</marquee> </a>
+                <a><marquee>${partyVO.intro}</marquee> </a>
             </div>
         </div>
     </div>
@@ -136,7 +135,10 @@
     newImage.style.height = "70%";
     newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지를 숨긴다
     newImage.style.objectFit = "contain";
-
+    
+    var inputFile = document.getElementById(fileName);
+    inputFile.value = null;
+    
     //이미지를 image-show div에 추가
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
@@ -170,7 +172,6 @@ function showImage() {
     </script>
     
     <script lang="javascript">
-
         function backChange(){
             // 데이터에 있는 색상 코드 입력
             var Acolor = new Array('red', 'orange', 'green'); 
@@ -178,9 +179,8 @@ function showImage() {
             var Ccolor = Acolor[Bcolor]; 
             document.getElementById('bg').style.background=Ccolor;
             document.getElementById('here').style.background=Ccolor;
-            }  
-            setInterval(backChange,2000);
-
+            }
+            setInterval(backChange,8000);
     </script>
 </body>
 </html>

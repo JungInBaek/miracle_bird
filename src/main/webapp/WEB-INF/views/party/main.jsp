@@ -74,15 +74,15 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainImg">
-            	<c:if test='${partyImg == null}'>
+            	<c:if test='${partyImgVO == null}'>
                 	<img src="${pageContext.request.contextPath}/resources/img/chart.png" />
             	</c:if>
-            	<c:if test='${!partyImg == null}'>
-                	<img src="${pageContext.request.contextPath}/resources/party/${partyImg.oriImgName}" />
+            	<c:if test='${partyImgVO != null}'>
+                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" />
             	</c:if>
             </div>
             <div class="mainText">
-                <a>${partyVO.info}</a>
+                <a>${partyVO.intro}</a>
             </div>
         </div>
         <div class="partyInfo">

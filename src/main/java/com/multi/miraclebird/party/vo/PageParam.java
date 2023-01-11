@@ -24,7 +24,6 @@ public class PageParam {
 	}
 
 	public void setPage(int page) {
-		System.out.println("setPage");
 		this.page = page;
 		this.start = (page - 1) * amount;
 	}
@@ -34,7 +33,6 @@ public class PageParam {
 	}
 
 	public void setAmount(int amount) {
-		System.out.println("setAmount");
 		this.amount = amount;
 		this.start = (page - 1) * amount;
 	}

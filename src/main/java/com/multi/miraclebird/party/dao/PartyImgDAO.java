@@ -15,5 +15,13 @@ public class PartyImgDAO {
 	public PartyImgVO findPartyImgByPartyId(int partyId) {
 		return mybatis.selectOne("partyImg.findPartyImgByPartyId", partyId);
 	}
+
+	public void updatePartyImg(PartyImgVO partyImgVO) {
+		mybatis.update("partyImg.updatePartyImg", partyImgVO);
+	}
+
+	public void insertPartyImg(PartyImgVO partyImgVO) {
+		mybatis.insert("partyImg.insertPartyImg", partyImgVO);
+	}
 	
 }
