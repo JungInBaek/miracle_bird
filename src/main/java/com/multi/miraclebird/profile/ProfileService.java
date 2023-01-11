@@ -74,10 +74,32 @@ public class ProfileService {
 			if ((feedVO.getMediaType().equals("IMAGE") || feedVO.getMediaType().equals("CAROUSEL_ALBUM")) && feedVO.getCaption().contains("#미라클버드") && feedTime.isAfter(profileVO.getMiracleStartTime()) && feedTime.isBefore(profileVO.getMiracleEndTime())) {
 				if (feedService.selectFeedByFeedId(feedVO) == null) {
 					feedDao.createFeed(feedVO);
+					int point = profileVO.getMiraclePoint() + 100;
+					profileVO.setMiraclePoint(point);
+					profileDao.updateMiraclePoint(profileVO);
+				} else {
+					feedDao.updateFeed(feedVO);
 				}
 				feedList.add(feedVO);
 			}
 		}
+		
+		List<FeedVO> feedTmp = feedDao.allFeedByUserId(profileVO);
+		if (feedList.size() != feedTmp.size()) {
+			for (int i=0; i<feedTmp.size(); i++) {
+				boolean flag = false;
+				for (int j=0; j<feedList.size(); j++) {
+					if (feedTmp.get(i).getFeedId() == feedList.get(j).getFeedId()) {
+						flag = true;
+						break;
+					}
+				}
+				if (!flag) {
+					feedDao.deleteFeed(feedTmp.get(i));
+				}
+			}
+		}
+		
 //		System.out.println(feedList);
 	}
 	

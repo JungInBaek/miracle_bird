@@ -103,10 +103,11 @@ public class ProfileController {
 //		model.addAttribute("list", list);
 //	}
 	
-	@RequestMapping("profile/testFeedChart")
+	@RequestMapping("profile/feedChart")
 	@ResponseBody
 	public List<FeedJsonVO> testFeedChart(HttpServletRequest requset, ProfileVO profileVO, Model model) {
-		Long userId = 17841457620521535L;
+		HttpSession session = requset.getSession();
+		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
 		List<FeedJsonVO> feedDate = feedService.allFeedTimeByUserId(profileVO);
 		System.out.println(feedDate);
