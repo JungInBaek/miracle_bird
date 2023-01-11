@@ -19,32 +19,32 @@
     <!-- 프로필 -->
     <div class="profile">
         <div class="circle-container">
-            <img src="../resources/img/profile.png" alt="">
+            <img src="./img/profile.png" alt="">
         </div>
         <div class="name">홍길동</div>
         <div class="account">@Hongildong</div>
         <div class="point-container">
-            <img src="../resources/img/money.svg" alt="저금통" class="point-icon">
+            <img src="./img/money.svg" alt="저금통" class="point-icon">
             <span class="point">5,000</span>
         </div>
         <div class="category">
             <div>
                 <a href="#">
                     <div class="color category-item">
-                        <img src="../resources/img/palette.svg" alt="색상" class="color-icon mouseover">
+                        <img src="./img/palette.svg" alt="색상" class="color-icon mouseover">
                         <span class="color-text mouseover">컬러</span>
                     </div>
                 </a>
                 <a href="#">
                     <div class="speech-bubble category-item">
-                        <img src="../resources/img/bubble.svg" alt="말풍선" class="bubble-icon mouseover">
+                        <img src="./img/bubble.svg" alt="말풍선" class="bubble-icon mouseover">
                         <span class="bubble-text mouseover">말풍선</span>
                     </div>
                 </a>
             </div>
             <a href="#">
                 <div class="add-point category-item">
-                    <img src="../resources/img/add-coin.svg" alt="포인트" class="add-icon mouseover">
+                    <img src="img/add-coin.svg" alt="포인트" class="add-icon mouseover">
                     <span class="add-text mouseover">포인트 충전</span>
                 </div>
             </a>
@@ -77,37 +77,37 @@
                 <div class="content">
                     <div class="content-image">
                         <span class="point">1,000 P</span>
-                        <img src="../resources/img/1000.png" alt="천원">
+                        <img src="./img/천.png" alt="천원">
                     </div>
                     <div class="content-text">
-                        <span>구매하기</span>
+                        <button>구매하기</button>
                     </div>
                 </div>
                 <div class="content">
                     <div class="content-image">
                         <span class="point">5,000 P</span>
-                        <img src="../resources/img/5000.png" alt="오천원">
+                        <img src="./img/오천.png" alt="오천원">
                     </div>
                     <div class="content-text">
-                        <span>구매하기</span>
+                        <button>구매하기</button>
                     </div>
                 </div>
                 <div class="content">
                     <div class="content-image">
                         <span class="point">10,000 P</span>
-                        <img src="../resources/img/10000.png" alt="만원">
+                        <img src="./img/만.png" alt="만원">
                     </div>
                     <div class="content-text">
-                        <span>구매하기</span>
+                        <button>구매하기</button>
                     </div>
                 </div>
                 <div class="content">
                     <div class="content-image">
                         <span class="point">50,000 P</span>
-                        <img src="../resources/img/50000.png" alt="오만원">
+                        <img src="./img/오만.png" alt="오만원">
                     </div>
                     <div class="content-text">
-                        <span>구매하기</span>
+                        <button>구매하기</button>
                     </div>
                 </div>
             </div>
