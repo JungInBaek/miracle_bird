@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+/* 공통 */
+body {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    color: #fff;
+    background: url(../img/ProfileBg.jpeg) no-repeat center fixed rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-blend-mode: multiply;
+    position: relative;
+}
+.btn {
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+    border: 2px solid #FFB100;
+    color: #FFB100;
+    border-radius: 7px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #FFB100;
+    color: #fff;
+}
+/* 헤더 */
+header .head {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 40px;
+}
+header .head .logo {
+    width: 130px;
+}
+header .head .nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 100%;
+    list-style-type: none;
+}
+header .head .nav-container .nav-item {
+    margin-left: 40px;
+    font-weight: 500;
+    font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+}
+header .head .nav-container .nav-item a:hover {
+    color: #FFB100;
+}
+header .head .nav-container .nav-item a button {
+    background: #FFB100;
+    border: 2px solid #FFB100;
+    border-radius: 50px;
+    padding: 8px 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 130px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    color: #222;
+    transition: 0.5s;
+}
+header .head .nav-container .nav-item a button:hover {
+    background: none;
+    font-weight: 600;
+    border: 2px solid #FFB100;
+    color: #FFB100;
+}
+
+/* 나의 정보 */
+.info form {
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    margin: 20px auto;
+    padding: 50px 30px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(51, 51, 51,0.5);
+    position: relative;
+}
+
+/* 좌측 정보 */
+form .info-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+form .info-left .image-resizing {
+    width: 270px;
+    height: 270px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form .info-left .image-resizing img {
+    width: 90%;
+    border-radius: 20px;
+    overflow: hidden;
+    object-fit: cover;
+}
+form .info-left label {
+    width: 100%;
+}
+#file {
+    display: none;
+}
+form .info-left label .btn-upload {
+    margin: 10px 0;
+    padding: 15px 0;
+    background-color: rgba(255, 177, 0, 0.7);
+    border: 2px solid #FFB100;
+    color: #fff;
+    border-radius: 7px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+form .info-left label .btn-upload:hover {
+    background-color: transparent;
+    color: #FFB100;
+}
+
+
+/* 우측 정보 */
+form .info-right {
+    width: 50%;
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+}
+form .info-right .title {
+    font-weight: 700;
+    font-size: 25px;
+    padding: 10px 0;
+    border-bottom: 2px solid #FFB100;
+}
+form .info-right .intro-title,
+form .info-right .time-title {
+    font-weight: 700;
+    font-size: 19px;
+    margin: 30px 0 10px 0;
+}
+form .info-right .intro {
+    width: 100%;
+    height: 200px;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.3);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+}
+form .info-right .intro textarea {
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0);
+    border: none;
+    color:#222;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    resize: none;
+}
+form .info-right .time {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form .info-right .time span:first-child,
+form .info-right .time span:last-child {
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.3);
+}
+input[type="time"] {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #222;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+}
+form .info-right .btn-submit {
+    margin-top: 40px;
+    padding: 15px 0;
+    background-color: rgba(255, 177, 0, 0.7);
+    border: 2px solid #FFB100;
+    color: #fff;
+    border-radius: 7px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+form .info-right .btn-submit:hover {
+    background-color: transparent;
+    color: #ffb100;
+}
+
+/* 잔디 */
+.info .grass-field {
+    width: 1500px;
+    height: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    position: relative;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border-top: 15px solid rgba(255, 177, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(51, 51, 51,0.5);
+    font-weight: 700;
+    font-size: 25px;
+}
+.info .grass-field .grass {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}

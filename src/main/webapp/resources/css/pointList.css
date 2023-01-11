@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #222;
+    background-color: #ffb100;
+    overflow-x: hidden;
+}
+.point-title {
+    font-family: 'Hahmlet';
+    font-size: 40px;
+    font-weight: 900;
+    color: #222;
+    text-align: center;
+    flex: inline-block;
+    width: 550px;
+    margin: 40px auto;
+}
+
+
+/* 페이지 이동 */
+.home {
+    position: fixed;
+    left: 10px;
+    top: 45%;
+}
+.item {
+    position: fixed;
+    right: 10px;
+    top: 45%;
+}
+.home,
+.item {
+    margin: 0 10px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    transition: 250ms;
+    border-radius: 50px;
+    background-color: #143d59;
+}
+.home:hover,
+.item:hover {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.25));
+}
+.home img,
+.item img {
+    width: 40px;
+}
+.home span,
+.item span {
+    margin: 0 10px;
+}
+.home img,
+.home span,
+.item img,
+.item span {
+    filter: invert(100%);
+}
+.home:hover img,
+.home:hover span,
+.item:hover img,
+.item:hover span {
+    filter: invert(65%) sepia(94%) saturate(1455%) hue-rotate(360deg) brightness(102%) contrast(104%);
+}
+
+
+/* 카드 */
+.list {
+    list-style: none;
+    margin: 0 auto;
+    width: 960px;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+.card-frame {
+    width: 300px;
+    height: 450px;
+    perspective: 500px;
+    margin: 20px 10px;
+}
+.card-flip {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: .5s;
+    transform-style: preserve-3d;
+    border-radius: 13px;
+    border: 3px solid black;
+    box-sizing: border-box;
+}
+.card-frame:hover .card-flip {
+    transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.card-front {
+    background: #222;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courgette', sans-serif;
+    font-size: 40px;
+}
+.card-front h3 {
+    text-align: center;
+    line-height: 1.1;
+    color: #fff;
+}
+.card-back {
+    padding: 20px;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+}
+.card-back h4 {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffb100;
+}
+.card-back table {
+    width: 100%;
+    margin: 10px 0;
+    vertical-align: center;
+    border-top: 2px solid #ffb100;
+    border-bottom: 2px solid #ffb100;
+    font-size: 14px;
+}
+.card-back table tr th {
+    font-weight: 700;
+    background-color: #ffb100;
+}
+.card-back table tr td {
+    font-weight: 400;
+    border-bottom: 1.5px solid #f5f5f5;
+}
+.card-back table tr th,
+.card-back table tr td {
+    padding: 7px;
+    vertical-align: middle;
+}
+.card-back table tr th:first-child,
+.card-back table tr td:first-child {
+    border-left: none;
+}
+.card-back table tr th:last-child,
+.card-back table tr td:last-child {
+    border-right: none;
+}
+.card-back .total {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: right;
+}

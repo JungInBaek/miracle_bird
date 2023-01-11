@@ -84,19 +84,12 @@ header .head .nav-container .nav-item button:hover {
     overflow: hidden;
     object-fit: cover;
 }
-.profile .profile-inner .name {
+.profile .profile-inner .account {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
     font-size: 26px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-.profile .profile-inner .account {
-    font-weight: 400;
-    font-size: 18px;
-    color: #bbb;
-    text-align: center;
     margin-bottom: 15px;
+    text-align: center;
 }
 .profile .profile-inner .edit-profile {
     background-color: #FFB100;
@@ -158,18 +151,6 @@ header .head .nav-container .nav-item button:hover {
     color: #222;
     margin: 20px 0;
 }
-.profile .profile-inner .grass-field {
-    display: grid;
-    grid-template-rows: repeat(1fr);
-    grid-template-columns: repeat(10, 1fr);
-    gap: 11px;
-    width: 350px;
-}
-.profile .profile-inner .grass-field .grass {
-    width: 25px;
-    height: 25px;
-    background-color:#FFB100;
-}
 
 /* 피드 섹션 */
 .main {
@@ -185,15 +166,39 @@ header .head .nav-container .nav-item button:hover {
     margin: 100px 0 50px 30px;
 }
 .main .feeds {
-    width: 60%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 auto;
 }
 .main .feeds .feed {
-    width: 250px;
-    height: 250px;
-    margin: 10px;
-    background:#bbb;
+    margin: 30px 20px;
+}
+.main .feeds .feed .feed-img {
+    width: 360px;
+    height: 360px;
+    overflow: hidden;
+}
+.main .feeds .feed .feed-img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(2px 2px 7px rgba(0, 0, 0, 0.1));
+}
+.main .feeds .feed .feed-user {
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 10px;
+}
+.main .feeds .feed .feed-time {
+    font-weight: 500;
+    color: #bbb;
+    padding: 6px 0 10px 0;
+    border-bottom: 2px solid #FFB100;
+}
+.main .feeds .feed .feed-tag {
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 18px;
 }
