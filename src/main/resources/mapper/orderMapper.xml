@@ -5,4 +5,9 @@
 		insert into `order`
 		values (null, #{orderDate}, #{userId}, #{productId});
 	</insert>
+	
+	<select id="orderList" parameterType="Long" resultType="orderVO">
+		select * from `order` o left join product p on o.product_id = p.product_id
+		where o.user_id = #{userId};
+	</select>
 </mapper>

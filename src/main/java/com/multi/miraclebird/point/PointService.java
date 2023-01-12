@@ -34,5 +34,9 @@ public class PointService {
 	public void pointCharge(UserPointVO userPointVO) {
 		pointDAO.pointCharge(userPointVO);
 	}
+
+	public List<ChargeVO> chargeList(Long userId) {
+		return pointDAO.chargeList(userId);
+	}
 	
 }

@@ -31,5 +31,9 @@ public class PointDAO {
 	public void pointCharge(UserPointVO userPointVO) {
 		mybatis.update("profile.pointCharge", userPointVO);
 	}
+
+	public List<ChargeVO> chargeList(Long userId) {
+		return mybatis.selectList("charge.chargeList", userId);
+	}
 	
 }

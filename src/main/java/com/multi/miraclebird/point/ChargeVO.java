@@ -7,6 +7,8 @@ public class ChargeVO {
 	private LocalDateTime chargeDate;
 	private long userId;
 	private int pointId;
+	private int pointAmount;
+	private int pointPrice;
 	public int getChargeId() {
 		return chargeId;
 	}
@@ -31,10 +33,22 @@ public class ChargeVO {
 	public void setPointId(int pointId) {
 		this.pointId = pointId;
 	}
+	public int getPointAmount() {
+		return pointAmount;
+	}
+	public void setPointAmount(int pointAmount) {
+		this.pointAmount = pointAmount;
+	}
+	public int getPointPrice() {
+		return pointPrice;
+	}
+	public void setPointPrice(int pointPrice) {
+		this.pointPrice = pointPrice;
+	}
 	@Override
 	public String toString() {
 		return "ChargeVO [chargeId=" + chargeId + ", chargeDate=" + chargeDate + ", userId=" + userId + ", pointId="
-				+ pointId + "]";
+				+ pointId + ", pointAmount=" + pointAmount + ", pointPrice=" + pointPrice + "]";
 	}
 	
 }

@@ -53,9 +53,38 @@
             <span class="total">결제 총액: 55000원</span>
           </div>
         </div>
+        
+      </div>
     </li>
+    <li class="card">
+      <div class="card-frame">
+        <div class="card-flip">
+          <div class="card-front">
+            <h3>Janurary <br> 06</h3>
+          </div>
+          <div class="card-back">
+            <h4>구매 내역</h4>
+            <table>
+              <tr>
+                <th>포인트</th>
+                <th>구매 시간</th>
+              </tr>
+              <tr>
+                <td>5000P</td>
+                <td>10시 30분 37초</td>
+              </tr>
+              <tr>
+                <td>50000P</td>
+                <td>11시 59분 28초</td>
+              </tr>
+            </table>
+            <span class="total">결제 총액: 55000원</span>
+          </div>
+        </div>
+      </div>
+    </li>
+    
   </ul>
-
 </body>
 
 </html>
