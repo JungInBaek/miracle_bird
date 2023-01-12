@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>미라클 스토어</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/store.css">
+	href="${pageContext.request.contextPath}/resources/css/store99.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
 <link
@@ -41,7 +41,7 @@
 		<div class="circle-container">
 			<img src="../resources/img/profile.png" alt="">
 		</div>
-		<div class="name">@${userVO.username}</div>
+		<div class="account">@${userVO.username}</div>
 		<div class="point-container">
 			<img src="../resources/img/money.svg" alt="저금통" class="point-icon">
 			<span class="point">${point}</span>
@@ -55,8 +55,8 @@
 					if (cateList.get(p).getCategoryId() == cateNum2) {
 				%>
 						<a href="productList?page=1&categoryId=<%=cateList.get(p).getCategoryId()%>">
-							<div class="color category-item">
-								<img src="../resources/img/palette.svg" alt="<%=cateList.get(p).getCategoryName()%>" class="color-icon"> 
+							<div class="color color-box category-item">
+								<img src="../resources/img/<%=cateList.get(p).getCategoryImg()%>" alt="<%=cateList.get(p).getCategoryName()%>" class="color-icon"> 
 								<span class="color-text"><%=cateList.get(p).getCategoryName()%></span>
 							</div>
 						</a>
@@ -65,7 +65,7 @@
 				%>
 						<a href="productList?page=1&categoryId=<%=cateList.get(p).getCategoryId()%>">
 							<div class="speech-bubble category-item">
-								<img src="../resources/img/palette.svg" alt="<%=cateList.get(p).getCategoryName()%>" class="bubble-icon mouseover"> 
+								<img src="../resources/img/<%=cateList.get(p).getCategoryImg()%>" alt="<%=cateList.get(p).getCategoryName()%>" class="bubble-icon mouseover"> 
 								<span class="color-text"><%=cateList.get(p).getCategoryName()%></span>
 							</div>
 						</a>
@@ -74,18 +74,20 @@
 				}
 				%>
 			</div>
-			<a href="pointList">
-				<div class="add-point category-item">
-					<img src="../resources/img/add-coin.svg" alt="포인트"	class="add-icon mouseover"> 
-					<span class="add-text mouseover">포인트 충전</span>
-				</div>
-			</a>
-			<a href="#">
-				<div class="add-point category-item">
-					<img src="../resources/img/add-coin.svg" alt="포인트"	class="add-icon mouseover"> 
-					<span class="add-text mouseover">구매 내역</span>
-				</div>
-			</a>
+			<div class="btn-container">
+				<a href="pointList">
+					<div class="add-point btn">
+						<img src="../resources/img/add-coin.svg" alt="포인트"	class="add-icon mouseover"> 
+						<span class="add-text mouseover">포인트 충전</span>
+					</div>
+				</a>
+				<a href="purchaseList">
+					<div class="buy-history btn">
+						<img src="../resources/img/list.svg" alt="포인트"	class="add-icon mouseover"> 
+						<span class="add-text mouseover">구매 내역</span>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 
@@ -98,12 +100,13 @@
 				<nav>
 					<ul class="nav-container">
 						<li class="nav-item"><a href="#">COMMUNITY</a></li>
-						<li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+						<li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
 						<c:if test="${partyId != null}">
                     		<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     	</c:if>
+						<li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+						<li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
 						<li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-						<li class="nav-item"><a href="/miraclebird/myFeed.jsp">PROFILE</a></li>
 						<li class="nav-item">
 	                    	<c:choose>
 	                    		<c:when test="${userVO.userId == null}">
@@ -141,9 +144,9 @@
 		int cateNum = (int) request.getAttribute("cateNum");
 		for (int p = 1; p <= pages; p++) {
 		%>
-		<div style="display: inline; align: center;">
+		<div style="display: inline-block; align: center;">
 			<a href="productList?page=<%=p%>&categoryId=<%=cateNum%>">
-				<button style="background: lime; color: red; width: 50px; border-radius: 10px;"><%=p%></button>
+				<button style="background-color: transparent; border: none; width: auto; padding: 5px 10px; margin: 0 10px; font-weight: 500; font-size: 18px; color: #222;"><%=p%></button>
 			</a>
 		</div>
 		<%

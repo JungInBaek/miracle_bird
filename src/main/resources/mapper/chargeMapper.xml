@@ -5,4 +5,10 @@
 		insert into charge
 		values (null, #{chargeDate}, #{userId}, #{pointId});
 	</insert>
+	
+	<select id="chargeList" parameterType="Long" resultType="chargeVO">
+		select * from charge c
+		left join point p on
+		c.point_id = p.point_id where c.user_id = #{userId};
+	</select>
 </mapper>	

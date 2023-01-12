@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.multi.miraclebird.store.CategoryVO"%>
+<%@page import="java.util.List"%>
 <%@ page import="java.text.*"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>포인트 충전소</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/pointLoad.css">
+	href="${pageContext.request.contextPath}/resources/css/pointLoad98.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
 <link
@@ -31,45 +33,53 @@
 		<div class="circle-container">
 			<img src="../resources/img/profile.png" alt="">
 		</div>
-		<div class="name">@${userVO.username}</div>
+		<div class="account">@${userVO.username}</div>
 		<div class="point-container">
 			<img src="../resources/img/money.svg" alt="저금통" class="point-icon">
 			<span class="point"><%=df.format(myPoint)%></span>
 		</div>
 		<div class="category">
 			<div>
-				<a href="productList?page=1&categoryId=1">
-					<div class="color category-item">
-						<img src="../resources/img/palette.svg" alt="색상"
-							class="color-icon"> <span class="color-text">컬러</span>
+				<%
+				int cateNum2 = (int) request.getAttribute("cateNum");
+				List<CategoryVO> cateList = (List<CategoryVO>) request.getAttribute("cateList");
+				for (int p = 0; p < cateList.size(); p++) {
+					if (cateList.get(p).getCategoryId() == cateNum2) {
+				%>
+						<a href="productList?page=1&categoryId=<%=cateList.get(p).getCategoryId()%>">
+							<div class="color color-box category-item">
+								<img src="../resources/img/<%=cateList.get(p).getCategoryImg()%>" alt="<%=cateList.get(p).getCategoryName()%>" class="color-icon"> 
+								<span class="color-text"><%=cateList.get(p).getCategoryName()%></span>
+							</div>
+						</a>
+				<%
+					} else {
+				%>
+						<a href="productList?page=1&categoryId=<%=cateList.get(p).getCategoryId()%>">
+							<div class="speech-bubble category-item">
+								<img src="../resources/img/<%=cateList.get(p).getCategoryImg()%>" alt="<%=cateList.get(p).getCategoryName()%>" class="bubble-icon mouseover"> 
+								<span class="color-text"><%=cateList.get(p).getCategoryName()%></span>
+							</div>
+						</a>
+				<%	
+					}
+				}
+				%>
+			</div>
+			<div class="btn-container">
+				<a href="pointList">
+					<div class="add-point btn">
+						<img src="../resources/img/add-coin.svg" alt="포인트"	class="add-icon mouseover"> 
+						<span class="add-text mouseover">포인트 충전</span>
 					</div>
-				</a> <a href="productList?page=1&categoryId=2">
-					<div class="speech-bubble category-item">
-						<img src="../resources/img/bubble.svg" alt="말풍선"
-							class="bubble-icon mouseover"> <span
-							class="bubble-text mouseover">말풍선</span>
-					</div>
-				</a> <a href="productList?page=1&categoryId=3">
-					<div class="speech-bubble category-item">
-						<img src="../resources/img/bubble.svg" alt="캐릭터"
-							class="bubble-icon mouseover"> <span
-							class="bubble-text mouseover">캐릭터</span>
+				</a>
+				<a href="purchaseList">
+					<div class="buy-history btn">
+						<img src="../resources/img/list.svg" alt="포인트"	class="add-icon mouseover"> 
+						<span class="add-text mouseover">구매 내역</span>
 					</div>
 				</a>
 			</div>
-			<a href="pointList">
-				<div class="add-point category-item">
-					<img src="../resources/img/add-coin.svg" alt="포인트"
-						class="add-icon mouseover"> <span class="add-text mouseover">포인트
-						충전</span>
-				</div>
-			</a> <a href="#">
-				<div class="add-point category-item">
-					<img src="../resources/img/add-coin.svg" alt="포인트"
-						class="add-icon mouseover"> <span class="add-text mouseover">구매
-						내역</span>
-				</div>
-			</a>
 		</div>
 	</div>
 
@@ -84,12 +94,11 @@
 						<li class="nav-item"><a href="#">COMMUNITY</a></li>
 						<li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
 						<c:if test="${partyId != null}">
-							<li class="nav-item"><a href="/miraclebird/party/main">MY
-									PARTY</a></li>
+							<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
 						</c:if>
-						<li class="nav-item"><a
-							href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-						<li class="nav-item"><a href="/miraclebird/myFeed.jsp">PROFILE</a></li>
+						<li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+						<li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
+						<li class="nav-item"><a	href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
 						<li class="nav-item"><c:choose>
 								<c:when test="${userVO.userId == null}">
 									<a href="/miraclebird/loginPage"><button>LOGIN</button></a>

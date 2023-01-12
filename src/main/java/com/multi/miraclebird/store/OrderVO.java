@@ -10,6 +10,8 @@ public class OrderVO {
 	private LocalDateTime orderDate;
 	private Long userId;
 	private int productId;
+	private String productName;
+	private int productPrice;
 	public int getOrderId() {
 		return orderId;
 	}
@@ -34,10 +36,22 @@ public class OrderVO {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public int getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
 	@Override
 	public String toString() {
 		return "OrderVO [orderId=" + orderId + ", orderDate=" + orderDate + ", userId=" + userId + ", productId="
-				+ productId + "]";
+				+ productId + ", productName=" + productName + ", productPrice=" + productPrice + "]";
 	}
 	
 }

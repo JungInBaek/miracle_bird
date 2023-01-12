@@ -40,5 +40,8 @@ public class StoreDAO {
 	public List<CategoryVO> cateList() {
 		return mybatis.selectList("product.cateList");
 	}
+	public List<OrderVO> orderList(Long userId) {
+		return mybatis.selectList("order.orderList", userId);
+	}
 	
 }

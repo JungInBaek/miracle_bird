@@ -1,6 +1,14 @@
 package com.multi.miraclebird.store;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,11 +53,11 @@ public class StoreController {
 		vo.setStartEnd(vo.getPage());
 		
 		// 카테고리별 상품 목록 조회
-		List<ProductVO> list = storeDAO.list(vo);
-		
+		List<ProductVO> list = storeService.list(vo);
+				
 		// 상품 개수 조회
-		int count = storeDAO.count(vo);
-		
+		int count = storeService.count(vo);
+
 		// 페이지 처리
 		int pages = storeService.pages(count);
 		
@@ -59,7 +67,7 @@ public class StoreController {
 		// 카테고리 조회
 		List<CategoryVO> categoryList = storeService.cateList();
 		
-		UserVO userVO = userDAO.selectUser(userId);
+		UserVO userVO = storeService.selectUser(userId); 
 		
 		model.addAttribute("cateList", categoryList);
 		model.addAttribute("userVO", userVO);
@@ -77,8 +85,8 @@ public class StoreController {
 		// 1.  세션으로 유저 포인트를 가져와서 해당 상품 가격과 비교
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
-		int myPoint = storeDAO.myPoint(userId);
-		int productPoint = storeDAO.productPoint(productId);
+		int myPoint = storeService.myPoint(userId);
+		int productPoint = storeService.productPoint(productId);
 
 		UserProductVO findProduct = new UserProductVO();
 		findProduct.setUserId(userId);
@@ -100,29 +108,64 @@ public class StoreController {
 			ProfileVO profileVO = new ProfileVO();
 			profileVO.setUserId(userId);
 			profileVO.setMiraclePoint(resultPoint);
-			storeDAO.pointUpdate(profileVO);
-			
+			storeService.pointUpdate(profileVO);
+						
 			// 2.2 order와 user_product에 insert
 			OrderVO orderVO = new OrderVO();
 			orderVO.setOrderDate(LocalDateTime.now());
 			orderVO.setUserId(userId);
 			orderVO.setProductId(productId);
 			
-			storeDAO.orderInsert(orderVO);
+			storeService.orderInsert(orderVO);
 			
 			UserProductVO userProductVO = new UserProductVO();
 			userProductVO.setUserId(userId);
 			userProductVO.setProductId(productId);
 			
-			storeDAO.userProductInsert(userProductVO);
+			storeService.userProductInsert(userProductVO);
 			
 			return "redirect:/store/productList?page=1&categoryId=1";
 		} // 3.  포인트 <  상품 가격인 경우 상품
 		else {
-			// 3.1 상품 구매 취소
+			// 3.1 상품 구매 취소 처리
 			request.setAttribute("msg", "포인트가 부족합니다.");
 			request.setAttribute("url", "/miraclebird/store/productList?page=1&categoryId=1");
 			return "/store/alert";
 		}
+	}
+	
+	// 상품 구매 내역 페이지
+	@GetMapping("purchaseList")
+	public String purchaseList(HttpServletRequest request, Model model) {
+		// userId의 상품 내역 불러오기
+		HttpSession session = request.getSession();
+		Long userId = (Long) session.getAttribute("userId");
+		
+		List<OrderVO> orderList = storeService.orderList(userId);
+		
+		// 중복되는 날짜를 제거하기 위해 Set 선언 
+		HashSet<String> set = new HashSet<>();
+		
+		for (int i = 0; i < orderList.size(); i++) {
+			String time = orderList.get(i).getOrderDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
+			set.add(time);
+		}
+		
+		// Set에서 List로 변환
+		List<String> dateList = new ArrayList<>(set);
+        
+		List<LocalDate> date = new ArrayList<LocalDate>();
+		for (int i = 0; i < dateList.size(); i++) {
+			date.add(LocalDate.parse(dateList.get(i)));
+		}
+		
+		// set 특징 때문에 오름차순 정렬
+		Collections.sort(date);
+		
+		model.addAttribute("date", date);
+		model.addAttribute("orderList", orderList);
+
+		// 년 월 일마다 일별 내역을 넣어서 
+		return "/store/purchaseList";
 	}
 }

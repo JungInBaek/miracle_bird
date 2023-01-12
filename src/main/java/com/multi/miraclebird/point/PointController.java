@@ -1,6 +1,11 @@
 package com.multi.miraclebird.point;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.miraclebird.store.CategoryPageVO;
+import com.multi.miraclebird.store.CategoryVO;
+import com.multi.miraclebird.store.OrderVO;
 import com.multi.miraclebird.store.StoreService;
 import com.multi.miraclebird.user.UserService;
 import com.multi.miraclebird.user.UserVO;
@@ -29,8 +37,9 @@ public class PointController {
 	@Autowired
 	StoreService storeService;
 	
+	// 포인트 목록 조회
 	@GetMapping("pointList")
-	public String list(HttpServletRequest request, Model model) {
+	public String list(HttpServletRequest request, CategoryPageVO vo, Model model) {
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
 		
@@ -40,27 +49,17 @@ public class PointController {
 		
 		int myPoint = storeService.myPoint(userId);
 		
+		List<CategoryVO> categoryList = storeService.cateList();
+		
+		model.addAttribute("cateNum", vo.getCategoryId());
+		model.addAttribute("cateList", categoryList);
 		model.addAttribute("myPoint", myPoint);
 		model.addAttribute("userVO", userVO);
 		model.addAttribute("pointVO", pointVO);
 		return "/store/pointList";
 	}
 	
-//	@GetMapping("pointBuying")
-//	public void pointBuying(HttpServletRequest request, String pointId, Model model) {
-//		System.out.println(pointId);
-//		int pointId2 = Integer.parseInt(pointId.trim());
-//		System.out.println(pointId2);
-//		HttpSession session = request.getSession();
-//		Long userId = (Long) session.getAttribute("userId");
-//		
-//		UserVO userVO = userService.selectUser(userId);
-//		
-//		PointVO pointVO = pointService.one(pointId2);
-//		
-//		model.addAttribute("pointVO", pointVO);
-//	}
-	
+	// 포인트 충전 처리
 	@GetMapping("pointBuy")
 	public String pointBuy(PointVO pointVO, String username, Model model) {
 		model.addAttribute("pointVO", pointVO);
@@ -68,6 +67,7 @@ public class PointController {
 		return "/store/pointBuy";
 	}
 	
+	// 포인트 충전 Post 처리
 	@PostMapping("pointBuying")
 	public void pointBuy(HttpServletRequest request, int pointId) {
 		HttpSession session = request.getSession();
@@ -95,5 +95,39 @@ public class PointController {
 		 * request.setAttribute("msg", "포인트 충전이 완료되었습니다!"); request.setAttribute("url",
 		 * "/miraclebird/store/pointList"); return "/store/alert";
 		 */
+	}
+	
+	// 포인트 충전 내역 페이지
+	@GetMapping("chargeList")
+	public String chargeList(HttpServletRequest request, Model model) {
+		// userId의 충전 내역 불러오기
+		HttpSession session = request.getSession();
+		Long userId = (Long) session.getAttribute("userId");
+	
+		List<ChargeVO> chargeList = pointService.chargeList(userId);
+	
+		// 중복되는 날짜를 제거하기 위해 Set 선언 
+		HashSet<String> set = new HashSet<>();
+		
+		for (int i = 0; i < chargeList.size(); i++) {
+			String time = chargeList.get(i).getChargeDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
+			set.add(time);
+		}
+		
+		// Set에서 List로 변환
+		List<String> dateList = new ArrayList<>(set);
+		
+		List<LocalDate> date = new ArrayList<LocalDate>();
+		for (int i = 0; i < dateList.size(); i++) {
+			date.add(LocalDate.parse(dateList.get(i)));
+		}
+		
+		// set 특징 때문에 오름차순 정렬
+		Collections.sort(date);
+		
+		model.addAttribute("date", date);
+		model.addAttribute("chargeList", chargeList);
+		
+		return "/store/chargeList";
 	}
 }
