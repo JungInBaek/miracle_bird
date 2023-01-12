@@ -31,6 +31,7 @@ import com.multi.miraclebird.party.vo.PageParam;
 import com.multi.miraclebird.party.vo.PageVO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
+import com.multi.miraclebird.party.vo.PartyAttendanceVO;
 import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
 import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
@@ -112,6 +113,8 @@ public class PartyController {
 		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
 		Integer partyMemberCount = partyService.getPartyMemberCountByPartyId(partyId);
 		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
+		
+		
 		
 		model.addAttribute("partyVO", partyVO);
 		model.addAttribute("partyMemberCount", partyMemberCount);
@@ -305,11 +308,10 @@ public class PartyController {
 	@ResponseBody
 	@GetMapping("/products")
 	public List<String> partyProducts(HttpSession session) {
-		List<String> list = null;
 		if (session.getAttribute("userId") == null) {
-			return list;
+			return null;
 		} else if(session.getAttribute("partyId") == null) {
-			return list;
+			return null;
 		}
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -322,9 +324,40 @@ public class PartyController {
 			map.put(key, value);
 		}
 		
-		list = new ArrayList<>(map.values());
+		List<String> list = new ArrayList<>(map.values());
 		
 		return list;
 	}
 	
+	@ResponseBody
+	@GetMapping("/attendance")
+	public List<PartyAttendanceVO> partyAttendance(HttpSession session) {
+		if (session.getAttribute("userId") == null) {
+			return null;
+		} else if(session.getAttribute("partyId") == null) {
+			return null;
+		}
+		
+		LocalDate today = LocalDate.now();
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		
+		PartyAttendanceVO partyAttendanceVO = new PartyAttendanceVO();
+		partyAttendanceVO.setAttendanceDate(today);
+		partyAttendanceVO.setPartyId(partyId);
+		
+		Integer count = feedService.getPartyMemberFeedDistinctCount(partyAttendanceVO);
+		partyAttendanceVO.setAttendanceCount(count);
+		
+		PartyAttendanceVO attendance = partyService.findPartyAttendanceByAttendanceDateAndPartyId(partyAttendanceVO);
+		if (attendance == null) {
+			partyService.insertPartyAttendance(partyAttendanceVO);
+		} else {
+			partyAttendanceVO.setPartyAttendanceId(attendance.getPartyAttendanceId());
+			partyService.updatePartyAttendance(partyAttendanceVO);
+		}
+		
+		List<PartyAttendanceVO> weekly = partyService.getPartyAttendanceWeeklyByPartyId(partyId);
+		
+		return weekly;
+	}
 }

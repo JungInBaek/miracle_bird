@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="partyAttendance">
+
+	<select id="findPartyAttendanceByAttendanceDateAndPartyId" parameterType="partyAttendanceVO" resultType="partyAttendanceVO">
+		select *
+		from party_attendance
+		where attendance_date = #{attendanceDate} and party_id = #{partyId};
+	</select>
+	
+	<insert id="insertPartyAttendance" parameterType="partyAttendanceVO">
+		insert into party_attendance
+		values (null, #{attendanceDate}, #{attendanceCount}, #{partyId});
+	</insert>
+	
+	<update id="updatePartyAttendance" parameterType="partyAttendanceVO">
+		update party_attendance set
+		attendance_count = #{attendanceCount}
+		where party_attendance_id = #{partyAttendanceId};
+	</update>
+	
+	<select id="getPartyAttendanceWeeklyByPartyId" parameterType="Integer" resultType="partyAttendanceVO">
+		select *
+		from party_attendance
+		where party_id = #{partyId}
+		order by attendance_date desc
+		limit 0, 7;
+	</select>
+
+</mapper>

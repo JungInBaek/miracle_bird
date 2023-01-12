@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.multi.miraclebird.api.InstagramApiService;
 import com.multi.miraclebird.party.vo.PageParam;
+import com.multi.miraclebird.party.vo.PartyAttendanceVO;
 import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
 import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.profile.ProfileVO;
@@ -64,5 +65,9 @@ public class FeedService {
 	
 	public Integer getPartyMemberFeedCount(PageParam pageParam) {
 		return feedDao.getPartyMemberFeedCount(pageParam);
+	}
+
+	public Integer getPartyMemberFeedDistinctCount(PartyAttendanceVO partyAttendanceVO) {
+		return feedDao.getPartyMemberFeedDistinctCount(partyAttendanceVO);
 	}
 }

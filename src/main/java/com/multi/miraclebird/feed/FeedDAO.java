@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.multi.miraclebird.party.vo.PageParam;
+import com.multi.miraclebird.party.vo.PartyAttendanceVO;
 import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
 import com.multi.miraclebird.party.vo.PartyFeedVO;
 import com.multi.miraclebird.profile.ProfileVO;
@@ -54,6 +55,10 @@ public class FeedDAO {
 	
 	public Integer getPartyMemberFeedCount(PageParam pageParam) {
 		return mybatis.selectOne("feed.getPartyMemberFeedCount", pageParam);
+	}
+
+	public Integer getPartyMemberFeedDistinctCount(PartyAttendanceVO partyAttendanceVO) {
+		return mybatis.selectOne("feed.getPartyMemberFeedDistinctCount", partyAttendanceVO);
 	}
 
 }
