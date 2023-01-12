@@ -14,6 +14,58 @@
         rel=“stylesheet”>
     <link rel=“stylesheet”
     href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    	let list;
+    	$.ajax({
+    		type: "get",
+    		url: "/miraclebird/party/attendance",
+    		async: false,
+    		dataType: "json",
+    		success: function(data) {
+    			console.log(data);
+    			list = data;
+    		}
+    	});
+    
+	    google.charts.load('current', {'packages':['line']});
+	    google.charts.setOnLoadCallback(drawChart);
+		
+	    function drawChart() {
+	    	
+	    	var data = new google.visualization.DataTable();
+	    	data.addColumn('date', 'Date');
+			data.addColumn('number', 'Count')
+		    /* data.addColumn('number', 'Day');
+		    data.addColumn('number', 'Guardians of the Galaxy');
+		    data.addColumn('number', 'The Avengers');
+		    data.addColumn('number', 'Transformers: Age of Extinction'); */
+		    
+		    data.addRows(list.length);
+		    for (var i = 0; i < list.length; i++) {
+		    	let date = list[i].attendanceDate;
+		    	data.setCell(i, 0, new Date(date.year, date.monthValue, date.dayOfMonth));
+		    	data.setCell(i, 1, list[i].attendanceCount);
+			}
+		    /* data.addRows([
+		      [new Date(2007, 5, 1),  4],
+		    ]); */
+		
+		    var options = {
+		      chart: {
+		        title: 'Box Office Earnings in First Two Weeks of Opening',
+		        subtitle: 'in millions of dollars (USD)'
+		      },
+		      width: 900,
+		      height: 500
+		    };
+		
+		    var chart = new google.charts.Line(document.getElementById('linechart_material'));
+		
+		    chart.draw(data, google.charts.Line.convertOptions(options));
+		  }
+    </script>
     <title>Party Main</title>
 </head>
 <body>
@@ -72,17 +124,16 @@
             	</a>
             </c:if>
         </div>
+        <!-- 구글 차트 -->
+        <div id="linechart_material" style="width: 900px; height: 500px"></div>
     <div class="mainInfo">
         <div class="main">
             <div class="mainImg">
             	<c:if test='${partyImgVO == null}'>
-            	<div style="text-align:center; line-height:400px">
-                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" width="300px" />
-                	<a>파티 대표 이미지를 등록해주세요!</a>
-            	</div>
+                	<img src="${pageContext.request.contextPath}/resources/img/chart.png" />
             	</c:if>
             	<c:if test='${partyImgVO != null}'>
-                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="950px" height="400px" />
+                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" />
             	</c:if>
             </div>
             <div class="mainText">
@@ -92,7 +143,7 @@
         <div class="partyInfo">
             <div class="stati">
                 <a>statistics</a><br>
-                <h4>그래프 넣어야함</h4>
+                <h4>그래프</h4>
             </div>
             <div class="time">
                 <a>Time</a><br>
@@ -109,5 +160,30 @@
         </div>
     </div>
     </div>
+    <script lang="javascript">
+    	let list;
+    	$.ajax({
+    		type: "get",
+    		url: "/miraclebird/party/products",
+    		async: false,
+    		dataType: "json",
+    		success: function(data) {
+    			list = data;
+    			console.log(data);
+    		}
+    	});
+    	
+    	function backChange(){
+            // 데이터에 있는 색상 코드 입력
+            // var Acolor = new Array('red', 'orange', 'green');
+            var Acolor = list;
+            var Bcolor = Math.floor(Math.random() * Acolor.length);
+            var Ccolor = Acolor[Bcolor]; 
+            document.getElementById('bg').style.background=Ccolor;
+            document.getElementById('here').style.background=Ccolor;
+        }
+    	
+        setInterval(backChange,8000);
+    </script>
 </body>
 </html>

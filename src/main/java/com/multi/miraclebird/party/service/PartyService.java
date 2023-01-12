@@ -10,11 +10,13 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.party.dao.PartyApplicantDAO;
+import com.multi.miraclebird.party.dao.PartyAttendanceDAO;
 import com.multi.miraclebird.party.dao.PartyDAO;
 import com.multi.miraclebird.party.dao.PartyImgDAO;
 import com.multi.miraclebird.party.dao.PartyMemberDAO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
+import com.multi.miraclebird.party.vo.PartyAttendanceVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
 import com.multi.miraclebird.party.vo.PartyMemberVO;
@@ -38,6 +40,9 @@ public class PartyService {
 	
 	@Autowired
 	private FileService fileService;
+
+	@Autowired
+	private PartyAttendanceDAO partyAttendanceDao;
 	
 	
 	public void createParty(PartyVO partyVO) {
@@ -153,6 +158,22 @@ public class PartyService {
 
 	public void updateIntroByPartyId(PartyVO partyVO) {
 		partyDao.updateIntroByPartyId(partyVO);
+	}
+
+	public PartyAttendanceVO findPartyAttendanceByAttendanceDateAndPartyId(PartyAttendanceVO partyAttendanceVO) {
+		return partyAttendanceDao.findPartyAttendanceByAttendanceDateAndPartyId(partyAttendanceVO);
+	}
+
+	public void insertPartyAttendance(PartyAttendanceVO partyAttendanceVO) {
+		partyAttendanceDao.insertPartyAttendance(partyAttendanceVO);
+	}
+
+	public void updatePartyAttendance(PartyAttendanceVO partyAttendanceVO) {
+		partyAttendanceDao.updatePartyAttendance(partyAttendanceVO);
+	}
+
+	public List<PartyAttendanceVO> getPartyAttendanceWeeklyByPartyId(Integer partyId) {
+		return partyAttendanceDao.getPartyAttendanceWeeklyByPartyId(partyId);
 	}
 	
 }
