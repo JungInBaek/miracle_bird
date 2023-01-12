@@ -1,26 +1,15 @@
 package com.multi.miraclebird.feed;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.multi.miraclebird.api.InstagramApiService;
 import com.multi.miraclebird.party.vo.PageParam;
-import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
-import com.multi.miraclebird.party.vo.PartyFeedVO;
+import com.multi.miraclebird.party.vo.PartyAttendanceVO;
 import com.multi.miraclebird.profile.ProfileVO;
-import com.multi.miraclebird.user.UserVO;
 
 @Service
 public class FeedService {
@@ -64,5 +53,9 @@ public class FeedService {
 	
 	public Integer getPartyMemberFeedCount(PageParam pageParam) {
 		return feedDao.getPartyMemberFeedCount(pageParam);
+	}
+	
+	public Integer getPartyMemberFeedDistinctCount(PartyAttendanceVO partyAttendanceVO) {
+		return feedDao.getPartyMemberFeedDistinctCount(partyAttendanceVO);
 	}
 }

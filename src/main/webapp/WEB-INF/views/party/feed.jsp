@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,21 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="../resources/css/partyMain5.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyFeed5.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
     <link rel=“stylesheet”
     href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
-    <title>Party Main</title>
+    <title>Party Feed</title>
 </head>
 <body>
-<!-- 헤더 -->
-    <header>
+<header>
         <div class="head">
             <!-- 로고 -->
             <a href="/miraclebird">
-                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo animate__animated animate__fadeInLeft">
+                <img src="../resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -49,7 +49,7 @@
             </nav>
         </div>
     </header>
-    <div>
+    <div >
         <div class="cate">
             <a href="/miraclebird/party/main">
             	<button class="btn">Main</button>
@@ -74,40 +74,59 @@
         </div>
     <div class="mainInfo">
         <div class="main">
-            <div class="mainImg">
-            	<c:if test='${partyImgVO == null}'>
-            	<div style="text-align:center; line-height:400px">
-                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" width="300px" />
-                	<a>파티 대표 이미지를 등록해주세요!</a>
-            	</div>
-            	</c:if>
-            	<c:if test='${partyImgVO != null}'>
-                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="950px" height="400px" />
-            	</c:if>
+            <div class="mainContent">
+            	<c:if test="${pageVO.prev}">
+            		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page - 1}" >
+                		<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
+            		</a>
+                </c:if>
+                <c:forEach var="vo" items="${list}">
+                	<div class="content">
+                    	<img src="${vo.mediaUrl}" class="contentImg">
+                    	<div class="contentText">
+                        	<h5 class="name">${vo.username}</h5>
+                        	<h6 class="hash">${vo.caption}</h6>
+                        	<fmt:parseDate value="${vo.feedTime}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                            <h6 class="time"><fmt:formatDate value="${parsedDateTime}" type="both" /></h6>
+                    	</div>
+                	</div>
+                </c:forEach>
+                <c:if test="${pageVO.next}">
+                	<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page + 1}">
+                		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
+                	</a>
+                </c:if>
             </div>
             <div class="mainText">
                 <a>${partyVO.intro}</a>
             </div>
         </div>
-        <div class="partyInfo">
-            <div class="stati">
-                <a>statistics</a><br>
-                <h4>그래프 넣어야함</h4>
-            </div>
-            <div class="time">
-                <a>Time</a><br>
-                <h4>${partyVO.miracleStartTime} ~ ${partyVO.miracleEndTime}</h4>
-            </div>
-            <div class="activity">
-                <a>Activity</a><br>
-                <h4>${partyVO.activity}</h4>
-            </div>
-            <div class="member">
-                <a>Members</a><br>
-                <h4>${partyMemberCount}/${partyVO.maxMemberCount}</h4>
-            </div>
-        </div>
     </div>
     </div>
+    <script lang="javascript">
+    	let list;
+    	$.ajax({
+    		type: "get",
+    		url: "/miraclebird/party/products",
+    		async: false,
+    		dataType: "json",
+    		success: function(data) {
+    			list = data;
+    			console.log(data);
+    		}
+    	});
+    	
+    	function backChange(){
+            // 데이터에 있는 색상 코드 입력
+            // var Acolor = new Array('red', 'orange', 'green');
+            var Acolor = list;
+            var Bcolor = Math.floor(Math.random() * Acolor.length);
+            var Ccolor = Acolor[Bcolor]; 
+            document.getElementById('bg').style.background=Ccolor;
+            document.getElementById('here').style.background=Ccolor;
+        }
+    	
+        setInterval(backChange,8000);
+    </script>
 </body>
 </html>

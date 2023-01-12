@@ -70,4 +70,15 @@
 			and f.feed_time >= #{today}) as pmf;
 	</select>
 	
+	<!-- 파티원들의 참여도 -->
+	<select id="getPartyMemberFeedDistinctCount" parameterType="partyAttendanceVO" resultType="Integer">
+		select count(distinct user_id)
+		from (select f.*
+			from feed as f
+			join party_member as pm
+			on f.user_id = pm.user_id
+			where pm.party_id = #{partyId}
+			and f.feed_time >= #{attendanceDate}) as pmf;
+	</select>
+	
 </mapper>
