@@ -59,7 +59,20 @@
                                         Party Image Change
                                     </label>
                                 </div>
+<<<<<<< Updated upstream:src/main/webapp/WEB-INF/views/party/partyStyle5.jsp
                                 <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+=======
+                                <input type="file" id="chooseFile" name="file" accept="image/*" onchange="loadFile(this)">
+                                <div class="fileContainer">
+	                                <div class="fileInput">
+	                                    <p>FILE NAME: </p>
+	                                    <p id="fileName">${partyImgVO.oriImgName}</p>
+	                                </div>
+	                                <div class="buttonContainer">
+	                                    <div class="submitButton" id="submitButton"><button type="submit" style="background-color: #FFb100; border:none; color: white; font-weight: bold;">SUBMIT</button></div>
+	                                </div>
+                            	</div>
+>>>>>>> Stashed changes:src/main/webapp/WEB-INF/views/party/style.jsp
                             </form>
                 
                             <div class="fileContainer">
