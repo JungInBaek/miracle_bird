@@ -92,7 +92,7 @@
 	                                    <p id="fileName">${partyImgVO.oriImgName}</p>
 	                                </div>
 	                                <div class="buttonContainer">
-	                                    <div class="submitButton" id="submitButton"><button type="submit">SUBMIT</button></div>
+	                                    <div class="submitButton" id="submitButton"><button type="submit" style="background-color:#FFb100; border:none; color:white; font-weight:bold;">SUBMIT</button></div>
 	                                </div>
                             	</div>
                             </form>

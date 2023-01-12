@@ -75,11 +75,23 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainContent">
-            	<c:if test="${pageVO.prev}">
+            	<<%-- c:if test="${pageVO.prev}">
             		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page - 1}" >
                 		<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
             		</a>
-                </c:if>
+                </c:if> --%>
+                <!-- 테스트 필요! -->
+                <c:choose>
+                <c:when test="${pageVO.prev}">
+            		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page - 1}" >
+                		<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
+            		</a>
+                </c:when>
+                <c:otherwise>
+                		<button class="previous"><img src="../resources/img/arrow-circle-left.png" alt="이전"></button>
+                </c:otherwise>
+                </c:choose>
+            	
                 <c:forEach var="vo" items="${list}">
                 	<div class="content">
                     	<img src="${vo.mediaUrl}" class="contentImg">
@@ -91,11 +103,22 @@
                     	</div>
                 	</div>
                 </c:forEach>
-                <c:if test="${pageVO.next}">
+                <%-- <c:if test="${pageVO.next}">
                 	<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page + 1}">
                 		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
                 	</a>
-                </c:if>
+                </c:if> --%>
+                <!-- 테스트 필요! -->
+                <c:choose>
+	                <c:when test="${pageVO.next}">
+	            		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page + 1}">
+	                		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
+	                	</a>
+	                </c:when>
+	                <c:otherwise>
+	                		<button class="next"><img src="../resources/img/arrow-circle-right.png" alt="이전"></button>
+	                </c:otherwise>
+                </c:choose>
             </div>
             <div class="mainText">
                 <a>${partyVO.intro}</a>
