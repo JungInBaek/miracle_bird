@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="resources/css/partyPostCreate13.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyPostCreate13.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -21,7 +21,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="resources/img/logo.svg" alt="로고" class="logo">
+                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -50,21 +50,21 @@
     </div>
     <div class="partyInfo">
         <div class="time">
-            <img src="resources/img/time.jpeg" width="330px">
+            <img src="${pageContext.request.contextPath}/resources/img/time.jpeg" width="330px">
             <div class="Info">
                 <a style="float: left; margin-left: 20px; ">Time</a><br>
                 <a style="line-height: 80px;">${partyVO.miracleStartTime}</a> ~ <a>${partyVO.miracleEndTime}</a>
             </div>
         </div>
         <div class="activity">
-            <img src="resources/img/activity.jpeg" width="330px" height="220px">
+            <img src="${pageContext.request.contextPath}/resources/img/activity.jpeg" width="330px" height="220px">
             <div class="Info">
                 <a style="float: left; margin-left: 20px;">Activity</a><br>
                 <a style="line-height: 80px;">${partyVO.activity}</a>
             </div>
         </div>
         <div class="people">
-            <img src="resources/img/people.jpeg" width="330px" height="220px" >
+            <img src="${pageContext.request.contextPath}/resources/img/people.jpeg" width="330px" height="220px" >
             <div class="Info">
                 <a style="float: left; margin-left: 20px;">People</a><br>
                 <a style="font-size: 15px; line-height: 20px;"">파티 인원은 최소 5명입니다<br>파티 인원 추가 시 STORE를 이용해주세요!</a>
