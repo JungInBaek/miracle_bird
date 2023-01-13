@@ -15,6 +15,7 @@
         rel=“stylesheet”>
     <link rel=“stylesheet”
     href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <title>Party Feed</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
                     <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
@@ -75,11 +76,16 @@
     <div class="mainInfo">
         <div class="main">
             <div class="mainContent">
-            	<c:if test="${pageVO.prev}">
+            	<c:choose>
+                <c:when test="${pageVO.prev}">
             		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page - 1}" >
                 		<button class="previous"><img src="../resources/img/arrow-circle-left1.png" alt="이전"></button>
             		</a>
-                </c:if>
+                </c:when>
+                <c:otherwise>
+                		<button class="previous"><img src="../resources/img/arrow-circle-left.png" alt="이전"></button>
+                </c:otherwise>
+                </c:choose>
                 <c:forEach var="vo" items="${list}">
                 	<div class="content">
                     	<img src="${vo.mediaUrl}" class="contentImg">
@@ -91,11 +97,16 @@
                     	</div>
                 	</div>
                 </c:forEach>
-                <c:if test="${pageVO.next}">
-                	<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page + 1}">
-                		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
-                	</a>
-                </c:if>
+                <c:choose>
+	                <c:when test="${pageVO.next}">
+	            		<a href="/miraclebird/party/feed?page=${pageVO.pageParam.page + 1}">
+	                		<button class="next" type="submit"><img class="btn-img" src="../resources/img/arrow-circle-right1.png"></button>
+	                	</a>
+	                </c:when>
+	                <c:otherwise>
+	                		<button class="next"><img src="../resources/img/arrow-circle-right.png" alt="이전"></button>
+	                </c:otherwise>
+                </c:choose>
             </div>
             <div class="mainText">
                 <a>${partyVO.intro}</a>
