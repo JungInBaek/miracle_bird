@@ -39,7 +39,8 @@
 
     <!-- 컨텐츠 -->
     <div class="contents">
-    	<!-- 좌측 섹션 -->
+    
+    	<!-- 좌측 컨텐츠 섹션 -->
         <div class="left">
             <div class="page-title">Party List</div>
             <div class="page-info">늘 계획만 세우고 실천에 옮기는 데 실패하셨나요? 더이상 혼자 고민하지 마세요. 원하는 파티에 참여하여 미라클 모닝을 함께 실현하세요!</div>
@@ -72,7 +73,7 @@
             </div>
         </div>
 
-		<!-- 우측 섹션 -->
+		<!-- 우측 컨텐츠 섹션 -->		
         <div class="right">
             <a href="#" class="info">
                 <div class="info-top">
@@ -84,7 +85,9 @@
                     <div class="title">지옥에서 돌아온 닭</div>
                 </div>
                 <div class="info-bottom">
-                    <img src="./img/arrow.svg" alt="enter">
+                    <img src="../resources/img/arrow.svg" alt="enter">
+                </div>
+            </a>
                 </div>
             </a>
         <div class="right">
@@ -98,7 +101,7 @@
                     <div class="title">지옥에서 돌아온 닭</div>
                 </div>
                 <div class="info-bottom">
-                    <img src="./img/arrow.svg" alt="enter">
+                    <img src="../resources/img/arrow.svg" alt="enter">
                 </div>
             </a>
 
