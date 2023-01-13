@@ -61,7 +61,7 @@ public class RecruitController {
 		List<RecruitPartyVO> list = recruitService.getRecruitPartyList();
 		model.addAttribute("list", list);
 		
-		return "recruit/list";
+		return "recruit/partyFindList";
 	}
 
 	@GetMapping("/create")
@@ -82,7 +82,7 @@ public class RecruitController {
 		PartyVO partyVO = partyService.findPartyByPartyId((int) session.getAttribute("partyId"));
 		model.addAttribute("partyVO", partyVO);
 
-		return "recruit/create";
+		return "recruit/partyPostCreate";
 	}
 	
 	@PostMapping("/create")
@@ -110,7 +110,7 @@ public class RecruitController {
 		RecruitPartyVO recruitPartyVO = recruitService.findRecruitPartyByRecruitId(recruitId);
 		model.addAttribute("recruitPartyVO", recruitPartyVO);
 		
-		return "recruit/detail";
+		return "recruit/partyFindDetail";
 	}
 	
 	@GetMapping("/{recruitId}/update")
@@ -131,7 +131,7 @@ public class RecruitController {
 		
 		model.addAttribute(recruitPartyVO);
 		
-		return "recruit/update";
+		return "recruit/partyPostUpdate";
 	}
 	
 	@PostMapping("/{recruitId}/update")
