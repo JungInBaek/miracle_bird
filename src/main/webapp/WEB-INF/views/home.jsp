@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%-- <spring:eval expression="@commonConfig.getProperty('home.redirect.url')" var="redirectUrl" />
-<spring:eval expression="@commonConfig.getProperty('home.location.url')" var="locationUrl" /> --%>
+<spring:eval expression="@global.getProperty('home.redirect.url')" var="redirectUrl" />
+<spring:eval expression="@global.getProperty('home.location.url')" var="locationUrl" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,9 +19,9 @@
 		
 	</script>
 	<script type="text/javascript">
-		let url = window.location.href;
+		let url = ${redirectUrl};
 		if(url.includes()) {
-			window.location.href = 'http://220.119.114.228:8080/miraclebird';
+			window.location.href = ${locatiionUrl};
 		}
 	</script>
 </head>
