@@ -28,7 +28,7 @@
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
                     <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
@@ -92,7 +92,7 @@
 	                                    <p id="fileName">${partyImgVO.oriImgName}</p>
 	                                </div>
 	                                <div class="buttonContainer">
-	                                    <div class="submitButton" id="submitButton"><button type="submit">SUBMIT</button></div>
+	                                    <div class="submitButton" id="submitButton"><button type="submit" style="background-color:#FFb100; border:none; color:white; font-weight:bold;">SUBMIT</button></div>
 	                                </div>
                             	</div>
                             </form>
@@ -173,14 +173,14 @@ function showImage() {
     </script>
     
     <script lang="javascript">
-    	let list;
+    	let colorList;
     	$.ajax({
     		type: "get",
     		url: "/miraclebird/party/products",
     		async: false,
     		dataType: "json",
     		success: function(data) {
-    			list = data;
+    			colorList = data;
     			console.log(data);
     		}
     	});
@@ -188,7 +188,7 @@ function showImage() {
     	function backChange(){
             // 데이터에 있는 색상 코드 입력
             // var Acolor = new Array('red', 'orange', 'green');
-            var Acolor = list;
+            var Acolor = colorList;
             var Bcolor = Math.floor(Math.random() * Acolor.length);
             var Ccolor = Acolor[Bcolor]; 
             document.getElementById('bg').style.background=Ccolor;

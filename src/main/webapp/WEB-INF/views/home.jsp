@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%-- <spring:eval expression="@commonConfig.getProperty('home.redirect.url')" var="redirectUrl" />
+<spring:eval expression="@commonConfig.getProperty('home.location.url')" var="locationUrl" /> --%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,9 +16,12 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap">
 	<script type="text/javascript">
+		
+	</script>
+	<script type="text/javascript">
 		let url = window.location.href;
-		if(url.includes('https://localhost:8443/miraclebird')) {
-			window.location.href = 'http://localhost:8080/miraclebird';
+		if(url.includes()) {
+			window.location.href = 'http://220.119.114.228:8080/miraclebird';
 		}
 	</script>
 </head>
@@ -31,7 +37,7 @@
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
                     <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>

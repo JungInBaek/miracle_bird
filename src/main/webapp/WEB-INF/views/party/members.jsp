@@ -25,7 +25,7 @@
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
                     <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
                     </c:if>
