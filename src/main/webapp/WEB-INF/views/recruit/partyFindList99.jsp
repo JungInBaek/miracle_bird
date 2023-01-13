@@ -20,7 +20,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="../resources/img/logo.svg" alt="로고" class="logo">
+                <img src="resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -48,25 +48,25 @@
             <div class="search">
                 <span>Search</span>
                 <span class="underline"><input type="text"></span>
-                <button><img src="../resources/img/search.svg" alt="search"></button>
+                <button><img src="resources/img/search.svg" alt="search"></button>
             </div>
 
             <div class="btn-container">
                 <a class="btn">
                     <button>
-                        <img src="../resources/img/apply.svg" alt="apply">
+                        <img src="resources/img/apply.svg" alt="apply">
                     </button>
                     <span>파티 신청 현황</span>
                 </a>
                 <a class="btn">
                     <button>
-                        <img src="../resources/img/create.svg" alt="create">
+                        <img src="resources/img/create.svg" alt="create">
                     </button>
                     <span>파티 생성</span>
                 </a>
                 <a class="btn">
                     <button>
-                        <img src="../resources/img/write.svg" alt="write">
+                        <img src="resources/img//write.svg" alt="write">
                     </button>
                     <span>파티 모집글 생성</span>
                 </a>
@@ -88,6 +88,9 @@
                     <img src="../resources/img/arrow.svg" alt="enter">
                 </div>
             </a>
+                </div>
+            </a>
+        <div class="right">
             <a href="#" class="info">
                 <div class="info-top">
                     <span>Activity</span>
