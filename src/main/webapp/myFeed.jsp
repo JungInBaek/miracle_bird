@@ -17,15 +17,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
 	$.ajax({
-		url : "feed/oneProfile",
-		success : function(profileResult) {
-			$("#profileResult").html(profileResult);
-		}
-	})
-	$.ajax({
 		url : "feed/all",
 		success : function(feedResult) {
 			$('#feedResult').html(feedResult);
+		}
+	})
+	$.ajax({
+		url : "feed/oneProfile",
+		success : function(profileResult) {
+			$("#profileResult").html(profileResult);
 		}
 	})
 	</script>
