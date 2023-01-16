@@ -7,9 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedService;
 import com.multi.miraclebird.feed.FeedVO;
-import com.multi.miraclebird.party.service.FileService;
 import com.multi.miraclebird.party.service.PartyService;
 import com.multi.miraclebird.party.vo.PageParam;
 import com.multi.miraclebird.party.vo.PageVO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
 import com.multi.miraclebird.party.vo.PartyAttendanceVO;
-import com.multi.miraclebird.party.vo.PartyFeedPagingVO;
-import com.multi.miraclebird.party.vo.PartyFeedVO;
+import com.multi.miraclebird.party.vo.PartyBoardVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
 import com.multi.miraclebird.party.vo.PartyMemberVO;
@@ -305,6 +301,82 @@ public class PartyController {
 		return "redirect:/party/style";
 	}
 	
+	@GetMapping("/community")
+	public String partyCommunity(HttpSession session, Model model) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		List<PartyBoardVO> list = partyService.getPartyBoardListByPartyId(partyId);
+		model.addAttribute("list", list);
+		model.addAttribute("partyVO", partyVO);
+		
+		return "party/partyCom5";
+	}
+	
+	@GetMapping("/community/{partyBoardId}")
+	public String partyBoardDetail(@PathVariable Integer partyBoardId, HttpSession session, Model model) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
+		Long userId = (Long) session.getAttribute("userId");
+		PartyBoardVO partyBoardVO = partyService.findPartyBoardById(partyBoardId);
+		model.addAttribute("partyBoardVO", partyBoardVO);
+		model.addAttribute("userId", userId);
+		model.addAttribute("partyVO", partyVO);
+		
+		return "party/partyComDetail5";
+	}
+	
+	@PostMapping("/community/create")
+	public String partyBoardCreate(HttpSession session, Model model, PartyBoardVO partyBoardVO) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		Long userId = (Long) session.getAttribute("userId");
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		LocalDateTime now = LocalDateTime.now();
+		
+		
+		partyBoardVO.setWriteDate(now);
+		partyBoardVO.setUpdateDate(now);
+		partyBoardVO.setUserId(userId);
+		partyBoardVO.setPartyId(partyId);
+		partyService.createPartyBoard(partyBoardVO);
+		
+		return "redirect:/party/community";
+	}
+	
+	@GetMapping("/community/{partyBoardId}/update")
+	public String partyBoardUpdate(HttpSession session, Model model, @PathVariable Integer partyBoardId) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		PartyBoardVO partyBoardVO = partyService.findPartyBoardById(partyBoardId);
+		model.addAttribute("partyBoardVO", partyBoardVO);
+		
+		return "/party/partyComUpdate5";
+	}
+	
 	@ResponseBody
 	@GetMapping("/products")
 	public List<String> partyProducts(HttpSession session) {
@@ -360,4 +432,5 @@ public class PartyController {
 		
 		return weekly;
 	}
+	
 }
