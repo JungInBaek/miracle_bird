@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 파티 생성 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -20,18 +21,30 @@
     <header>
         <div class="head">
             <!-- 로고 -->
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
+            <a href="/miraclebird">
+                <img src="../resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
-                <ul class="nav-container">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="#">JOIN</a></li>
-                    <li class="nav-item"><a href="#">MY PARTY</a></li>
-                    <li class="nav-item"><a href="#">PROFILE</a></li>
-                    <li class="nav-item"><a href="#">STORE</a></li>
-                    <li class="nav-item"><button>LOGIN</button></li>
+                <ul class="nav-container animate__animated animate__fadeIn">
+                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
+                    <c:if test="${partyId != null}">
+                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+                    </c:if>
+                    <li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+                    <li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item">
+                    	<c:choose>
+                    		<c:when test="${userId == null}">
+                    			<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -45,7 +58,7 @@
         </div>
         <div class="wel">
             Information<br>
-            <textarea class="welTxt" placeholder="파티에 대한 상세정보를 작성해주세요"></textarea>
+            <textarea name="content" class="welTxt" placeholder="파티에 대한 상세정보를 작성해주세요"></textarea>
         </div>
     </div>
     <div class="partyInfo">

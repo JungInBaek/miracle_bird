@@ -92,9 +92,9 @@
         </div>
 
 		<!-- 우측 컨텐츠 섹션 -->
+		<div class="right">
 		<c:forEach var="vo" items="${list}">
-            <div class="right">
-	            <a href="/miraclebird/recruit/${vo.recruitId}" class="info">
+			<a href="/miraclebird/recruit/${vo.recruitId}" class="info">
 	                <div class="info-top">
 	                    <span>Activity</span>
 	                    <span>${vo.activity}</span>
@@ -106,9 +106,9 @@
 	                <div class="info-bottom">
 	                    <img src="${pageContext.request.contextPath}/resources/img/arrow.svg" alt="enter">
 	                </div>
-	            </a>
-        	</div>
+	        </a>
         </c:forEach>
+        </div>
     </div>
 </body>
 
