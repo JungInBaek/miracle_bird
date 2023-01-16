@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-     <link href="resources/css/partyCommunity.css" rel="stylesheet" type="text/css">
+     <link href="${pageContext.request.contextPath}/resources/css/partyCommunity.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
@@ -23,7 +23,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="/miraclebird">
-                <img src="resources/img/logo.svg" alt="로고" class="logo">
+                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -59,17 +59,17 @@
             	<button class="btn">Feed</button>
             </a>
             <button class="btn">Community</button>
-            <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/applicants">
-            		<button class="btn">Style</button>
-            	</a>
-            </c:if>
             <a href="/miraclebird/party/members">
             	<button class="btn">People</button>
             </a>
             <c:if test="${isLeader}">
             	<a href="/miraclebird/party/applicants">
             		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Style</button>
             	</a>
             </c:if>
         </div>

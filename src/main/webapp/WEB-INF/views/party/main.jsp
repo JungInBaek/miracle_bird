@@ -35,22 +35,20 @@
 	    function drawChart() {
 	    	
 	    	var data = new google.visualization.DataTable();
-	    	/* data.addColumn('date', 'Date');
-			data.addColumn('number', 'Count'); */
-			/* data.addColumn('date', '');
-			data.addColumn('number', ''); */
-		    data.addColumn('number', 'Day');
+			data.addColumn('date', '');
+			data.addColumn('number', '');
+		    /* data.addColumn('number', 'Day');
 		    data.addColumn('number', 'Guardians of the Galaxy');
 		    data.addColumn('number', 'The Avengers');
-		    data.addColumn('number', 'Transformers: Age of Extinction');
+		    data.addColumn('number', 'Transformers: Age of Extinction'); */
 		    
-		    /* data.addRows(list.length);
+		    data.addRows(list.length);
 		    for (var i = 0; i < list.length; i++) {
 		    	let date = list[i].attendanceDate;
 		    	data.setCell(i, 0, new Date(date.year, date.monthValue, date.dayOfMonth));
 		    	data.setCell(i, 1, list[i].attendanceCount);
-			} */
-			data.addRows([
+			}
+			/* data.addRows([
 		        [1,  37.8, 80.8, 41.8],
 		        [2,  30.9, 69.5, 32.4],
 		        [3,  25.4,   57, 25.7],
@@ -65,13 +63,13 @@
 		        [12,  6.6,  8.4,  5.2],
 		        [13,  4.8,  6.3,  3.6],
 		        [14,  4.2,  6.2,  3.4]
-		      ]);
+		      ]); */
 		
 		    var options = {
-		      chart: {
+		      /* chart: {
 		        title: 'Box Office Earnings in First Two Weeks of Opening',
 		        subtitle: 'in millions of dollars (USD)'
-		      },
+		      }, */
 		      width: 900,
 		      height: 400
 		    };
@@ -84,7 +82,7 @@
     <title>Party Main</title>
 </head>
 <body>
-<!-- 헤더 -->
+	<!-- 헤더 -->
     <header>
         <div class="head">
             <!-- 로고 -->
@@ -124,18 +122,20 @@
             <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
-            <button class="btn">Community</button>
-            <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/style">
-            		<button class="btn">Style</button>
-            	</a>
-            </c:if>
+            <a href="/miraclebird/party/community">
+	            <button class="btn">Community</button>
+            </a>
             <a href="/miraclebird/party/members">
             	<button class="btn">People</button>
             </a>
             <c:if test="${isLeader}">
             	<a href="/miraclebird/party/applicants">
             		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/style">
+            		<button class="btn">Style</button>
             	</a>
             </c:if>
         </div>

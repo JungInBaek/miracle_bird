@@ -23,6 +23,7 @@
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyApplicantUserVO" alias="partyApplicantUserVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyAttendanceVO" alias="partyAttendanceVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyMemberUserProfileVO" alias="partyMemberUserProfileVO"/>
+		<typeAlias type="com.multi.miraclebird.party.vo.PartyBoardVO" alias="partyBoardVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyFeedVO" alias="partyFeedVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PartyFeedPagingVO" alias="partyFeedPagingVO"/>
 		<typeAlias type="com.multi.miraclebird.party.vo.PageVO" alias="pageVO"/>
@@ -47,6 +48,7 @@
 		<mapper resource="mapper/partyMemberMapper.xml" />
 		<mapper resource="mapper/partyApplicantMapper.xml" />
 		<mapper resource="mapper/partyAttendanceMapper.xml" />
+		<mapper resource="mapper/partyBoardMapper.xml"/>
 		<mapper resource="mapper/storeMapper.xml" /> 
 		<mapper resource="mapper/orderMapper.xml" /> 
 		<mapper resource="mapper/userProductMapper.xml" /> 

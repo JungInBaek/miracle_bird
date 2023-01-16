@@ -11,12 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.party.dao.PartyApplicantDAO;
 import com.multi.miraclebird.party.dao.PartyAttendanceDAO;
+import com.multi.miraclebird.party.dao.PartyBoardDao;
 import com.multi.miraclebird.party.dao.PartyDAO;
 import com.multi.miraclebird.party.dao.PartyImgDAO;
 import com.multi.miraclebird.party.dao.PartyMemberDAO;
 import com.multi.miraclebird.party.vo.PartyApplicantUserVO;
 import com.multi.miraclebird.party.vo.PartyApplicantVO;
 import com.multi.miraclebird.party.vo.PartyAttendanceVO;
+import com.multi.miraclebird.party.vo.PartyBoardVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
 import com.multi.miraclebird.party.vo.PartyMemberVO;
@@ -43,6 +45,9 @@ public class PartyService {
 
 	@Autowired
 	private PartyAttendanceDAO partyAttendanceDao;
+	
+	@Autowired
+	private PartyBoardDao partyBoardDao;
 	
 	
 	public void createParty(PartyVO partyVO) {
@@ -174,6 +179,18 @@ public class PartyService {
 
 	public List<PartyAttendanceVO> getPartyAttendanceWeeklyByPartyId(Integer partyId) {
 		return partyAttendanceDao.getPartyAttendanceWeeklyByPartyId(partyId);
+	}
+
+	public List<PartyBoardVO> getPartyBoardListByPartyId(Integer partyId) {
+		return partyBoardDao.getPartyBoardListByPartyId(partyId);
+	}
+
+	public void createPartyBoard(PartyBoardVO partyBoardVO) {
+		partyBoardDao.createPartyBoard(partyBoardVO);
+	}
+
+	public PartyBoardVO findPartyBoardById(Integer partyBoardId) {
+		return partyBoardDao.findPartyBoardById(partyBoardId);
 	}
 	
 }
