@@ -32,8 +32,13 @@ header .head .nav-container {
 }
 header .head .nav-container .nav-item {
     margin-left: 40px;
-    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+    text-decoration: none;
+    color: white;
 }
 header .head .nav-container .nav-item a:hover {
     color: #FFB100;
@@ -47,6 +52,7 @@ header .head .nav-container .nav-item button {
     margin: 0 auto;
     width: 130px;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
     font-size: 17px;
     font-weight: 600;
     color: #222;
@@ -54,7 +60,7 @@ header .head .nav-container .nav-item button {
 }
 header .head .nav-container .nav-item button:hover {
     background: none;
-    font-weight: 500;
+    font-weight: 600;
     border: 2px solid #fff;
     color: #fff;
 }
