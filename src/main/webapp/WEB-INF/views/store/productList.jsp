@@ -124,6 +124,9 @@
 
 		<!-- 컨텐츠 -->
 		<div class="item-container">
+		
+		<!-- 가이드 수정 -->
+		<div>구매하신 배경은 회원님의 파티룸에서 사용 가능합니다!</div>
 			<c:forEach items="${list}" var="one" varStatus="status">
 				<div class="item">
 					<div class="item-image"
