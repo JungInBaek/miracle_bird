@@ -115,6 +115,7 @@
 		<!-- 컨텐츠 -->
 		<div class="contents-inner">
 			<div class="contents-title">포인트 충전소</div>
+			<div>포인트 구매를 통해서 파티원들만의 공간을 꾸며보아요!</div>
 			<div class="contents">
 				<c:forEach items="${pointVO}" var="one">
 					<div class="content">

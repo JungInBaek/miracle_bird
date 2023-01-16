@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+/* 공통 */
+body {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    color: #222;
+    overflow-x: hidden;
+}
+
+
+/* 헤더 */
+header .head {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 40px;
+}
+header .head .logo {
+    width: 130px;
+}
+header .head .nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 100%;
+    list-style-type: none;
+}
+header .head .nav-container .nav-item {
+    margin-left: 40px;
+    font-weight: 500;
+    font-size: 18px;
+}
+header .head .nav-container .nav-item a {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #222;
+}
+header .head .nav-container .nav-item a:hover {
+    color: #FFB100;
+}
+header .head .nav-container .nav-item button {
+    background: #FFB100;
+    border: 2px solid #FFB100;
+    border-radius: 50px;
+    width: 130px;
+    margin: 0 auto;
+    padding: 7px 5px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+}
+header .head .nav-container .nav-item button:hover {
+    background: none;
+    font-weight: 600;
+    border: 2px solid #FFB100;
+    color: #FFB100;
+}
+
+
+/* 명언 */
+.saying {
+    width: 25vw;
+    position: absolute;
+    left: 20%;
+    top: 14%;
+    z-index: 1;
+}
+.saying .saying-content {
+    margin: 5px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3;
+}
+.saying .saying-title {
+    margin: 10px 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: right;
+}
+
+
+/* 배경 이미지 */
+.img-bg {
+    width: 30%;
+    height: 75vh;
+    background: url(../img/sun.jpeg) no-repeat center/cover;
+    position: absolute;
+    bottom: 0;
+}
+.img-bg img {
+    max-width: 100%;
+}
+
+/* 내용 */
+.title {
+    font-weight: 700;
+    font-size: 110px;
+    color: #FFB100;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    z-index: 1;
+}
+.party-contents .party-contents-main {
+    z-index: 2;
+    padding: 20px;
+    position: absolute;
+    left: 35%;
+    top: 45%;
+}
+.party-contents .party-title {
+    font-family: 'Noto Sans CJK KR', sans-serif;
+    font-weight: 600;
+    font-size: 23px;
+}
+.party-contents .party-info {
+    width: 45vw;
+    margin: 20px 0;
+    padding: 15px;
+    font-family: 'Noto Sans CJK KR', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+.party-contents .btn-box {
+    display: flex;
+    justify-content: flex-end;
+}
+.party-contents .btn-box button {
+	margin-left: 20px;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    border: 2px solid #FFB100;
+    border-radius: 50%;
+    background-color: #FFB100;
+    transition: .5s;
+    cursor: pointer;
+}
+.party-contents .btn-box button:hover {
+    background-color: transparent;
+    color: #FFB100;
+}
+.party-contents .party-details {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 2%;
+    left: 35%;
+}
+.party-contents .party-details .detail {
+    border-top: 1px solid black;
+    width: 16vw;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 2;
+    color: #FFB100;
+}
+.party-contents .party-details .detail > div {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #222;
+}
+
+/* 새 */
+.bird {
+    max-width: 30%;
+    transform: rotate(-4.65deg);
+    position: absolute;
+    top: 10%;
+    right: -2px;
+}
+
+
+.guide{
+	float:right;
+	margin-top: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.3;
+}
