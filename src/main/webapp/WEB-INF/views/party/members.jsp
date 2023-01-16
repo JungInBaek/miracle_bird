@@ -75,7 +75,7 @@
                 <div class="content">
                 	<c:forEach var="vo" items="${list}">
                 		<div class="people">
-                        	<img src="${pageContext.request.contextPath}/resources/profile/${vo.profileImg}" class="icon">
+                        	<div class="profile"><img src="${pageContext.request.contextPath}/resources/profile/${vo.profileImg}" class="icon"></div>
                             <ul>
                                 <li>
                                     ${vo.username}

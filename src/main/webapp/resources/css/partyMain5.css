@@ -68,8 +68,9 @@ h4 {
 
 .mainImg {
   width: 950px;
-  height: 400px;
+  /* height: 400px; */
   border: 2px solid #000000;
+  padding: 15px;
 }
 
 .mainText {
@@ -86,7 +87,7 @@ h4 {
 .partyInfo {
   box-sizing: border-box;
   width: 250px;
-  height: 500px;
+  height: 535px;
   margin: 10px;
   border: 2px solid #000000;
   border-radius: 16px;

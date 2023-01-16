@@ -156,3 +156,6 @@ input::-webkit-input-placeholder {
 .bg_white .login_content .btn-gray span {
     padding: 0 10px;
 }
+.insta-move {
+	text-decoration: none;
+}
