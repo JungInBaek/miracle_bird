@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="mainText" onload="backChange()" id="bg">
-                <a><marquee>환영합니다. 지옥에서 돌아온 닭 파티룸입니다.</marquee> </a>
+                <a><marquee>${partyVO.intro}</marquee> </a>
             </div>
         </div>
     </div>

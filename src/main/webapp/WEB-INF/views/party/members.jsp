@@ -54,18 +54,20 @@
             <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
-            <button class="btn">Community</button>
-            <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/style">
-            		<button class="btn">Style</button>
-            	</a>
-            </c:if>
+            <a href="/miraclebird/party/community">
+	            <button class="btn">Community</button>
+            </a>
             <a href="/miraclebird/party/members">
-            	<button class="btn">People</button>
+            	<button class="btn" id="here" onload="backChange()" style="background-color:#ffb100">People</button>
             </a>
             <c:if test="${isLeader}">
             	<a href="/miraclebird/party/applicants">
             		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/style">
+            		<button class="btn">Style</button>
             	</a>
             </c:if>
         </div>

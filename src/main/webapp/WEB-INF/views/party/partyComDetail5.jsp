@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <link href="resources/css/partyComDetail5.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/partyComDetail5.css" rel="stylesheet" type="text/css">
     <link
         href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
         rel=“stylesheet”>
@@ -22,7 +22,7 @@
         <div class="head">
             <!-- 로고 -->
             <a href="#">
-                <img src="resources/img/logo.svg" alt="로고" class="logo">
+                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
             </a>
             <!-- 네비게이션바 -->
             <nav>
@@ -51,53 +51,52 @@
     </header>
     <div >
         <div class="cate">
-            <button class="btn">Main</button>
-            <button class="btn">Feed</button>
-            <button class="btn" id="here" onload="backChange()" style="background-color:#ffb100">Community</button>
-            <button class="btn">Style</button>
-            <button class="btn">People</button>
-            <button type="button" class="btn">Applicants</button>
+            <a href="/miraclebird/party/main">
+            	<button class="btn">Main</button>
+            </a>
+            <a href="/miraclebird/party/feed?page=1">
+            	<button class="btn">Feed</button>
+            </a>
+            <a href="/miraclebird/party/community">
+	            <button class="btn" id="here" onload="backChange()" style="background-color:#ffb100">Community</button>
+            </a>
+            <a href="/miraclebird/party/members">
+            	<button class="btn">People</button>
+            </a>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/style">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
         </div>
     <div class="mainInfo">
         <div class="main">
             <div class="mainContent">
                 <div class="left">
-                    <img src="resources/img/profile.png" style="padding: 40px; width:180px; height: 180px;"><br>
-                    <h4 class="userName" style="height: 50px;">이름</h4>
+                    <img src="${pageContext.request.contextPath}/resources/img/profile.png" style="padding: 40px; width:180px; height: 180px;"><br>
+                    <h4 class="userName" style="height: 50px;">${partyBoardVO.username}</h4>
                 </div>
                 <div class="right">
-                    <h4 >게시글 작성 시간</h4>
-                    <div class="btnClass">
-                        <button class="update">수정</button>
-                        <button class="delete">삭제</button>
-                    </div>
+                    <h4 >${partyBoardVO.writeDate}</h4>
+                    <c:if test="${userId == partyBoardVO.userId}">
+	                    <div class="btnClass">
+	                    	<a href="/miraclebird/party/community/${partyBoardVO.partyBoardId}/update">
+		                        <button class="update">수정</button>
+	                    	</a>
+	                    	<a href="/miraclebird/party/community/${partyBoardVO.partyBoardId}/delete">
+		                        <button class="delete">삭제</button>
+	                    	</a>
+	                    </div>
+                    </c:if>
                     <hr>
-                    <h5>게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                        게시글 작성 내용
-                    </h5>
+                    <h4>
+                    	${partyBoardVO.content}
+                    </h4>
                     <hr>
                     <div class="containerForm">
                         <label for="content">comment</label>
@@ -119,7 +118,7 @@
                 </div>
             </div>
             <div class="mainText" onload="backChange()" id="bg">
-                <a><marquee>환영합니다. 지옥에서 돌아온 닭 파티룸입니다.</marquee> </a>
+                <a><marquee>${partyVO.intro}</marquee> </a>
             </div>
         </div>
         

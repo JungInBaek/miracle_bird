@@ -44,6 +44,10 @@ public class FeedDAO {
 		return mybatis.selectList("feed.allFeedTimeByUserId", profileVO);
 	}
 	
+	public int totalEmotion(Long userId) {
+		return mybatis.selectOne("feed.totalEmotion", userId);
+	}
+	
 	public List<FeedVO> findPartyMemberFeed(PageParam pageParam) {
 		return mybatis.selectList("feed.findPartyMemberFeed", pageParam);
 	}

@@ -149,10 +149,10 @@
 
 
         <!-- 잔디 -->
-        <div class="grass-field"> 내가 심은 기록 보기
+        <div class="grass-field">
+        	<div>내가 심은 기록 보기</div>
             <div class="grass" id="calendar_basic"></div>
         </div>
-    </div>
     </div>
 </body>
 

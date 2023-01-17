@@ -11,6 +11,7 @@ public class FeedVO {
 	private String username;
 	private String caption;
 	private LocalDateTime feedTime;
+	private int emotionSum;
 	
 	public String getFeedId() {
 		return feedId;
@@ -54,10 +55,17 @@ public class FeedVO {
 	public void setFeedTime(LocalDateTime feedTime) {
 		this.feedTime = feedTime;
 	}
+	public int getEmotionSum() {
+		return emotionSum;
+	}
+	public void setEmotionSum(int emotionSum) {
+		this.emotionSum = emotionSum;
+	}
 	@Override
 	public String toString() {
 		return "FeedVO [feedId=" + feedId + ", userId=" + userId + ", mediaType=" + mediaType + ", mediaUrl=" + mediaUrl
-				+ ", username=" + username + ", caption=" + caption + ", feedTime=" + feedTime + "]";
+				+ ", username=" + username + ", caption=" + caption + ", feedTime=" + feedTime + ", emotionSum="
+				+ emotionSum + "]";
 	}
 	
 }

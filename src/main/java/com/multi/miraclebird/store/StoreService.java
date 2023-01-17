@@ -11,18 +11,20 @@ import com.multi.miraclebird.user.UserVO;
 
 
 @Service
-public class StoreService {
+public class StoreService implements StoreServiceInterface {
 	@Autowired
-	StoreDAO storeDAO;
+	StoreDAOInterface storeDAO;
 	
 	@Autowired
 	UserDAO userDAO;
 	
+	@Override
 	public int myPoint(Long userId) {
 		return storeDAO.myPoint(userId);
 	}
 	
 	// 페이징 구현
+	@Override
 	public int pages(int count) {
 		int pages = 0;
 		if(count % 6 == 0) {
@@ -33,42 +35,52 @@ public class StoreService {
 		return pages;
 	}
 
+	@Override
 	public int findProduct(UserProductVO findProduct) {
 		return storeDAO.findProduct(findProduct);
 	}
 
+	@Override
 	public List<CategoryVO> cateList() {
 		return storeDAO.cateList();
 	}
 
+	@Override
 	public List<OrderVO> orderList(Long userId) {
 		return storeDAO.orderList(userId);
 	}
 
+	@Override
 	public int count(CategoryPageVO vo) {
 		return storeDAO.count(vo);
 	}
 
+	@Override
 	public List<ProductVO> list(CategoryPageVO vo) {
 		return storeDAO.list(vo);
 	}
 
+	@Override
 	public UserVO selectUser(Long userId) {
 		return userDAO.selectUser(userId);
 	}
 
+	@Override
 	public int productPoint(int productId) {
 		return storeDAO.productPoint(productId);
 	}
 
+	@Override
 	public void pointUpdate(ProfileVO profileVO) {
 		storeDAO.pointUpdate(profileVO);
 	}
 
+	@Override
 	public void orderInsert(OrderVO orderVO) {
 		storeDAO.orderInsert(orderVO);
 	}
 
+	@Override
 	public void userProductInsert(UserProductVO userProductVO) {
 		storeDAO.userProductInsert(userProductVO);
 	}

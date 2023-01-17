@@ -229,7 +229,7 @@ form .info-right .btn-submit:hover {
 
 /* 잔디 */
 .info .grass-field {
-    width: 1500px;
+    width: 1300px;
     height: 400px;
     margin: 40px auto;
     padding: 30px;
@@ -241,6 +241,12 @@ form .info-right .btn-submit:hover {
     box-shadow: 0 10px 25px rgba(51, 51, 51,0.5);
     font-weight: 700;
     font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info .grass-field div:nth-child(1) {
+    align-self: flex-start;
 }
 .info .grass-field .grass {
     margin: 30px 0;
