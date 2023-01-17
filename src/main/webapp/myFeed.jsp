@@ -15,6 +15,9 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap"
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style type="text/css">
+
+    </style>
 	<script>
 	$.ajax({
 		url : "feed/all",
@@ -34,6 +37,14 @@
 <body>
     <!-- 프로필 -->
     <div class="profile" id="profileResult">
+		<div class="signal">
+			<span class="signal-title">기적을 향하는 당신의 감정 날씨는?</span>
+			<button>날씨 보기 ►</button>
+			<div class="signal-container">
+				<img src="../resources/img/sunny.svg" alt="맑음"> <!-- sunny / partlycloudy / rainy (맑음 / 구름 조금 / 비) -->
+				<div class="signal-text">맑음</div>
+			</div>
+		</div>
     </div>
 
     <!-- 메인 -->

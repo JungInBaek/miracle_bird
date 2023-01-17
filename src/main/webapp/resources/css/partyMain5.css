@@ -24,6 +24,13 @@ h4 {
 .stati {
   height: 250px;
 }
+.stati > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #bbb;
+}
 
 .time {
   height: 80px;
@@ -77,8 +84,10 @@ h4 {
   box-sizing: border-box;
   width: 950px;
   height: 100px;
+  padding: 0 20px;
   background: #ffb100;
   border: 2px solid #000000;
+  border-top: 0;
   border-radius: 0px 0px 16px 16px;
   text-align: center;
   line-height: 100px;
