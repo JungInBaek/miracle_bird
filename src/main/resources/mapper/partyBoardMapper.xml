@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="partyBoard">
+
+	<select id="getPartyBoardListByPartyId" parameterType="Integer" resultType="partyBoardVO">
+		select pb.*, u.username
+		from party_board pb
+		join user u
+		on pb.user_id = u.user_id
+		where pb.party_id = #{partyId};
+	</select>
+	
+	<insert id="createPartyBoard" parameterType="partyBoardVO">
+		insert into party_board
+		values (null, #{title}, #{content}, #{writeDate}, #{updateDate}, #{userId}, #{partyId});
+	</insert>
+	
+	<select id="findPartyBoardById" parameterType="Integer" resultType="partyboardVO">
+		select pb.*, u.username
+		from party_board pb
+		join user u
+		on pb.user_id = u.user_id
+		where pb.party_board_id = #{partyBoardId};
+	</select>
+
+</mapper>

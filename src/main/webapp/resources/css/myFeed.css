@@ -136,6 +136,51 @@ header .head .nav-container .nav-item button:hover {
     font-size: 18px;
     color: #bbb;
 }
+.profile .signal {
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    margin: 15px 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile .signal .signal-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+.profile .signal button {
+    margin: 12px 0;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: #FFB100;
+    background-color: transparent;
+    transition: .2s;
+    cursor: pointer;
+    align-self: flex-end;
+}
+.profile .signal button:hover {
+    transform: translateX(10px);
+    font-weight: 600;
+    color: black;
+}
+.profile .signal .signal-container {
+    margin: 10px 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.profile .signal .signal-container img {
+    width: 100px;
+}
+.profile .signal .signal-container .signal-text {
+    margin-top: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
 .profile .profile-inner .text-box {
     width: 350px;
     font-weight: 500;
@@ -174,6 +219,7 @@ header .head .nav-container .nav-item button:hover {
 }
 .main .feeds .feed {
     margin: 30px 20px;
+    width: 360px;
 }
 .main .feeds .feed .feed-img {
     width: 360px;

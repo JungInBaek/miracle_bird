@@ -138,9 +138,9 @@
                 </div>
                 <div class="time-title">활동 시간대</div>
                 <div class="time">
-                    <span><input type="time" name="miracleStartTime" id="from"></span>
+                    <span><input type="time" name="miracleStartTime" id="from" min="04:00:00" max="10:00:00"></span>
                     <span>~</span>
-                    <span><input type="time" name="miracleEndTime" id="to"></span>
+                    <span><input type="time" name="miracleEndTime" id="to" min="04:00:00" max="10:00:00"></span>
                 </div>
 
                 <button class="btn-submit">Edit Profile</button>
@@ -149,10 +149,10 @@
 
 
         <!-- 잔디 -->
-        <div class="grass-field"> 내가 심은 기록 보기
+        <div class="grass-field">
+        	<div>내가 심은 기록 보기</div>
             <div class="grass" id="calendar_basic"></div>
         </div>
-    </div>
     </div>
 </body>
 

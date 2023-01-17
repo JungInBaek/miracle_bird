@@ -30,17 +30,17 @@
             </a>
             <button class="btn">Feed</button>
             <button class="btn">Community</button>
-            <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/applicants">
-            		<button class="btn">Style</button>
-            	</a>
-            </c:if>
             <a href="/miraclebird/party/members">
             	<button class="btn">People</button>
             </a>
             <c:if test="${isLeader}">
             	<a href="/miraclebird/party/applicants">
             		<button class="btn">Applicants</button>
+            	</a>
+            </c:if>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/applicants">
+            		<button class="btn">Style</button>
             	</a>
             </c:if>
         </div>

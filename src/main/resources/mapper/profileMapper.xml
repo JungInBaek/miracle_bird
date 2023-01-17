@@ -4,7 +4,7 @@
 
 	<!-- 회원 가입시 자동으로 프로필 생성 -->
 	<insert id="create" parameterType="profileVO">
-		insert into profile values (null, #{userId}, '00:00:00', '00:00:00', null, '../img/profile.png', 0);
+		insert into profile values (null, #{userId}, '00:00:00', '00:00:00', null, 'profile.png', 0);
 	</insert>
 
 	<!-- 프로필 조회 -->

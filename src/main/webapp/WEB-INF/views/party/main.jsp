@@ -35,8 +35,6 @@
 	    function drawChart() {
 	    	
 	    	var data = new google.visualization.DataTable();
-	    	/* data.addColumn('date', 'Date');
-			data.addColumn('number', 'Count'); */
 			data.addColumn('date', '');
 			data.addColumn('number', '');
 		    /* data.addColumn('number', 'Day');
@@ -50,17 +48,30 @@
 		    	data.setCell(i, 0, new Date(date.year, date.monthValue, date.dayOfMonth));
 		    	data.setCell(i, 1, list[i].attendanceCount);
 			}
-		    /* data.addRows([
-		      [new Date(2007, 5, 1),  4],
-		    ]); */
+			/* data.addRows([
+		        [1,  37.8, 80.8, 41.8],
+		        [2,  30.9, 69.5, 32.4],
+		        [3,  25.4,   57, 25.7],
+		        [4,  11.7, 18.8, 10.5],
+		        [5,  11.9, 17.6, 10.4],
+		        [6,   8.8, 13.6,  7.7],
+		        [7,   7.6, 12.3,  9.6],
+		        [8,  12.3, 29.2, 10.6],
+		        [9,  16.9, 42.9, 14.8],
+		        [10, 12.8, 30.9, 11.6],
+		        [11,  5.3,  7.9,  4.7],
+		        [12,  6.6,  8.4,  5.2],
+		        [13,  4.8,  6.3,  3.6],
+		        [14,  4.2,  6.2,  3.4]
+		      ]); */
 		
 		    var options = {
 		      /* chart: {
 		        title: 'Box Office Earnings in First Two Weeks of Opening',
 		        subtitle: 'in millions of dollars (USD)'
 		      }, */
-		      width: 250,
-		      height: 200
+		      width: 900,
+		      height: 400
 		    };
 		
 		    var chart = new google.charts.Line(document.getElementById('linechart_material'));
@@ -70,8 +81,9 @@
     </script>
     <title>Party Main</title>
 </head>
+
 <body>
-<!-- 헤더 -->
+	<!-- 헤더 -->
     <header>
         <div class="head">
             <!-- 로고 -->
@@ -111,12 +123,9 @@
             <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
-            <button class="btn">Community</button>
-            <c:if test="${isLeader}">
-            	<a href="/miraclebird/party/style">
-            		<button class="btn">Style</button>
-            	</a>
-            </c:if>
+            <a href="/miraclebird/party/community">
+	            <button class="btn">Community</button>
+            </a>
             <a href="/miraclebird/party/members">
             	<button class="btn">People</button>
             </a>
@@ -125,20 +134,18 @@
             		<button class="btn">Applicants</button>
             	</a>
             </c:if>
+            <c:if test="${isLeader}">
+            	<a href="/miraclebird/party/style">
+            		<button class="btn">Style</button>
+            	</a>
+            </c:if>
         </div>
         
     <div class="mainInfo">
         <div class="main">
             <div class="mainImg">
-            	<c:if test='${partyImgVO == null}'>
-            	<div style="text-align:center; line-height:400px">
-                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" width="300px" />
-                	<a>파티 대표 이미지를 등록해주세요!</a>
-            	</div>
-            	</c:if>
-            	<c:if test='${partyImgVO != null}'>
-                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="950px" height="400px" />
-            	</c:if>
+            	<!-- 구글 차트 -->
+            	<div id="linechart_material"></div>
             </div>
             <div class="mainText">
                 <a>${partyVO.intro}</a>
@@ -146,9 +153,16 @@
         </div>
         <div class="partyInfo">
             <div class="stati">
-                <a>statistics</a><br>
-                <!-- 구글 차트 -->
-        		<div id="linechart_material" style="width: 250px; height: 200px"></div>
+                <a>대표 이미지</a><br>
+        		<c:if test='${partyImgVO == null}'>
+	            	<span>
+	                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" />
+	                	<a style="font-size: 15px;">파티 대표 이미지를 등록해주세요!</a>
+	            	</span>
+            	</c:if>
+            	<c:if test='${partyImgVO != null}'>
+                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="300px" />
+            	</c:if>
             </div>
             <div class="time">
                 <a>Time</a><br>

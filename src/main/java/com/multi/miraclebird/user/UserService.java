@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.miraclebird.api.InstagramApiService;
-import com.multi.miraclebird.profile.ProfileDAO;
+import com.multi.miraclebird.profile.ProfileDAOInter;
 import com.multi.miraclebird.profile.ProfileVO;
 
 
@@ -24,7 +24,7 @@ public class UserService {
 	private UserDAO userDao;
 	
 	@Autowired
-	private ProfileDAO profileDao;
+	private ProfileDAOInter profileDao;
 	
 	public UserVO createInstagramUser(String code) {
 		UserVO userVO = new UserVO();

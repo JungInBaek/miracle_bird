@@ -33,7 +33,7 @@ import com.multi.miraclebird.user.UserVO;
 public class ProfileController {
 
 	@Autowired
-	private ProfileService profileService;
+	private ProfileServiceInter profileService;
 	
 	@Autowired
 	private UserService userService;
@@ -76,12 +76,12 @@ public class ProfileController {
 		savedName = file.getOriginalFilename();
 		if (!savedName.equals("")) {
 			String uploadPath = request.getSession().getServletContext().getRealPath("resources/profile");
-			System.out.println("파일있음" + savedName);
+//			System.out.println("파일있음" + savedName);
 			File target = new File(uploadPath + "/" + savedName);
 			file.transferTo(target);
 		} else {
 			savedName = profileVO.getProfileImg();
-			System.out.println("파일없음" + savedName);
+//			System.out.println("파일없음" + savedName);
 		}
 		Long userId = (Long) request.getSession().getAttribute("userId");
 		profileVO.setProfileImg(savedName);
@@ -91,18 +91,6 @@ public class ProfileController {
 	}
 
 	// 피드 잔디 구현
-//	@RequestMapping("profile/feedChart")
-//	public void feedChart(HttpServletRequest requset, ProfileVO profileVO, Model model) {
-//		if (profileVO.getUserId() == null) {
-//			HttpSession session = requset.getSession();
-//			Long userId = (Long) session.getAttribute("userId");
-//			profileVO.setUserId(userId);
-//		}
-////		profileVO = profileService.oneProfile(profileVO);
-//		List<FeedVO> list = feedService.allFeedByUserId(profileVO);
-//		model.addAttribute("list", list);
-//	}
-	
 	@RequestMapping("profile/feedChart")
 	@ResponseBody
 	public List<FeedJsonVO> testFeedChart(HttpServletRequest requset, ProfileVO profileVO, Model model) {
@@ -110,7 +98,7 @@ public class ProfileController {
 		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
 		List<FeedJsonVO> feedDate = feedService.allFeedTimeByUserId(profileVO);
-		System.out.println(feedDate);
+//		System.out.println(feedDate);
 		return feedDate;
 	}
 }

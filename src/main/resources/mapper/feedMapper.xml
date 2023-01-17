@@ -4,12 +4,12 @@
 
 	<!-- 피드 삽입 -->
 	<insert id="create" parameterType="feedVO">
-		insert into feed values (#{feedId}, #{userId}, #{mediaType}, #{mediaUrl}, #{username}, #{caption}, #{feedTime});
+		insert into feed values (#{feedId}, #{userId}, #{mediaType}, #{mediaUrl}, #{username}, #{caption}, #{feedTime}, #{emotionSum});
 	</insert>
 	
 	<!-- 피드 갱신 -->
 	<update id="update" parameterType="feedVO">
-		update feed set media_url = #{mediaUrl}, username = #{username}, caption = #{caption}, feed_time = #{feedTime} where feed_id = #{feedId};
+		update feed set media_url = #{mediaUrl}, username = #{username}, caption = #{caption}, feed_time = #{feedTime}, emotion_sum = #{emotionSum} where feed_id = #{feedId};
 	</update>
 	
 	<!-- 피드 삭제 -->
@@ -33,6 +33,10 @@
 	
 	<select id="allFeedTimeByUserId" parameterType="profileVO" resultType="feedJsonVO">
 		select feed_time, count(*) as count from feed where user_id = #{userId} group by feed_time;
+	</select>
+	
+	<select id="totalEmotion" parameterType="Long" resultType="int">
+		select sum(emotion_sum) as total_emotion from feed where user_id = #{userId};
 	</select>
 	
 	<!-- party_id로 파티원들의 피드 조회 -->
