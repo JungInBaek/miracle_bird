@@ -7,15 +7,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../resources/css/partyList.css" rel="stylesheet" type="text/css">
-    <link
-        href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap”
-        rel=“stylesheet”>
-    <link rel=“stylesheet” href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    <!-- TODO: 페이지네이션 구현 -->
-    <title>파티 추천 목록 화면</title>
-  </head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/partyFindList99.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"/>
+    <title>파티 목록 화면</title>
+    <!-- <script type="text/javascript">
+    	var msg = "<c:out value='${msg}' />"
+    	var url = "<c:out value='${url}' />"
+    	alert(msg);
+    	location.href = url;
+    </script> -->
 </head>
 <body>
 <header>
@@ -49,41 +51,59 @@
             </nav>
       </div>
 </header>
-	추천 활동 : ${activity}
-	<hr />
-<div class="box">
-	<div class="wrap">
-	<c:forEach var="vo" items="${list}">
-		<div class="party"
-			onclick="location.href='/miraclebird/recruit/${vo.recruitId}'"
-			style="cursor: pointer">
-			<div>
-				<img src="../resources/img/profile-circle.png" class="profile" />
-			</div>
-			<table>
-				<tbody>
-					<tr>
-						<td>파티 이름</td>
-						<td>${vo.name}</td>
-					</tr>
-					<tr>
-						<td>파티 시간</td>
-						<td>${vo.miracleStartTime}~ ${vo.miracleEndTime}</td>
-					</tr>
-					<tr>
-						<td>파티 활동</td>
-						<td>${vo.activity}</td>
-					</tr>
-					<tr>
-						<td><img src="../resources/img/profile-2user.png"
-							class="people"></td>
-						<td>${vo.memberCount}/${vo.maxMemberCount}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</c:forEach>
-	</div>
-</div>
+<!-- 컨텐츠 -->
+    <div class="contents">
+    
+    	<!-- 좌측 컨텐츠 섹션 -->
+        <div class="left">
+            <div class="page-title">Party List</div>
+            <div class="page-info">추천 활동 : ${activity}</div>
+
+            <div class="search">
+                <%-- <span>Search</span>
+                <span class="underline"><input type="text"></span>
+                <button><img src="${pageContext.request.contextPath}/resources/img/search.svg" alt="search"></button> --%>
+            </div>
+
+            <div class="btn-container">
+                <%-- <a class="btn" style="text-decoration: none;">
+                    <button>
+                        <img src="${pageContext.request.contextPath}/resources/img/apply.svg" alt="apply">
+                    </button>
+                    <span>파티 신청 현황</span>
+                </a>
+                <a class="btn" href="/miraclebird/party/create" style="text-decoration: none;">
+                    <button>
+                        <img src="${pageContext.request.contextPath}/resources/img/create.svg" alt="create">
+                    </button>
+                    <span>파티 생성</span>
+                </a>
+                <a class="btn" href="/miraclebird/recruit/create" style="text-decoration: none;">
+                    <button>
+                        <img src="${pageContext.request.contextPath}/resources/img/write.svg" alt="write">
+                    </button>
+                    <span>파티 모집글 생성</span>
+                </a> --%>
+            </div>
+        </div>
+<!-- 우측 컨텐츠 섹션 -->
+		<div class="right">
+		<c:forEach var="vo" items="${list}">
+			<a href="/miraclebird/recruit/${vo.recruitId}" class="info">
+	                <div class="info-top">
+	                    <span>Activity</span>
+	                    <span>${vo.activity}</span>
+	                </div>
+	                <div class="info-middle">
+	                    <div class="time">${vo.miracleStartTime} ~ ${vo.miracleEndTime}</div>
+	                    <div class="title">${vo.name}</div>
+	                </div>
+	                <div class="info-bottom">
+	                    <img src="${pageContext.request.contextPath}/resources/img/arrow.svg" alt="enter">
+	                </div>
+	        </a>
+        </c:forEach>
+        </div>
+    </div>
 </body>
 </html>
