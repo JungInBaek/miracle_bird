@@ -115,8 +115,9 @@ header .head .nav-container .nav-item button:hover {
 }
 
 .left .btn-container {
-	margin: auto;
-	margin-top: 50px;
+	display: flex;
+    margin-top: 20%;
+    justify-content: center;
 }
 .left .btn-container .btn {
     display: flex;
@@ -207,7 +208,7 @@ header .head .nav-container .nav-item button:hover {
 	top: 130%;
 	padding: 7px 12px;
 	position: absolute;
-	min-width: 150px;
-	max-width: 400px;	
+	min-width: 130px;
+	max-width: 200px;	
 }
 

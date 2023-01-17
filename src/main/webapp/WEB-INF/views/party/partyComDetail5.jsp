@@ -72,7 +72,7 @@
                         <button class="delete">삭제</button>
                     </div>
                     <hr>
-                    <h4>게시글 작성 내용
+                    <h5>게시글 작성 내용
                         게시글 작성 내용
                         게시글 작성 내용
                         게시글 작성 내용
@@ -97,7 +97,7 @@
                         게시글 작성 내용
                         게시글 작성 내용
                         게시글 작성 내용
-                    </h4>
+                    </h5>
                     <hr>
                     <div class="containerForm">
                         <label for="content">comment</label>
