@@ -40,4 +40,8 @@ public class RecruitService {
 	public void deleteRecruitById(int recruitId) {
 		recruitDao.deleteRecruitById(recruitId);
 	}
+
+	public List<RecruitPartyVO> getRecruitListByActivity(String activity) {
+		return recruitDao.getRecruitListByActivity(activity);
+	}
 }

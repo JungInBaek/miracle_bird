@@ -37,5 +37,9 @@ public class RecruitDAO {
 	public void deleteRecruitById(int recruitId) {
 		mybatis.delete("recruit.deleteRecruitById", recruitId);
 	}
+
+	public List<RecruitPartyVO> getRecruitListByActivity(String activity) {
+		return mybatis.selectList("recruit.getRecruitListByActivity", activity);
+	}
 	
 }
