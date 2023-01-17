@@ -35,7 +35,7 @@ import com.multi.miraclebird.party.vo.PartyMemberUserProfileVO;
 import com.multi.miraclebird.party.vo.PartyMemberVO;
 import com.multi.miraclebird.party.vo.PartyVO;
 import com.multi.miraclebird.store.ProductVO;
-import com.multi.miraclebird.store.StoreDAO;
+import com.multi.miraclebird.store.StoreDAOInterface;
 
 @Controller
 @RequestMapping("/party")
@@ -48,7 +48,7 @@ public class PartyController {
 	private FeedService feedService;
 	
 	@Autowired
-	private StoreDAO storeDao;
+	private StoreDAOInterface storeDao;
 	
 	
 	@GetMapping("/create")

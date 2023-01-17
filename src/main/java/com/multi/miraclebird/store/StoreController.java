@@ -29,13 +29,13 @@ import com.multi.miraclebird.user.UserVO;
 @RequestMapping("store")
 public class StoreController {
 	@Autowired
-	StoreDAO storeDAO;
+	StoreDAOInterface storeDAO;
 	
 	@Autowired
 	UserDAO userDAO;
 
 	@Autowired
-	StoreService storeService;
+	StoreServiceInterface storeService;
 	
 	// 상점 메인 화면 및 페이징 처리
 	@GetMapping("/productList")
