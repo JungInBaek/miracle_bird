@@ -105,11 +105,12 @@
         <!-- //modal 영역 -->
                     <div class="modal-bg" onClick="javascript:popClose();"></div>
                     <div class="modal-wrap">
-                        <span>
-                            <h4 style=" margin: 20px; display: inline;">글쓰기</h4>
+                        <span class="modal-title">
+                        	<input placeholder="제목을 작성해주세요">
                             <button class="modal-close" onClick="javascript:popClose();">&times;</button>
                         </span>
-                        <textarea placeholder="새로운 내용을 남겨주세요!"></textarea>
+                        <textarea class="content-area" placeholder="새로운 내용을 남겨주세요!"></textarea>
+                        <hr>
                         <button type="submit" class="complete">작성하기</button>
                     </div>
                 </form>
@@ -166,10 +167,4 @@
             document.getElementById('bg').style.background=Ccolor;
             document.getElementById('here').style.background=Ccolor;
             }  
-            setInterval(backChange,2000);
-
-    </script>
-
-
-</body>
-</html>
+     

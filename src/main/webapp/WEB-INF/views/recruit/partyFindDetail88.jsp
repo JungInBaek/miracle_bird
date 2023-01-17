@@ -86,7 +86,7 @@
 					<button>BACK</button>
 				</a>
 			</div>
-			<div class="guide">⚠️ 파티는 하나만 가입이 가능합니다. 신중히 결정하여 가입하시길 바랍니다!</div>
+			<div class="guide">⚠️ 하나의 파티에만 가입이 가능합니다. 신중히 결정하여 가입하시길 바랍니다!</div>
         </div>
 
         <div class="party-details">

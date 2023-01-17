@@ -71,10 +71,16 @@
 
             <div class="btn-container">
                 <a class="btn" href="/miraclebird/party/create" style="text-decoration: none;">
-                    <button data-tooltip-text="파티에 가입 또는 생성할 수 있습니다!">
+                    <button data-tooltip-text="마음에 드는 파티가 없다면 파티를 만들어 보아요!">
                         <img src="${pageContext.request.contextPath}/resources/img/create.svg" alt="create">
                     </button>
                     <span>파티 생성</span>
+                </a>
+                <a class="btn" href="/miraclebird/recruit/create" style="text-decoration: none;">
+                    <button data-tooltip-text="파티 회원을 모집하기 위해 모집글을 등록해주세요!">
+                        <img src="${pageContext.request.contextPath}/resources/img/write.svg" alt="write">
+                    </button>
+                    <span>파티 모집글 생성</span>
                 </a>
             </div>
         </div>
