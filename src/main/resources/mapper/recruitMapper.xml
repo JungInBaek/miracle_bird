@@ -39,4 +39,12 @@
 		where recruit_id = #{recruitId};
 	</delete>
 	
+	<select id="getRecruitListByActivity" parameterType="String" resultType="recruitPartyVO">
+		select r.recruit_id, r.content, p.party_id, p.name, p.miracle_start_time, p.miracle_end_time, p.activity, p.max_member_count, (select count(*) from party_member as pm where pm.party_id = p.party_id) as member_count 
+		from recruit r
+		join party p
+		on r.party_id = p.party_id
+		where p.activity = #{activity};
+	</select>
+	
 </mapper>

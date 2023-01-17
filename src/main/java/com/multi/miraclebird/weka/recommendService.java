@@ -17,7 +17,7 @@ import weka.core.converters.CSVLoader;
 @Service
 public class recommendService {
 
-	public String[] recommend(double[] values, String path) throws Exception {
+	public String recommend(double[] values, String path) throws Exception {
 		// 1. 데이터 로딩(수집)
 		String file = path + "data\\recommend.csv";
 		System.out.println("file: " + file);
@@ -59,23 +59,19 @@ public class recommendService {
 			System.out.println("외향");
 		}
 		System.out.println("============== 추천내용 ============");
-		String[] yes = { "방콕", "휴식", "독서", "오락" };
+		String[] in = { "휴식", "독서", "게임", "공부" };
 
-		String[] no = { "운동", "여행", "모임", "공연" };
+		String[] out = { "헬스", "여행", "모임", "공연" };
 
 		System.out.println("result>> " + result);
-		String[] returnValues = new String[1];
 
 		Random r = new Random();
 		int index = r.nextInt(4);
 		if (result != 0) {
-			returnValues[0] = ">>>내향 : " + yes[index];
-//			returnValues[1] = "yes" + index;
+			return in[index];
 		} else {
-			returnValues[0] = ">>>외향 : " + no[index];
-//			returnValues[1] = "no" + index;
+			return out[index];
 		}
-		return returnValues;
 
 	}
 
