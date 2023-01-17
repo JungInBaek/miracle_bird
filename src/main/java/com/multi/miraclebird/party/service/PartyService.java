@@ -192,5 +192,13 @@ public class PartyService {
 	public PartyBoardVO findPartyBoardById(Integer partyBoardId) {
 		return partyBoardDao.findPartyBoardById(partyBoardId);
 	}
+
+	public void updatePartyBoard(PartyBoardVO partyBoardVO) {
+		partyBoardDao.updatePartyBoard(partyBoardVO);
+	}
+
+	public void deletePartyBoardById(Integer partyBoardId) {
+		partyBoardDao.deletePartyBoardById(partyBoardId);
+	}
 	
 }

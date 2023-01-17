@@ -363,7 +363,7 @@ public class PartyController {
 	}
 	
 	@GetMapping("/community/{partyBoardId}/update")
-	public String partyBoardUpdate(HttpSession session, Model model, @PathVariable Integer partyBoardId) {
+	public String partyBoardUpdatePage(HttpSession session, Model model, @PathVariable Integer partyBoardId) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/loginPage";
 		} else if(session.getAttribute("partyId") == null) {
@@ -371,11 +371,42 @@ public class PartyController {
 			return "redirect:/recruit/list";
 		}
 		
+		Long userId = (Long) session.getAttribute("userId");
 		PartyBoardVO partyBoardVO = partyService.findPartyBoardById(partyBoardId);
 		model.addAttribute("partyBoardVO", partyBoardVO);
+		model.addAttribute("userId", userId);
 		
 		return "/party/partyComUpdate5";
 	}
+	
+	@PostMapping("/community/update")
+	public String partyBoardUpdate(HttpSession session, Model model, PartyBoardVO partyBoardVO) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		partyService.updatePartyBoard(partyBoardVO);
+		
+		return "redirect:/party/community/" + partyBoardVO.getPartyBoardId();
+	}
+	
+	@GetMapping("/community/{partyBoardId}/delete")
+	public String partyBoardDelete(HttpSession session, Model model, @PathVariable Integer partyBoardId) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") == null) {
+			System.out.println("파티에 가입되어 있지 않습니다.");
+			return "redirect:/recruit/list";
+		}
+		
+		partyService.deletePartyBoardById(partyBoardId);
+		
+		return "redirect:/party/community";
+	}
+	
 	
 	@ResponseBody
 	@GetMapping("/products")
