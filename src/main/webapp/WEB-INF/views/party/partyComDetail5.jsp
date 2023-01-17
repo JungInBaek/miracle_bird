@@ -19,36 +19,36 @@
 </head>
 <body>
     <header>
-        <div class="head">
-            <!-- 로고 -->
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
-            </a>
-            <!-- 네비게이션바 -->
-            <nav>
-                <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
-                    <li class="nav-item"><a href="/miraclebird/recruit/list">JOIN</a></li>
-                    <c:if test="${partyId != null}">
-                    	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
-                    </c:if>
-                    <li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
-                    <li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
-                    <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
-                    <li class="nav-item">
-                    	<c:choose>
-                    		<c:when test="${userId == null}">
-                    			<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
-                    		</c:when>
-                    		<c:otherwise>
-                    			<a href="/miraclebird/logout"><button>LOGOUT</button></a>
-                    		</c:otherwise>
-                    	</c:choose>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+		<div class="head">
+			<!-- 로고 -->
+			<a href="/miraclebird">
+				<img src="${pageContext.request.contextPath}/resources/img/logo.svg" alt="로고" class="logo">
+			</a>
+			<!-- 네비게이션바 -->
+			<nav>
+				<ul class="nav-container animate__animated animate__fadeIn">
+					<li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
+					<c:if test="${partyId != null}">
+						<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
+					</c:if>
+					<li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
+					<li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
+					<li class="nav-item"><a
+						href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${userId == null}">
+								<a href="/miraclebird/loginPage"><button>LOGIN</button></a>
+							</c:when>
+							<c:otherwise>
+								<a href="/miraclebird/logout"><button>LOGOUT</button></a>
+							</c:otherwise>
+						</c:choose>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
     <div >
         <div class="cate">
             <a href="/miraclebird/party/main">
@@ -125,18 +125,30 @@
     </div>
     </div>
     <script lang="javascript">
+		let colorList;
+		$.ajax({
+			type : "get",
+			url : "/miraclebird/party/products",
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				colorList = data;
+				console.log(data);
+			}
+		});
 
-        function backChange(){
-            // 데이터에 있는 색상 코드 입력
-            var Acolor = new Array('red', 'orange', 'green'); 
-            var Bcolor = Math.floor(Math.random() * Acolor.length);
-            var Ccolor = Acolor[Bcolor]; 
-            document.getElementById('bg').style.background=Ccolor;
-            document.getElementById('here').style.background=Ccolor;
-            }  
-            setInterval(backChange,2000);
+		function backChange() {
+			// 데이터에 있는 색상 코드 입력
+			// var Acolor = new Array('red', 'orange', 'green');
+			var Acolor = colorList;
+			var Bcolor = Math.floor(Math.random() * Acolor.length);
+			var Ccolor = Acolor[Bcolor];
+			document.getElementById('bg').style.background = Ccolor;
+			document.getElementById('here').style.background = Ccolor;
+		}
 
-    </script>
+		setInterval(backChange, 8000);
+	</script>
 
 </body>
 </html>

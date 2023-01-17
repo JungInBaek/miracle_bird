@@ -22,5 +22,16 @@
 		on pb.user_id = u.user_id
 		where pb.party_board_id = #{partyBoardId};
 	</select>
+	
+	<select id="updatePartyBoard" parameterType="partyBoardVO">
+		update party_board set
+		title = #{title}, content = #{content}
+		where party_board_id = #{partyBoardId};
+	</select>
+	
+	<delete id="deletePartyBoardById" parameterType="Integer">
+		delete from party_board
+		where party_board_id = #{partyBoardId};
+	</delete>
 
 </mapper>

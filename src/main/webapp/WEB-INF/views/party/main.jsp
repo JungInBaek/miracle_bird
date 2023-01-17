@@ -93,7 +93,6 @@
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
@@ -180,29 +179,29 @@
     </div>
     </div>
     <script lang="javascript">
-    	let colorList;
-    	$.ajax({
-    		type: "get",
-    		url: "/miraclebird/party/products",
-    		async: false,
-    		dataType: "json",
-    		success: function(data) {
-    			colorList = data;
-    			console.log(data);
-    		}
-    	});
-    	
-    	function backChange(){
-            // 데이터에 있는 색상 코드 입력
-            // var Acolor = new Array('red', 'orange', 'green');
-            var Acolor = colorList;
-            var Bcolor = Math.floor(Math.random() * Acolor.length);
-            var Ccolor = Acolor[Bcolor]; 
-            document.getElementById('bg').style.background=Ccolor;
-            document.getElementById('here').style.background=Ccolor;
-        }
-    	
-        setInterval(backChange,8000);
-    </script>
+		let colorList;
+		$.ajax({
+			type : "get",
+			url : "/miraclebird/party/products",
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				colorList = data;
+				console.log(data);
+			}
+		});
+
+		function backChange() {
+			// 데이터에 있는 색상 코드 입력
+			// var Acolor = new Array('red', 'orange', 'green');
+			var Acolor = colorList;
+			var Bcolor = Math.floor(Math.random() * Acolor.length);
+			var Ccolor = Acolor[Bcolor];
+			document.getElementById('bg').style.background = Ccolor;
+			document.getElementById('here').style.background = Ccolor;
+		}
+
+		setInterval(backChange, 8000);
+	</script>
 </body>
 </html>

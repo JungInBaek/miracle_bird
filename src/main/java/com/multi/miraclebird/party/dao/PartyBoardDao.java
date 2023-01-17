@@ -26,4 +26,12 @@ public class PartyBoardDao {
 		return mybatis.selectOne("partyBoard.findPartyBoardById", partyBoardId);
 	}
 
+	public void updatePartyBoard(PartyBoardVO partyBoardVO) {
+		mybatis.update("partyBoard.updatePartyBoard", partyBoardVO);
+	}
+
+	public void deletePartyBoardById(Integer partyBoardId) {
+		mybatis.delete("partyBoard.deletePartyBoardById", partyBoardId);
+	}
+
 }

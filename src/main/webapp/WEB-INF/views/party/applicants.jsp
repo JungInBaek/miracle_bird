@@ -39,7 +39,6 @@
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container animate__animated animate__fadeIn">
-                    <li class="nav-item"><a href="/miraclebird">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                     	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
@@ -69,7 +68,9 @@
             <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
             </a>
-            <button class="btn">Community</button>
+            <a href="/miraclebird/party/community">
+	            <button class="btn">Community</button>
+            </a>
             <a href="/miraclebird/party/members">
             	<button class="btn">People</button>
             </a>
