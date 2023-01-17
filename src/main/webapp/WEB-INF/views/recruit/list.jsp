@@ -50,7 +50,7 @@
             </nav>
       </div>
   </header>
-  <div class="search">
+  	<div class="search">
       <input type="text" placeholder="검색어를 입력해주세요." />
       <a href="#">
         <img src="../resources/img/search-normal.png"class="searchBtn">
@@ -99,6 +99,5 @@
 			</a>
 		</c:if>
     </div>
-
 </body>
 </html>
