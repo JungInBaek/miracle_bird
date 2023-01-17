@@ -33,7 +33,7 @@ import com.multi.miraclebird.user.UserVO;
 public class ProfileController {
 
 	@Autowired
-	private ProfileService profileService;
+	private ProfileServiceInter profileService;
 	
 	@Autowired
 	private UserService userService;

@@ -20,13 +20,13 @@ public class DictionaryService {
 	@Autowired
 	DictionaryDAO dictionaryDAO;
 
-	public String emotion(String sentence) {
+	public int emotion(String sentence) {
 		
 		Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
 		
 		KomoranResult komoranResult = komoran.analyze(sentence); // 단어 분석 결과
 		List<String> nounList = komoranResult.getNouns(); // 명사 목록만 추출
-		System.out.println(nounList);
+		System.out.println("명사 목록" + nounList);
 		
 		System.out.println();
 
@@ -57,22 +57,17 @@ public class DictionaryService {
 			nounList2.add(s);
 		}
 		//금칙어 제외된 명사목록 
-		System.out.println(nounList2);
+		System.out.println("제외된 명사 목록" + nounList2);
 		
 		int sum = 0;
 		for (String word : nounList2) {
 			DictionaryVO vo = dictionaryDAO.one(word);
-			System.out.println("---- " + vo);
 			if(vo != null) { //사전에 없는 단어일수도 있으므로 
 				sum += vo.getJumsu();
 			}
 		}
 		
-		System.out.println("긍부정 점수 >> " + sum);
-		String result = "positive";
-		if(sum < 0) {
-			result = "negative";
-		}
-		return result;
+		System.out.println(sum);
+		return sum;
 	}
 }

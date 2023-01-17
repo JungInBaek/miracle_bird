@@ -47,6 +47,25 @@ public class FeedService {
 		return feedDate;
 	}
 	
+	// 피드 긍정부정 총합
+	public EmotionVO totalEmotion(Long userId) {
+		EmotionVO emotionVO = new EmotionVO();
+		int emotion = feedDao.totalEmotion(userId);
+		emotionVO.setTotal(emotion);
+		if (emotion < 0) {
+			emotionVO.setComent("빨간 불이 들어왔어요..!");
+			emotionVO.setImg("redEmotion.png");
+		} else if (emotion > 0) {
+			emotionVO.setComent("파란 불 좋아요~");
+			emotionVO.setImg("blueEmotion.png");
+		} else {
+			emotionVO.setComent("주황 불이군요.");
+			emotionVO.setImg("yellowEmotion.png");
+		}
+		
+		return emotionVO;
+	}
+	
 	public List<FeedVO> findPartyMemberFeed(PageParam pageParam) {
 		return feedDao.findPartyMemberFeed(pageParam);
 	}
@@ -58,4 +77,5 @@ public class FeedService {
 	public Integer getPartyMemberFeedDistinctCount(PartyAttendanceVO partyAttendanceVO) {
 		return feedDao.getPartyMemberFeedDistinctCount(partyAttendanceVO);
 	}
+
 }

@@ -24,29 +24,35 @@ import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.user.UserVO;
 
 @Service
-public class ProfileService {
+public class ProfileService implements ProfileServiceInter {
 
 	@Autowired
 	private InstagramApiService instagramApiService;
 
 	@Autowired
 	private FeedService feedService;
+	
+	@Autowired
+	private DictionaryService dictionaryService;
 
 	@Autowired
-	ProfileDAO profileDao;
+	ProfileDAOInter profileDao;
 
 	@Autowired
 	FeedDAO feedDao;
 
+	@Override
 	public ProfileVO oneProfile(ProfileVO profileVO) {
 		return profileDao.one(profileVO);
 	}
 
+	@Override
 	public void updateProfile(ProfileVO profileVO) {
 		profileDao.update(profileVO);
 	}
 
 	// 인스타 api에서 피드 가져옴
+	@Override
 	public void allFeedInsta(UserVO userVO, ProfileVO profileVO) {
 		List<FeedVO> feedList = new ArrayList<>();
 
@@ -77,6 +83,8 @@ public class ProfileService {
 			if ((feedVO.getMediaType().equals("IMAGE") || feedVO.getMediaType().equals("CAROUSEL_ALBUM"))
 					&& feedVO.getCaption().contains("#미라클버드") && feedTime.isAfter(profileVO.getMiracleStartTime())
 					&& feedTime.isBefore(profileVO.getMiracleEndTime())) {
+				int emotionSum = dictionaryService.emotion(feedVO.getCaption());
+				feedVO.setEmotionSum(emotionSum);
 				if (feedService.selectFeedByFeedId(feedVO) == null) {
 					feedDao.createFeed(feedVO);
 					int point = profileVO.getMiraclePoint() + 100;
