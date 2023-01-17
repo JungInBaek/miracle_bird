@@ -81,6 +81,7 @@
     </script>
     <title>Party Main</title>
 </head>
+
 <body>
 	<!-- 헤더 -->
     <header>
@@ -152,15 +153,15 @@
         </div>
         <div class="partyInfo">
             <div class="stati">
-                <a>statistics</a><br>
+                <a>대표 이미지</a><br>
         		<c:if test='${partyImgVO == null}'>
-	            	<div style="text-align:center; line-height:400px">
-	                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" width="300px" />
-	                	<a>파티 대표 이미지를 등록해주세요!</a>
-	            	</div>
+	            	<span>
+	                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" />
+	                	<a style="font-size: 15px;">파티 대표 이미지를 등록해주세요!</a>
+	            	</span>
             	</c:if>
             	<c:if test='${partyImgVO != null}'>
-                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="950px" height="400px" />
+                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="300px" />
             	</c:if>
             </div>
             <div class="time">
