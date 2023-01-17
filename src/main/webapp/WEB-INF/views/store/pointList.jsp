@@ -1,3 +1,4 @@
+<%@page import="com.multi.miraclebird.point.PointVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -26,6 +27,7 @@
 <body>
 	<%
 	DecimalFormat df = new DecimalFormat("###,###");
+	DecimalFormat df2 = new DecimalFormat("##,####");
 	int myPoint = (int) request.getAttribute("myPoint");
 	%>
 	<!-- 프로필 -->
@@ -116,24 +118,30 @@
 		<div class="contents-inner">
 			<div class="contents-title">포인트 충전소</div>
 			<div class="contents">
-				<c:forEach items="${pointVO}" var="one">
+				<%
+					List<PointVO> pointList = (List<PointVO>) request.getAttribute("pointVO");
+					for (int i = 0; i < pointList.size(); i++) {
+
+				%>
 					<div class="content">
 						<div class="content-image">
-							<span class="point">P ${one.pointAmount}</span> <img
-								src="../resources/img/${one.pointPrice}.png"
-								alt="${one.pointPrice}">
+							<span class="point">P <%= df.format(pointList.get(i).getPointAmount()) %></span> <img
+								src="../resources/img/<%= pointList.get(i).getPointPrice() %>.png"
+								alt="<%= pointList.get(i).getPointPrice() %>">
 						</div>
 						<div class="content-text">
 							<form action="pointBuy">
-								<input type="hidden" name="pointId" value="${one.pointId}">
-								<input type="hidden" name="pointAmount" value="${one.pointAmount}">
-								<input type="hidden" name="pointPrice" value="${one.pointPrice}">
+								<input type="hidden" name="pointId" value="<%= pointList.get(i).getPointId() %>">
+								<input type="hidden" name="pointAmount" value="<%= pointList.get(i).getPointAmount() %>">
+								<input type="hidden" name="pointPrice" value="<%= pointList.get(i).getPointPrice() %>">
 								<input type="hidden" name="username" value="${userVO.username}">
 								<button>구매하기</button>
 							</form>
 						</div>
 					</div>
-				</c:forEach>
+				<%
+					}
+				%>
 			</div>
 		</div>
 

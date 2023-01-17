@@ -1,8 +1,10 @@
+<%@page import="com.multi.miraclebird.store.ProductVO"%>
 <%@page import="com.multi.miraclebird.store.CategoryVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.text.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,6 +38,10 @@
 </script>
 </head>
 <body>
+	<%
+	DecimalFormat df = new DecimalFormat("###,###");
+	int point = (int) request.getAttribute("point");
+	%>
 	<!-- 프로필 -->
 	<div class="profile">
 		<div class="circle-container">
@@ -44,7 +50,7 @@
 		<div class="account">@${userVO.username}</div>
 		<div class="point-container">
 			<img src="../resources/img/money.svg" alt="저금통" class="point-icon">
-			<span class="point">${point}</span>
+			<span class="point"><%=df.format(point) %></span>
 		</div>
 		<div class="category">
 			<div>
@@ -124,20 +130,26 @@
 
 		<!-- 컨텐츠 -->
 		<div class="item-container">
-			<c:forEach items="${list}" var="one" varStatus="status">
+			<%-- <c:forEach items="${list}" var="one" varStatus="status"> --%>
+			<%
+				List<ProductVO> productList = (List<ProductVO>) request.getAttribute("list");
+				for (int i = 0; i < productList.size(); i++) {
+			%>
 				<div class="item">
 					<div class="item-image"
-						style="background-color: ${one.productClass}"></div>
+						style="background-color: <%= productList.get(i).getProductClass()%>"></div>
 					<div class="item-text">
-						<div class="item-text-title">${one.productName}</div>
-						<div class="item-price">${one.productPrice}</div>
+						<div class="item-text-title"> <%= productList.get(i).getProductName()%></div>
+						<div class="item-price"><%= df.format(productList.get(i).getProductPrice()) %> P</div>
 					</div>
-					<div onclick='productBuy(${one.productId})' class="item-buy">
+					<div onclick='productBuy(<%= productList.get(i).getProductId()%>)' class="item-buy">
 					구매하기
 					</div>
 				</div>
-
-			</c:forEach>
+			<%
+				}
+			%>
+<%-- 			</c:forEach> --%>
 		</div>
 		<%
 		int pages = (int) request.getAttribute("pages");

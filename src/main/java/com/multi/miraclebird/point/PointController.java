@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.multi.miraclebird.store.CategoryPageVO;
 import com.multi.miraclebird.store.CategoryVO;
 import com.multi.miraclebird.store.OrderVO;
-import com.multi.miraclebird.store.StoreService;
+import com.multi.miraclebird.store.StoreServiceInterface;
 import com.multi.miraclebird.user.UserService;
 import com.multi.miraclebird.user.UserVO;
 
@@ -29,13 +29,13 @@ import com.multi.miraclebird.user.UserVO;
 @RequestMapping("store")
 public class PointController {
 	@Autowired
-	PointService pointService;
+	PointServiceInterface pointService;
 	
 	@Autowired
 	UserService userService;
 	
 	@Autowired
-	StoreService storeService;
+	StoreServiceInterface storeService;
 	
 	// 포인트 목록 조회
 	@GetMapping("pointList")
