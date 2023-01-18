@@ -69,7 +69,7 @@ public class PointController {
 	
 	// 포인트 충전 Post 처리
 	@PostMapping("pointBuying")
-	public void pointBuy(HttpServletRequest request, int pointId) {
+	public String pointBuy(HttpServletRequest request, int pointId) {
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
 		
@@ -91,10 +91,7 @@ public class PointController {
 		
 		pointService.pointCharge(userPointVO);
 		
-		/*
-		 * request.setAttribute("msg", "포인트 충전이 완료되었습니다!"); request.setAttribute("url",
-		 * "/miraclebird/store/pointList"); return "/store/alert";
-		 */
+		return "redirect:/store/pointList";
 	}
 	
 	// 포인트 충전 내역 페이지

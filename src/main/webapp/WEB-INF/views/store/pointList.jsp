@@ -115,9 +115,9 @@
 		</header>
 
 		<!-- 컨텐츠 -->
+		<div style="background-color: transparent; border: none; width: auto; padding: 5px 10px; margin: 0 10px; font-weight: 500; font-size: 15px; color: #222 ; font-weight: 600;">포인트 구매를 통해서 파티원들만의 공간을 꾸며보아요!</div>
 		<div class="contents-inner">
 			<div class="contents-title">포인트 충전소</div>
-			<div>포인트 구매를 통해서 파티원들만의 공간을 꾸며보아요!</div>
 			<div class="contents">
 				<%
 					List<PointVO> pointList = (List<PointVO>) request.getAttribute("pointVO");
