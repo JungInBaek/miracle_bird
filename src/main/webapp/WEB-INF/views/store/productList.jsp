@@ -129,8 +129,8 @@
 		</header>
 
 		<!-- 컨텐츠 -->
+     	<div style="background-color: transparent; border: none; width: auto; padding: 5px 10px; margin: 0 10px; font-weight: 500; font-size: 15px; color: #222; font-weight: 600;">구매하신 배경은 회원님의 파티룸에서 사용 가능합니다!</div>
 		<div class="item-container">
-      <div>구매하신 배경은 회원님의 파티룸에서 사용 가능합니다!</div>
 			<%-- <c:forEach items="${list}" var="one" varStatus="status"> --%>
 			<%
 				List<ProductVO> productList = (List<ProductVO>) request.getAttribute("list");
