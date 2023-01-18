@@ -20,7 +20,7 @@ public class DictionaryService {
 	@Autowired
 	DictionaryDAO dictionaryDAO;
 
-	public int emotion(String sentence) {
+	public int emotion(String sentence, String path) {
 		
 		Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
 		
@@ -34,19 +34,19 @@ public class DictionaryService {
 		HashSet<String> stopWords = new HashSet<>();
 
 		try {
-			BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(
-					"data/stop.txt")));
+			BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(path + "data\\stop.txt")));
 			String line = null;
-			// System.out.println(buffer.readLine());
+//			 System.out.println(buffer.readLine());
 			while ((line = buffer.readLine()) != null) {
 				if (line.trim().length() > 0) {
 					stopWords.add(line.trim());
 				}
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		}
-		System.out.println(stopWords); //stopWords프린트 
-		System.out.println(stopWords.size());
+//		System.out.println("금칙어" + stopWords); //stopWords프린트 
+//		System.out.println(stopWords.size());
 		
 		//금칙어 제외처리
 		List<String> nounList2 = new ArrayList<String>();

@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<img src="resources/img/${emotionVo.img }" height=16 width=16 alt="신호등">
-${emotionVo.coment}
+
 <c:forEach var="vo" items="${list }">
 	<div class="feed">
 		<div class="feed-img">
