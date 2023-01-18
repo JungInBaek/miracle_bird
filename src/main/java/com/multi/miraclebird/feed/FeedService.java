@@ -52,15 +52,15 @@ public class FeedService {
 		EmotionVO emotionVO = new EmotionVO();
 		int emotion = feedDao.totalEmotion(userId);
 		emotionVO.setTotal(emotion);
-		if (emotion < 0) {
-			emotionVO.setComent("빨간 불이 들어왔어요..!");
-			emotionVO.setImg("redEmotion.png");
-		} else if (emotion > 0) {
-			emotionVO.setComent("파란 불 좋아요~");
-			emotionVO.setImg("blueEmotion.png");
+		if (emotion > 0) {
+			emotionVO.setComent("맑음");
+			emotionVO.setImg("sunny.svg");
+		} else if (emotion < 0) {
+			emotionVO.setComent("비");
+			emotionVO.setImg("rainy.svg");
 		} else {
-			emotionVO.setComent("주황 불이군요.");
-			emotionVO.setImg("yellowEmotion.png");
+			emotionVO.setComent("구름 조금");
+			emotionVO.setImg("partlycloudy.svg");
 		}
 		
 		return emotionVO;

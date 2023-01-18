@@ -9,6 +9,6 @@ public interface ProfileServiceInter {
 	void updateProfile(ProfileVO profileVO);
 
 	// 인스타 api에서 피드 가져옴
-	void allFeedInsta(UserVO userVO, ProfileVO profileVO);
+	void allFeedInsta(UserVO userVO, ProfileVO profileVO, String path);
 
 }

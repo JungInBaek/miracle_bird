@@ -53,7 +53,7 @@ public class ProfileService implements ProfileServiceInter {
 
 	// 인스타 api에서 피드 가져옴
 	@Override
-	public void allFeedInsta(UserVO userVO, ProfileVO profileVO) {
+	public void allFeedInsta(UserVO userVO, ProfileVO profileVO, String path) {
 		List<FeedVO> feedList = new ArrayList<>();
 
 		ResponseEntity<Map> feed = instagramApiService.getUserMedia(userVO);
@@ -83,7 +83,7 @@ public class ProfileService implements ProfileServiceInter {
 			if ((feedVO.getMediaType().equals("IMAGE") || feedVO.getMediaType().equals("CAROUSEL_ALBUM"))
 					&& feedVO.getCaption().contains("#미라클버드") && feedTime.isAfter(profileVO.getMiracleStartTime())
 					&& feedTime.isBefore(profileVO.getMiracleEndTime())) {
-				int emotionSum = dictionaryService.emotion(feedVO.getCaption());
+				int emotionSum = dictionaryService.emotion(feedVO.getCaption(), path);
 				feedVO.setEmotionSum(emotionSum);
 				if (feedService.selectFeedByFeedId(feedVO) == null) {
 					feedDao.createFeed(feedVO);

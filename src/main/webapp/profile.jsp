@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
 	$.ajax({
-		url : "oneProfile",
+		url : 'oneProfile',
 		dataType : "json",
 		success : function(profileJson) {
 			document.getElementById("bio").value = profileJson.bio;
@@ -37,7 +37,7 @@
 	
 		function drawChart() {
 			$.ajax({
-				url : "profile/feedChart",
+				url : 'profile/feedChart',
 				dataType : "json",
 				success : function(list) {
 					var dataTable = new google.visualization.DataTable();
@@ -91,7 +91,6 @@
             <!-- 네비게이션바 -->
             <nav>
                 <ul class="nav-container">
-                    <li class="nav-item"><a href="#">COMMUNITY</a></li>
                     <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                     <c:if test="${partyId != null}">
                         <li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>

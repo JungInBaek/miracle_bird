@@ -52,6 +52,7 @@ public class FeedController {
 	// db에서 피드 가져오기
 	@RequestMapping("feed/all")
 	public void allFeed(HttpServletRequest request, ProfileVO profileVO, UserVO userVO, Model model) {
+		String path = request.getSession().getServletContext().getRealPath("/");
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
@@ -60,18 +61,26 @@ public class FeedController {
 		userVO.setAccessToken(accessToken);
 		profileVO = profileService.oneProfile(profileVO);
 		// 인스타 api호출
-		profileService.allFeedInsta(userVO, profileVO);
+//		profileService.allFeedInsta(userVO, profileVO, path);
 		// db select 분리
 		List<FeedVO> list = feedService.allMiracleFeedByUserId(profileVO);
+		model.addAttribute("list", list);
+	}
+	
+	// 감정 분석
+	@RequestMapping("feed/emotion")
+	public void emotion(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Long userId = (Long) session.getAttribute("userId");
 		// 피드 긍정부정 총합
 		EmotionVO emotionVO = feedService.totalEmotion(userId);
-		model.addAttribute("list", list);
 		model.addAttribute("emotionVo", emotionVO);
 	}
 	
 	// 인스타에서 피드 가져오기 ajax
 	@RequestMapping("feed/insta")
 	public void instaFeed(HttpServletRequest request, ProfileVO profileVO, UserVO userVO) {
+		String path = request.getSession().getServletContext().getRealPath("/");
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
 		profileVO.setUserId(userId);
@@ -79,7 +88,7 @@ public class FeedController {
 		String accessToken = userService.selectAccessTokenByUserId(userId);
 		userVO.setAccessToken(accessToken);
 		profileVO = profileService.oneProfile(profileVO);
-		profileService.allFeedInsta(userVO, profileVO);
+		profileService.allFeedInsta(userVO, profileVO, path);
 	}
 	
 }

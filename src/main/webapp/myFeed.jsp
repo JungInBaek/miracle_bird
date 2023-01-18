@@ -19,31 +19,51 @@
 
     </style>
 	<script>
-	$.ajax({
-		url : "feed/all",
-		success : function(feedResult) {
-			$('#feedResult').html(feedResult);
-		}
-	})
-	$.ajax({
-		url : "feed/oneProfile",
-		success : function(profileResult) {
-			$("#profileResult").html(profileResult);
-		}
+	$(function() {
+		$.ajax({
+			url : 'feed/all',
+			success : function(feedResult) {
+				$('#feedResult').html(feedResult);
+			}
+		})
+		$.ajax({
+			url : 'feed/oneProfile',
+			success : function(profileResult) {
+				$('#profileResult').html(profileResult);
+			}
+		})
+		$('#emotionBtn').click(function() {
+			$.ajax({
+				url : 'feed/emotion',
+				success : function(emotionResult) {
+					$('#emotionResult').html(emotionResult);
+				}
+			})
+		})
+		$('#instaBtn').click(function() {
+			alert("약간의 시간이 소요될 수 있습니다. 잠시 기다려주세요.");
+			$.ajax({
+				url : 'feed/insta',
+				success : function() {
+					alert("동기화 완료!");
+					location.reload();
+				}
+			})
+		})
 	})
 	</script>
 </head>
 
 <body>
     <!-- 프로필 -->
-    <div class="profile" id="profileResult">
-		<div class="signal">
-			<span class="signal-title">기적을 향하는 당신의 감정 날씨는?</span>
-			<button>날씨 보기 ►</button>
-			<div class="signal-container">
-				<img src="../resources/img/sunny.svg" alt="맑음"> <!-- sunny / partlycloudy / rainy (맑음 / 구름 조금 / 비) -->
-				<div class="signal-text">맑음</div>
-			</div>
+    <div class="profile">
+	    <div class="profile-inner" id="profileResult">
+	    </div>
+	    <div class="signal">
+				<span class="signal-title">기적을 향하는 당신의 감정 날씨는?</span>
+				<button id="emotionBtn">날씨 보기 ►</button>
+				<div class="signal-container" id="emotionResult">
+				</div>
 		</div>
     </div>
 
@@ -55,7 +75,6 @@
                 <!-- 네비게이션바 -->
                 <nav>
                     <ul class="nav-container">
-                        <li class="nav-item"><a href="#">COMMUNITY</a></li>
                         <li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
                         <c:if test="${partyId != null}">
                         	<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
@@ -78,7 +97,7 @@
             </div>
         </header>
         <!-- 피드 -->
-        <div class="feed-title">My Feed</div>
+        <div class="feed-title">My Feed</div> <button id="instaBtn">인스타 동기화</button>
         <div class="feeds" id="feedResult">
         </div>
     </div>
