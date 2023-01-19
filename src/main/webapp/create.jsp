@@ -34,6 +34,7 @@
                     <li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
                     <li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
                     <li class="nav-item"><a href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+                    <li class="nav-item"><a href="/miraclebird/recommend">RECOMMEND</a></li>
                     <li class="nav-item">
                     	<c:choose>
                     		<c:when test="${userId == null}">
