@@ -82,25 +82,21 @@
                     <h4 class="userName" style="height: 50px; line-height: 50px;">${partyBoardVO.username}</h4>
                 </div>
                 <div class="right">
-                    <div class="btnClass">
-                    	<form action="/miraclebird/party/community/update" method="post">
-                    		<input type="hidden" name="partyBoardId" value="${partyBoardVO.partyBoardId}" />
-                			<input name="title" value="${partyBoardVO.title}" />
-                    		<hr>
-                    		<h4>${partyBoardVO.writeDate}</h4>
-                        	<button type="submit" class="update">완료</button>
-                        	<a href="/miraclebird/party/community/${partyBoardVO.partyBoardId}/delete">
-                        		<button class="delete">삭제</button>
-                        	</a>
-                    		<textarea name="content" style="width: 100%; height:300px; border:#ffb100 3px solid; border-radius: 10px; margin: 15px 0px 5px 0px; resize:none; font-size: 23px;">${partyBoardVO.content}</textarea>
-                    	</form>
-                    </div>
+                    <form action="/miraclebird/party/community/update" method="post">
+                    	<input type="hidden" name="partyBoardId" value="${partyBoardVO.partyBoardId}" />
+                		<input name="title" value="${partyBoardVO.title}" class="title" />
+                    	<hr>
+                    	<h4>${partyBoardVO.writeDate}</h4>
+                        <button type="submit" class="update">완료</button>
+                        <a href="/miraclebird/party/community/${partyBoardVO.partyBoardId}/delete">
+                        	<button class="delete">삭제</button>
+                        </a>
+                    	<textarea name="content" style="width: 100%; height:300px; border:#ffb100 3px solid; border-radius: 10px; margin: 15px 0px 5px 0px; resize:none; font-size: 23px;">${partyBoardVO.content}</textarea>
+                    </form>
                 </div>
             </div>
-            <div class="mainText">
-                <marquee>
-                    <a>${partyVO.intro}</a>
-                </marquee>
+            <div class="mainText" onload="backChange()" id="bg">
+                <a><marquee>${partyVO.intro}</marquee> </a>
             </div>
         </div>
         

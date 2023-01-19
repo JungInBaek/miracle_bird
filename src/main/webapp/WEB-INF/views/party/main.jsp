@@ -117,7 +117,8 @@
     <div>
         <div class="cate">
             <a href="/miraclebird/party/main">
-            	<button class="btn">Main</button>
+            	<button class="btn" id="here" onload="backChange()"
+						style="background-color: #ffb100">Main</button>
             </a>
             <a href="/miraclebird/party/feed?page=1">
             	<button class="btn">Feed</button>
@@ -146,8 +147,8 @@
             	<!-- 구글 차트 -->
             	<div id="linechart_material"></div>
             </div>
-            <div class="mainText">
-                <a>${partyVO.intro}</a>
+            <div class="mainText" onload="backChange()" id="bg">
+                <a><marquee>${partyVO.intro}</marquee> </a>
             </div>
         </div>
         <div class="partyInfo">
@@ -179,29 +180,29 @@
     </div>
     </div>
     <script lang="javascript">
-		let colorList;
-		$.ajax({
-			type : "get",
-			url : "/miraclebird/party/products",
-			async : false,
-			dataType : "json",
-			success : function(data) {
-				colorList = data;
-				console.log(data);
-			}
-		});
-
-		function backChange() {
-			// 데이터에 있는 색상 코드 입력
-			// var Acolor = new Array('red', 'orange', 'green');
-			var Acolor = colorList;
-			var Bcolor = Math.floor(Math.random() * Acolor.length);
-			var Ccolor = Acolor[Bcolor];
-			document.getElementById('bg').style.background = Ccolor;
-			document.getElementById('here').style.background = Ccolor;
-		}
-
-		setInterval(backChange, 8000);
-	</script>
+    	let list;
+    	$.ajax({
+    		type: "get",
+    		url: "/miraclebird/party/products",
+    		async: false,
+    		dataType: "json",
+    		success: function(data) {
+    			list = data;
+    			console.log(data);
+    		}
+    	});
+    	
+    	function backChange(){
+            // 데이터에 있는 색상 코드 입력
+            // var Acolor = new Array('red', 'orange', 'green');
+            var Acolor = list;
+            var Bcolor = Math.floor(Math.random() * Acolor.length);
+            var Ccolor = Acolor[Bcolor]; 
+            document.getElementById('bg').style.background=Ccolor;
+            document.getElementById('here').style.background=Ccolor;
+        }
+    	
+        setInterval(backChange,8000);
+    </script>
 </body>
 </html>
