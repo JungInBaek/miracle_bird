@@ -168,7 +168,7 @@ header .head .nav-container .nav-item button:hover {
 }
 .profile .signal .signal-container {
     margin: 10px 0;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }

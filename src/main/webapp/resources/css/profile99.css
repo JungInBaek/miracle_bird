@@ -108,12 +108,12 @@ form .info-left .image-resizing {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    object-fit: cover;
 }
 form .info-left .image-resizing img {
     width: 90%;
     border-radius: 20px;
-    overflow: hidden;
-    object-fit: cover;
 }
 form .info-left label {
     width: 100%;
@@ -229,7 +229,7 @@ form .info-right .btn-submit:hover {
 
 /* 잔디 */
 .info .grass-field {
-    width: 1300px;
+    width: 1000px;
     height: 400px;
     margin: 40px auto;
     padding: 30px;
@@ -250,6 +250,8 @@ form .info-right .btn-submit:hover {
 }
 .info .grass-field .grass {
     margin: 30px 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
