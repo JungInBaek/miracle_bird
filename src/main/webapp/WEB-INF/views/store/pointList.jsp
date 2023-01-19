@@ -93,7 +93,6 @@
 				<!-- 네비게이션바 -->
 				<nav>
 					<ul class="nav-container">
-						<li class="nav-item"><a href="#">COMMUNITY</a></li>
 						<li class="nav-item"><a href="/miraclebird/recruit/list">FIND</a></li>
 						<c:if test="${partyId != null}">
 							<li class="nav-item"><a href="/miraclebird/party/main">MY PARTY</a></li>
@@ -101,6 +100,7 @@
 						<li class="nav-item"><a href="/miraclebird/myFeed">MY FEED</a></li>
 						<li class="nav-item"><a href="/miraclebird/profile">PROFILE</a></li>
 						<li class="nav-item"><a	href="/miraclebird/store/productList?page=1&categoryId=1">STORE</a></li>
+						<li class="nav-item"><a href="/miraclebird/recommend">RECOMMEND</a></li>
 						<li class="nav-item"><c:choose>
 								<c:when test="${userVO.userId == null}">
 									<a href="/miraclebird/loginPage"><button>LOGIN</button></a>

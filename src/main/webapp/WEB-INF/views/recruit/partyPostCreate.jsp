@@ -86,7 +86,7 @@
     </div>
     <div class="btnClass">
     <a href="/miraclebird/recruit/list">
-        <button class="btnParty" style="background-color: white;">Cancle</button>
+        <button class="btnParty" type="button" style="background-color: white;">Cancel</button>
 	</a>
         <button type="submit" class="btnParty" type="submit" style="background-color: #ffb100;">Create</button>
     </div>

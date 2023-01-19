@@ -20,18 +20,28 @@ a {
 }
 table {
   padding: 20px;
+
 }
 
+/* table, td, th {
+	border : 1px solid black;
+  	border-collapse : collapse;
+}
+ */
 tr {
   padding: 20px;
   height: 90px;
   vertical-align: middle;
-  align-items: center;
-  text-align: center;
+  align-items: left;
+  text-align: left;
 }
 
 td{
 	padding: 10px;
+}
+
+.td1{
+	padding-right: 60px;
 }
 
 textarea {
