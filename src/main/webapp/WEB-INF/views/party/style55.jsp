@@ -68,7 +68,8 @@
             </c:if>
             <c:if test="${isLeader}">
             	<a href="/miraclebird/party/style">
-            		<button class="btn">Style</button>
+            		<button class="btn" id="here" onload="backChange()"
+						style="background-color: #ffb100">Style</button>
             	</a>
             </c:if>
         </div>

@@ -105,17 +105,29 @@
     </div>
 
     <script lang="javascript">
-
-        function backChange(){
+    	let list;
+    	$.ajax({
+    		type: "get",
+    		url: "/miraclebird/party/products",
+    		async: false,
+    		dataType: "json",
+    		success: function(data) {
+    			list = data;
+    			console.log(data);
+    		}
+    	});
+    	
+    	function backChange(){
             // 데이터에 있는 색상 코드 입력
-            var Acolor = new Array('red', 'orange', 'green'); 
+            // var Acolor = new Array('red', 'orange', 'green');
+            var Acolor = list;
             var Bcolor = Math.floor(Math.random() * Acolor.length);
             var Ccolor = Acolor[Bcolor]; 
             document.getElementById('bg').style.background=Ccolor;
             document.getElementById('here').style.background=Ccolor;
-            }  
-            setInterval(backChange,2000);
-
+        }
+    	
+        setInterval(backChange,8000);
     </script>
     
 </body>

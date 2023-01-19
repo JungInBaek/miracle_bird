@@ -104,6 +104,19 @@
   margin: 0px 0px 0px 20px;
 }
 
+.form{
+	width: auto;
+}
+
+.title{
+	border: 3px solid #FFB100;
+	border-radius: 15px;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 17px;
+}
+
 .update {
   border: none;
   border-radius: 10px;
