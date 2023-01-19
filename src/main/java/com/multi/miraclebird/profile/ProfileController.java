@@ -71,7 +71,10 @@ public class ProfileController {
 
 	// 프로필 수정
 	@PostMapping("updateProfile")
-	public String updateProfile(HttpServletRequest request, MultipartFile file, ProfileVO profileVO) throws Exception {
+	public String updateProfile(HttpSession session, HttpServletRequest request, MultipartFile file, ProfileVO profileVO) throws Exception {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		}
 		String savedName = "";
 		savedName = file.getOriginalFilename();
 		if (!savedName.equals("")) {

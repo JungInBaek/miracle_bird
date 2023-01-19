@@ -33,14 +33,21 @@
 			}
 		})
 		$('#emotionBtn').click(function() {
+			alert("약간의 시간이 소요될 수 있습니다. 잠시 기다려주세요.");
 			$.ajax({
 				url : 'feed/emotion',
 				success : function(emotionResult) {
 					$('#emotionResult').html(emotionResult);
+					$.ajax({
+						url : 'feed/all',
+						success : function(feedResult) {
+							$('#feedResult').html(feedResult);
+						}
+					})
 				}
 			})
 		})
-		$('#instaBtn').click(function() {
+		/* $('#instaBtn').click(function() {
 			alert("약간의 시간이 소요될 수 있습니다. 잠시 기다려주세요.");
 			$.ajax({
 				url : 'feed/insta',
@@ -49,7 +56,7 @@
 					location.reload();
 				}
 			})
-		})
+		}) */
 	})
 	</script>
 </head>
@@ -97,7 +104,7 @@
             </div>
         </header>
         <!-- 피드 -->
-        <div class="feed-title">My Feed</div> <button id="instaBtn">인스타 동기화</button>
+        <div class="feed-title">My Feed</div> <!-- <button id="instaBtn">인스타 동기화</button> -->
         <div class="feeds" id="feedResult">
         </div>
     </div>
