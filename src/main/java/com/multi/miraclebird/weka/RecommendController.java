@@ -3,6 +3,7 @@ package com.multi.miraclebird.weka;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,13 @@ public class RecommendController {
 	private RecruitService recruitService;
 
 	@GetMapping("/recommend")
-	public String recommendPage() {
-		
+	public String recommendPage(HttpSession session) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/loginPage";
+		} else if(session.getAttribute("partyId") != null) {
+			System.out.println("파티에 이미 가입되어있습니다.");
+			return "redirect:/";
+		}
 		return "weka/recommend";
 	}
 	

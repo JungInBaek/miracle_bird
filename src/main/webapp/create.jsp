@@ -55,7 +55,7 @@
                 <table class="party">
                     <tbody>
                         <tr>
-                            <td><img src="resources/img/activity.png" class="img" /></td>
+                            <td><img src="${pageContext.request.contextPath}/resources/img/activity.png" class="img" /></td>
                             <td><a>Party</a></td>
                             <td><input class="inputBox" name="name" placeholder="파티 명을 입력해주세요."></td>
                         </tr>

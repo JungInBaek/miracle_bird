@@ -59,7 +59,7 @@ public class PartyController {
 			System.out.println("파티에 이미 가입되어있습니다.");
 			return "redirect:/recruit/list";
 		}
-		return "party/create";
+		return "party/partyCreate13";
 	}
 	
 	@PostMapping("/create")
