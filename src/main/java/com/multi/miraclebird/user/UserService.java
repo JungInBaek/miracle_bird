@@ -30,15 +30,18 @@ public class UserService {
 		UserVO userVO = new UserVO();
 		ProfileVO profileVO = new ProfileVO();
 		
+		// 인증code -> short 엑세스 토큰, user_id
 		ResponseEntity<Map> shortToken = instagramApiService.getShortTokenAndUserId(code);
 		userVO.setUserId((Long) shortToken.getBody().get("user_id"));
 		userVO.setAccessToken((String) shortToken.getBody().get("access_token"));
 		
+		// short 엑세스 토큰 -> long 엑세스 토큰, expires_in
 		ResponseEntity<Map> longToken = instagramApiService.getLongTokenAndExpires(userVO.getAccessToken());
 		userVO.setCreateDate(LocalDateTime.now());
 		userVO.setAccessToken((String) longToken.getBody().get("access_token"));
 		userVO.setExpiresIn((int) longToken.getBody().get("expires_in"));
 		
+		// 엑세스 토큰 -> 인스타 사용자 정보
 		ResponseEntity<Map> profile = instagramApiService.getUserProfile(userVO);
 		userVO.setUsername((String) profile.getBody().get("username"));
 		

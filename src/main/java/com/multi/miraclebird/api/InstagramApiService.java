@@ -38,7 +38,9 @@ public class InstagramApiService {
 	private RestTemplate restTemplate;
 	
 	public String getCode() {
-		return "redirect:https://api.instagram.com/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&scope=user_profile,user_media&response_type=code";
+		return "redirect:https://api.instagram.com/oauth/authorize?client_id=" + clientId +
+				"&redirect_uri=" + redirectUri +
+				"&scope=user_profile,user_media&response_type=code";
 	}
 	
 	public ResponseEntity<Map> getShortTokenAndUserId(String code) {
