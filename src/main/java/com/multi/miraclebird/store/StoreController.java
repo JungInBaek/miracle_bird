@@ -39,7 +39,8 @@ public class StoreController {
 	
 	// 상점 메인 화면 및 페이징 처리
 	@GetMapping("/productList")
-	public String list(HttpServletRequest request, CategoryPageVO vo, Model model) {
+	public String list(HttpServletRequest request, 
+			CategoryPageVO vo, Model model) {
 		HttpSession session = request.getSession();
 		Long userId = (Long) session.getAttribute("userId");
 		
@@ -67,15 +68,18 @@ public class StoreController {
 		// 카테고리 조회
 		List<CategoryVO> categoryList = storeService.cateList();
 		
+		// 유저 정보 조회
 		UserVO userVO = storeService.selectUser(userId); 
 		
-		model.addAttribute("cateList", categoryList);
-		model.addAttribute("userVO", userVO);
 		model.addAttribute("cateNum", vo.getCategoryId());
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pages", pages);
 		model.addAttribute("count", count);
 		model.addAttribute("point", point);
+		
+		model.addAttribute("userVO", userVO);
+		model.addAttribute("cateList", categoryList);
 		return "/store/productList";
 	}
 	

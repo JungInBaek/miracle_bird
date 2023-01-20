@@ -56,7 +56,7 @@
 			<div>
 				<%
 				int cateNum2 = (int) request.getAttribute("cateNum");
-				List<CategoryVO> cateList = (List<CategoryVO>) request.getAttribute("cateList");
+				List<CategoryVO> cateList = (List<CategoryVO>) request.getAttribute("cateList")
 				for (int p = 0; p < cateList.size(); p++) {
 					if (cateList.get(p).getCategoryId() == cateNum2) {
 				%>
@@ -131,26 +131,22 @@
 		<!-- 컨텐츠 -->
      	<div style="background-color: transparent; border: none; width: auto; padding: 5px 10px; margin: 0 10px; font-weight: 500; font-size: 15px; color: #222; font-weight: 600;">구매하신 배경은 회원님의 파티룸에서 사용 가능합니다!</div>
 		<div class="item-container">
-			<%-- <c:forEach items="${list}" var="one" varStatus="status"> --%>
 			<%
-				List<ProductVO> productList = (List<ProductVO>) request.getAttribute("list");
-				for (int i = 0; i < productList.size(); i++) {
+			List<ProductVO> productList = (List<ProductVO>) request.getAttribute("list");
+			for (int i = 0; i < productList.size(); i++) {
 			%>
-				<div class="item">
-					<div class="item-image"
-						style="background-color: <%= productList.get(i).getProductClass()%>"></div>
-					<div class="item-text">
-						<div class="item-text-title"> <%= productList.get(i).getProductName()%></div>
-						<div class="item-price"><%= df.format(productList.get(i).getProductPrice()) %> P</div>
-					</div>
-					<div onclick='productBuy(<%= productList.get(i).getProductId()%>)' class="item-buy">
-					구매하기
-					</div>
+			<div class="item">
+				<div class="item-image"
+					style="background-color: <%= productList.get(i).getProductClass()%>"></div>
+				<div class="item-text">
+					<div class="item-text-title"> <%= productList.get(i).getProductName()%></div>
+					<div class="item-price"><%= df.format(productList.get(i).getProductPrice()) %> P</div>
 				</div>
-			<%
-				}
-			%>
-<%-- 			</c:forEach> --%>
+				<div onclick='productBuy(<%= productList.get(i).getProductId()%>)' class="item-buy">
+				구매하기
+				</div>
+			</div>
+			<% } %>
 		</div>
 		<%
 		int pages = (int) request.getAttribute("pages");
@@ -159,7 +155,8 @@
 		%>
 		<div style="display: inline-block; align: center;">
 			<a href="productList?page=<%=p%>&categoryId=<%=cateNum%>">
-				<button style="background-color: transparent; border: none; width: auto; padding: 5px 10px; margin: 0 10px; font-weight: 500; font-size: 18px; color: #222;"><%=p%></button>
+				<button style="background-color: transparent; border: none; width: auto; padding: 5px 10px; 
+				margin: 0 10px; font-weight: 500; font-size: 18px; color: #222;"><%=p%></button>
 			</a>
 		</div>
 		<%
