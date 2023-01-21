@@ -56,7 +56,7 @@
 			<div>
 				<%
 				int cateNum2 = (int) request.getAttribute("cateNum");
-				List<CategoryVO> cateList = (List<CategoryVO>) request.getAttribute("cateList")
+				List<CategoryVO> cateList = (List<CategoryVO>) request.getAttribute("cateList");
 				for (int p = 0; p < cateList.size(); p++) {
 					if (cateList.get(p).getCategoryId() == cateNum2) {
 				%>
