@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +83,8 @@
                     <h4 class="userName" style="height: 50px;">${partyBoardVO.username}</h4>
                 </div>
                 <div class="right">
-                    <h4 >${partyBoardVO.writeDate}</h4>
+                	<fmt:parseDate value="${partyBoardVO.writeDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                    <h4 ><fmt:formatDate value="${parsedDateTime}" type="both" /></h4>
                     <c:if test="${userId == partyBoardVO.userId}">
 	                    <div class="btnClass">
 	                    	<a href="/miraclebird/party/community/${partyBoardVO.partyBoardId}/update">

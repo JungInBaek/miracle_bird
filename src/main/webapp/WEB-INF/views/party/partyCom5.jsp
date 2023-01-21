@@ -88,7 +88,8 @@
 						<div class="content"
 							onClick="location.href='/miraclebird/party/community/${vo.partyBoardId}'"
 							style="cursor: pointer;">
-							<p style="text-align: right;">${vo.writeDate}</p>
+							<fmt:parseDate value="${vo.writeDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+							<p style="text-align: right;"><fmt:formatDate value="${parsedDateTime}" type="both" /></p>
 							<br>
 							<p style="text-align: center;">${vo.title}</p>
 							<br>

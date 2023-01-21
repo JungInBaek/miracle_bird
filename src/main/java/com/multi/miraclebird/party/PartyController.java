@@ -93,6 +93,16 @@ public class PartyController {
 		partyApplicantVO.setUserId((Long) session.getAttribute("userId"));
 		partyService.applyJoin(partyApplicantVO);
 		
+		
+		Long userId = (Long) session.getAttribute("userId");
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		
+		// 파티 가입 신청 정보
+		if (userId != null && partyId == null) {
+			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
+		}
+		session.setAttribute("partyApplicantVO", partyApplicantVO);
+		
 		return "redirect:/recruit/list";
 	}
 	
@@ -128,6 +138,15 @@ public class PartyController {
 		PartyApplicantVO partyApplicantVO = (PartyApplicantVO) session.getAttribute("partyApplicantVO");
 		int partyApplicantId = partyApplicantVO.getPartyApplicantId();
 		partyService.partyJoinCancel(partyApplicantId);
+		
+		Long userId = (Long) session.getAttribute("userId");
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		
+		// 파티 가입 신청 정보
+		if (userId != null && partyId == null) {
+			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
+		}
+		session.setAttribute("partyApplicantVO", partyApplicantVO);
 		
 		return "redirect:/recruit/list";
 	}

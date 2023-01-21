@@ -30,33 +30,33 @@ public class RecruitController {
 	public String partyList(HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		
-		// 소속 파티 조회
-		Integer partyId = null;
-		if (userId != null) {
-			partyId = partyService.findPartyIdByUserId(userId);
-		}
-		session.setAttribute("partyId", partyId);
-		
-		// 파티 가입 신청 정보
-		PartyApplicantVO partyApplicantVO = null;
-		if (userId != null && partyId == null) {
-			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
-		}
-		session.setAttribute("partyApplicantVO", partyApplicantVO);
-
-		// 파티 리더 여부
-		Boolean isLeader = false;
-		if (userId != null && partyId != null) {
-			isLeader = partyService.isLeader(partyId, userId);
-		}
-		session.setAttribute("isLeader", isLeader);
-		
-		// 모집글 작성 여부
-		Boolean isCreated = false;
-		if (partyId != null) {
-			isCreated = recruitService.isCreated(partyId);
-		}
-		session.setAttribute("isCreated", isCreated);
+//		// 소속 파티 조회
+//		Integer partyId = null;
+//		if (userId != null) {
+//			partyId = partyService.findPartyIdByUserId(userId);
+//		}
+//		session.setAttribute("partyId", partyId);
+//		
+//		// 파티 가입 신청 정보
+//		PartyApplicantVO partyApplicantVO = null;
+//		if (userId != null && partyId == null) {
+//			partyApplicantVO = partyService.findPartyApplicantByUserId(userId);
+//		}
+//		session.setAttribute("partyApplicantVO", partyApplicantVO);
+//
+//		// 파티 리더 여부
+//		Boolean isLeader = false;
+//		if (userId != null && partyId != null) {
+//			isLeader = partyService.isLeader(partyId, userId);
+//		}
+//		session.setAttribute("isLeader", isLeader);
+//		
+//		// 모집글 작성 여부
+//		Boolean isCreated = false;
+//		if (partyId != null) {
+//			isCreated = recruitService.isCreated(partyId);
+//		}
+//		session.setAttribute("isCreated", isCreated);
 		
 		List<RecruitPartyVO> list = recruitService.getRecruitPartyList();
 		model.addAttribute("list", list);
