@@ -70,12 +70,12 @@
             </div>
 
             <div class="btn-container">
-                <a class="btn" style="text-decoration: none;">
+                <%-- <a class="btn" style="text-decoration: none;">
                     <button>
                         <img src="${pageContext.request.contextPath}/resources/img/apply.svg" alt="apply">
                     </button>
                     <span>파티 신청 현황</span>
-                </a>
+                </a> --%>
                 <a class="btn" href="/miraclebird/party/create" style="text-decoration: none;">
                     <button>
                         <img src="${pageContext.request.contextPath}/resources/img/create.svg" alt="create">
