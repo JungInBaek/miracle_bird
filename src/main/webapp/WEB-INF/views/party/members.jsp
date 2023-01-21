@@ -93,36 +93,36 @@
                 	</c:forEach>
                 </div>
             </div>
-            <div class="mainText" onload="backChange()" id="bg">
-                <a><marquee>${partyVO.intro}</marquee> </a>
+            <div class="mainText">
+                <a>${partyVO.intro}</a>
             </div>
         </div>
     </div>
     </div>
-	 <script lang="javascript">
-    	let list;
-    	$.ajax({
-    		type: "get",
-    		url: "/miraclebird/party/products",
-    		async: false,
-    		dataType: "json",
-    		success: function(data) {
-    			list = data;
-    			console.log(data);
-    		}
-    	});
-    	
-    	function backChange(){
-            // 데이터에 있는 색상 코드 입력
-            // var Acolor = new Array('red', 'orange', 'green');
-            var Acolor = list;
-            var Bcolor = Math.floor(Math.random() * Acolor.length);
-            var Ccolor = Acolor[Bcolor]; 
-            document.getElementById('bg').style.background=Ccolor;
-            document.getElementById('here').style.background=Ccolor;
-        }
-    	
-        setInterval(backChange,8000);
-    </script>
+	<script lang="javascript">
+		let colorList;
+		$.ajax({
+			type : "get",
+			url : "/miraclebird/party/products",
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				colorList = data;
+				console.log(data);
+			}
+		});
+
+		function backChange() {
+			// 데이터에 있는 색상 코드 입력
+			// var Acolor = new Array('red', 'orange', 'green');
+			var Acolor = colorList;
+			var Bcolor = Math.floor(Math.random() * Acolor.length);
+			var Ccolor = Acolor[Bcolor];
+			document.getElementById('bg').style.background = Ccolor;
+			document.getElementById('here').style.background = Ccolor;
+		}
+
+		setInterval(backChange, 8000);
+	</script>
 </body>
 </html>
