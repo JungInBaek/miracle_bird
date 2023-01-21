@@ -93,8 +93,8 @@
                 	</c:forEach>
                 </div>
             </div>
-            <div class="mainText">
-                <a>${partyVO.intro}</a>
+            <div class="mainText" onload="backChange()" id="bg">
+                <a><marquee>${partyVO.intro}</marquee></a>
             </div>
         </div>
     </div>
