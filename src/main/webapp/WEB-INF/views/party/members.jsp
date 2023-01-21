@@ -12,6 +12,7 @@
     <link href="../resources/css/partyPeople.css" rel="stylesheet" type="text/css">
     <link href=“https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap” rel=“stylesheet”>
     <link rel=“stylesheet” href=“https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css”>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <title>Party People</title>
 </head>
 <body>

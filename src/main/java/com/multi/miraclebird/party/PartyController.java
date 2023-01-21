@@ -120,8 +120,6 @@ public class PartyController {
 		Integer partyMemberCount = partyService.getPartyMemberCountByPartyId(partyId);
 		PartyImgVO partyImgVO = partyService.findPartyImgByPartyId(partyId);
 		
-		
-		
 		model.addAttribute("partyVO", partyVO);
 		model.addAttribute("partyMemberCount", partyMemberCount);
 		model.addAttribute("partyImgVO", partyImgVO);
@@ -183,8 +181,6 @@ public class PartyController {
 			return "redirect:/party/main";
 		}
 		
-		System.out.println(partyApplicantVO.getPartyApplicantId());
-		System.out.println(partyMemberVO.getPartyMemberId());
 		partyMemberVO.setJoinDate(LocalDateTime.now());
 		partyService.acceptJoin(partyApplicantVO, partyMemberVO);
 		
@@ -371,7 +367,6 @@ public class PartyController {
 		Integer partyId = (Integer) session.getAttribute("partyId");
 		LocalDateTime now = LocalDateTime.now();
 		
-		
 		partyBoardVO.setWriteDate(now);
 		partyBoardVO.setUpdateDate(now);
 		partyBoardVO.setUserId(userId);
@@ -391,8 +386,11 @@ public class PartyController {
 		}
 		
 		Long userId = (Long) session.getAttribute("userId");
+		Integer partyId = (Integer) session.getAttribute("partyId");
+		PartyVO partyVO = partyService.findPartyByPartyId(partyId);
 		PartyBoardVO partyBoardVO = partyService.findPartyBoardById(partyBoardId);
 		model.addAttribute("partyBoardVO", partyBoardVO);
+		model.addAttribute("partyVO", partyVO);
 		model.addAttribute("userId", userId);
 		
 		return "/party/partyComUpdate5";

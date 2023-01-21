@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +87,8 @@
                     	<input type="hidden" name="partyBoardId" value="${partyBoardVO.partyBoardId}" />
                 		<input name="title" value="${partyBoardVO.title}" class="title" />
                     	<hr>
-                    	<h4>${partyBoardVO.writeDate}</h4>
+                    	<fmt:parseDate value="${partyBoardVO.writeDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                    	<h4 ><fmt:formatDate value="${parsedDateTime}" type="both" /></h4>
                         <button type="submit" class="update">완료</button>
                         <a href="/miraclebird/party/community/${partyBoardVO.partyBoardId}/delete">
                         	<button class="delete">삭제</button>
