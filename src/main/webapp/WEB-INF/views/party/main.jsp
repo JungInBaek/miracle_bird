@@ -157,12 +157,12 @@
                 <a>대표 이미지</a><br>
         		<c:if test='${partyImgVO == null}'>
 	            	<span>
-	                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" />
+	                	<img src="${pageContext.request.contextPath}/resources/img/logo.svg" width="246px" height="180px"/>
 	                	<a style="font-size: 15px;">파티 대표 이미지를 등록해주세요!</a>
 	            	</span>
             	</c:if>
             	<c:if test='${partyImgVO != null}'>
-                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="300px" />
+                	<img src="${pageContext.request.contextPath}/resources/partyImg/${partyImgVO.imgName}" width="246px" height="180px" />
             	</c:if>
             </div>
             <div class="time">
