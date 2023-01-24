@@ -11,19 +11,18 @@ public class PageVO {
 	boolean next;
 	PageParam pageParam;
 	
-	
 	public PageVO(PageParam pageParam, int total) {
 		this.pageParam = pageParam;
 		this.total = total;
 		
-		int current = pageParam.getPage();
-		int amount = pageParam.getAmount();
+		int current = pageParam.getPage();		// 현재 페이지
+		int amount = pageParam.getAmount();		// 한 페이지 개수
 		
 		// 페이징 끝번호 구하기
-		this.endPage = (int)(Math.ceil((double)current * 0.1)) * 3;
+		this.endPage = (int)(Math.ceil((double)current * 0.1)) * amount;
 		
 		// 페이징 시작번호 구하기 (현재 보이는 페이지의 끝번호) - (한 화면에 보여질 페이지 개수 - 1)
-		this.startPage = endPage - 2;
+		this.startPage = endPage - (amount - 1);
 		
 		this.realEnd = (int) Math.ceil((double)total / (double)amount);
 		

@@ -116,9 +116,8 @@
 							<br> <br>
 							<form action="/miraclebird/party/intro/update" method="post">
 								<div class="IntroParty">
-									<label style="font-size: 20px; font-weight: bold;">Party
-										Intro Change </label><br> <input type="text" name="intro"
-										value="${partyVO.intro}"
+									<label style="font-size: 20px; font-weight: bold;">Party Intro Change </label><br>
+									<input type="text" name="intro" value="${partyVO.intro}"
 										style="border-radius: 30px; border: 2px solid #FFb100; width: 500px; height: 40px; margin-top: 30px; padding: 10px; margin-right: 10px;">
 									<button type="submit"
 										style="border-radius: 30px; border: none; background-color: #FFb100; height: 42px; width: 100px; color: white; font-weight: bold; font-size: 15px;">SUBMIT</button>
@@ -203,7 +202,6 @@
 
 		function backChange() {
 			// 데이터에 있는 색상 코드 입력
-			// var Acolor = new Array('red', 'orange', 'green');
 			var Acolor = colorList;
 			var Bcolor = Math.floor(Math.random() * Acolor.length);
 			var Ccolor = Acolor[Bcolor];

@@ -4,13 +4,12 @@ import java.time.LocalDate;
 
 public class PageParam {
 
-	private int page;
-	private int amount;
-	private int start;
+	private int page;			// 페이지
+	private int amount;			// 가져올 개수
+	private int start;			// 시작 번호
 	
 	private Integer partyId;
 	private LocalDate today;
-	
 	
 	public PageParam() {
 		this.page = 1;
@@ -18,14 +17,13 @@ public class PageParam {
 		this.start = 0;
 	}
 	
-	
-	public int getPage() {
-		return page;
-	}
-
 	public void setPage(int page) {
 		this.page = page;
 		this.start = (page - 1) * amount;
+	}
+	
+	public int getPage() {
+		return page;
 	}
 
 	public int getAmount() {

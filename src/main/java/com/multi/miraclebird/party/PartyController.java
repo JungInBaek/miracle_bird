@@ -232,11 +232,11 @@ public class PartyController {
 		}
 		
 		Integer partyId = (Integer) session.getAttribute("partyId");
-		LocalDate today = LocalDate.now();
+		LocalDate today = LocalDate.now();		// 오늘 날짜
 		pageParam.setPartyId(partyId);
 		pageParam.setToday(today);
-		Integer total = feedService.getPartyMemberFeedCount(pageParam);
-		PageVO pageVO = new PageVO(pageParam, total);
+		Integer total = feedService.getPartyMemberFeedCount(pageParam);		// 오늘 날짜의 피드 전체 수 조회
+		PageVO pageVO = new PageVO(pageParam, total);						// 페이징 처리
 		
 		List<FeedVO> list = feedService.findPartyMemberFeed(pageParam);
 		

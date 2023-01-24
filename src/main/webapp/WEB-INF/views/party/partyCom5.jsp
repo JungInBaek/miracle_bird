@@ -107,7 +107,6 @@
 					</div>
 				</div>
 				<!-- 모달창 -->
-
 				<form action="/miraclebird/party/community/create" method="post">
 					<div class="modal-bg" onClick="javascript:popClose();"></div>
 					<div class="modal-wrap">
@@ -117,13 +116,11 @@
 					<!-- //modal 영역 -->
 					<div class="modal-bg" onClick="javascript:popClose();"></div>
 					<div class="modal-wrap">
-						<span class="modal-title"> <input name="title"
-							placeholder="제목을 작성해주세요">
+						<span class="modal-title"> <input name="title" placeholder="제목을 작성해주세요">
 							<button type="button" class="modal-close"
 								onClick="javascript:popClose();">&times;</button>
 						</span>
-						<textarea name="content" class="content-area"
-							placeholder="새로운 내용을 남겨주세요!"></textarea>
+						<textarea name="content" class="content-area" placeholder="새로운 내용을 남겨주세요!"></textarea>
 						<hr>
 						<button type="submit" class="complete">작성하기</button>
 					</div>
@@ -133,7 +130,6 @@
 				<a><marquee>${partyVO.intro}</marquee> </a>
 			</div>
 		</div>
-
 	</div>
 	<script lang="javascript">
 		function popOpen() {
