@@ -19,14 +19,14 @@ public class recommendService {
 
 	public String recommend(double[] values, String path) throws Exception {
 		// 1. 데이터 로딩(수집)
-		String file = path + "data/recommend.csv";
+		String file = path + "data\\recommend.csv";
 		System.out.println("file: " + file);
 		CSVLoader loader = new CSVLoader();
 		loader.setSource(new File(file));
 		Instances data = loader.getDataSet(); // arff형식으로 변환해서 가지고 온다.
 
 		// 모델을 읽어와서, test데이터에 있는 것 꺼내서 검증해보자.
-		Classifier model = (Classifier) SerializationHelper.read(path + "model/recommend.model");
+		Classifier model = (Classifier) SerializationHelper.read(path + "\\model\\recommend.model");
 
 		// 1. Attribute리스트를 만들자.
 		ArrayList attributes = new ArrayList<>();
