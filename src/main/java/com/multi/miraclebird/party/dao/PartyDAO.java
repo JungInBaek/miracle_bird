@@ -13,8 +13,8 @@ public class PartyDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public void createParty(PartyVO partyVO) {
-		mybatis.insert("party.create", partyVO);
+	public Integer createParty(PartyVO partyVO) {
+		return mybatis.insert("party.create", partyVO);
 	}
 
 	public Long findLeaderIdByUserId(Long userId) {

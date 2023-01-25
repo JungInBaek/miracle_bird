@@ -50,9 +50,10 @@ public class PartyService {
 	private PartyBoardDao partyBoardDao;
 	
 	
-	public void createParty(PartyVO partyVO) {
-		partyDao.createParty(partyVO);
+	public Integer createParty(PartyVO partyVO) {
+		Integer partyId = partyDao.createParty(partyVO);
 		partyMemberDao.createPartyLeader(partyVO);
+		return partyId;
 	}
 	
 	public boolean isLeader(Integer PartyId, Long userId) {

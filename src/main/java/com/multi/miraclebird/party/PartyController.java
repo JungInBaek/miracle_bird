@@ -75,7 +75,9 @@ public class PartyController {
 		Long userId = (Long) session.getAttribute("userId");
 		partyVO.setCreateDate(LocalDateTime.now());
 		partyVO.setLeaderId(userId);
-		partyService.createParty(partyVO);
+		Integer partyId = partyService.createParty(partyVO);
+		
+		session.setAttribute("partyId", partyId);
 		
 		return "redirect:/recruit/list";
 	}
