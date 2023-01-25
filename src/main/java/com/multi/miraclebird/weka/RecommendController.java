@@ -35,7 +35,8 @@ public class RecommendController {
 	
 	@GetMapping("/recommend/result")
 	public String recommend(RecommendVO recommendVO, Model model, HttpServletRequest request, String area, String income) throws Exception {
-		String path = request.getSession().getServletContext().getRealPath("/");
+//		String path = request.getSession().getServletContext().getRealPath("/");
+		String path = "https://mulicampus-java.s3.ap-northeast-2.amazonaws.com/";
 		
 		if (area.equals("first")) {
 			recommendVO.setAreaFirst(1);

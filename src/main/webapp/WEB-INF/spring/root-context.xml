@@ -40,8 +40,8 @@
 	
 	<!-- 몽고 db -->
 	<mongo:mongo-client
-        host="localhost"
-        port="27017" credentials="winner:1234@miracle_bird" >
+        host="${mongo.host}"
+        port="${mongo.port}" credentials="${mongo.credentials}" >
         <mongo:client-options
             connections-per-host="50"
             threads-allowed-to-block-for-connection-multiplier="10"

@@ -14,10 +14,6 @@ body {
     width: 100%;
     padding: 0 20px 20px 30px;
 }
-.color-box {
-    background: #FFB100;
-    border-radius: 16px;
-}
 
 /* 헤더 */
 header .head {
@@ -38,9 +34,10 @@ header .head .nav-container .nav-item {
     font-size: 18px;
 }
 header .head .nav-container .nav-item a {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     text-decoration: none;
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     color: #222;
 }
 header .head .nav-container .nav-item a:hover {
@@ -55,7 +52,8 @@ header .head .nav-container .nav-item button {
     margin: 0 auto;
     width: 130px;
     text-align: center;
-    font-size: 19px;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    font-size: 18px;
     font-weight: 600;
     color: #222;
     transition: 0.5s;
@@ -68,10 +66,6 @@ header .head .nav-container .nav-item button:hover {
 }
 
 /* 프로필 */
-.profile {
-    width: 30%;
-    height: 100vh;
-}
 .profile .circle-container {
     width: 120px;
     height: 120px;
@@ -218,12 +212,12 @@ header .head .nav-container .nav-item button:hover {
 }
 .main .contents-inner .contents .content {
     width: 300px;
-    margin: 0 10px;
+    margin: 0 20px;
     position: relative;
 }
 .main .contents-inner .contents .content .content-image {
     width: 300px;
-    height: 300px;
+    height: 370px;
     border: 2px solid #FFB100;
     box-sizing: border-box;
     position: relative;
@@ -234,16 +228,21 @@ header .head .nav-container .nav-item button:hover {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 35px;
+    z-index: 1;
 }
 .main .contents-inner .contents .content .content-image img {
-    width: 250px;
     position: absolute;
-    right: 0;
+    right: 70px;
     bottom: 0;
+}
+.main .contents-inner .contents .content:nth-child(3) .content-image img {
+    right: 40px;
+}
+.main .contents-inner .contents .content:nth-child(4) .content-image img {
+    right: 10px;
 }
 .main .contents-inner .contents .content .content-text {
     height: 50px;
-    border-radius: 0 0 30px 30px;
     background-color: #FFB100;
     border: 2px solid #FFB100;
     cursor: pointer;
