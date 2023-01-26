@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.miraclebird.feed.FeedJsonVO;
-import com.multi.miraclebird.feed.FeedService;
+import com.multi.miraclebird.feed.FeedServiceInter;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.party.vo.PartyImgVO;
 import com.multi.miraclebird.party.vo.PartyVO;
@@ -39,7 +39,7 @@ public class ProfileController {
 	private UserService userService;
 	
 	@Autowired
-	private FeedService feedService;
+	private FeedServiceInter feedService;
 
 	@RequestMapping("profile")
 	public String myFeed(HttpSession session) {

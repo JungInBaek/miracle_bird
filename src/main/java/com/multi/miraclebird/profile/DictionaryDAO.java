@@ -7,11 +7,12 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DictionaryDAO {
+public class DictionaryDAO implements DictionaryDAOInter {
 
 	@Autowired
 	MongoTemplate mongoTemplate;
 
+	@Override
 	public DictionaryVO one(String word) {
 		System.out.println(word);
 		Query query = new Query(new Criteria("word").is(word));

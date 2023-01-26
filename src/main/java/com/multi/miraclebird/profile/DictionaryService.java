@@ -15,11 +15,12 @@ import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
 
 @Service
-public class DictionaryService {
+public class DictionaryService implements DictionaryServiceInter {
 
 	@Autowired
-	DictionaryDAO dictionaryDAO;
+	DictionaryDAOInter dictionaryDAO;
 
+	@Override
 	public int emotion(String sentence, String path) {
 		
 		Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
