@@ -18,8 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.multi.miraclebird.api.InstagramApiService;
-import com.multi.miraclebird.feed.FeedDAO;
-import com.multi.miraclebird.feed.FeedService;
+import com.multi.miraclebird.feed.FeedDAOInter;
+import com.multi.miraclebird.feed.FeedServiceInter;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.user.UserVO;
 
@@ -30,16 +30,16 @@ public class ProfileService implements ProfileServiceInter {
 	private InstagramApiService instagramApiService;
 
 	@Autowired
-	private FeedService feedService;
+	private FeedServiceInter feedService;
 	
 	@Autowired
-	private DictionaryService dictionaryService;
+	private DictionaryServiceInter dictionaryService;
 
 	@Autowired
 	ProfileDAOInter profileDao;
 
 	@Autowired
-	FeedDAO feedDao;
+	FeedDAOInter feedDao;
 
 	@Override
 	public ProfileVO oneProfile(ProfileVO profileVO) {

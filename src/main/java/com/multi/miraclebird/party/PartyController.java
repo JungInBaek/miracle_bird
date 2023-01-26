@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.multi.miraclebird.feed.FeedService;
+import com.multi.miraclebird.feed.FeedServiceInter;
 import com.multi.miraclebird.feed.FeedVO;
 import com.multi.miraclebird.party.service.PartyService;
 import com.multi.miraclebird.party.vo.PageParam;
@@ -45,7 +45,7 @@ public class PartyController {
 	private PartyService partyService;
 	
 	@Autowired
-	private FeedService feedService;
+	private FeedServiceInter feedService;
 	
 	@Autowired
 	private StoreDAOInterface storeDao;

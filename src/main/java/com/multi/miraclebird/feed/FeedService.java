@@ -12,15 +12,17 @@ import com.multi.miraclebird.party.vo.PartyAttendanceVO;
 import com.multi.miraclebird.profile.ProfileVO;
 
 @Service
-public class FeedService {
+public class FeedService implements FeedServiceInter {
 
 	@Autowired
-	private FeedDAO feedDao;
+	private FeedDAOInter feedDao;
 	
+	@Override
 	public FeedVO selectFeedByFeedId(FeedVO feedVO) {
 		return feedDao.selectFeedByFeedId(feedVO);
 	}
 	
+	@Override
 	public List<FeedVO> allMiracleFeedByUserId(ProfileVO profileVO) {
 		List<FeedVO> list = feedDao.allFeedByUserId(profileVO);
 		List<FeedVO> feedList = new ArrayList<>();
@@ -34,20 +36,24 @@ public class FeedService {
 		return feedList;
 	}
 	
+	@Override
 	public List<FeedVO> allFeedByUserId(ProfileVO profileVO){
 		return feedDao.allFeedByUserId(profileVO);
 	}
 	
+	@Override
 	public int countFeedByUserId(Long userId) {
 		return feedDao.countFeedByUserId(userId);
 	}
 
+	@Override
 	public List<FeedJsonVO> allFeedTimeByUserId(ProfileVO profileVO) {
 		List<FeedJsonVO> feedDate = feedDao.allFeedTimeByUserId(profileVO);
 		return feedDate;
 	}
 	
 	// 피드 긍정부정 총합
+	@Override
 	public EmotionVO totalEmotion(Long userId) {
 		EmotionVO emotionVO = new EmotionVO();
 		int emotion = feedDao.totalEmotion(userId);
@@ -66,14 +72,17 @@ public class FeedService {
 		return emotionVO;
 	}
 	
+	@Override
 	public List<FeedVO> findPartyMemberFeed(PageParam pageParam) {
 		return feedDao.findPartyMemberFeed(pageParam);
 	}
 	
+	@Override
 	public Integer getPartyMemberFeedCount(PageParam pageParam) {
 		return feedDao.getPartyMemberFeedCount(pageParam);
 	}
 	
+	@Override
 	public Integer getPartyMemberFeedDistinctCount(PartyAttendanceVO partyAttendanceVO) {
 		return feedDao.getPartyMemberFeedDistinctCount(partyAttendanceVO);
 	}

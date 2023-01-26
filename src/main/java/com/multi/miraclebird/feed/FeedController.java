@@ -19,7 +19,7 @@ import com.multi.miraclebird.user.UserVO;
 public class FeedController {
 
 	@Autowired
-	FeedService feedService;
+	FeedServiceInter feedService;
 
 	@Autowired
 	UserService userService;
