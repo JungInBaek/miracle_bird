@@ -11,16 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.multi.miraclebird.recruit.RecruitPartyVO;
-import com.multi.miraclebird.recruit.RecruitService;
+import com.multi.miraclebird.recruit.RecruitServiceInterface;
 
 @Controller
-public class RecommendController {
+public class recommendController {
 	
 	@Autowired
-	private recommendService recommendService;
+	private RecommendServiceInterface recommendService;
 	
 	@Autowired
-	private RecruitService recruitService;
+	private RecruitServiceInterface recruitService;
 
 	@GetMapping("/recommend")
 	public String recommendPage(HttpSession session) {

@@ -21,7 +21,7 @@ import com.multi.miraclebird.party.vo.PartyVO;
 public class RecruitController {
 
 	@Autowired
-	private RecruitService recruitService;
+	private RecruitServiceInterface recruitService;
 	
 	@Autowired
 	private PartyService partyService;

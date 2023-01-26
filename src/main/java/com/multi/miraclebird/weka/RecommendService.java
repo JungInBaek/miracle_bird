@@ -15,8 +15,9 @@ import weka.core.SerializationHelper;
 import weka.core.converters.CSVLoader;
 
 @Service
-public class recommendService {
+public class RecommendService implements RecommendServiceInterface {
 
+	@Override
 	public String recommend(double[] values, String path) throws Exception {
 		// 1. 데이터 로딩(수집)
 		String file = path + "data\\recommend.csv";
