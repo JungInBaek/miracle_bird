@@ -1,59 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.8.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
-	
-	<context:property-placeholder location="classpath:/properties/datasource.properties" />
 
-	<!-- 1. DBCP (드라이버, 커넥션) -->
-	<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="${db.driverClassName}" />
-		<property name="url" value="${db.url}" />
-		<property name="username" value="${db.username}" />
-		<property name="password" value="${db.password}" />
-	</bean>
-	
-	<!-- mybatis 설정 관련 파일.. config는 bean id는 임의로 지정가능 ref는 아까 만든 dbcp의 주소를 가져와서 끼는 것임 -->
-	<bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dbcp"></property>
-		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
-	</bean>
+  <!-- Root Context: defines shared resources visible to all other web components -->
 
-	<!-- myBatis의 싱글톤 객체 생성 -->
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="config"></constructor-arg>
-	</bean>
-	
-	<!-- 파일 업로드 -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="10485760"></property>
-	</bean>
-	
-	<!-- 몽고 db -->
-	<mongo:mongo-client
-        host="${mongo.host}"
-        port="${mongo.port}" credentials="${mongo.credentials}" >
-        <mongo:client-options
-            connections-per-host="50"
-            threads-allowed-to-block-for-connection-multiplier="10"
-            connect-timeout="2000"
-            max-wait-time="2500"
-            socket-keep-alive="false"
-            socket-timeout="2500"
-        />
-    </mongo:mongo-client>
- 
-    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongo" />
-        <constructor-arg name="databaseName" value="miracle_bird" />
-    </bean>
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+
+  <context:property-placeholder location="classpath:/properties/datasource.properties"/>
+
+  <!-- 1. DBCP (드라이버, 커넥션) -->
+  <bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName" value="${db.driverClassName}"/>
+    <property name="url" value="${db.url}"/>
+    <property name="username" value="${db.username}"/>
+    <property name="password" value="${db.password}"/>
+  </bean>
+
+  <!-- mybatis 설정 관련 파일.. config는 bean id는 임의로 지정가능 ref는 아까 만든 dbcp의 주소를 가져와서 끼는 것임 -->
+  <bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dbcp"></property>
+    <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+  </bean>
+
+  <!-- myBatis의 싱글톤 객체 생성 -->
+  <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <constructor-arg ref="config"></constructor-arg>
+  </bean>
+
+  <!-- 파일 업로드 -->
+  <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="10485760"></property>
+  </bean>
+
+  <!-- 몽고 db -->
+  <mongo:mongo-client host="${mongo.host}" port="${mongo.port}" credentials="${mongo.credentials}">
+    <mongo:client-options
+      connections-per-host="50"
+      threads-allowed-to-block-for-connection-multiplier="10"
+      connect-timeout="2000"
+      max-wait-time="2500"
+      socket-keep-alive="false"
+      socket-timeout="2500"
+    />
+  </mongo:mongo-client>
+
+  <bean id="mongo" class="com.mongodb.Mongo"/>
+
+  <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+    <constructor-arg ref="mongo"/>
+    <constructor-arg name="databaseName" value="miracle_bird"/>
+  </bean>
+
 </beans>

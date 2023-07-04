@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSessionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.multi.miraclebird.user.UserDAO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HttpSessionExpireListener implements HttpSessionListener {
 	
 	@Autowired
